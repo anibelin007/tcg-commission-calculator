@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+*.tsbuildinfo
+*.tgz
+.vite/
+vite.config.ts.timestamp-*
+
+# Logs and caches
+*.log
+npm-debug.log*
+coverage/
+.eslintcache
+.cache/
+
+# Environment files and credentials (never commit)
+.env
+.env.*
+!.env.example
+.npmrc
+*.pem
+*.key
+credentials*.json
+
+# Editor / OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+*.sw?
+*.local
+
+# Playwright
+test-results/
+playwright-report/
