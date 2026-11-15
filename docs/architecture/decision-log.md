@@ -19,3 +19,4 @@ keep moving; revisit when evidence arrives) or **Pending** (not decided — do n
 | D-012 | «RINGANA only» and fair score (BR-19, BR-20) are shown as information, not calculated. | Proposed | 2026-11-15 | Q-11. |
 | D-013 | Simulation features: next level, target amount («reverse engineering»), step chart. | Accepted (direction) | 2026-11-15 | PF-02 to PF-04; behaviour to be specified before implementation. |
 | D-014 | Technology: React, TypeScript (strict), Vite, Tailwind CSS v4, Vitest, oxlint, GitHub Actions — same stack as `tcg-skin-test`. | Proposed | 2026-11-15 | Hosting not decided. Integrated in the team website («web de las Crazy») via link/redirect. |
+| D-015 | UI languages: es-ES (reference), ca-ES, eu-ES, en-GB, en-US, de-DE, de-AT — the same as `tcg-skin-test`. Partners in other markets use one of these languages with their own market selected. | Accepted | 2026-11-15 | Q-06. Adding a language requires PO approval. |

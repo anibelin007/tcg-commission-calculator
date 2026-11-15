@@ -7,7 +7,7 @@
 | Q-03 | Which data does the Online Office offer (TT per generation, per team, TT-1/2/3, Performance Indicator, services/API)? | Defines the manual input form and the future import. | PO to list the services from a computer. | Open |
 | Q-04 | Payout threshold for CHF, SEK, DKK, GBP, PLN, CZK, HUF. | BR-16 only gives EUR, MXN, USD. | Check those markets' guidelines or ask RINGANA. Until then the reminder is shown only for EUR, MXN and USD. | Open |
 | Q-05 | Rounding: per line, per sum or only the final amount? Minor units for HUF/CZK? | Cent-level differences against Billing Documents. | Compare with S-09. | Open |
-| Q-06 | Which UI languages for the calculator? Partners are in all markets (es, ca, eu, en, de, fr, it, pt, nl, pl, cs, sk, hu, sv, da…). | Translation scope. | PO decision. | Open |
+| Q-06 | Which UI languages for the calculator? | Translation scope. | PO (2026-11-15): the same seven locales as `tcg-skin-test`: es-ES, ca-ES, eu-ES, en-GB, en-US, de-DE, de-AT (D-015). Market and language stay independent (D-006). | Resolved |
 | Q-07 | Complete list of RINGANA markets and contract types for the market selector (e.g. Austria, Germany, Spain, Portugal, Slovenia… use the 1.32 standard). | The selector must not miss markets. | PO / RINGANA. Provisional: «other EU market (EUR 1.32)» option. | Open |
 | Q-08 | «Guidelines for Websites related to RINGANA» (S-08). | Mandatory rules for any partner website (GC p. 24–25). | PO to provide the document before publishing. | Open |
 | Q-09 | Is Turkey a market for the calculator? GC Rules TR were provided but no Turkish commission guideline. | Market list. | PO. | Open |
