@@ -1,0 +1,21 @@
+# Decision log
+
+Decisions taken with the product owner (PO). Status: **Accepted**, **Provisional** (taken to
+keep moving; revisit when evidence arrives) or **Pending** (not decided — do not implement).
+
+| ID | Decision | Status | Date | Notes |
+|---|---|---|---|---|
+| D-001 | The RINGANA commission guidelines are the only source of truth. The team Google Sheet is not a reference. | Accepted | 2026-11-15 | Sheet defects listed in `docs/sources/README.md`. |
+| D-002 | One calculator for all target levels (1–10). The level is computed from the inputs, not chosen by the user. | Accepted | 2026-11-15 | Replaces the Sheet's «levels 1–5 / 6–10» split. |
+| D-003 | Three private repositories: `tcg-ui` (shared design system, published privately to GitHub Packages as `@anibelin007/tcg-ui`), `tcg-commission-calculator`, `tcg-skin-test`. | Accepted | 2026-11-15 | `tcg-skin-test` keeps its own styles until a separate migration PR. App updates to `tcg-ui` arrive as automated PRs. |
+| D-004 | Phase 1 = base commission only. Fast Track, Start Bonus, Growth Bonus and Beyond Target 10 are out of scope. | Accepted | 2026-11-15 | Roadmap: `docs/plan/roadmap.md`. |
+| D-005 | The limit for the strongest team is compared with that team's TT (all generations); when exceeded, the commission from that team is reduced proportionally. | **Provisional** | 2026-11-15 | PO: «vamos a suponer que sí, que RINGANA lo corta». Contradicts the guideline example on p. 15 (Q-01). Must be implemented as one replaceable strategy. |
+| D-006 | All markets are selectable. Market (points factor, currency, plan) is independent from the UI language. Plans: `eu`, `mx`, `usa`. | Accepted | 2026-11-15 | Factors in BR-14. |
+| D-007 | No persistence at all. Everything runs in the browser; no inputs are stored or sent anywhere. | Accepted | 2026-11-15 | Applies to the manual mode. Import (D-010) will need its own decision. |
+| D-008 | Show a reminder when the commission is not above the payout threshold («you will receive it as a voucher»). | Accepted | 2026-11-15 | BR-16. Thresholds for non-EUR EU currencies pending (Q-04). |
+| D-009 | The tool is unofficial: TCG identity, no RINGANA logos or trade dress, results labelled as estimates. | Proposed | 2026-11-15 | Derived from GC Rules (BR-21, BR-22); exact wording to be approved. |
+| D-010 | Importing current / previous-month points from RINGANA. | **Pending** | — | Depends on the Online Office services (Q-03) and needs a backend and authentication decision. Manual input comes first. |
+| D-011 | RINGANA source PDFs are not committed; only extracted rules with citations. | Accepted | 2026-11-15 | |
+| D-012 | «RINGANA only» and fair score (BR-19, BR-20) are shown as information, not calculated. | Proposed | 2026-11-15 | Q-11. |
+| D-013 | Simulation features: next level, target amount («reverse engineering»), step chart. | Accepted (direction) | 2026-11-15 | PF-02 to PF-04; behaviour to be specified before implementation. |
+| D-014 | Technology: React, TypeScript (strict), Vite, Tailwind CSS v4, Vitest, oxlint, GitHub Actions — same stack as `tcg-skin-test`. | Proposed | 2026-11-15 | Hosting not decided. Integrated in the team website («web de las Crazy») via link/redirect. |
