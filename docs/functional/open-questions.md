@@ -12,7 +12,7 @@
 | Q-08 | «Guidelines for Websites related to RINGANA» (S-08). | Mandatory rules for any partner website (GC p. 24–25). | PO to provide the document before publishing. | Open |
 | Q-09 | Is Turkey a market for the calculator? | Market list. | Yes: Türkiye accepts partners (S-12). Its guideline is tracked in Q-13. | Merged into Q-13 |
 | Q-10 | BT10 promotion, NPV-5 (3Gen) Team Focus: ES 10,000 vs other languages 7,000. | Phase 3 only. Promotion ends December 2026. | Use 7,000 if ever needed; confirm with RINGANA. | Deferred |
-| Q-11 | Show an optional fair-score field (default 100 %) and an informative note about «RINGANA only» (BR-19, BR-20)? | Affects the result for sanctioned partners. | PO decision. | Open |
+| Q-11 | Show an optional fair-score field and/or a note about «RINGANA only» (BR-19, BR-20)? | Affects the result for sanctioned partners and partners limited to level 7. | PO (2026-11-17): informative note only, no field (D-012). | Resolved |
 | Q-12 | Should the calculator support entering points per team (needed for the limit and TT-n) or per generation plus the three strongest teams? | Input design vs. accuracy. | Decide after Q-03. | Open |
 | Q-13 | Commission guidelines for Argentina (ARS), Colombia (COP), Peru (PEN) and Türkiye (TRY). | These countries accept partners (S-12) but no guideline gives their plan, points factor or payout threshold. | PO to look for the guidelines. Until then they are not offered. | Open |
 | Q-14 | Liechtenstein (CHF) and Hong Kong (EUR): which plan and factor? | The guideline lists a CHF factor only for Switzerland and covers «all other RINGANA markets» with 1.32 without saying whether that includes non-EU markets. | Confirm with RINGANA. Until then they are not offered. | Open |

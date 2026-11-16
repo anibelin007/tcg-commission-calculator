@@ -156,16 +156,16 @@ Domain IDs (language-independent, used in code): target levels `1`–`10`; plans
 
 ### Rules from the GC Rules that affect the result
 
-Not calculated in phase 1; the tool informs about them (D-012, pending PO confirmation).
+Not calculated; the result shows one informative note about them (D-012).
 
 - **BR-19 «RINGANA only».** A partner active in another network-marketing business is settled
-  at most as level 7. Partners who do not build a team (TT − TT-1 < 7,000, «por lo general
+  at most as level 7 (she can reach level 8+, but is paid as level 7). Partners who do not build a team (TT − TT-1 < 7,000, «por lo general
   influencers») may promote other brands, and in that case their commission is limited to
   level 7. Classification follows the highest level of the last 12 months. — *Verified rule*
   (GC p. 10–11).
 - **BR-20 Fair score.** Sanctioned infringements lower the monthly fair score (1 unfair
   value = −1 %). Commission points are multiplied by fair score / 100. — *Verified rule*
-  (GC p. 12–13). Phase 1 assumes 100 % (Q-11 proposes an optional field).
+  (GC p. 12–13). The calculator assumes 100 % (D-012).
 
 ## Constraints on what the tool says
 
