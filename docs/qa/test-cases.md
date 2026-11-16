@@ -1,6 +1,6 @@
 # Test cases — phase 1
 
-These become table-driven tests when the engine is written. Two kinds:
+Implemented as table-driven tests in `src/domain/commission/commission.test.ts`. Two kinds:
 
 - **Guideline cases (TC-xx)**: inputs and expected results printed in the guidelines.
 - **Derived cases (S-xx)**: synthetic inputs whose expected results follow from verified rules
@@ -19,9 +19,9 @@ All amounts EU standard market (factor 1.32, EUR) unless stated. Rounding per BR
 
 ⚠️ **TC-02 conflicts with D-005.** Team 2 (TT 1,800) is above the level 3 limit (1,500).
 Under the provisional rule its commission (153 points) becomes 153 × 1,500 / 1,800 = 127.5,
-total 663.5 points = **875.82 €**, not 909.48 €. Until Q-01 is resolved, TC-02 is kept as
-an *expected failure* documenting the conflict; it must not be «fixed» by tweaking the
-engine to match it.
+total 663.5 points = **875.82 €**, not 909.48 €. Until Q-01 is resolved, the tests run TC-02 with
+both limit strategies: option (c) reproduces the guideline (909.48 €) and the default D-005
+gives 875.82 €. Neither may be «fixed» by tweaking the engine to match the other.
 
 ## Derived cases (boundaries)
 
