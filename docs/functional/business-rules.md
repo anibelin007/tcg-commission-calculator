@@ -186,5 +186,8 @@ Approved direction by the PO (D-002, D-013); exact behaviour still to be specifi
 - **PF-03 Target amount** («I want to earn X»): solve the CT needed with the team unchanged;
   optionally the extra team points needed. Must respect BR-21.
 - **PF-04 Step chart** of commission against CT, showing the jumps between levels.
+- **PF-06 Prospect simulator** (D-017): build CT from fictitious orders using the points
+  table of the selected market, optionally add a fictitious team, and show the resulting
+  commission as a clearly labelled fictitious example (BR-21).
 - **PF-05 Import** of current and previous-month points from RINGANA (depends on Q-03 and on
   a backend/authentication decision, D-010).
