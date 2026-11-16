@@ -39,7 +39,7 @@ she needs for the next target level and how many points she would need for a tar
 
 ## Technology
 
-- Proposed stack (D-014): React, TypeScript (strict), Vite, Tailwind CSS v4, Vitest, oxlint,
+- Stack (D-014, accepted): React, TypeScript (strict), Vite, Tailwind CSS v4, Vitest, oxlint,
   GitHub Actions — same as `tcg-skin-test`. Shared UI from `@anibelin007/tcg-ui`.
 - **Not decided — do not choose or configure:** backend, authentication, hosting, RINGANA
   import (D-010).
