@@ -3,7 +3,8 @@
 Unofficial commission calculator for TCG partners, based on the RINGANA target plan. Runs
 entirely in the browser; no data is stored.
 
-**Status:** phase 1 in progress — app shell and commission engine (no calculator form yet).
+**Status:** phase 1 in progress — manual calculator working (market, own points, teams by
+generation, result breakdown). Next: simulations (next level, target amount, step chart).
 
 ## Development
 

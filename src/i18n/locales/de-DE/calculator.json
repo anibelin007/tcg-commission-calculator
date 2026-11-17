@@ -1,0 +1,77 @@
+{
+  "intro": "Gib deine Punkte des Monats ein. Die Berechnung erfolgt in deinem Browser: Es wird nichts gespeichert oder gesendet.",
+  "invalid": "Gib eine Punktzahl von 0 oder mehr ein.",
+  "market": {
+    "legend": "Markt",
+    "country": "Rechnungsland",
+    "contract": "Vertragsart",
+    "contracts": {
+      "vdi": "VDI",
+      "mandataire": "Mandataire Professionnel",
+      "occasionale": "Porta a Porta Occasionale",
+      "partitaIva": "Porta a Porta incl. partita IVA"
+    }
+  },
+  "own": {
+    "legend": "Deine Punkte",
+    "customerTurnover": "Dein KU (Kundenumsatz)",
+    "customerTurnoverHelp": "Punkte der in diesem Monat bezahlten Bestellungen deiner Kundinnen, einschließlich deiner eigenen Bestellungen.",
+    "customerTurnoverHelpUsa": "Punkte der in diesem Monat bezahlten Bestellungen deiner Kundinnen, ohne deine eigenen Einkäufe.",
+    "personalTurnover": "Dein PT (Eigenumsatz)",
+    "personalTurnoverHelp": "Punkte deiner eigenen, in diesem Monat bezahlten Einkäufe."
+  },
+  "result": {
+    "title": "Geschätzte Provision",
+    "noLevel": "Mit diesen Punkten erreichst du Zielstufe 1 nicht (110 Punkte eigener KU). In diesem Monat gäbe es keine Provision.",
+    "level": "Zielstufe {{level}}",
+    "concept": "Posten",
+    "volume": "Punkte",
+    "rate": "%",
+    "points": "Provisionspunkte",
+    "own": "Dein KU",
+    "ownUsa": "Dein DT (CT + PT)",
+    "generation": "Generation {{number}}",
+    "limit": "Begrenzung für das stärkste Team (direkte Partnerin {{team}}: TU {{volume}}, Grenze {{limit}})",
+    "totalPoints": "Provisionspunkte gesamt",
+    "factor": "Punktefaktor",
+    "amount": "Geschätzte Provision",
+    "volumes": "TU {{tt}} · TU-1 {{tt1}} · TU-2 {{tt2}} · TU-3 {{tt3}}",
+    "notes": {
+      "voucher": "Denk daran: Da sie {{threshold}} nicht übersteigt, wird sie als Rabattgutschein ausgezahlt.",
+      "taxSettlement": "In diesem Markt schickt RINGANA aus steuerlichen Gründen zusätzlich ein Abrechnungsdokument: Der Endbetrag kann abweichen.",
+      "provisionalLimit": "Die Begrenzung für das stärkste Team wird vorläufig angewendet, bis wir mit RINGANA geklärt haben, wie sie berechnet wird.",
+      "exceptions": "Wenn dein Fair Score unter 100 % liegt oder die Regel «RINGANA only» für dich gilt, ist deine tatsächliche Provision niedriger.",
+      "bonuses": "Boni sind nicht enthalten (Fast Track, Wachstumsbonus, Beyond Target 10).",
+      "breakdownMissing": "Die Begrenzung für das stärkste Team ist noch nicht angewendet: Ergänze die Aufschlüsselung dieses Teams für ein genaueres Ergebnis.",
+      "limitNotApplied": "Dein stärkstes Team (direkte Partnerin {{team}}, TU {{volume}}) überschreitet die Grenze der Zielstufe {{level}} ({{limit}}). Wir klären noch, wie RINGANA sie anwendet, daher wird vorerst nichts abgezogen: Deine tatsächliche Provision könnte niedriger sein."
+    }
+  },
+  "generations": {
+    "legend": "Punkte deines Teams nach Generation",
+    "help": "Übernimm sie aus dem Online Office: Statistiken → Teamstruktur, Spalte «Punkte».",
+    "generation": "Generation {{number}}",
+    "deep": "Generation 10 und tiefer",
+    "deepHelp": "Sie zählen nur für den TU: Sie bringen keine Provision.",
+    "add": "Generation hinzufügen",
+    "total": "Dein Team insgesamt: {{volume}} Punkte"
+  },
+  "partners": {
+    "legend": "TU deiner direkten Partnerinnen",
+    "help": "Jede direkte Partnerin ist ein Team. Übernimm ihn aus dem Online Office: Liste deiner direkten Partnerinnen, Spalte «TU». Damit werden dein TU-1, TU-2 und TU-3 und daraus deine Zielstufe berechnet.",
+    "empty": "Keine direkten Partnerinnen.",
+    "partner": "Direkte Partnerin {{number}} (TU)",
+    "remove": "Direkte Partnerin {{number}} entfernen",
+    "add": "Direkte Partnerin hinzufügen"
+  },
+  "breakdown": {
+    "legend": "Begrenzung für das stärkste Team",
+    "help": "Das Team der direkten Partnerin {{number}} hat einen TU von {{volume}} Punkten und überschreitet die Grenze der Zielstufe {{level}} ({{limit}} Punkte). Um die Begrenzung anzuwenden, gib die Punkte dieses Teams nach Generation ein: Generation 1 ist die direkte Partnerin selbst (ihr KU).",
+    "total": "Team insgesamt: {{volume}} Punkte"
+  },
+  "warnings": {
+    "teamVolumesMissing": "Der TU deiner direkten Partnerinnen fehlt: Ohne ihn können deine stärksten Teams nicht abgezogen werden, und die Zielstufe kann höher ausfallen als die tatsächliche.",
+    "teamVolumesExceedDownline": "Der TU deiner direkten Partnerinnen ist zusammen größer als alle Generationen zusammen. Bitte prüfe die Daten.",
+    "breakdownDoesNotMatchTeam": "Die Aufschlüsselung des stärksten Teams ergibt nicht seinen TU. Bitte prüfe die Daten.",
+    "breakdownExceedsGeneration": "Eine Generation der Aufschlüsselung ist größer als die Summe dieser Generation. Bitte prüfe die Daten."
+  }
+}

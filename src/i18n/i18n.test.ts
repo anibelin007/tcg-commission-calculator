@@ -31,6 +31,8 @@ describe('translations', () => {
 
   it.each(SUPPORTED_LOCALES)('%s resolves every key', async (locale) => {
     const i18n = await createAppI18n(locale)
-    for (const key of reference('common')) expect(i18n.t(key)).not.toBe(key)
+    for (const namespace of NAMESPACES) {
+      for (const key of reference(namespace)) expect(i18n.t(key, { ns: namespace })).not.toBe(key)
+    }
   })
 })

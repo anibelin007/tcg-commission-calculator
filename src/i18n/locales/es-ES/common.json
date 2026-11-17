@@ -1,9 +1,12 @@
 {
   "app": {
     "title": "Calculadora de comisiones",
-    "status": "Herramienta en preparación. Todavía no se pueden calcular comisiones.",
     "unofficial": "Herramienta no oficial del equipo TCG. Los resultados son estimaciones: la liquidación oficial es la de RINGANA."
   },
-  "brand": { "logoAlt": "Logotipo The Crazy Greens" },
-  "languageSelector": { "label": "Idioma" }
+  "brand": {
+    "logoAlt": "Logotipo The Crazy Greens"
+  },
+  "languageSelector": {
+    "label": "Idioma"
+  }
 }

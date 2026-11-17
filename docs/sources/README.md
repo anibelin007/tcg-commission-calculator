@@ -38,6 +38,8 @@ Citations use the short IDs below, e.g. *EU-ES p. 13* = printed page 13 of S-01.
 | S-09 | Real Billing Document with a strongest team above the limit | — | — | **Missing.** Requested by the PO from a fellow partner (Q-01). |
 | S-10 | RINGANA Online Office data services (current points) | — | — | **Missing.** PO to list the available services (Q-03). |
 | S-12 | RINGANA countries service response (country, ISO code, currency, partner registration) | Snapshot 2026-11-16 | — | Provided by the PO. Mapped to plans and factors in [`ringana-countries.md`](ringana-countries.md). Endpoint not recorded. |
+| S-13 | RINGANA Online Office screens: «Estadísticas → Estructura de equipo» (generation, number of partners, points) and the direct-partners list (level, CT, own consumption, TT, TT-1, TT-2, TT-3) | Seen 2026-11-17 | es | Screenshots shared by the PO in the conversation; **not stored** (they contain real names). Used to shape the form (Q-12). |
+| S-14 | RINGANA Online Office services `/teams/generations` and `/teams/revenue` (response shape) | Seen 2026-11-17 | — | Sample responses shared by the PO in the conversation; **not stored** (real names and partner numbers). Field mapping only; see Q-18. |
 | S-11 | Team Google Sheet «Calculadora de comisión TCG» | Read 2026-11-15 | es | Read-only. **Not a reference** (D-001). Its known defects are listed below only to explain why. |
 
 ## Cross-language check of the EU guidelines (S-01 vs S-02)

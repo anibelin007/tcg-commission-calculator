@@ -1,9 +1,12 @@
 {
   "app": {
     "title": "Calculadora de comissions",
-    "status": "Eina en preparació. Encara no es poden calcular comissions.",
     "unofficial": "Eina no oficial de l'equip TCG. Els resultats són estimacions: la liquidació oficial és la de RINGANA."
   },
-  "brand": { "logoAlt": "Logotip de The Crazy Greens" },
-  "languageSelector": { "label": "Idioma" }
+  "brand": {
+    "logoAlt": "Logotip de The Crazy Greens"
+  },
+  "languageSelector": {
+    "label": "Idioma"
+  }
 }

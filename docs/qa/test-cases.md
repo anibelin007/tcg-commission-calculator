@@ -17,11 +17,11 @@ All amounts EU standard market (factor 1.32, EUR) unless stated. Rounding per BR
 | TC-02 | CT 1,000. Team 1: A (gen 1) 700 → C (gen 2) 1,000. Team 2: B (gen 1) 900 → D (gen 2) 600, E (gen 2) 300 | 3 (CT ≥ 330, TT-1 2,700 ≥ 1,600) | 689 | **909.48 €** · MX: 17,914 MXN · USA: $ 1,102.40 | EU-ES p. 9–10, 15; MX p. 15–16; USA p. 15–16 |
 | TC-03 | Same team as TC-02 | — | — | TT = 4,500; TT-1 = 2,700 | EU-ES p. 9–10 |
 
-⚠️ **TC-02 conflicts with D-005.** Team 2 (TT 1,800) is above the level 3 limit (1,500).
-Under the provisional rule its commission (153 points) becomes 153 × 1,500 / 1,800 = 127.5,
-total 663.5 points = **875.82 €**, not 909.48 €. Until Q-01 is resolved, the tests run TC-02 with
-both limit strategies: option (c) reproduces the guideline (909.48 €) and the default D-005
-gives 875.82 €. Neither may be «fixed» by tweaking the engine to match the other.
+**TC-02 and the strongest-team limit (Q-01).** Team 2 (TT 1,800) is above the level 3 limit
+(1,500). With the default (limit not applied, D-005) the result is the guideline's 909.48 €,
+with a note. Under the alternative reading BR-12a/b its commission (153 points) becomes
+153 × 1,500 / 1,800 = 127.5, total 663.5 points = 875.82 €. The tests cover the three
+strategies; none may be «fixed» to match another.
 
 ## Derived cases (boundaries)
 
@@ -34,7 +34,7 @@ gives 875.82 €. Neither may be «fixed» by tweaking the engine to match the o
 | S-04 | CT 824; no team | 2 | 238.96 | 315.43 € | BR-07, BR-10 |
 | S-05 | CT 825; no team | 3 | 321.75 | 424.71 € | BR-07, BR-10 |
 | S-06 | CT 220; one direct partner with 780 (TT 1,000) | 2 (CT ≥ 220, TT ≥ 1,000) | 126.20 | 166.58 € | BR-05, BR-07, BR-11 |
-| S-07 | CT 400; one direct partner with 10,000 (TT 10,400; TT-1 400) | 2 | 196 | **258.72 €** under D-005 (limit 1,000: 800 × 1,000 / 10,000 = 80) | BR-07, BR-12a/b — would be 1,209.12 € under Q-01 option (c) |
+| S-07 | CT 400; one direct partner with 10,000 (TT 10,400; TT-1 400) | 2 | 916 | **1,209.12 €** by default (limit not applied, D-005) | BR-07, BR-12 — 258.72 € under BR-12a/b (800 × 1,000 / 10,000 = 80 points); 1,209.12 € also under Q-01 option (c) |
 | S-08 | Payout threshold, EUR | — | — | 65.00 € → voucher; 65.01 € → transfer | BR-16 («superiores a 65 €») |
 
 ## Cross-plan and cross-locale checks

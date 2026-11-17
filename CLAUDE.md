@@ -25,8 +25,8 @@ she needs for the next target level and how many points she would need for a tar
   improvement.
 - Do not invent expected results. Test values come from the guidelines or are derived from
   verified rules (`docs/qa/test-cases.md`).
-- Provisional decisions (e.g. D-005, strongest-team limit) are implemented as replaceable
-  strategies and revisited when evidence arrives.
+- Provisional decisions (e.g. D-005: strongest-team limit not applied for now) are implemented
+  as replaceable strategies and revisited when evidence arrives.
 - RINGANA PDFs are not committed (D-011).
 - Plans are versioned data (`eu`, `mx`, `usa`); markets carry factor, currency and payout
   threshold. Market is independent from the UI language.
@@ -41,10 +41,10 @@ she needs for the next target level and how many points she would need for a tar
 
 - Stack (D-014, accepted): React, TypeScript (strict), Vite, Tailwind CSS v4, Vitest, oxlint,
   GitHub Actions — same as `tcg-skin-test`. Shared UI from `@anibelin007/tcg-ui`.
-- **Not decided — do not choose or configure:** backend, authentication, hosting, RINGANA
-  import (D-010).
-- **No persistence and no network calls with user data** (D-007). Everything runs in the
-  browser.
+- **Not decided — do not choose or configure:** backend, hosting.
+- **No persistence of inputs** (D-007). Only exception: the RINGANA session token in
+  `sessionStorage` (D-018). Never store or log passwords. The RINGANA import uses only
+  `/teams/generations` and `/teams/revenue`.
 
 ## Architecture Principles
 

@@ -1,0 +1,77 @@
+{
+  "intro": "Enter your points for the month. The calculation runs in your browser: nothing is stored or sent.",
+  "invalid": "Enter a number of points equal to or greater than 0.",
+  "market": {
+    "legend": "Market",
+    "country": "Billing country",
+    "contract": "Contract type",
+    "contracts": {
+      "vdi": "VDI",
+      "mandataire": "Mandataire Professionnel",
+      "occasionale": "Porta a Porta Occasionale",
+      "partitaIva": "Porta a Porta incl. partita IVA"
+    }
+  },
+  "own": {
+    "legend": "Your points",
+    "customerTurnover": "Your CT (customer turnover)",
+    "customerTurnoverHelp": "Points of the orders paid this month by your customers, including your own orders.",
+    "customerTurnoverHelpUsa": "Points of the orders paid this month by your customers, excluding your own purchases.",
+    "personalTurnover": "Your PT (personal turnover)",
+    "personalTurnoverHelp": "Points of your own purchases paid this month."
+  },
+  "result": {
+    "title": "Estimated commission",
+    "noLevel": "With these points you do not reach Target Level 1 (110 points of your own CT). There would be no commission this month.",
+    "level": "Target Level {{level}}",
+    "concept": "Item",
+    "volume": "Points",
+    "rate": "%",
+    "points": "Commission points",
+    "own": "Your CT",
+    "ownUsa": "Your DT (CT + PT)",
+    "generation": "Generation {{number}}",
+    "limit": "Limit for the strongest team (direct partner {{team}}: TT {{volume}}, limit {{limit}})",
+    "totalPoints": "Total commission points",
+    "factor": "Points factor",
+    "amount": "Estimated commission",
+    "volumes": "TT {{tt}} · TT-1 {{tt1}} · TT-2 {{tt2}} · TT-3 {{tt3}}",
+    "notes": {
+      "voucher": "Remember: as it does not exceed {{threshold}}, it will be paid as a discount voucher.",
+      "taxSettlement": "In this market RINGANA also sends a settlement document for tax reasons: the final amount may differ.",
+      "provisionalLimit": "The limit for the strongest team is applied provisionally while we confirm with RINGANA how it is calculated.",
+      "exceptions": "If your fair score is below 100 % or the «RINGANA only» rule applies to you, your actual commission will be lower.",
+      "bonuses": "Bonuses are not included (Fast Track, Growth Bonus, Beyond Target 10).",
+      "breakdownMissing": "The limit for the strongest team is not applied yet: complete that team’s breakdown for a more accurate result.",
+      "limitNotApplied": "Your strongest team (direct partner {{team}}, TT {{volume}}) exceeds the limit of Target Level {{level}} ({{limit}}). We are still confirming how RINGANA applies it, so it is not deducted for now: your actual commission could be lower."
+    }
+  },
+  "generations": {
+    "legend": "Your team’s points by generation",
+    "help": "Copy them from the Online Office: Statistics → Team structure, «Points» column.",
+    "generation": "Generation {{number}}",
+    "deep": "Generation 10 and deeper",
+    "deepHelp": "They only count for TT: they earn no commission.",
+    "add": "Add generation",
+    "total": "Your team in total: {{volume}} points"
+  },
+  "partners": {
+    "legend": "TT of your direct partners",
+    "help": "Each direct partner is one team. Copy it from the Online Office: list of your direct partners, «TT» column. It is used to calculate your TT-1, TT-2 and TT-3 and, with them, your Target Level.",
+    "empty": "No direct partners.",
+    "partner": "Direct partner {{number}} (TT)",
+    "remove": "Remove direct partner {{number}}",
+    "add": "Add direct partner"
+  },
+  "breakdown": {
+    "legend": "Limit for the strongest team",
+    "help": "The team of direct partner {{number}} has a TT of {{volume}} points and exceeds the limit of Target Level {{level}} ({{limit}} points). To apply the limit, enter the points of that team by generation: generation 1 is the direct partner herself (her CT).",
+    "total": "Team total: {{volume}} points"
+  },
+  "warnings": {
+    "teamVolumesMissing": "The TT of your direct partners is missing: without it your strongest teams cannot be subtracted and the Target Level may come out higher than the real one.",
+    "teamVolumesExceedDownline": "The TT of your direct partners adds up to more than all generations together. Please check the data.",
+    "breakdownDoesNotMatchTeam": "The breakdown of the strongest team does not add up to its TT. Please check the data.",
+    "breakdownExceedsGeneration": "A generation of the breakdown is larger than that generation’s total. Please check the data."
+  }
+}

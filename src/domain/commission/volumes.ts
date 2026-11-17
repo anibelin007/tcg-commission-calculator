@@ -1,28 +1,38 @@
 import type { OwnMeasure, Plan, TeamMeasure } from './plans'
 
 /**
- * One team (*pata*): a first-generation partner and her whole downline. `generations[0]` is
- * the volume of generation 1 (the direct partner herself), `generations[1]` of generation 2,
- * and so on, relative to the partner using the calculator. Generations beyond 9 may be given:
- * they count for TT but never earn commission (BR-05, BR-11).
+ * Engine input, shaped like the RINGANA Online Office (Q-12, S-13):
+ * - «Estadísticas → Estructura de equipo» gives the points of each generation → commission;
+ * - the list of direct partners gives each one's VE (= the volume of her team) → TT-1/2/3.
  * Volumes are CT in the EU and MX plans and DT in the USA plan.
  */
-export interface TeamInput {
-  readonly generations: readonly number[]
-}
-
 export interface CommissionInput {
-  /** CT: customer turnover, including own orders in EU/MX (BR-04). */
+  /** CT: customer turnover as shown by the Online Office (VC); it already includes own consumption (BR-04, Q-16). */
   readonly customerTurnover: number
-  /** PT: own purchases. USA plan only (BR-18); must be 0 elsewhere. */
+  /** PT: own purchases. USA plan only (BR-18); ignored elsewhere. */
   readonly personalTurnover?: number
-  readonly teams: readonly TeamInput[]
+  /**
+   * Points of the whole downline by generation: index 0 = generation 1 (direct partners).
+   * Generations beyond 9 may be given (or summed in the last entry): they count for TT but
+   * never earn commission (BR-05, BR-11).
+   */
+  readonly generationVolumes: readonly number[]
+  /** VE of each direct partner, i.e. the volume of each team (*pata*). Used for TT-n and the limit. */
+  readonly teamVolumes: readonly number[]
+  /**
+   * Points by generation of the strongest team only, relative to the calculating partner
+   * (index 0 = the direct partner herself). Needed only when that team exceeds the limit of the
+   * attained level (BR-12); otherwise ignored.
+   */
+  readonly strongestTeamGenerations?: readonly number[]
 }
 
 export interface Volumes {
   readonly ct: number
   readonly dt: number
-  /** Volume of each team (the team's TT), in input order. */
+  /** Own volume that counts for TT and earns the own commission (CT, or DT in the USA plan). */
+  readonly own: number
+  readonly downline: number
   readonly teamVolumes: readonly number[]
   readonly tt: number
   readonly tt1: number
@@ -30,22 +40,18 @@ export interface Volumes {
   readonly tt3: number
 }
 
-const sum = (values: readonly number[]) => values.reduce((total, value) => total + value, 0)
+export const sum = (values: readonly number[]) => values.reduce((total, value) => total + value, 0)
 
-export function teamVolume(team: TeamInput): number {
-  return sum(team.generations)
-}
-
-/** TT = own volume + volume of all teams; TT-n = TT minus the n strongest teams (BR-05, BR-06). */
+/** TT = own volume + all downline generations; TT-n = TT minus the n strongest teams (BR-05, BR-06). */
 export function computeVolumes(plan: Plan, input: CommissionInput): Volumes {
   const ct = input.customerTurnover
   const dt = ct + (plan.ownMeasure === 'dt' ? (input.personalTurnover ?? 0) : 0)
   const own = plan.ownMeasure === 'dt' ? dt : ct
-  const teamVolumes = input.teams.map(teamVolume)
-  const tt = own + sum(teamVolumes)
-  const strongestFirst = [...teamVolumes].sort((a, b) => b - a)
+  const downline = sum(input.generationVolumes)
+  const tt = own + downline
+  const strongestFirst = [...input.teamVolumes].sort((a, b) => b - a)
   const minusStrongest = (n: number) => tt - sum(strongestFirst.slice(0, n))
-  return { ct, dt, teamVolumes, tt, tt1: minusStrongest(1), tt2: minusStrongest(2), tt3: minusStrongest(3) }
+  return { ct, dt, own, downline, teamVolumes: input.teamVolumes, tt, tt1: minusStrongest(1), tt2: minusStrongest(2), tt3: minusStrongest(3) }
 }
 
 export function ownMeasureValue(volumes: Volumes, measure: OwnMeasure): number {

@@ -1,9 +1,12 @@
 {
   "app": {
     "title": "Provisionsrechner",
-    "status": "Das Tool ist in Vorbereitung. Provisionen können noch nicht berechnet werden.",
     "unofficial": "Inoffizielles Tool des TCG-Teams. Die Ergebnisse sind Schätzungen: Maßgeblich ist die offizielle Abrechnung von RINGANA."
   },
-  "brand": { "logoAlt": "Logo von The Crazy Greens" },
-  "languageSelector": { "label": "Sprache" }
+  "brand": {
+    "logoAlt": "Logo von The Crazy Greens"
+  },
+  "languageSelector": {
+    "label": "Sprache"
+  }
 }

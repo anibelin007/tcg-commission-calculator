@@ -4,6 +4,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { I18nextProvider } from 'react-i18next'
 import { App } from './app/App'
+import { preselectMarketId } from './features/calculator/market-preselection'
 import { createAppI18n } from './i18n'
 import { REFERENCE_LOCALE, SUPPORTED_LOCALES, type Locale } from './i18n/locales'
 import './index.css'
@@ -34,7 +35,7 @@ window.addEventListener('languagechange', () => {
 createRoot(rootElement).render(
   <StrictMode>
     <I18nextProvider i18n={i18n}>
-      <App localePreference={localePreference} />
+      <App localePreference={localePreference} initialMarketId={preselectMarketId(navigator.languages, i18n.language)} />
     </I18nextProvider>
   </StrictMode>,
 )
