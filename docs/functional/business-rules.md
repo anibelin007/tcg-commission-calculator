@@ -203,6 +203,10 @@ Approved direction by the PO (D-002, D-013); exact behaviour still to be specifi
 - **PF-03 Target amount** («how many points would you need for X?»): the smallest extra own
   CT, in hundredths of a point, for an estimated commission ≥ X with the team unchanged; a
   target inside a jump lands on the jump. Worded per BR-21.
+  **Team route** (PO 2026-11-17): with own CT unchanged, the smallest extra team volume in
+  generation 1 from direct partners who are not among the strongest teams (these raise TT and
+  TT-1/2/3 alike and pay the generation-1 rate). The assumption is stated in the UI. Not
+  offered below level 1 (no team commission without 110 own points).
 - **PF-04 Step chart** of the estimated commission against own CT (team unchanged), with
   the current position and a hover/keyboard readout. Only the next level is summarised in
   text (PO: focus on the next level).

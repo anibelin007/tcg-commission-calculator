@@ -101,7 +101,10 @@
       "label": "Nahi zenukeen komisioa ({{currency}})",
       "reached": "Zure oraingo puntuekin iristen zara: {{amount}}.",
       "needed": "{{extra}} VC puntu gehiago beharko zenituzke (VC guztira {{total}}): {{level}}. helburua, komisio estimatua {{amount}}.",
-      "unreachable": "Ezin da zure puntuekin bakarrik lortu."
+      "unreachable": "Ezin da zure puntuekin bakarrik lortu.",
+      "team": "Edo, zure oraingo VCarekin: zure taldeak {{extra}} puntu gehiago beharko lituzke zure 1. belaunaldian, zure adar indartsuenak ez diren bazkideenak: {{level}}. helburua, komisio estimatua {{amount}}.",
+      "teamNote": "Zure taldearen puntuak bere belaunaldiaren ehunekoan ordaintzen dira (1.ean, % 8–9), horregatik puntu propioak baino gehiago behar dira. Zure adar indartsuenarenek ez dute zure VE-1 igotzen.",
+      "teamUnreachable": "Zure oraingo VCarekin ez zara 1. helburura iristen (110 puntu propio); beraz, zure taldeak oraindik ez dizu komisiorik sortzen."
     },
     "chart": {
       "title": "Zure komisio estimatua zure VCaren arabera",

@@ -101,7 +101,10 @@
       "label": "Comissió que t'agradaria ({{currency}})",
       "reached": "Amb els teus punts actuals ja hi arribes: {{amount}}.",
       "needed": "Necessitaries {{extra}} punts de VC més (VC total {{total}}): meta {{level}}, comissió estimada {{amount}}.",
-      "unreachable": "No s'hi pot arribar només amb els teus propis punts."
+      "unreachable": "No s'hi pot arribar només amb els teus propis punts.",
+      "team": "O, amb el teu VC actual: el teu equip necessitaria {{extra}} punts més a la teva 1a generació, de sòcies que no siguin les teves branques més fortes: meta {{level}}, comissió estimada {{amount}}.",
+      "teamNote": "Els punts del teu equip es paguen al percentatge de la seva generació (a la 1a, un 8–9 %), per això en calen més que de punts propis. Els de la teva branca més forta no pugen el teu VE-1.",
+      "teamUnreachable": "Amb el teu VC actual no arribes a la meta 1 (110 punts propis), així que el teu equip encara no et genera comissió."
     },
     "chart": {
       "title": "La teva comissió estimada segons el teu VC",

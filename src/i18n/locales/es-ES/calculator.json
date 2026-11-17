@@ -101,7 +101,10 @@
       "label": "Comisión que te gustaría ({{currency}})",
       "reached": "Con tus puntos actuales ya llegas: {{amount}}.",
       "needed": "Necesitarías {{extra}} puntos de VC más (VC total {{total}}): meta {{level}}, comisión estimada {{amount}}.",
-      "unreachable": "No se puede alcanzar solo con tus propios puntos."
+      "unreachable": "No se puede alcanzar solo con tus propios puntos.",
+      "team": "O, con tu VC actual: tu equipo necesitaría {{extra}} puntos más en tu 1.ª generación, de socias que no sean tus patas más fuertes: meta {{level}}, comisión estimada {{amount}}.",
+      "teamNote": "Los puntos de tu equipo se pagan al porcentaje de su generación (en la 1.ª, un 8–9 %), por eso hacen falta más que puntos propios. Los de tu pata más fuerte no suben tu VE-1.",
+      "teamUnreachable": "Con tu VC actual no llegas a la meta 1 (110 puntos propios), así que tu equipo todavía no te genera comisión."
     },
     "chart": {
       "title": "Tu comisión estimada según tu VC",

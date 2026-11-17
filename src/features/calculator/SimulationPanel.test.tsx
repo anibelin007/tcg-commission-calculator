@@ -5,17 +5,18 @@ import { computeCommission, findMarket, type CommissionInput } from '../../domai
 import { createAppI18n } from '../../i18n'
 import { SimulationPanel } from './SimulationPanel'
 
-async function render(input: CommissionInput) {
+async function renderWithTarget(input: CommissionInput, target: string) {
   const market = findMarket('ES')!
   const i18n = await createAppI18n('es-ES')
   return renderToStaticMarkup(
     <I18nextProvider i18n={i18n}>
-      <SimulationPanel input={input} market={market} current={computeCommission(input, market)} />
+      <SimulationPanel input={input} market={market} current={computeCommission(input, market)} initialTarget={target} />
     </I18nextProvider>,
   ).replace(/ | /g, ' ')
 }
 
 const solo = (ct: number): CommissionInput => ({ customerTurnover: ct, generationVolumes: [], teamVolumes: [] })
+const render = (input: CommissionInput) => renderWithTarget(input, '')
 
 describe('SimulationPanel', () => {
   it('shows what is missing for the next level and the commission there (PF-02)', async () => {
@@ -37,6 +38,13 @@ describe('SimulationPanel', () => {
     const html = await render(solo(500))
     expect(html).toContain('Tu comisión estimada según tu VC')
     expect(html).not.toContain('<table')
+  })
+
+  it('offers the team route for a target amount, stating its assumption', async () => {
+    const html = await renderWithTarget({ customerTurnover: 600, generationVolumes: [900, 700], teamVolumes: [1000, 600] }, '600')
+    expect(html).toContain('Necesitarías 225 puntos de VC más (VC total 825)')
+    expect(html).toContain('tu equipo necesitaría 1069,28 puntos más en tu 1.ª generación, de socias que no sean tus patas más fuertes: meta 3')
+    expect(html).toContain('Los de tu pata más fuerte no suben tu VE-1')
   })
 
   it('says when the top level is reached', async () => {

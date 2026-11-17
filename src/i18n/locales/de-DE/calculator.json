@@ -101,7 +101,10 @@
       "label": "Gewünschte Provision ({{currency}})",
       "reached": "Mit deinen aktuellen Punkten erreichst du sie bereits: {{amount}}.",
       "needed": "Du bräuchtest {{extra}} KU-Punkte mehr (KU gesamt {{total}}): Zielstufe {{level}}, geschätzte Provision {{amount}}.",
-      "unreachable": "Nur mit deinen eigenen Punkten nicht erreichbar."
+      "unreachable": "Nur mit deinen eigenen Punkten nicht erreichbar.",
+      "team": "Oder mit deinem aktuellen KU: Dein Team bräuchte {{extra}} Punkte mehr in deiner 1. Generation, von Partnerinnen, die nicht zu deinen stärksten Teams gehören: Zielstufe {{level}}, geschätzte Provision {{amount}}.",
+      "teamNote": "Die Punkte deines Teams werden mit dem Satz ihrer Generation vergütet (in der 1. mit 8–9 %), deshalb braucht es mehr als eigene Punkte. Punkte deines stärksten Teams erhöhen deinen TU-1 nicht.",
+      "teamUnreachable": "Mit deinem aktuellen KU erreichst du Zielstufe 1 nicht (110 eigene Punkte), daher bringt dir dein Team noch keine Provision."
     },
     "chart": {
       "title": "Deine geschätzte Provision nach KU",

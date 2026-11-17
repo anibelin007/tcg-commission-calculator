@@ -70,9 +70,32 @@ export interface TargetAmountSimulation {
 const SEARCH_LIMIT = 10_000_000
 
 /**
+ * Smallest `extra` (to the hundredth of a point) for which `inputWith(extra)` reaches an
+ * estimated commission of at least `amount`. The commission never decreases when points are
+ * added, so a binary search is exact. Null if not reachable.
+ */
+function smallestExtra(
+  inputWith: (extra: number) => CommissionInput,
+  market: Market,
+  amount: number,
+  options: CommissionOptions,
+): { extra: number; result: CommissionResult } | null {
+  const resultWith = (hundredths: number) => computeCommission(inputWith(hundredths / 100), market, options)
+  if (resultWith(0).amount >= amount) return { extra: 0, result: resultWith(0) }
+  if (resultWith(SEARCH_LIMIT * 100).amount < amount) return null
+  let low = 0 // in hundredths of a point: not enough
+  let high = SEARCH_LIMIT * 100 // enough
+  while (high - low > 1) {
+    const middle = Math.floor((low + high) / 2)
+    if (resultWith(middle).amount >= amount) high = middle
+    else low = middle
+  }
+  return { extra: high / 100, result: resultWith(high) }
+}
+
+/**
  * Smallest extra own customer turnover for an estimated commission of at least `amount`,
- * keeping the team as entered (PF-03). The commission never decreases when own points grow,
- * so a binary search on hundredths of a point is exact. Null if not reachable.
+ * keeping the team as entered (PF-03). Null if not reachable.
  */
 export function simulateTargetAmount(
   input: CommissionInput,
@@ -80,18 +103,41 @@ export function simulateTargetAmount(
   amount: number,
   options: CommissionOptions = {},
 ): TargetAmountSimulation | null {
-  const amountWith = (extra: number) => computeCommission(withExtraOwn(input, extra / 100), market, options).amount
-  if (amountWith(0) >= amount) return { extraOwn: 0, result: computeCommission(input, market, options) }
-  if (amountWith(SEARCH_LIMIT * 100) < amount) return null
-  let low = 0 // in hundredths of a point: not enough
-  let high = SEARCH_LIMIT * 100 // enough
-  while (high - low > 1) {
-    const middle = Math.floor((low + high) / 2)
-    if (amountWith(middle) >= amount) high = middle
-    else low = middle
-  }
-  const extraOwn = high / 100
-  return { extraOwn, result: computeCommission(withExtraOwn(input, extraOwn), market, options) }
+  const found = smallestExtra((extra) => withExtraOwn(input, extra), market, amount, options)
+  return found && { extraOwn: found.extra, result: found.result }
+}
+
+/**
+ * Adds team points in generation 1 from direct partners who are not among the strongest teams:
+ * they raise the team commission at the generation-1 rate and TT, TT-1, TT-2 and TT-3 alike.
+ * (Points of the strongest teams would not raise TT-n, so they are not assumed.) The engine
+ * treats downline volume that is not in `teamVolumes` exactly like that.
+ */
+function withExtraTeam(input: CommissionInput, extra: number): CommissionInput {
+  const [first = 0, ...rest] = input.generationVolumes
+  return { ...input, generationVolumes: [first + extra, ...rest] }
+}
+
+export interface TeamTargetSimulation {
+  /** Extra team points needed in generation 1, outside the strongest teams (0 when already reached). */
+  readonly extraTeam: number
+  readonly result: CommissionResult
+}
+
+/**
+ * Smallest extra team volume for an estimated commission of at least `amount`, keeping the
+ * partner's own CT (PF-03, team route). Assumes the points come from generation 1 outside the
+ * strongest teams (see `withExtraTeam`); the UI states that assumption. Null if not reachable.
+ */
+export function simulateTargetAmountWithTeam(
+  input: CommissionInput,
+  market: Market,
+  amount: number,
+  options: CommissionOptions = {},
+): TeamTargetSimulation | null {
+  if (computeCommission(input, market, options).level === null) return null // no team commission below level 1
+  const found = smallestExtra((extra) => withExtraTeam(input, extra), market, amount, options)
+  return found && { extraTeam: found.extra, result: found.result }
 }
 
 export interface StepPoint {

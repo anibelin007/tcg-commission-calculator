@@ -8,8 +8,10 @@ export {
   commissionCurve,
   simulateNextLevel,
   simulateTargetAmount,
+  simulateTargetAmountWithTeam,
   type NextLevelSimulation,
   type PathGap,
   type StepPoint,
   type TargetAmountSimulation,
+  type TeamTargetSimulation,
 } from './simulation'

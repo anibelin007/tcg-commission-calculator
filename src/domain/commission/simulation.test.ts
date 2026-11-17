@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { findMarket } from './markets'
-import { commissionCurve, simulateNextLevel, simulateTargetAmount } from './simulation'
+import { commissionCurve, simulateNextLevel, simulateTargetAmount, simulateTargetAmountWithTeam } from './simulation'
 import type { CommissionInput } from './volumes'
 
 const ES = findMarket('ES')!
@@ -82,6 +82,32 @@ describe('simulateTargetAmount (PF-03)', () => {
     expect(simulation.result.amount).toBeGreaterThanOrEqual(500)
     const justBelow = simulateTargetAmount({ ...WITH_TEAM, customerTurnover: WITH_TEAM.customerTurnover + simulation.extraOwn - 0.01 }, ES, 500)!
     expect(justBelow.extraOwn).toBe(0.01)
+  })
+})
+
+describe('simulateTargetAmountWithTeam (PF-03, team route)', () => {
+  // CT 600, generations 900 / 700, direct partners' VE 1,000 / 600: level 2, 361.68 €.
+  const example: CommissionInput = { customerTurnover: 600, generationVolumes: [900, 700], teamVolumes: [1000, 600] }
+
+  it('team points outside the strongest teams raise TT-1: +400 reaches level 3 (TT-1 1,600)', () => {
+    const simulation = simulateTargetAmountWithTeam(example, ES, 529.32)!
+    expect(simulation.extraTeam).toBe(400)
+    expect(simulation.result.level).toBe(3)
+    expect(simulation.result.volumes.tt1).toBe(1600)
+  })
+
+  it('600 € needs 1,069.28 team points in generation 1 (paid at 8 %), versus 225 own points', () => {
+    // Level 3: (600 × 39 % + (900 + Δ) × 8 % + 700 × 9 %) × 1.32 = 599.996 € at Δ = 1,069.28,
+    // which rounds to 600.00 € (BR-17: the amount is compared once rounded to cents).
+    const simulation = simulateTargetAmountWithTeam(example, ES, 600)!
+    expect(simulation.extraTeam).toBe(1069.28)
+    expect(simulation.result.level).toBe(3)
+    expect(simulation.result.amount).toBeGreaterThanOrEqual(600)
+    expect(simulateTargetAmount(example, ES, 600)!.extraOwn).toBe(225)
+  })
+
+  it('cannot help below level 1 (no team commission without 110 own points)', () => {
+    expect(simulateTargetAmountWithTeam({ ...example, customerTurnover: 100 }, ES, 100)).toBeNull()
   })
 })
 

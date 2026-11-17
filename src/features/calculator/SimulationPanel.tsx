@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { simulateNextLevel, simulateTargetAmount, type CommissionInput, type CommissionResult, type Market } from '../../domain/commission'
+import { simulateNextLevel, simulateTargetAmount, simulateTargetAmountWithTeam, type CommissionInput, type CommissionResult, type Market } from '../../domain/commission'
 import { CommissionChart } from './CommissionChart'
 import { parsePoints } from './form-model'
 import { formatAmount, formatPoints } from './format'
@@ -10,22 +10,28 @@ interface SimulationPanelProps {
   input: CommissionInput
   market: Market
   current: CommissionResult
+  /** Initial value of the target-amount field (used by tests). */
+  initialTarget?: string
 }
 
 const sectionTitle = 'text-lg font-semibold text-tcg-heading'
 
 /** Next level, target amount and step chart (PF-02 to PF-04). Wording per BR-21. */
-export function SimulationPanel({ input, market, current }: SimulationPanelProps) {
+export function SimulationPanel({ input, market, current, initialTarget = '' }: SimulationPanelProps) {
   const { t, i18n } = useTranslation('calculator')
   const locale = i18n.language
   const points = (value: number) => formatPoints(locale, value)
   const money = (value: number) => formatAmount(locale, value, market.currency)
-  const [target, setTarget] = useState('')
+  const [target, setTarget] = useState(initialTarget)
   const next = useMemo(() => simulateNextLevel(input, market), [input, market])
   const targetAmount = parsePoints(target)
   const targetSimulation = useMemo(
     () => (targetAmount ? simulateTargetAmount(input, market, targetAmount) : undefined),
     [input, market, targetAmount],
+  )
+  const teamSimulation = useMemo(
+    () => (targetAmount && targetSimulation && targetSimulation.extraOwn > 0 ? simulateTargetAmountWithTeam(input, market, targetAmount) : undefined),
+    [input, market, targetAmount, targetSimulation],
   )
 
   return (
@@ -93,6 +99,19 @@ export function SimulationPanel({ input, market, current }: SimulationPanelProps
               amount: money(targetSimulation.result.amount),
             })}
           </p>
+        )}
+        {teamSimulation === null && <p>{t('simulation.target.teamUnreachable')}</p>}
+        {teamSimulation && teamSimulation.extraTeam > 0 && (
+          <>
+            <p className="font-semibold text-tcg-heading">
+              {t('simulation.target.team', {
+                extra: points(teamSimulation.extraTeam),
+                level: teamSimulation.result.level,
+                amount: money(teamSimulation.result.amount),
+              })}
+            </p>
+            <p className="text-sm italic">{t('simulation.target.teamNote')}</p>
+          </>
         )}
       </div>
 

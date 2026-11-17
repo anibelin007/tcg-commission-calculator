@@ -101,7 +101,10 @@
       "label": "Commission you would like ({{currency}})",
       "reached": "Your current points already get you there: {{amount}}.",
       "needed": "You would need {{extra}} more CT points (total CT {{total}}): Target Level {{level}}, estimated commission {{amount}}.",
-      "unreachable": "It cannot be reached with your own points alone."
+      "unreachable": "It cannot be reached with your own points alone.",
+      "team": "Or, with your current CT: your team would need {{extra}} more points in your 1st generation, from direct partners who are not your strongest teams: Target Level {{level}}, estimated commission {{amount}}.",
+      "teamNote": "Your team’s points are paid at their generation’s rate (8–9 % in the 1st), so more are needed than of your own points. Points of your strongest team do not raise your TT-1.",
+      "teamUnreachable": "With your current CT you do not reach Target Level 1 (110 own points), so your team does not earn you commission yet."
     },
     "chart": {
       "title": "Your estimated commission by CT",
