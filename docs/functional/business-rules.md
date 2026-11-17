@@ -204,7 +204,8 @@ Approved direction by the PO (D-002, D-013); exact behaviour still to be specifi
   CT, in hundredths of a point, for an estimated commission ≥ X with the team unchanged; a
   target inside a jump lands on the jump. Worded per BR-21.
 - **PF-04 Step chart** of the estimated commission against own CT (team unchanged), with
-  the current position, hover/keyboard readout and a table of the level jumps.
+  the current position and a hover/keyboard readout. Only the next level is summarised in
+  text (PO: focus on the next level).
 - **PF-06 Prospect simulator** (D-017): build CT from fictitious orders using the points
   table of the selected market, optionally add a fictitious team, and show the resulting
   commission as a clearly labelled fictitious example (BR-21).
