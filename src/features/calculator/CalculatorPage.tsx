@@ -9,6 +9,7 @@ import { MarketFields } from './MarketFields'
 import { NumberField } from './NumberField'
 import { PartnerFields } from './PartnerFields'
 import { ResultPanel } from './ResultPanel'
+import { SimulationPanel } from './SimulationPanel'
 
 interface CalculatorPageProps {
   /** Preselected market (D-016). */
@@ -99,6 +100,7 @@ export function CalculatorPage({ initialMarketId }: CalculatorPageProps) {
         )}
       </form>
       <ResultPanel result={result} market={market} />
+      <SimulationPanel input={parsed.input} market={market} current={result} />
     </div>
   )
 }

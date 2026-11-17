@@ -4,3 +4,12 @@ export { MARKETS, findMarket, type ContractType, type CurrencyCode, type Market 
 export { PLANS, TARGET_LEVELS, levelDefinition, type Plan, type PlanId, type TargetLevel } from './plans'
 export { DEFAULT_STRONGEST_TEAM_LIMIT, STRONGEST_TEAM_LIMITS, type StrongestTeamLimitId } from './strongest-team-limit'
 export { computeVolumes, type CommissionInput, type Volumes } from './volumes'
+export {
+  commissionCurve,
+  simulateNextLevel,
+  simulateTargetAmount,
+  type NextLevelSimulation,
+  type PathGap,
+  type StepPoint,
+  type TargetAmountSimulation,
+} from './simulation'

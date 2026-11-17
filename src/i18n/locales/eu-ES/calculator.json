@@ -73,5 +73,43 @@
     "teamVolumesExceedDownline": "Zure bazkide zuzenen VEen batura belaunaldi guztien batura baino handiagoa da. Berrikusi datuak.",
     "breakdownDoesNotMatchTeam": "Adar indartsuenaren banakapenak ez du bere VE ematen. Berrikusi datuak.",
     "breakdownExceedsGeneration": "Banakapeneko belaunaldiren bat belaunaldi horren guztizkoa baino handiagoa da. Berrikusi datuak."
+  },
+  "simulation": {
+    "title": "Simulazioak",
+    "intro": "Zure taldea orain dagoen bezala kalkulatuta: zure puntuak (VC) bakarrik aldatzen dira.",
+    "measures": {
+      "ct": "VC",
+      "dt": "DT",
+      "tt": "VE",
+      "tt1": "VE-1",
+      "tt2": "VE-2",
+      "tt3": "VE-3"
+    },
+    "next": {
+      "title": "Hurrengo helburua",
+      "top": "Dagoeneko 10. helburuan zaude, altuenean.",
+      "for": "{{level}}. helburura iristeko:",
+      "option": "{{number}}. aukera",
+      "met": "{{measure}}: beteta",
+      "missing": "{{measure}}: {{missing}} puntu falta zaizkizu ({{min}} behar dituzu)",
+      "ownOnly": "Zure salmentekin bakarrik, {{extra}} VC puntu gehiago beharko zenituzke (VC guztira {{total}}).",
+      "amount": "Komisio estimatua {{level}}. helburuan: {{amount}} (orain baino {{delta}} gehiago).",
+      "newPartners": "Hilabete honetan sartzen diren bazkideak ez dira hurrengo hilabetera arte zenbatzen; orduan bi hilabeteetako puntuak zenbatzen dira."
+    },
+    "target": {
+      "title": "Zenbat puntu beharko zenituzke…?",
+      "label": "Nahi zenukeen komisioa ({{currency}})",
+      "reached": "Zure oraingo puntuekin iristen zara: {{amount}}.",
+      "needed": "{{extra}} VC puntu gehiago beharko zenituzke (VC guztira {{total}}): {{level}}. helburua, komisio estimatua {{amount}}.",
+      "unreachable": "Ezin da zure puntuekin bakarrik lortu."
+    },
+    "chart": {
+      "title": "Zure komisio estimatua zure VCaren arabera",
+      "subtitle": "Zure oraingo taldearekin. Jauziak helburu-aldaketak dira.",
+      "xAxis": "Zure VC (puntuak)",
+      "current": "Orain",
+      "tooltip": "VC {{ct}} → {{amount}} ({{level}})",
+      "noLevel": "helbururik ez"
+    }
   }
 }

@@ -196,10 +196,16 @@ Not calculated; the result shows one informative note about them (D-012).
 Approved direction by the PO (D-002, D-013); exact behaviour still to be specified.
 
 - **PF-01 Automatic level** from the inputs (BR-07, BR-08), with a breakdown.
-- **PF-02 Next level**: what is missing (CT and/or TT-n) and the commission there.
-- **PF-03 Target amount** («I want to earn X»): solve the CT needed with the team unchanged;
-  optionally the extra team points needed. Must respect BR-21.
-- **PF-04 Step chart** of commission against CT, showing the jumps between levels.
+- **PF-02 Next level**: what is missing for each way of qualifying (CT and/or TT-n), the
+  smallest extra own CT that reaches it with the team unchanged (own points also raise TT and
+  TT-n) and the estimated commission there. Reminds that new partners only count next month
+  (BR-23).
+- **PF-03 Target amount** («how many points would you need for X?»): the smallest extra own
+  CT, in hundredths of a point, for an estimated commission ≥ X with the team unchanged; a
+  target inside a jump lands on the jump. Worded per BR-21.
+- **PF-04 Step chart** of the estimated commission against own CT (team unchanged), with
+  the current position and a hover/keyboard readout. Only the next level is summarised in
+  text (PO: focus on the next level).
 - **PF-06 Prospect simulator** (D-017): build CT from fictitious orders using the points
   table of the selected market, optionally add a fictitious team, and show the resulting
   commission as a clearly labelled fictitious example (BR-21).

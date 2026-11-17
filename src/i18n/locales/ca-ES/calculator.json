@@ -73,5 +73,43 @@
     "teamVolumesExceedDownline": "La suma del VE de les teves sòcies directes és més gran que la suma de totes les generacions. Revisa les dades.",
     "breakdownDoesNotMatchTeam": "El desglossament de la branca més forta no suma el seu VE. Revisa les dades.",
     "breakdownExceedsGeneration": "Alguna generació del desglossament és més gran que el total d'aquesta generació. Revisa les dades."
+  },
+  "simulation": {
+    "title": "Simulacions",
+    "intro": "Calculades amb el teu equip tal com està ara: només canvien els teus propis punts (VC).",
+    "measures": {
+      "ct": "VC",
+      "dt": "DT",
+      "tt": "VE",
+      "tt1": "VE-1",
+      "tt2": "VE-2",
+      "tt3": "VE-3"
+    },
+    "next": {
+      "title": "Següent meta",
+      "top": "Ja ets a la meta 10, la més alta.",
+      "for": "Per arribar a la meta {{level}}:",
+      "option": "Opció {{number}}",
+      "met": "{{measure}}: complert",
+      "missing": "{{measure}}: et falten {{missing}} punts (en necessites {{min}})",
+      "ownOnly": "Només amb les teves vendes, necessitaries {{extra}} punts de VC més (VC total {{total}}).",
+      "amount": "Comissió estimada a la meta {{level}}: {{amount}} ({{delta}} més que ara).",
+      "newPartners": "Les sòcies que entrin aquest mes no compten fins al mes que ve; llavors compten els seus punts dels dos mesos."
+    },
+    "target": {
+      "title": "Quants punts necessitaries per…?",
+      "label": "Comissió que t'agradaria ({{currency}})",
+      "reached": "Amb els teus punts actuals ja hi arribes: {{amount}}.",
+      "needed": "Necessitaries {{extra}} punts de VC més (VC total {{total}}): meta {{level}}, comissió estimada {{amount}}.",
+      "unreachable": "No s'hi pot arribar només amb els teus propis punts."
+    },
+    "chart": {
+      "title": "La teva comissió estimada segons el teu VC",
+      "subtitle": "Amb el teu equip actual. Els salts són els canvis de meta.",
+      "xAxis": "El teu VC (punts)",
+      "current": "Ara",
+      "tooltip": "VC {{ct}} → {{amount}} ({{level}})",
+      "noLevel": "sense meta"
+    }
   }
 }

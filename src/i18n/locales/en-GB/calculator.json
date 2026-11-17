@@ -73,5 +73,43 @@
     "teamVolumesExceedDownline": "The TT of your direct partners adds up to more than all generations together. Please check the data.",
     "breakdownDoesNotMatchTeam": "The breakdown of the strongest team does not add up to its TT. Please check the data.",
     "breakdownExceedsGeneration": "A generation of the breakdown is larger than that generation’s total. Please check the data."
+  },
+  "simulation": {
+    "title": "Simulations",
+    "intro": "Calculated with your team as it is now: only your own points (CT) change.",
+    "measures": {
+      "ct": "CT",
+      "dt": "DT",
+      "tt": "TT",
+      "tt1": "TT-1",
+      "tt2": "TT-2",
+      "tt3": "TT-3"
+    },
+    "next": {
+      "title": "Next Target Level",
+      "top": "You are already at Target Level 10, the highest.",
+      "for": "To reach Target Level {{level}}:",
+      "option": "Option {{number}}",
+      "met": "{{measure}}: met",
+      "missing": "{{measure}}: {{missing}} points missing (you need {{min}})",
+      "ownOnly": "With your own sales alone, you would need {{extra}} more CT points (total CT {{total}}).",
+      "amount": "Estimated commission at Target Level {{level}}: {{amount}} ({{delta}} more than now).",
+      "newPartners": "Partners who join this month do not count until next month; then their points of both months count."
+    },
+    "target": {
+      "title": "How many points would you need for…?",
+      "label": "Commission you would like ({{currency}})",
+      "reached": "Your current points already get you there: {{amount}}.",
+      "needed": "You would need {{extra}} more CT points (total CT {{total}}): Target Level {{level}}, estimated commission {{amount}}.",
+      "unreachable": "It cannot be reached with your own points alone."
+    },
+    "chart": {
+      "title": "Your estimated commission by CT",
+      "subtitle": "With your current team. The jumps are Target Level changes.",
+      "xAxis": "Your CT (points)",
+      "current": "Now",
+      "tooltip": "CT {{ct}} → {{amount}} ({{level}})",
+      "noLevel": "no level"
+    }
   }
 }

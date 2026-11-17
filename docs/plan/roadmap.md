@@ -15,4 +15,4 @@
 2. ✅ App shell (header, language selector, 7 locales) and engine in `src/domain/commission/` (pure TypeScript, plans as versioned data, table-driven
    tests from `docs/qa/test-cases.md`).
 3. ✅ Manual input form (market, own points, teams by generation) and result breakdown.
-4. Simulations (PF-02 to PF-04).
+4. ✅ Simulations (PF-02 to PF-04): next level, target amount, step chart.

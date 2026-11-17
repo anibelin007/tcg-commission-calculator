@@ -73,5 +73,43 @@
     "teamVolumesExceedDownline": "La suma del VE de tus socias directas es mayor que la suma de todas las generaciones. Revisa los datos.",
     "breakdownDoesNotMatchTeam": "El desglose de la pata más fuerte no suma su VE. Revisa los datos.",
     "breakdownExceedsGeneration": "Alguna generación del desglose es mayor que el total de esa generación. Revisa los datos."
+  },
+  "simulation": {
+    "title": "Simulaciones",
+    "intro": "Calculadas con tu equipo tal como está ahora: solo cambian tus propios puntos (VC).",
+    "measures": {
+      "ct": "VC",
+      "dt": "DT",
+      "tt": "VE",
+      "tt1": "VE-1",
+      "tt2": "VE-2",
+      "tt3": "VE-3"
+    },
+    "next": {
+      "title": "Siguiente meta",
+      "top": "Ya estás en la meta 10, la más alta.",
+      "for": "Para llegar a la meta {{level}}:",
+      "option": "Opción {{number}}",
+      "met": "{{measure}}: cumplido",
+      "missing": "{{measure}}: te faltan {{missing}} puntos (necesitas {{min}})",
+      "ownOnly": "Solo con tus ventas, necesitarías {{extra}} puntos de VC más (VC total {{total}}).",
+      "amount": "Comisión estimada en la meta {{level}}: {{amount}} ({{delta}} más que ahora).",
+      "newPartners": "Las socias que entren este mes no cuentan hasta el mes que viene; entonces cuentan sus puntos de los dos meses."
+    },
+    "target": {
+      "title": "¿Cuántos puntos necesitarías para…?",
+      "label": "Comisión que te gustaría ({{currency}})",
+      "reached": "Con tus puntos actuales ya llegas: {{amount}}.",
+      "needed": "Necesitarías {{extra}} puntos de VC más (VC total {{total}}): meta {{level}}, comisión estimada {{amount}}.",
+      "unreachable": "No se puede alcanzar solo con tus propios puntos."
+    },
+    "chart": {
+      "title": "Tu comisión estimada según tu VC",
+      "subtitle": "Con tu equipo actual. Los saltos son los cambios de meta.",
+      "xAxis": "Tu VC (puntos)",
+      "current": "Ahora",
+      "tooltip": "VC {{ct}} → {{amount}} ({{level}})",
+      "noLevel": "sin meta"
+    }
   }
 }
