@@ -109,11 +109,7 @@
       "xAxis": "Your CT (points)",
       "current": "Now",
       "tooltip": "CT {{ct}} → {{amount}} ({{level}})",
-      "noLevel": "no level",
-      "tableSummary": "Show the level jumps as a table",
-      "level": "Target Level",
-      "from": "From CT",
-      "amountAt": "Estimated commission on reaching it"
+      "noLevel": "no level"
     }
   }
 }

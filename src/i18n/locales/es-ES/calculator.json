@@ -109,11 +109,7 @@
       "xAxis": "Tu VC (puntos)",
       "current": "Ahora",
       "tooltip": "VC {{ct}} → {{amount}} ({{level}})",
-      "noLevel": "sin meta",
-      "tableSummary": "Ver los saltos de meta en una tabla",
-      "level": "Meta",
-      "from": "Desde VC",
-      "amountAt": "Comisión estimada al llegar"
+      "noLevel": "sin meta"
     }
   }
 }

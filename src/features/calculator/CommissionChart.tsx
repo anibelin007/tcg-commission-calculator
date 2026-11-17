@@ -21,7 +21,8 @@ const PLOT_H = HEIGHT - MARGIN.top - MARGIN.bottom
 /**
  * Single-series step chart: estimated commission against own CT, team unchanged (PF-04).
  * Brand colour for the mark, text tokens for labels, hairline grid, crosshair + tooltip on
- * hover/focus, and a table view of the level jumps (dataviz guidance).
+ * hover/focus; the keyboard readout (arrow keys) reaches every value and the next-level summary
+ * states the key jump in text (PO: only the next level matters).
  */
 export function CommissionChart({ input, market, current, nextExtraOwn }: CommissionChartProps) {
   const { t, i18n } = useTranslation('calculator')
@@ -43,7 +44,6 @@ export function CommissionChart({ input, market, current, nextExtraOwn }: Commis
     new Intl.NumberFormat(locale, { style: 'currency', currency: market.currency, notation: 'compact', maximumFractionDigits: 1 }).format(value)
   const levelName = (level: number | null) => (level === null ? t('simulation.chart.noLevel') : t('result.level', { level }))
   const hover = hoverCt === null ? null : computeCommission({ ...input, customerTurnover: hoverCt }, market)
-  const jumps = curve.filter((point, i) => i > 0 && point.level !== curve[i - 1]!.level)
 
   const pointerToCt = (clientX: number, svg: SVGSVGElement) => {
     const box = svg.getBoundingClientRect()
@@ -114,27 +114,6 @@ export function CommissionChart({ input, market, current, nextExtraOwn }: Commis
           </div>
         )}
       </div>
-      <details className="text-sm">
-        <summary className="cursor-pointer font-semibold text-tcg-primary">{t('simulation.chart.tableSummary')}</summary>
-        <table className="mt-2 w-full">
-          <thead className="border-b border-tcg-surface-strong text-tcg-heading">
-            <tr>
-              <th className="px-3 py-1 text-left">{t('simulation.chart.level')}</th>
-              <th className="px-3 py-1 text-right">{t('simulation.chart.from')}</th>
-              <th className="px-3 py-1 text-right">{t('simulation.chart.amountAt')}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {jumps.map((point) => (
-              <tr key={point.ownTurnover}>
-                <td className="px-3 py-1">{levelName(point.level)}</td>
-                <td className="px-3 py-1 text-right tabular-nums">{formatPoints(locale, point.ownTurnover)}</td>
-                <td className="px-3 py-1 text-right tabular-nums">{money(point.amount)}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </details>
     </figure>
   )
 }

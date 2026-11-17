@@ -109,11 +109,7 @@
       "xAxis": "Zure VC (puntuak)",
       "current": "Orain",
       "tooltip": "VC {{ct}} → {{amount}} ({{level}})",
-      "noLevel": "helbururik ez",
-      "tableSummary": "Ikusi helburu-jauziak taula batean",
-      "level": "Helburua",
-      "from": "VC hemendik",
-      "amountAt": "Komisio estimatua iristean"
+      "noLevel": "helbururik ez"
     }
   }
 }

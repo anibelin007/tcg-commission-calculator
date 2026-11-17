@@ -109,11 +109,7 @@
       "xAxis": "El teu VC (punts)",
       "current": "Ara",
       "tooltip": "VC {{ct}} → {{amount}} ({{level}})",
-      "noLevel": "sense meta",
-      "tableSummary": "Veure els salts de meta en una taula",
-      "level": "Meta",
-      "from": "Des de VC",
-      "amountAt": "Comissió estimada en arribar-hi"
+      "noLevel": "sense meta"
     }
   }
 }

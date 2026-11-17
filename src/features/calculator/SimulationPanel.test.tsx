@@ -33,10 +33,10 @@ describe('SimulationPanel', () => {
     expect(html).not.toMatch(/ganarás|vas a ganar/i)
   })
 
-  it('draws the chart with its table of level jumps (PF-04)', async () => {
+  it('draws the chart and shows no table of other levels', async () => {
     const html = await render(solo(500))
     expect(html).toContain('Tu comisión estimada según tu VC')
-    expect(html).toMatch(/<td[^>]*>Meta 3<\/td><td[^>]*>825<\/td><td[^>]*>424,71 €<\/td>/)
+    expect(html).not.toContain('<table')
   })
 
   it('says when the top level is reached', async () => {

@@ -109,11 +109,7 @@
       "xAxis": "Dein KU (Punkte)",
       "current": "Jetzt",
       "tooltip": "KU {{ct}} → {{amount}} ({{level}})",
-      "noLevel": "keine Zielstufe",
-      "tableSummary": "Stufensprünge als Tabelle anzeigen",
-      "level": "Zielstufe",
-      "from": "Ab KU",
-      "amountAt": "Geschätzte Provision beim Erreichen"
+      "noLevel": "keine Zielstufe"
     }
   }
 }

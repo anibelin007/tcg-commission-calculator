@@ -62,14 +62,18 @@ export function SimulationPanel({ input, market, current }: SimulationPanelProps
                 </li>
               ))}
             </ul>
-            <p>
-              {t('simulation.next.ownOnly', { extra: points(next.extraOwn), total: points(input.customerTurnover + next.extraOwn) })}{' '}
-              {t('simulation.next.amount', {
-                level: next.level,
-                amount: money(next.result.amount),
-                delta: money(next.result.amount - current.amount),
-              })}
-            </p>
+            <div className="flex flex-col gap-1 rounded bg-tcg-surface px-4 py-3">
+              <p className="font-semibold text-tcg-heading">
+                {t('simulation.next.ownOnly', { extra: points(next.extraOwn), total: points(input.customerTurnover + next.extraOwn) })}
+              </p>
+              <p>
+                {t('simulation.next.amount', {
+                  level: next.level,
+                  amount: money(next.result.amount),
+                  delta: money(next.result.amount - current.amount),
+                })}
+              </p>
+            </div>
             <p className="text-sm italic">{t('simulation.next.newPartners')}</p>
           </>
         )}
