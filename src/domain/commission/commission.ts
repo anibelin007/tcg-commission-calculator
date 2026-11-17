@@ -91,7 +91,7 @@ const TOLERANCE = 0.01
 function inputWarnings(input: CommissionInput, volumes: Volumes, strongest: number): InputWarning[] {
   const warnings: InputWarning[] = []
   if (volumes.downline > 0 && input.teamVolumes.length === 0) warnings.push('teamVolumesMissing')
-  if (sum(input.teamVolumes) > volumes.downline + TOLERANCE) warnings.push('teamVolumesExceedDownline')
+  if (sum(input.teamVolumes) > sum(input.generationVolumes) + TOLERANCE) warnings.push('teamVolumesExceedDownline')
   const breakdown = input.strongestTeamGenerations
   if (breakdown && breakdown.length > 0 && strongest >= 0) {
     if (Math.abs(sum(breakdown) - volumes.teamVolumes[strongest]!) > TOLERANCE) warnings.push('breakdownDoesNotMatchTeam')

@@ -53,11 +53,12 @@ Domain IDs (language-independent, used in code): target levels `1`–`10`; plans
   breakdown). — *Observed behaviour* (S-13; PO confirmation 2026-11-17, Q-16).
 - **BR-05 TT** = own CT + CT of all downline partners, **all generations** (not limited to 9).
   — *Verified rule* (EU-ES p. 9: example TT 4,500).
-- **BR-06 TT-n** = TT − TT of the *n* strongest teams (n = 1, 2, 3). The strongest team is the
-  one with the highest volume. — *Verified rule* (EU-ES p. 10: example TT-1 = 2,700).
-
-### Target level (EU and MX)
-
+- **BR-06 TT-n** = own volume + the TT of every team **except** the *n* strongest: the
+  strongest teams are not added, so TT-n is never below the own volume. The strongest team is
+  the one with the highest volume. — *Verified rule* (EU-ES p. 10: example TT-1 = 2,700 =
+  own 1,000 + team 1 1,700). Calculator: downline volume not in any listed team also counts;
+  if teams add up to more than the generations, the larger total is used and a warning is
+  shown (PO, 2026-11-17).
 - **BR-07 Qualification minima.** — *Verified rule* (EU-ES p. 5–6; MX p. 5–6 identical).
 
   | Level | Criteria |

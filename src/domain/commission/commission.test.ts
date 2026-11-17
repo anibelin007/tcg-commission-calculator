@@ -158,6 +158,17 @@ describe('strongest-team limit input (BR-12)', () => {
     expect(result.level).toBe(5) // TT-2 = TT = 4,500 without teams; level 3 once the VE are given (TC-02)
   })
 
+  it('TT-n adds the legs that are not the strongest, so it is never negative (PO, 2026-11-17)', () => {
+    // Legs entered but generations left at 0: TT-1 = own 500 + the other leg 1,000, not 500 − 6,000.
+    const input = { customerTurnover: 500, generationVolumes: [0, 0, 0, 0, 0], teamVolumes: [6000, 1000] }
+    const { volumes, warnings } = computeCommission(input, ES)
+    expect(volumes.tt).toBe(7500)
+    expect(volumes.tt1).toBe(1500)
+    expect(volumes.tt2).toBe(500)
+    expect(volumes.tt3).toBe(500)
+    expect(warnings).toEqual(['teamVolumesExceedDownline'])
+  })
+
   it('warns about inconsistent input', () => {
     expect(computeCommission({ customerTurnover: 400, generationVolumes: [500], teamVolumes: [600] }, ES).warnings).toEqual([
       'teamVolumesExceedDownline',
