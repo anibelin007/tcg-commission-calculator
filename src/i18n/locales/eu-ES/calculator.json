@@ -84,10 +84,11 @@
       "met": "{{measure}}: beteta",
       "missing": "{{measure}}: {{missing}} puntu falta zaizkizu ({{min}} behar dituzu)",
       "ownOnly": "Zure salmentekin bakarrik, {{extra}} VC puntu gehiago beharko zenituzke (VC guztira {{total}}).",
-      "amount": "Komisio estimatua {{level}}. helburuan: {{amount}} (orain baino {{delta}} gehiago).",
       "newPartners": "Hilabete honetan sartzen diren bazkideak ez dira hurrengo hilabetera arte zenbatzen; orduan bi hilabeteetako puntuak zenbatzen dira.",
       "current": "Orain {{level}}. helburuan zaude, {{amount}} komisio estimatuarekin.",
-      "currentNoLevel": "Orain ez zara 1. helburura iristen (110 VC puntu propio)."
+      "currentNoLevel": "Orain ez zara 1. helburura iristen (110 VC puntu propio).",
+      "amountLabel": "Komisio estimatua {{level}}. helburuan",
+      "delta": "Orain baino +{{delta}} gehiago"
     },
     "chart": {
       "title": "Zure komisio estimatua zure VCaren arabera",

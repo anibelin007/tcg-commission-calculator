@@ -84,10 +84,11 @@
       "met": "{{measure}}: erfüllt",
       "missing": "{{measure}}: Es fehlen {{missing}} Punkte (du brauchst {{min}})",
       "ownOnly": "Nur mit deinen eigenen Verkäufen bräuchtest du {{extra}} KU-Punkte mehr (KU gesamt {{total}}).",
-      "amount": "Geschätzte Provision auf Zielstufe {{level}}: {{amount}} ({{delta}} mehr als jetzt).",
       "newPartners": "Partnerinnen, die diesen Monat einsteigen, zählen erst ab nächstem Monat; dann zählen ihre Punkte aus beiden Monaten.",
       "current": "Du bist jetzt auf Zielstufe {{level}}, mit einer geschätzten Provision von {{amount}}.",
-      "currentNoLevel": "Du erreichst Zielstufe 1 noch nicht (110 Punkte eigener KU)."
+      "currentNoLevel": "Du erreichst Zielstufe 1 noch nicht (110 Punkte eigener KU).",
+      "amountLabel": "Geschätzte Provision auf Zielstufe {{level}}",
+      "delta": "+{{delta}} mehr als jetzt"
     },
     "chart": {
       "title": "Deine geschätzte Provision nach KU",

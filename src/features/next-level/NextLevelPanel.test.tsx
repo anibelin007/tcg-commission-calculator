@@ -24,7 +24,9 @@ describe('NextLevelPanel', () => {
     expect(html).toContain('VC: te faltan 1 puntos (necesitas 825)')
     expect(html).toContain('VE-1: te faltan 776 puntos (necesitas 1600)')
     expect(html).toContain('necesitarías 1 puntos de VC más (VC total 825)')
-    expect(html).toContain('424,71 € (109,28 € más que ahora)')
+    expect(html).toContain('Comisión estimada en la meta 3')
+    expect(html).toMatch(/text-3xl[^>]*>424,71 €</)
+    expect(html).toContain('+109,28 € más que ahora')
     expect(html).toContain('no cuentan hasta el mes que viene')
   })
 

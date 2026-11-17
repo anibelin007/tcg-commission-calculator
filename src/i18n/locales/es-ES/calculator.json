@@ -84,10 +84,11 @@
       "met": "{{measure}}: cumplido",
       "missing": "{{measure}}: te faltan {{missing}} puntos (necesitas {{min}})",
       "ownOnly": "Solo con tus ventas, necesitarías {{extra}} puntos de VC más (VC total {{total}}).",
-      "amount": "Comisión estimada en la meta {{level}}: {{amount}} ({{delta}} más que ahora).",
       "newPartners": "Las socias que entren este mes no cuentan hasta el mes que viene; entonces cuentan sus puntos de los dos meses.",
       "current": "Ahora estás en la meta {{level}}, con una comisión estimada de {{amount}}.",
-      "currentNoLevel": "Ahora no llegas a la meta 1 (110 puntos de VC propios)."
+      "currentNoLevel": "Ahora no llegas a la meta 1 (110 puntos de VC propios).",
+      "amountLabel": "Comisión estimada en la meta {{level}}",
+      "delta": "+{{delta}} más que ahora"
     },
     "chart": {
       "title": "Tu comisión estimada según tu VC",

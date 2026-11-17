@@ -46,16 +46,16 @@ export function NextLevelPanel({ input, market, current }: NextLevelPanelProps) 
                 </li>
               ))}
             </ul>
-            <div className="flex flex-col gap-1 rounded bg-tcg-surface px-4 py-3">
+            <div className="flex flex-col gap-3 rounded bg-tcg-surface px-4 py-4">
               <p className="font-semibold text-tcg-heading">
                 {t('simulation.next.ownOnly', { extra: points(next.extraOwn), total: points(input.customerTurnover + next.extraOwn) })}
               </p>
-              <p>
-                {t('simulation.next.amount', {
-                  level: next.level,
-                  amount: money(next.result.amount),
-                  delta: money(next.result.amount - current.amount),
-                })}
+              <div className="flex flex-wrap items-end justify-between gap-x-4 gap-y-1">
+                <span className="font-semibold text-tcg-heading">{t('simulation.next.amountLabel', { level: next.level })}</span>
+                <span className="text-3xl font-semibold text-tcg-primary tabular-nums sm:text-4xl">{money(next.result.amount)}</span>
+              </div>
+              <p className="self-end rounded bg-tcg-primary px-3 py-1 text-sm font-semibold text-white tabular-nums">
+                {t('simulation.next.delta', { delta: money(next.result.amount - current.amount) })}
               </p>
             </div>
             <p className="text-sm italic">{t('simulation.next.newPartners')}</p>

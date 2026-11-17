@@ -84,10 +84,11 @@
       "met": "{{measure}}: complert",
       "missing": "{{measure}}: et falten {{missing}} punts (en necessites {{min}})",
       "ownOnly": "Només amb les teves vendes, necessitaries {{extra}} punts de VC més (VC total {{total}}).",
-      "amount": "Comissió estimada a la meta {{level}}: {{amount}} ({{delta}} més que ara).",
       "newPartners": "Les sòcies que entrin aquest mes no compten fins al mes que ve; llavors compten els seus punts dels dos mesos.",
       "current": "Ara ets a la meta {{level}}, amb una comissió estimada de {{amount}}.",
-      "currentNoLevel": "Ara no arribes a la meta 1 (110 punts de VC propis)."
+      "currentNoLevel": "Ara no arribes a la meta 1 (110 punts de VC propis).",
+      "amountLabel": "Comissió estimada a la meta {{level}}",
+      "delta": "+{{delta}} més que ara"
     },
     "chart": {
       "title": "La teva comissió estimada segons el teu VC",

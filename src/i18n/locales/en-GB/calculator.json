@@ -84,10 +84,11 @@
       "met": "{{measure}}: met",
       "missing": "{{measure}}: {{missing}} points missing (you need {{min}})",
       "ownOnly": "With your own sales alone, you would need {{extra}} more CT points (total CT {{total}}).",
-      "amount": "Estimated commission at Target Level {{level}}: {{amount}} ({{delta}} more than now).",
       "newPartners": "Partners who join this month do not count until next month; then their points of both months count.",
       "current": "You are now at Target Level {{level}}, with an estimated commission of {{amount}}.",
-      "currentNoLevel": "You do not reach Target Level 1 yet (110 points of your own CT)."
+      "currentNoLevel": "You do not reach Target Level 1 yet (110 points of your own CT).",
+      "amountLabel": "Estimated commission at Target Level {{level}}",
+      "delta": "+{{delta}} more than now"
     },
     "chart": {
       "title": "Your estimated commission by CT",
