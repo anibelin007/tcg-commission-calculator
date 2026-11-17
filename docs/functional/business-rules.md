@@ -38,6 +38,14 @@ Domain IDs (language-independent, used in code): target levels `1`–`10`; plans
 
 ### Volumes (EU and MX)
 
+- **BR-23 New partners.** A partner registered in month M is not settled in M: her first
+  statement is M+1 and includes her points of M and M+1. In M her points do not count for the
+  upline yet: the Online Office reports her with `isNewPartner: true` / `deducted: false`, she
+  is not counted in generation 1 and adds nothing to the upline's TT. — *Observed behaviour*
+  (S-14, 2026-11-17) and PO statement; consistent with EU-ES p. 31 (first commission with the
+  first full statement month). Whether her points of M then count for the upline's TT in M+1
+  is *Pending verification* (Q-20).
+
 - **BR-04 CT** = sum of points of paid customer orders in the month, including the partner's
   own orders. — *Verified rule* (EU-ES p. 8: 900 customers + 100 own = CT 1,000)
   The Online Office «VC» column already includes own consumption (shown separately as a
