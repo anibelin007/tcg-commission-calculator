@@ -3,7 +3,21 @@
 Unofficial commission calculator for TCG partners, based on the RINGANA target plan. Runs
 entirely in the browser; no data is stored.
 
-**Status:** phase 0 — rules and decisions documented; no application code yet.
+**Status:** phase 1 in progress — app shell and commission engine (no calculator form yet).
+
+## Development
+
+The shared UI package `@anibelin007/tcg-ui` is private: add a GitHub token with
+`read:packages` to your user `~/.npmrc` once (see the `tcg-ui` README). Then:
+
+```bash
+npm install
+npm run dev     # local app
+npm run check   # typecheck + lint + tests + build
+```
+
+UI languages: es-ES (reference), ca-ES, eu-ES, en-GB, en-US, de-DE, de-AT (D-015).
+Texts other than es-ES are drafts until a person reviews them.
 
 | Topic | File |
 |---|---|

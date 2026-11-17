@@ -1,0 +1,9 @@
+{
+  "app": {
+    "title": "Commission calculator",
+    "status": "Tool in preparation. Commissions cannot be calculated yet.",
+    "unofficial": "Unofficial tool of the TCG team. Results are estimates: the official settlement is RINGANA's."
+  },
+  "brand": { "logoAlt": "The Crazy Greens logo" },
+  "languageSelector": { "label": "Language" }
+}

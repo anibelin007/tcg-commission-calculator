@@ -16,11 +16,11 @@ coverage/
 .eslintcache
 .cache/
 
-# Environment files and credentials (never commit)
+# Environment files and credentials (never commit).
+# The committed .npmrc only maps the @anibelin007 scope to GitHub Packages: never add a token to it.
 .env
 .env.*
 !.env.example
-.npmrc
 *.pem
 *.key
 credentials*.json

@@ -1,0 +1,3 @@
+@import 'tailwindcss';
+@import '@anibelin007/tcg-ui/theme.css';
+@source '../node_modules/@anibelin007/tcg-ui/dist';

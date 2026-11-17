@@ -1,0 +1,181 @@
+import { describe, expect, it } from 'vitest'
+import { computeCommission } from './commission'
+import { findMarket, type Market } from './markets'
+import type { TargetLevel } from './plans'
+import type { CommissionInput } from './volumes'
+
+function market(id: string): Market {
+  const found = findMarket(id)
+  if (!found) throw new Error(`Unknown market ${id}`)
+  return found
+}
+
+const ES = market('ES')
+const MX = market('MX')
+const US = market('US')
+
+/** Teams of the guideline example (EU-ES p. 9–10, 15): A → C and B → D, E. */
+const GUIDE_TEAM: CommissionInput = {
+  customerTurnover: 1000,
+  teams: [{ generations: [700, 1000] }, { generations: [900, 600 + 300] }],
+}
+
+describe('guideline cases (docs/qa/test-cases.md)', () => {
+  it('TC-01: CT 1,000 without team → level 3, 390 points, 514.80 € (EU-ES p. 14)', () => {
+    const result = computeCommission({ customerTurnover: 1000, teams: [] }, ES)
+    expect(result.level).toBe(3)
+    expect(result.totalPoints).toBe(390)
+    expect(result.amount).toBe(514.8)
+    expect(result.payout).toBe('transfer')
+  })
+
+  it('TC-01 MX: 390 points × 26 = 10,140 MXN (MX p. 13–14)', () => {
+    expect(computeCommission({ customerTurnover: 1000, teams: [] }, MX).amount).toBe(10140)
+  })
+
+  it('TC-03: TT 4,500 and TT-1 2,700 (EU-ES p. 9–10)', () => {
+    const { volumes } = computeCommission(GUIDE_TEAM, ES)
+    expect(volumes.tt).toBe(4500)
+    expect(volumes.tt1).toBe(2700)
+  })
+
+  describe('TC-02: guideline team example (EU-ES p. 15)', () => {
+    it('reproduces the guideline result (689 points, 909.48 €) when the limit caps commission points (Q-01 option c)', () => {
+      const result = computeCommission(GUIDE_TEAM, ES, { strongestTeamLimit: 'commissionPoints' })
+      expect(result.level).toBe(3)
+      expect(result.generations.map((g) => g.points)).toEqual([128, 171, 0, 0])
+      expect(result.totalPoints).toBe(689)
+      expect(result.amount).toBe(909.48)
+    })
+
+    it('same example in MX and USA: 17,914 MXN and $ 1,102.40 (MX p. 15–16, USA p. 15–16)', () => {
+      expect(computeCommission(GUIDE_TEAM, MX, { strongestTeamLimit: 'commissionPoints' }).amount).toBe(17914)
+      expect(computeCommission(GUIDE_TEAM, US, { strongestTeamLimit: 'commissionPoints' }).amount).toBe(1102.4)
+    })
+
+    it('differs under the provisional limit D-005: 663.5 points, 875.82 € (documented conflict, Q-01)', () => {
+      const result = computeCommission(GUIDE_TEAM, ES)
+      expect(result.strongestTeam).toEqual({ index: 1, volume: 1800, limit: 1500, pointsBefore: 153, pointsAfter: 127.5 })
+      expect(result.totalPoints).toBe(663.5)
+      expect(result.amount).toBe(875.82)
+    })
+  })
+})
+
+describe('derived boundary cases (docs/qa/test-cases.md)', () => {
+  const solo = (ct: number): CommissionInput => ({ customerTurnover: ct, teams: [] })
+
+  it.each([
+    ['S-00', solo(109), null, 0, 0],
+    ['S-01', solo(110), 1, 20.9, 27.59],
+    ['S-02', solo(384), 1, 72.96, 96.31],
+    ['S-03', solo(385), 2, 111.65, 147.38],
+    ['S-04', solo(824), 2, 238.96, 315.43],
+    ['S-05', solo(825), 3, 321.75, 424.71],
+    ['S-06', { customerTurnover: 220, teams: [{ generations: [780] }] }, 2, 126.2, 166.58],
+    ['S-07', { customerTurnover: 400, teams: [{ generations: [10000] }] }, 2, 196, 258.72],
+  ] as const)('%s', (_id, input, level, points, amount) => {
+    const result = computeCommission(input, ES)
+    expect(result.level).toBe(level)
+    expect(result.totalPoints).toBe(points)
+    expect(result.amount).toBe(amount)
+  })
+
+  it('S-00: no commission below level 1 (BR-09)', () => {
+    expect(computeCommission(solo(109), ES).payout).toBe('none')
+  })
+
+  it('S-07 under Q-01 option (c) would be 1,209.12 €', () => {
+    const input = { customerTurnover: 400, teams: [{ generations: [10000] }] }
+    expect(computeCommission(input, ES, { strongestTeamLimit: 'commissionPoints' }).amount).toBe(1209.12)
+  })
+
+  it('S-01: 27.59 € is paid as a voucher (BR-16)', () => {
+    expect(computeCommission(solo(110), ES).payout).toBe('voucher')
+  })
+})
+
+describe('target level minima (BR-07)', () => {
+  // Strong teams are given so that only the criterion under test decides.
+  const big = (volume: number, count: number) => Array.from({ length: count }, () => ({ generations: [volume] }))
+
+  it.each<[string, CommissionInput, TargetLevel | null]>([
+    ['L2 via CT 220 + TT 1,000', { customerTurnover: 220, teams: [{ generations: [780] }] }, 2],
+    ['TT 999 is not enough for L2', { customerTurnover: 220, teams: [{ generations: [779] }] }, 1],
+    ['L3 via CT 330 + TT-1 1,600', { customerTurnover: 330, teams: [{ generations: [5000] }, { generations: [1270] }] }, 3],
+    ['CT 329 stays at L2', { customerTurnover: 329, teams: [{ generations: [5000] }, { generations: [1271] }] }, 2],
+    ['L4: CT 440 + TT-1 3,200', { customerTurnover: 440, teams: [...big(10000, 1), { generations: [2760] }] }, 4],
+    ['L4 needs CT 440', { customerTurnover: 439, teams: [...big(10000, 1), { generations: [2761] }] }, 3],
+    ['L5: CT 550 + TT-2 4,000', { customerTurnover: 550, teams: [...big(10000, 2), { generations: [3450] }] }, 5],
+    ['L6: CT 660 + TT-2 8,000', { customerTurnover: 660, teams: [...big(20000, 2), { generations: [7340] }] }, 6],
+    ['L7: CT 660 + TT-2 15,000', { customerTurnover: 660, teams: [...big(30000, 2), { generations: [14340] }] }, 7],
+    ['L8: CT 660 + TT-3 20,000', { customerTurnover: 660, teams: [...big(30000, 3), { generations: [19340] }] }, 8],
+    ['TT-3 19,999 stays at L7', { customerTurnover: 660, teams: [...big(30000, 3), { generations: [19339] }] }, 7],
+    ['L9: CT 660 + TT-3 40,000', { customerTurnover: 660, teams: [...big(50000, 3), { generations: [39340] }] }, 9],
+    ['L10: CT 660 + TT-3 60,000', { customerTurnover: 660, teams: [...big(70000, 3), { generations: [59340] }] }, 10],
+    ['levels 6–10 need CT 660: CT 659 stays at L5', { customerTurnover: 659, teams: [...big(70000, 3), { generations: [59341] }] }, 5],
+  ])('%s', (_name, input, level) => {
+    expect(computeCommission(input, ES).level).toBe(level)
+  })
+})
+
+describe('generations (BR-05, BR-11)', () => {
+  it('pays only the generations of the attained level', () => {
+    // Level 2 pays generations 1–3; the 4th generation earns nothing but counts for TT.
+    const result = computeCommission({ customerTurnover: 400, teams: [{ generations: [100, 100, 100, 100] }] }, ES)
+    expect(result.level).toBe(2)
+    expect(result.volumes.tt).toBe(800)
+    expect(result.generations.map((g) => g.rate)).toEqual([0.08, 0.04, 0.03])
+    expect(result.teamPoints).toBe(15)
+  })
+
+  it('never pays generation 10 or deeper, but counts it for TT', () => {
+    const strong = Array.from({ length: 3 }, () => ({ generations: [30000] }))
+    const without = computeCommission({ customerTurnover: 660, teams: [...strong, { generations: [19340] }] }, ES)
+    const deep = [19340, 0, 0, 0, 0, 0, 0, 0, 0, 5000] // 5,000 points in generation 10
+    const with10 = computeCommission({ customerTurnover: 660, teams: [...strong, { generations: deep }] }, ES)
+    expect(without.level).toBe(8)
+    expect(with10.level).toBe(8)
+    expect(with10.volumes.tt - without.volumes.tt).toBe(5000)
+    expect(with10.generations).toHaveLength(9)
+    expect(with10.teamPoints).toBe(without.teamPoints)
+  })
+})
+
+describe('USA plan (BR-18)', () => {
+  it('qualifies levels 1–3 on DT (CT + own purchases)', () => {
+    const result = computeCommission({ customerTurnover: 60, personalTurnover: 50, teams: [] }, US)
+    expect(result.volumes.dt).toBe(110)
+    expect(result.level).toBe(1)
+    expect(result.ownVolume).toBe(110)
+  })
+
+  it('requires CT ≥ 330 from level 4, whatever the DT', () => {
+    const teams = [{ generations: [10000] }, { generations: [3000] }]
+    expect(computeCommission({ customerTurnover: 300, personalTurnover: 200, teams }, US).level).toBe(3)
+    expect(computeCommission({ customerTurnover: 330, personalTurnover: 0, teams }, US).level).toBe(4)
+  })
+
+  it('ignores personal turnover outside the USA plan', () => {
+    expect(computeCommission({ customerTurnover: 60, personalTurnover: 50, teams: [] }, ES).level).toBeNull()
+  })
+})
+
+describe('markets (BR-14, BR-16)', () => {
+  it('converts the same points with each market factor', () => {
+    const input = { customerTurnover: 1000, teams: [] }
+    expect(computeCommission(input, market('FR-vdi')).amount).toBe(474.24)
+    expect(computeCommission(input, market('IT-partitaIva')).amount).toBe(487.89)
+    expect(computeCommission(input, market('CH')).amount).toBe(468)
+    expect(computeCommission(input, market('HU')).amount).toBe(210600)
+  })
+
+  it('reports an unknown payout where the threshold is not documented (Q-04)', () => {
+    expect(computeCommission({ customerTurnover: 1000, teams: [] }, market('PL')).payout).toBe('unknown')
+  })
+
+  it('pays above 1,700 MXN by transfer and below as a voucher in Mexico', () => {
+    expect(computeCommission({ customerTurnover: 300, teams: [] }, MX).payout).toBe('voucher') // 57 × 26 = 1,482
+    expect(computeCommission({ customerTurnover: 400, teams: [] }, MX).payout).toBe('transfer') // 116 × 26 = 3,016
+  })
+})
