@@ -4,8 +4,8 @@ Approved by the PO on 2026-11-17 (D-007 amended, D-019 to D-021). Implemented in
 
 | PR | Scope | Status |
 |---|---|---|
-| A | Three tabs, shared real data in memory and `sessionStorage`, leg aliases. No change in calculation behaviour. | This PR |
-| B | Scenario engine for reverse engineering (pure domain + tests). | Next |
+| A | Three tabs, shared real data in memory and `sessionStorage`, leg aliases. No change in calculation behaviour. | Merged (#7) |
+| B | Scenario engine for reverse engineering (pure domain + tests): `src/domain/scenarios/`. | This PR |
 | C | Tab 3 UI: three scenarios, per-leg allocation, manual own-CT control. | After B |
 
 ## 1. One app, three tabs (D-019)
@@ -80,8 +80,9 @@ in every evaluation (a weak leg may become the strongest).
 | Proportional | Proportional to each leg's current VE | «Each one grows at her pace» |
 | Equal | Same points per leg | Easiest to explain |
 
-**Candidates.** Strategies × own-effort shares (0, 25, 50, 75 % of the own-only minimum) ×
-target levels → a few thousand engine calls (< 50 ms in the browser). Keep the non-dominated
+**Candidates.** Strategies × own-effort shares (0, 10, 25, 40, 50, 60, 75, 90 % of the own-only
+minimum); each binary search lands on level jumps by itself, so target levels need no separate
+loop. About 750 engine calls, ~20 ms per target. Keep the non-dominated
 candidates (no other needs both less own CT and fewer team points), then pick:
 
 1. **Solo yo**: own-only minimum. *Exact minimum.*

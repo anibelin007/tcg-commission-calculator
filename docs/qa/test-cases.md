@@ -38,6 +38,26 @@ strategies; none may be «fixed» to match another.
 | S-07 | CT 400; one direct partner with 10,000 (TT 10,400; TT-1 400) | 2 | 916 | **1,209.12 €** by default (limit not applied, D-005) | BR-07, BR-12 — 258.72 € under BR-12a/b (800 × 1,000 / 10,000 = 80 points); 1,209.12 € also under Q-01 option (c) |
 | S-08 | Payout threshold, EUR | — | — | 65.00 € → voucher; 65.01 € → transfer | BR-16 («superiores a 65 €») |
 
+## Reverse-engineering scenarios (D-021)
+
+Synthetic partner E: CT 600, generations 900 / 700, legs with VE 1,000 and 600 → level 2,
+361.68 €. Expected values derived by hand from the verified rules; tests in
+`src/domain/scenarios/`.
+
+| ID | Case | Expected |
+|---|---|---|
+| R-01 | Reach 529.32 € (entering level 3, TT-1 ≥ 1,600) with team points only | levelling 400 (all to the weak leg) · equal 800 · proportional 1,066.66 |
+| R-02 | Target 600 €, «Solo yo» | +225 CT → level 3, 602.91 € (exact minimum) |
+| R-03 | Target 600 €, «Mayor aportación del equipo» | 0 CT + 1,069.28 team points (334.64 / 734.64) → 600.00 € (599.996 rounded, BR-17) |
+| R-04 | Target 600 €, «Mi equipo y yo» | +112.50 CT + 520.84 team points (60.42 / 460.42) → 600.00 € |
+| R-05 | Manual own +100, target 600 € | 581.78 team points, levelled |
+| R-06 | +600 to the weak leg | legs 1,000 / 1,200: the weak leg becomes the strongest; TT-1 = 1,600 → level 3 |
+| R-07 | No legs / own CT below level 1 | team scenarios infeasible (`noLegs` / `ownBelowLevel1`) |
+
+Property tests (seeded random partners in ES, MX, US, PL): the commission never decreases when
+own or leg points grow; every returned scenario reaches the target when recomputed with the
+engine; the two team scenarios never dominate each other.
+
 ## Cross-plan and cross-locale checks
 
 - Same inputs ⇒ same level and points in every UI language; only the formatting changes.
