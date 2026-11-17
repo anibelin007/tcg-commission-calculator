@@ -23,7 +23,8 @@ A single page that shows one of three tabs. The active tab is reflected in the U
 | **Mi siguiente meta** (`#next-level`) | Current level and amount, what is missing for the next level (own CT route) and the step chart. |
 | **Ingeniería inversa** (`#target`) | Target amount → points needed. Today the own-CT route; PRs B and C add the team scenarios. |
 
-The simulation tabs show a notice with a link to tab 1 until data has been entered.
+The simulation tabs always work: without real data they start from zero (planning ahead), with a
+non-blocking notice and a link to tab 1 (PO, 2026-11-17).
 
 ## 2. Code layout
 

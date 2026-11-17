@@ -115,7 +115,7 @@
     "clear": "Borrar mis datos"
   },
   "emptyState": {
-    "text": "Primero introduce tus puntos en «Mi comisión actual».",
+    "text": "Estás partiendo de cero, útil para planificar. Si quieres partir de tus datos reales, introdúcelos en «Mi comisión actual».",
     "action": "Ir a Mi comisión actual"
   },
   "reverse": {

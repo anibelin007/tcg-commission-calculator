@@ -11,10 +11,10 @@ import { NextLevelPanel } from './NextLevelPanel'
 export function NextLevelPage() {
   const { t, i18n } = useTranslation('calculator')
   const { data, parsed, market, result } = usePartnerData()
-  if (isEmptyPartnerData(data)) return <EmptyDataNotice />
   const next = simulateNextLevel(parsed.input, market)
   return (
     <div className="flex flex-col gap-6">
+      {isEmptyPartnerData(data) && <EmptyDataNotice />}
       <p>{t('simulation.intro')}</p>
       <p className="rounded bg-tcg-surface px-4 py-3 font-semibold text-tcg-heading">
         {result.level === null

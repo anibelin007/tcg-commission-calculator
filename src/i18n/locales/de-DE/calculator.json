@@ -115,7 +115,7 @@
     "clear": "Meine Daten löschen"
   },
   "emptyState": {
-    "text": "Gib zuerst deine Punkte unter «Meine aktuelle Provision» ein.",
+    "text": "Du startest bei null, praktisch zum Planen. Wenn du von deinen echten Daten ausgehen möchtest, gib sie unter «Meine aktuelle Provision» ein.",
     "action": "Zu Meine aktuelle Provision"
   },
   "reverse": {

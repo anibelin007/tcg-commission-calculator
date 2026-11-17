@@ -115,7 +115,7 @@
     "clear": "Esborra les meves dades"
   },
   "emptyState": {
-    "text": "Primer introdueix els teus punts a «La meva comissió actual».",
+    "text": "Estàs partint de zero, útil per planificar. Si vols partir de les teves dades reals, introdueix-les a «La meva comissió actual».",
     "action": "Ves a La meva comissió actual"
   },
   "reverse": {
