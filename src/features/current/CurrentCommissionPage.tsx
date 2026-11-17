@@ -1,36 +1,25 @@
-import { useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { computeCommission, findMarket } from '../../domain/commission'
-import { addGeneration, initialFormState, parseForm, type FormState } from './form-model'
-import { formatPoints } from './format'
-import { GenerationFields } from './GenerationFields'
-import { FALLBACK_MARKET_ID } from './market-preselection'
-import { MarketFields } from './MarketFields'
-import { NumberField } from './NumberField'
-import { PartnerFields } from './PartnerFields'
+import { GenerationFields } from '../../components/GenerationFields'
+import { LegFields } from '../../components/LegFields'
+import { useLegName } from '../../components/leg-name'
+import { MarketFields } from '../../components/MarketFields'
+import { NumberField } from '../../components/NumberField'
+import { formatPoints } from '../../shared/format'
+import { addGeneration, newLeg } from '../../state/partner-data'
+import { usePartnerData } from '../../state/partner-data-context'
 import { ResultPanel } from './ResultPanel'
-import { SimulationPanel } from './SimulationPanel'
-
-interface CalculatorPageProps {
-  /** Preselected market (D-016). */
-  initialMarketId: string
-}
 
 const legendClass = 'mb-2 text-xl font-semibold text-tcg-heading'
 
 /**
- * Manual calculator, laid out like the Online Office: points per generation (commission) and
- * the VE of each direct partner (target level). The result updates on every change. Nothing
- * is stored or sent (D-007).
+ * Tab 1 «Mi comisión actual»: the real data, laid out like the Online Office, and the
+ * estimated commission. No hypothetical simulations here (D-019).
  */
-export function CalculatorPage({ initialMarketId }: CalculatorPageProps) {
+export function CurrentCommissionPage() {
   const { t, i18n } = useTranslation('calculator')
-  const [state, setState] = useState<FormState>(() => initialFormState(initialMarketId))
-  const nextPartnerKey = useRef(1)
-  const market = findMarket(state.marketId) ?? findMarket(FALLBACK_MARKET_ID)!
-  const parsed = useMemo(() => parseForm(state), [state])
-  const result = useMemo(() => computeCommission(parsed.input, market), [parsed, market])
-  const update = (patch: Partial<FormState>) => setState((current) => ({ ...current, ...patch }))
+  const { data, update, clear, newLegId, parsed, market, result } = usePartnerData()
+  const legName = useLegName()
+  const legNames = data.legs.map((_, index) => legName(data.legs, index))
   const isUsa = market.plan === 'usa'
   const strongest = result.strongestTeam
 
@@ -45,7 +34,7 @@ export function CalculatorPage({ initialMarketId }: CalculatorPageProps) {
           <NumberField
             label={t('own.customerTurnover')}
             help={t(isUsa ? 'own.customerTurnoverHelpUsa' : 'own.customerTurnoverHelp')}
-            value={state.customerTurnover}
+            value={data.customerTurnover}
             onChange={(customerTurnover) => update({ customerTurnover })}
             error={parsed.invalid.includes('customerTurnover') ? t('invalid') : undefined}
           />
@@ -53,7 +42,7 @@ export function CalculatorPage({ initialMarketId }: CalculatorPageProps) {
             <NumberField
               label={t('own.personalTurnover')}
               help={t('own.personalTurnoverHelp')}
-              value={state.personalTurnover}
+              value={data.personalTurnover}
               onChange={(personalTurnover) => update({ personalTurnover })}
               error={parsed.invalid.includes('personalTurnover') ? t('invalid') : undefined}
             />
@@ -64,43 +53,45 @@ export function CalculatorPage({ initialMarketId }: CalculatorPageProps) {
           <legend className={legendClass}>{t('generations.legend')}</legend>
           <p className="text-sm">{t('generations.help')}</p>
           <GenerationFields
-            values={state.generations}
+            values={data.generations}
             fieldPrefix="generation"
             invalid={parsed.invalid}
             onChange={(generations) => update({ generations })}
-            onAdd={() => setState(addGeneration)}
+            onAdd={() => update(addGeneration)}
           />
         </fieldset>
 
-        <PartnerFields
-          partners={state.partners}
+        <LegFields
+          legs={data.legs}
           invalid={parsed.invalid}
-          onChange={(partners) => update({ partners })}
-          onAdd={() => update({ partners: [...state.partners, { key: nextPartnerKey.current++, volume: '' }] })}
+          onChange={(legs) => update({ legs })}
+          onAdd={() => update((current) => ({ ...current, legs: [...current.legs, newLeg(newLegId())] }))}
         />
 
-        {strongest && result.level !== null && (
+        {strongest?.status === 'breakdownMissing' && result.level !== null && (
           <fieldset className="flex flex-col gap-4 rounded border border-tcg-accent bg-white p-4">
             <legend className={`${legendClass} px-1`}>{t('breakdown.legend')}</legend>
             <p className="text-sm">
               {t('breakdown.help', {
-                number: strongest.index + 1,
+                team: legNames[strongest.index],
                 volume: formatPoints(i18n.language, strongest.volume),
                 level: result.level,
                 limit: formatPoints(i18n.language, strongest.limit),
               })}
             </p>
-            <GenerationFields
-              values={state.breakdown}
-              fieldPrefix="breakdown"
-              invalid={parsed.invalid}
-              onChange={(breakdown) => update({ breakdown })}
-            />
+            <GenerationFields values={data.breakdown} fieldPrefix="breakdown" invalid={parsed.invalid} onChange={(breakdown) => update({ breakdown })} />
           </fieldset>
         )}
       </form>
-      <ResultPanel result={result} market={market} />
-      <SimulationPanel input={parsed.input} market={market} current={result} />
+
+      <ResultPanel result={result} market={market} legNames={legNames} />
+
+      <div className="flex flex-wrap items-center justify-between gap-4 text-sm">
+        <p>{t('data.note')}</p>
+        <button type="button" onClick={clear} className="font-semibold text-tcg-primary underline">
+          {t('data.clear')}
+        </button>
+      </div>
     </div>
   )
 }

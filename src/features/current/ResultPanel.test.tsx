@@ -19,7 +19,7 @@ async function render(input: CommissionInput, marketId = 'ES', locale: 'es-ES' |
   const i18n = await createAppI18n(locale)
   const html = renderToStaticMarkup(
     <I18nextProvider i18n={i18n}>
-      <ResultPanel result={computeCommission(input, market, options)} market={market} />
+      <ResultPanel result={computeCommission(input, market, options)} market={market} legNames={input.teamVolumes.map((_, i) => (i === 1 ? 'Eva' : `Pata ${i + 1}`))} />
     </I18nextProvider>,
   )
   return html.replace(/ | /g, ' ')
@@ -38,7 +38,7 @@ describe('ResultPanel', () => {
     const html = await render(GUIDE_TEAM, 'ES', 'es-ES', { strongestTeamLimit: 'teamVolumeProportional' })
     expect(html).toContain('Meta 3')
     expect(html).toContain('Generación 2')
-    expect(html).toContain('Tope de la pata más fuerte (socia directa 2: VE 1800, límite 1500)')
+    expect(html).toContain('Tope de la pata más fuerte (Eva: VE 1800, límite 1500)')
     expect(html).toContain('663,5')
     expect(html).toContain('875,82 €')
     expect(html).toContain('de forma provisional')

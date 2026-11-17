@@ -1,7 +1,7 @@
 import { useId } from 'react'
 import { useTranslation } from 'react-i18next'
-import { MARKETS, findMarket } from '../../domain/commission'
-import { countryName } from './format'
+import { MARKETS, findMarket } from '../domain/commission'
+import { countryName } from '../shared/format'
 
 interface MarketFieldsProps {
   marketId: string

@@ -1,16 +1,18 @@
 import { useTranslation } from 'react-i18next'
 import type { CommissionResult, Market } from '../../domain/commission'
-import { formatAmount, formatFactor, formatPoints, formatRate } from './format'
+import { formatAmount, formatFactor, formatPoints, formatRate } from '../../shared/format'
 
 interface ResultPanelProps {
   result: CommissionResult
   market: Market
+  /** Display name of each leg, in input order (alias or «Pata N»). */
+  legNames: readonly string[]
 }
 
 const cell = 'px-3 py-2 text-right tabular-nums'
 
 /** Breakdown of the estimated commission. Wording follows BR-21: an estimate, never a promise. */
-export function ResultPanel({ result, market }: ResultPanelProps) {
+export function ResultPanel({ result, market, legNames }: ResultPanelProps) {
   const { t, i18n } = useTranslation('calculator')
   const locale = i18n.language
   const points = (value: number) => formatPoints(locale, value)
@@ -57,7 +59,7 @@ export function ResultPanel({ result, market }: ResultPanelProps) {
                 {strongest && reduction < 0 && (
                   <tr>
                     <td className="px-3 py-2" colSpan={3}>
-                      {t('result.limit', { team: strongest.index + 1, volume: points(strongest.volume), limit: points(strongest.limit) })}
+                      {t('result.limit', { team: legNames[strongest.index] ?? strongest.index + 1, volume: points(strongest.volume), limit: points(strongest.limit) })}
                     </td>
                     <td className={cell}>{points(reduction)}</td>
                   </tr>
@@ -113,7 +115,7 @@ export function ResultPanel({ result, market }: ResultPanelProps) {
         {reduction < 0 && <li>{t('result.notes.provisionalLimit')}</li>}
         {strongest?.status === 'notApplied' && result.level !== null && (
           <li>
-            {t('result.notes.limitNotApplied', { team: strongest.index + 1, volume: points(strongest.volume), limit: points(strongest.limit), level: result.level })}
+            {t('result.notes.limitNotApplied', { team: legNames[strongest.index] ?? strongest.index + 1, volume: points(strongest.volume), limit: points(strongest.limit), level: result.level })}
           </li>
         )}
         {market.taxSpecificSettlement && <li>{t('result.notes.taxSettlement')}</li>}

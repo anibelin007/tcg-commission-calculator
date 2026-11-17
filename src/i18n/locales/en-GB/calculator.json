@@ -31,7 +31,7 @@
     "own": "Your CT",
     "ownUsa": "Your DT (CT + PT)",
     "generation": "Generation {{number}}",
-    "limit": "Limit for the strongest team (direct partner {{team}}: TT {{volume}}, limit {{limit}})",
+    "limit": "Limit for the strongest team ({{team}}: TT {{volume}}, limit {{limit}})",
     "totalPoints": "Total commission points",
     "factor": "Points factor",
     "amount": "Estimated commission",
@@ -43,7 +43,7 @@
       "exceptions": "If your fair score is below 100 % or the «RINGANA only» rule applies to you, your actual commission will be lower.",
       "bonuses": "Bonuses are not included (Fast Track, Growth Bonus, Beyond Target 10).",
       "breakdownMissing": "The limit for the strongest team is not applied yet: complete that team’s breakdown for a more accurate result.",
-      "limitNotApplied": "Your strongest team (direct partner {{team}}, TT {{volume}}) exceeds the limit of Target Level {{level}} ({{limit}}). We are still confirming how RINGANA applies it, so it is not deducted for now: your actual commission could be lower."
+      "limitNotApplied": "Your strongest team ({{team}}, TT {{volume}}) exceeds the limit of Target Level {{level}} ({{limit}}). We are still confirming how RINGANA applies it, so it is not deducted for now: your actual commission could be lower."
     }
   },
   "generations": {
@@ -55,17 +55,9 @@
     "add": "Add generation",
     "total": "Your team in total: {{volume}} points"
   },
-  "partners": {
-    "legend": "TT of your direct partners",
-    "help": "Each direct partner is one team. Copy it from the Online Office: list of your direct partners, «TT» column. It is used to calculate your TT-1, TT-2 and TT-3 and, with them, your Target Level.",
-    "empty": "No direct partners.",
-    "partner": "Direct partner {{number}} (TT)",
-    "remove": "Remove direct partner {{number}}",
-    "add": "Add direct partner"
-  },
   "breakdown": {
     "legend": "Limit for the strongest team",
-    "help": "The team of direct partner {{number}} has a TT of {{volume}} points and exceeds the limit of Target Level {{level}} ({{limit}} points). To apply the limit, enter the points of that team by generation: generation 1 is the direct partner herself (her CT).",
+    "help": "Your strongest team ({{team}}) has a TT of {{volume}} points and exceeds the limit of Target Level {{level}} ({{limit}} points). To apply the limit, enter the points of that team by generation: generation 1 is the direct partner herself (her CT).",
     "total": "Team total: {{volume}} points"
   },
   "warnings": {
@@ -75,7 +67,6 @@
     "breakdownExceedsGeneration": "A generation of the breakdown is larger than that generation’s total. Please check the data."
   },
   "simulation": {
-    "title": "Simulations",
     "intro": "Calculated with your team as it is now: only your own points (CT) change.",
     "measures": {
       "ct": "CT",
@@ -94,7 +85,9 @@
       "missing": "{{measure}}: {{missing}} points missing (you need {{min}})",
       "ownOnly": "With your own sales alone, you would need {{extra}} more CT points (total CT {{total}}).",
       "amount": "Estimated commission at Target Level {{level}}: {{amount}} ({{delta}} more than now).",
-      "newPartners": "Partners who join this month do not count until next month; then their points of both months count."
+      "newPartners": "Partners who join this month do not count until next month; then their points of both months count.",
+      "current": "You are now at Target Level {{level}}, with an estimated commission of {{amount}}.",
+      "currentNoLevel": "You do not reach Target Level 1 yet (110 points of your own CT)."
     },
     "target": {
       "title": "How many points would you need for…?",
@@ -111,5 +104,24 @@
       "tooltip": "CT {{ct}} → {{amount}} ({{level}})",
       "noLevel": "no level"
     }
+  },
+  "legs": {
+    "legend": "Your teams (direct partners)",
+    "help": "Each direct partner is one team. Copy her TT from the Online Office: list of your direct partners, «TT» column. It is used to calculate your TT-1, TT-2 and TT-3 and, with them, your Target Level.",
+    "empty": "No direct partners.",
+    "defaultName": "Team {{number}}",
+    "alias": "Name (optional)",
+    "aliasHelp": "Her first name, to recognise her. Only kept in this browser tab.",
+    "volume": "Team TT",
+    "remove": "Remove {{name}}",
+    "add": "Add team"
+  },
+  "data": {
+    "note": "Your data is kept only in this browser tab and deleted when you close it.",
+    "clear": "Delete my data"
+  },
+  "emptyState": {
+    "text": "First enter your points in «My current commission».",
+    "action": "Go to My current commission"
   }
 }

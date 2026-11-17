@@ -8,5 +8,11 @@
   },
   "languageSelector": {
     "label": "Sprache"
+  },
+  "nav": {
+    "label": "Bereiche des Rechners",
+    "commission": "Meine aktuelle Provision",
+    "next-level": "Meine nächste Zielstufe",
+    "target": "Rückwärtsrechnung"
   }
 }

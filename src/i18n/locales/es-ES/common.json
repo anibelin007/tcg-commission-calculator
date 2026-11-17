@@ -8,5 +8,11 @@
   },
   "languageSelector": {
     "label": "Idioma"
+  },
+  "nav": {
+    "label": "Secciones de la calculadora",
+    "commission": "Mi comisión actual",
+    "next-level": "Mi siguiente meta",
+    "target": "Ingeniería inversa"
   }
 }

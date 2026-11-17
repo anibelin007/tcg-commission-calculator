@@ -1,7 +1,7 @@
 import { Button } from '@anibelin007/tcg-ui'
 import { useTranslation } from 'react-i18next'
-import { MAX_GENERATION_FIELDS, parsePoints, type FieldId } from './form-model'
-import { formatPoints } from './format'
+import { MAX_GENERATION_FIELDS, parsePoints, type FieldId } from '../state/partner-data'
+import { formatPoints } from '../shared/format'
 import { NumberField } from './NumberField'
 
 interface GenerationFieldsProps {

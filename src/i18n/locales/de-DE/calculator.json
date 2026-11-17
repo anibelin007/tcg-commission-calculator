@@ -31,7 +31,7 @@
     "own": "Dein KU",
     "ownUsa": "Dein DT (CT + PT)",
     "generation": "Generation {{number}}",
-    "limit": "Begrenzung für das stärkste Team (direkte Partnerin {{team}}: TU {{volume}}, Grenze {{limit}})",
+    "limit": "Begrenzung für das stärkste Team ({{team}}: TU {{volume}}, Grenze {{limit}})",
     "totalPoints": "Provisionspunkte gesamt",
     "factor": "Punktefaktor",
     "amount": "Geschätzte Provision",
@@ -43,7 +43,7 @@
       "exceptions": "Wenn dein Fair Score unter 100 % liegt oder die Regel «RINGANA only» für dich gilt, ist deine tatsächliche Provision niedriger.",
       "bonuses": "Boni sind nicht enthalten (Fast Track, Wachstumsbonus, Beyond Target 10).",
       "breakdownMissing": "Die Begrenzung für das stärkste Team ist noch nicht angewendet: Ergänze die Aufschlüsselung dieses Teams für ein genaueres Ergebnis.",
-      "limitNotApplied": "Dein stärkstes Team (direkte Partnerin {{team}}, TU {{volume}}) überschreitet die Grenze der Zielstufe {{level}} ({{limit}}). Wir klären noch, wie RINGANA sie anwendet, daher wird vorerst nichts abgezogen: Deine tatsächliche Provision könnte niedriger sein."
+      "limitNotApplied": "Dein stärkstes Team ({{team}}, TU {{volume}}) überschreitet die Grenze der Zielstufe {{level}} ({{limit}}). Wir klären noch, wie RINGANA sie anwendet, daher wird vorerst nichts abgezogen: Deine tatsächliche Provision könnte niedriger sein."
     }
   },
   "generations": {
@@ -55,17 +55,9 @@
     "add": "Generation hinzufügen",
     "total": "Dein Team insgesamt: {{volume}} Punkte"
   },
-  "partners": {
-    "legend": "TU deiner direkten Partnerinnen",
-    "help": "Jede direkte Partnerin ist ein Team. Übernimm ihn aus dem Online Office: Liste deiner direkten Partnerinnen, Spalte «TU». Damit werden dein TU-1, TU-2 und TU-3 und daraus deine Zielstufe berechnet.",
-    "empty": "Keine direkten Partnerinnen.",
-    "partner": "Direkte Partnerin {{number}} (TU)",
-    "remove": "Direkte Partnerin {{number}} entfernen",
-    "add": "Direkte Partnerin hinzufügen"
-  },
   "breakdown": {
     "legend": "Begrenzung für das stärkste Team",
-    "help": "Das Team der direkten Partnerin {{number}} hat einen TU von {{volume}} Punkten und überschreitet die Grenze der Zielstufe {{level}} ({{limit}} Punkte). Um die Begrenzung anzuwenden, gib die Punkte dieses Teams nach Generation ein: Generation 1 ist die direkte Partnerin selbst (ihr KU).",
+    "help": "Dein stärkstes Team ({{team}}) hat einen TU von {{volume}} Punkten und überschreitet die Grenze der Zielstufe {{level}} ({{limit}} Punkte). Um die Begrenzung anzuwenden, gib die Punkte dieses Teams nach Generation ein: Generation 1 ist die direkte Partnerin selbst (ihr KU).",
     "total": "Team insgesamt: {{volume}} Punkte"
   },
   "warnings": {
@@ -75,7 +67,6 @@
     "breakdownExceedsGeneration": "Eine Generation der Aufschlüsselung ist größer als die Summe dieser Generation. Bitte prüfe die Daten."
   },
   "simulation": {
-    "title": "Simulationen",
     "intro": "Berechnet mit deinem Team, wie es jetzt ist: Nur deine eigenen Punkte (KU) ändern sich.",
     "measures": {
       "ct": "KU",
@@ -94,7 +85,9 @@
       "missing": "{{measure}}: Es fehlen {{missing}} Punkte (du brauchst {{min}})",
       "ownOnly": "Nur mit deinen eigenen Verkäufen bräuchtest du {{extra}} KU-Punkte mehr (KU gesamt {{total}}).",
       "amount": "Geschätzte Provision auf Zielstufe {{level}}: {{amount}} ({{delta}} mehr als jetzt).",
-      "newPartners": "Partnerinnen, die diesen Monat einsteigen, zählen erst ab nächstem Monat; dann zählen ihre Punkte aus beiden Monaten."
+      "newPartners": "Partnerinnen, die diesen Monat einsteigen, zählen erst ab nächstem Monat; dann zählen ihre Punkte aus beiden Monaten.",
+      "current": "Du bist jetzt auf Zielstufe {{level}}, mit einer geschätzten Provision von {{amount}}.",
+      "currentNoLevel": "Du erreichst Zielstufe 1 noch nicht (110 Punkte eigener KU)."
     },
     "target": {
       "title": "Wie viele Punkte bräuchtest du für…?",
@@ -111,5 +104,24 @@
       "tooltip": "KU {{ct}} → {{amount}} ({{level}})",
       "noLevel": "keine Zielstufe"
     }
+  },
+  "legs": {
+    "legend": "Deine Teams (direkte Partnerinnen)",
+    "help": "Jede direkte Partnerin ist ein Team. Übernimm ihren TU aus dem Online Office: Liste deiner direkten Partnerinnen, Spalte «TU». Damit werden dein TU-1, TU-2 und TU-3 und daraus deine Zielstufe berechnet.",
+    "empty": "Keine direkten Partnerinnen.",
+    "defaultName": "Team {{number}}",
+    "alias": "Name (optional)",
+    "aliasHelp": "Ihr Vorname, damit du sie erkennst. Wird nur in diesem Browser-Tab gespeichert.",
+    "volume": "TU des Teams",
+    "remove": "{{name}} entfernen",
+    "add": "Team hinzufügen"
+  },
+  "data": {
+    "note": "Deine Daten werden nur in diesem Browser-Tab gespeichert und beim Schließen gelöscht.",
+    "clear": "Meine Daten löschen"
+  },
+  "emptyState": {
+    "text": "Gib zuerst deine Punkte unter «Meine aktuelle Provision» ein.",
+    "action": "Zu Meine aktuelle Provision"
   }
 }

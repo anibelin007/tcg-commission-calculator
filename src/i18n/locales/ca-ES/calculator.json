@@ -31,7 +31,7 @@
     "own": "El teu VC",
     "ownUsa": "El teu DT (CT + PT)",
     "generation": "Generació {{number}}",
-    "limit": "Límit de la branca més forta (sòcia directa {{team}}: VE {{volume}}, límit {{limit}})",
+    "limit": "Límit de la branca més forta ({{team}}: VE {{volume}}, límit {{limit}})",
     "totalPoints": "Total de punts de comissió",
     "factor": "Factor de conversió",
     "amount": "Comissió estimada",
@@ -43,7 +43,7 @@
       "exceptions": "Si el teu fair score és inferior al 100 % o t'aplica la regla «RINGANA only», la teva comissió real serà menor.",
       "bonuses": "No inclou bonificacions (Fast Track, bonificació per creixement, Beyond Target 10).",
       "breakdownMissing": "El límit de la branca més forta encara no s'ha aplicat: completa el desglossament d'aquesta branca per obtenir un resultat més exacte.",
-      "limitNotApplied": "La teva branca més forta (sòcia directa {{team}}, VE {{volume}}) supera el límit de la meta {{level}} ({{limit}}). Encara estem confirmant com l'aplica RINGANA, així que de moment no es descompta: la teva comissió real podria ser menor."
+      "limitNotApplied": "La teva branca més forta ({{team}}, VE {{volume}}) supera el límit de la meta {{level}} ({{limit}}). Encara estem confirmant com l'aplica RINGANA, així que de moment no es descompta: la teva comissió real podria ser menor."
     }
   },
   "generations": {
@@ -55,17 +55,9 @@
     "add": "Afegeix una generació",
     "total": "Total del teu equip: {{volume}} punts"
   },
-  "partners": {
-    "legend": "VE de les teves sòcies directes",
-    "help": "Cada sòcia directa és una branca. Copia'l de l'Office Online: llista de les teves sòcies directes, columna «VE». Serveix per calcular el teu VE-1, VE-2 i VE-3 i, amb ells, la teva meta.",
-    "empty": "Sense sòcies directes.",
-    "partner": "Sòcia directa {{number}} (VE)",
-    "remove": "Treu la sòcia directa {{number}}",
-    "add": "Afegeix una sòcia directa"
-  },
   "breakdown": {
     "legend": "Límit de la branca més forta",
-    "help": "La branca de la sòcia directa {{number}} té un VE de {{volume}} punts i supera el límit de la meta {{level}} ({{limit}} punts). Per aplicar el límit, indica els punts d'aquesta branca per generació: la generació 1 és la mateixa sòcia directa (el seu VC).",
+    "help": "La teva branca més forta ({{team}}) té un VE de {{volume}} punts i supera el límit de la meta {{level}} ({{limit}} punts). Per aplicar el límit, indica els punts d'aquesta branca per generació: la generació 1 és la mateixa sòcia directa (el seu VC).",
     "total": "Total de la branca: {{volume}} punts"
   },
   "warnings": {
@@ -75,7 +67,6 @@
     "breakdownExceedsGeneration": "Alguna generació del desglossament és més gran que el total d'aquesta generació. Revisa les dades."
   },
   "simulation": {
-    "title": "Simulacions",
     "intro": "Calculades amb el teu equip tal com està ara: només canvien els teus propis punts (VC).",
     "measures": {
       "ct": "VC",
@@ -94,7 +85,9 @@
       "missing": "{{measure}}: et falten {{missing}} punts (en necessites {{min}})",
       "ownOnly": "Només amb les teves vendes, necessitaries {{extra}} punts de VC més (VC total {{total}}).",
       "amount": "Comissió estimada a la meta {{level}}: {{amount}} ({{delta}} més que ara).",
-      "newPartners": "Les sòcies que entrin aquest mes no compten fins al mes que ve; llavors compten els seus punts dels dos mesos."
+      "newPartners": "Les sòcies que entrin aquest mes no compten fins al mes que ve; llavors compten els seus punts dels dos mesos.",
+      "current": "Ara ets a la meta {{level}}, amb una comissió estimada de {{amount}}.",
+      "currentNoLevel": "Ara no arribes a la meta 1 (110 punts de VC propis)."
     },
     "target": {
       "title": "Quants punts necessitaries per…?",
@@ -111,5 +104,24 @@
       "tooltip": "VC {{ct}} → {{amount}} ({{level}})",
       "noLevel": "sense meta"
     }
+  },
+  "legs": {
+    "legend": "Les teves branques (sòcies directes)",
+    "help": "Cada sòcia directa és una branca. Copia el seu VE de l'Office Online: llista de les teves sòcies directes, columna «VE». Serveix per calcular el teu VE-1, VE-2 i VE-3 i, amb ells, la teva meta.",
+    "empty": "Sense sòcies directes.",
+    "defaultName": "Branca {{number}}",
+    "alias": "Nom (opcional)",
+    "aliasHelp": "El seu nom de pila, per reconèixer-la. Només es desa en aquesta pestanya del navegador.",
+    "volume": "VE de la branca",
+    "remove": "Treu {{name}}",
+    "add": "Afegeix una branca"
+  },
+  "data": {
+    "note": "Les teves dades es desen només en aquesta pestanya del navegador i s'esborren en tancar-la.",
+    "clear": "Esborra les meves dades"
+  },
+  "emptyState": {
+    "text": "Primer introdueix els teus punts a «La meva comissió actual».",
+    "action": "Ves a La meva comissió actual"
   }
 }

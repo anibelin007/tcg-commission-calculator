@@ -8,5 +8,11 @@
   },
   "languageSelector": {
     "label": "Language"
+  },
+  "nav": {
+    "label": "Calculator sections",
+    "commission": "My current commission",
+    "next-level": "My next Target Level",
+    "target": "Reverse engineering"
   }
 }
