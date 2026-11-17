@@ -182,7 +182,7 @@
     "done": "Llevo hasta hoy (opcional)",
     "pace": "Faltan {{missing}} puntos: {{perDay}} al día.",
     "paceDone": "¡Previsión cumplida!",
-    "resultTitle": "Tu planificación frente al objetivo",
+    "resultTitle": "Tu planificación para {{month}}",
     "requirementMet": "✅ {{measure}}: {{actual}} de {{min}}",
     "requirementMissing": "❌ {{measure}}: {{actual}} de {{min}}, faltan {{missing}}",
     "volumes": "Con tu previsión: VE {{tt}} · VE-1 {{tt1}} · VE-2 {{tt2}} · VE-3 {{tt3}}",
@@ -212,8 +212,13 @@
     "fictitious": "Socia ficticia (aún no ha entrado)",
     "fictitiousHelp": "Márcalo si es una socia que todavía tienes que conseguir.",
     "prospectingTitle": "Nuevas socias que necesitas",
-    "prospecting_one": "Tu plan cuenta con {{count}} socia que aún no ha entrado. Para que cuente en el mes de tu meta tiene que entrar el mes anterior: ponte ya a hacer conversaciones de negocio (CN). Por estadística, unas {{cn}} CN.",
-    "prospecting_other": "Tu plan cuenta con {{count}} socias que aún no han entrado. Para que cuenten en el mes de tu meta tienen que entrar el mes anterior: ponte ya a hacer conversaciones de negocio (CN). Por estadística, unas {{cn}} CN.",
-    "prospectingNote": "Estadística del equipo: unas 10 CN por cada socia nueva. Una socia que entra un mes cuenta a partir del mes siguiente, con sus puntos de los dos meses."
+    "prospecting_one": "Tu plan cuenta con {{count}} socia que aún no ha entrado. Para que cuente en {{month}} tiene que entrar como muy tarde en {{joinMonth}}: ponte ya a hacer conversaciones de negocio (CN). Por estadística, unas {{cn}} CN.",
+    "prospecting_other": "Tu plan cuenta con {{count}} socias que aún no han entrado. Para que cuenten en {{month}} tienen que entrar como muy tarde en {{joinMonth}}: ponte ya a hacer conversaciones de negocio (CN). Por estadística, unas {{cn}} CN.",
+    "prospectingNote": "Estadística del equipo: unas 10 CN por cada socia nueva. Una socia que entra un mes cuenta a partir del mes siguiente, con sus puntos de los dos meses.",
+    "month": "Mes que planificas",
+    "pastMonth": "Este mes ya ha terminado: elige otro para seguir planificando.",
+    "futureMonth": "Planificas {{month}}: el ritmo diario y «Llevo hasta hoy» aparecerán cuando empiece el mes.",
+    "prospectingLate_one": "Tu plan cuenta con {{count}} socia que aún no ha entrado, pero ya no llega a tiempo: para contar en {{month}} tendría que haber entrado en {{joinMonth}}. Elige un mes posterior o quítala del plan.",
+    "prospectingLate_other": "Tu plan cuenta con {{count}} socias que aún no han entrado, pero ya no llegan a tiempo: para contar en {{month}} tendrían que haber entrado en {{joinMonth}}. Elige un mes posterior o quítalas del plan."
   }
 }

@@ -125,6 +125,8 @@ and its own data:
 - Tab 3 is independent and usable from empty; it is prefilled from the plan of tab 2.
 - Each tab keeps its form in `sessionStorage` (D-007). The plan of tab 2 can also be kept in
   `localStorage` with an opt-in checkbox until the goal is reached (D-023, Q-22 option B).
+- Tab 2 starts with the month planned (month and year, D-025); «made so far» and the pace only
+  apply to the current month.
 - A leg can be marked as a fictitious (planned) partner: the plan then reminds that she must
   join the month before the goal month and suggests 10 business conversations per partner (D-024).
 - Legs can be reordered with ↑ ↓ buttons in tabs 2 and 3 (order is display only; the engine

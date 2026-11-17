@@ -1,5 +1,6 @@
 import { TARGET_LEVELS, type TargetLevel } from '../domain/commission'
 import type { Plan } from '../domain/planning'
+import { parseYearMonth, type YearMonth } from '../shared/year-month'
 import { parsePoints, type LegDraft } from './partner-data'
 import { isLeg } from './session-storage'
 
@@ -22,6 +23,8 @@ export function fictitiousLegCount(data: PlanData): number {
 }
 
 export interface PlanData {
+  /** Month planned, 'YYYY-MM'; missing in plans stored before D-025 (= current month). */
+  readonly month?: string
   /** '' until chosen, else '1'…'10'. */
   readonly target: string
   readonly ownForecast: string
@@ -41,6 +44,7 @@ export function isPlanData(value: unknown): value is PlanData {
   if (typeof value !== 'object' || value === null) return false
   const data = value as Record<string, unknown>
   return (
+    (data.month === undefined || typeof data.month === 'string') &&
     typeof data.target === 'string' &&
     typeof data.ownForecast === 'string' &&
     typeof data.ownDone === 'string' &&
@@ -51,6 +55,11 @@ export function isPlanData(value: unknown): value is PlanData {
       return typeof extra.done === 'string' && (extra.fictitious === undefined || typeof extra.fictitious === 'boolean')
     })
   )
+}
+
+/** The planned month; the current month when missing or invalid. */
+export function plannedMonthOf(data: PlanData, today: YearMonth): YearMonth {
+  return (data.month !== undefined ? parseYearMonth(data.month) : null) ?? today
 }
 
 export function targetLevelOf(data: PlanData): TargetLevel | null {

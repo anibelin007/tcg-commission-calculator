@@ -2,12 +2,13 @@ import { Button } from '@anibelin007/tcg-ui'
 import { useCallback, useId, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { TARGET_LEVELS, levelDefinition, PLANS, type TargetLevel } from '../../domain/commission'
-import { businessConversationsFor, checkTarget, daysLeftInMonth, generationShares, motivationKey, planToInput, surplusOverLevel } from '../../domain/planning'
+import { businessConversationsFor, checkTarget, latestJoiningMonth, daysLeftInMonth, generationShares, motivationKey, planToInput, surplusOverLevel } from '../../domain/planning'
 import { formatAmount, formatPoints } from '../../shared/format'
 import { usePartnerData } from '../../state/partner-data-context'
-import { PLAN_STORAGE_KEY, initialPlanData, isEmptyPlanData, isPlanData, parsePlanData, targetLevelOf, type PlanData, fictitiousLegCount } from '../../state/plan-data'
+import { PLAN_STORAGE_KEY, initialPlanData, isEmptyPlanData, isPlanData, parsePlanData, targetLevelOf, type PlanData, fictitiousLegCount, plannedMonthOf } from '../../state/plan-data'
 import { useRememberableState } from '../../state/use-session-state'
 import { moveItem } from '../../shared/move-item'
+import { compareYearMonth, formatYearMonth, monthLabel, nextMonths, yearMonthOf } from '../../shared/year-month'
 import { CommissionChart } from './CommissionChart'
 import { PlanRow } from './PlanRow'
 
@@ -21,6 +22,7 @@ export function PlanningPage() {
   const { t, i18n } = useTranslation('calculator')
   const locale = i18n.language
   const targetId = useId()
+  const monthId = useId()
   const { market, parsed: real, newLegId } = usePartnerData()
   const { state: data, setState: setData, reset, remember, setRemember } = useRememberableState<PlanData>(PLAN_STORAGE_KEY, initialPlanData, isPlanData, isEmptyPlanData)
   const update = useCallback((patch: Partial<PlanData>) => setData((current) => ({ ...current, ...patch })), [setData])
@@ -30,7 +32,16 @@ export function PlanningPage() {
   const check = useMemo(() => (target ? checkTarget(parsed.plan, market, target) : null), [parsed.plan, market, target])
   const result = check?.result
   // Today, fixed when the tab opens (the statement month closes on its last day).
-  const [daysLeft] = useState(() => daysLeftInMonth(new Date()))
+  const [today] = useState(() => new Date())
+  const daysLeft = daysLeftInMonth(today)
+  const thisMonth = yearMonthOf(today)
+  const planned = plannedMonthOf(data, thisMonth)
+  const monthOrder = compareYearMonth(planned, thisMonth)
+  const isCurrentMonth = monthOrder === 0
+  const monthOptions = monthOrder < 0 ? [planned, ...nextMonths(thisMonth, 13)] : nextMonths(thisMonth, 13)
+  const plannedLabel = monthLabel(locale, planned)
+  const joining = latestJoiningMonth(planned)
+  const joiningLate = compareYearMonth(joining, thisMonth) < 0
   const points = (value: number) => formatPoints(locale, value)
   const money = (value: number) => formatAmount(locale, value, market.currency)
   const measure = (key: string) => t(`simulation.measures.${key}`)
@@ -47,6 +58,25 @@ export function PlanningPage() {
           <span className="text-sm">{t('plan.rememberHelp')}</span>
         </span>
       </label>
+
+      <div className="flex flex-col gap-1">
+        <label htmlFor={monthId} className="text-xl font-semibold text-tcg-heading">
+          {t('plan.month')}
+        </label>
+        <select
+          id={monthId}
+          value={formatYearMonth(planned)}
+          onChange={(event) => update({ month: event.target.value })}
+          className="rounded border border-tcg-border bg-white px-4 py-3 text-tcg-input-text shadow-xs focus:border-tcg-primary focus:outline-2 focus:outline-tcg-primary/30"
+        >
+          {monthOptions.map((option) => (
+            <option key={formatYearMonth(option)} value={formatYearMonth(option)}>
+              {monthLabel(locale, option)}
+            </option>
+          ))}
+        </select>
+        {monthOrder < 0 && <p className="text-sm font-semibold">{t('plan.pastMonth')}</p>}
+      </div>
 
       <div className="flex flex-col gap-1">
         <label htmlFor={targetId} className="text-xl font-semibold text-tcg-heading">
@@ -79,7 +109,7 @@ export function PlanningPage() {
 
       <fieldset className="flex flex-col gap-4">
         <legend className={legendClass}>{t('plan.forecastLegend')}</legend>
-        <p className="text-sm">{t('plan.daysLeft', { days: daysLeft })}</p>
+        <p className="text-sm">{isCurrentMonth ? t('plan.daysLeft', { days: daysLeft }) : monthOrder > 0 ? t('plan.futureMonth', { month: plannedLabel }) : ''}</p>
         <PlanRow
           title={t('plan.me')}
           forecastLabel={t('plan.ownForecast')}
@@ -90,6 +120,7 @@ export function PlanningPage() {
           invalidForecast={parsed.invalid.includes('ownForecast')}
           invalidDone={parsed.invalid.includes('ownDone')}
           daysLeft={daysLeft}
+          showDone={isCurrentMonth}
         />
         {data.legs.map((leg, index) => {
           const setLeg = (patch: Partial<typeof leg>) => update({ legs: data.legs.map((l) => (l.id === leg.id ? { ...l, ...patch } : l)) })
@@ -110,6 +141,7 @@ export function PlanningPage() {
               invalidForecast={parsed.invalid.includes(`leg-${index}`)}
               invalidDone={parsed.invalid.includes(`legDone-${index}`)}
               daysLeft={daysLeft}
+              showDone={isCurrentMonth}
             />
           )
         })}
@@ -121,14 +153,18 @@ export function PlanningPage() {
       {newPartners > 0 && (
         <section aria-label={t('plan.prospectingTitle')} className="flex flex-col gap-2 rounded border-2 border-tcg-primary bg-white p-4 sm:p-6">
           <h2 className="text-xl">{t('plan.prospectingTitle')}</h2>
-          <p className="font-semibold text-tcg-heading">{t('plan.prospecting', { count: newPartners, cn: businessConversationsFor(newPartners) })}</p>
+          <p className="font-semibold text-tcg-heading">
+            {joiningLate
+              ? t('plan.prospectingLate', { count: newPartners, month: plannedLabel, joinMonth: monthLabel(locale, joining) })
+              : t('plan.prospecting', { count: newPartners, cn: businessConversationsFor(newPartners), month: plannedLabel, joinMonth: monthLabel(locale, joining) })}
+          </p>
           <p className="text-sm">{t('plan.prospectingNote')}</p>
         </section>
       )}
 
       {check && result && target && (
         <section aria-label={t('plan.resultTitle')} className="flex flex-col gap-4 rounded border border-tcg-surface-strong bg-white p-4 sm:p-6">
-          <h2 className="text-2xl">{t('plan.resultTitle')}</h2>
+          <h2 className="text-2xl">{t('plan.resultTitle', { month: plannedLabel })}</h2>
           <ul className="flex flex-col gap-2 text-sm">
             {check.paths.map((path, index) => (
               <li key={index} className="rounded bg-tcg-page px-3 py-2">

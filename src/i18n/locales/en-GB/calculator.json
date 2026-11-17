@@ -182,7 +182,7 @@
     "done": "Made so far (optional)",
     "pace": "{{missing}} points to go: {{perDay}} a day.",
     "paceDone": "Forecast reached!",
-    "resultTitle": "Your plan against the goal",
+    "resultTitle": "Your plan for {{month}}",
     "requirementMet": "✅ {{measure}}: {{actual}} of {{min}}",
     "requirementMissing": "❌ {{measure}}: {{actual}} of {{min}}, {{missing}} missing",
     "volumes": "With your forecast: TT {{tt}} · TT-1 {{tt1}} · TT-2 {{tt2}} · TT-3 {{tt3}}",
@@ -212,8 +212,13 @@
     "fictitious": "Planned partner (not joined yet)",
     "fictitiousHelp": "Tick it if this is a partner you still have to find.",
     "prospectingTitle": "New partners you need",
-    "prospecting_one": "Your plan counts on {{count}} partner who has not joined yet. To count in the month of your goal she has to join the month before: start having business conversations (BC) now. Statistically, about {{cn}} BC.",
-    "prospecting_other": "Your plan counts on {{count}} partners who have not joined yet. To count in the month of your goal they have to join the month before: start having business conversations (BC) now. Statistically, about {{cn}} BC.",
-    "prospectingNote": "Team statistic: about 10 BC per new partner. A partner who joins in one month counts from the following month, with her points of both months."
+    "prospecting_one": "Your plan counts on {{count}} partner who has not joined yet. To count in {{month}} she has to join in {{joinMonth}} at the latest: start having business conversations (BC) now. Statistically, about {{cn}} BC.",
+    "prospecting_other": "Your plan counts on {{count}} partners who have not joined yet. To count in {{month}} they have to join in {{joinMonth}} at the latest: start having business conversations (BC) now. Statistically, about {{cn}} BC.",
+    "prospectingNote": "Team statistic: about 10 BC per new partner. A partner who joins in one month counts from the following month, with her points of both months.",
+    "month": "Month you are planning",
+    "pastMonth": "This month is over: choose another one to keep planning.",
+    "futureMonth": "You are planning {{month}}: the daily pace and «Made so far» appear when the month starts.",
+    "prospectingLate_one": "Your plan counts on {{count}} partner who has not joined yet, but it is too late: to count in {{month}} she should have joined in {{joinMonth}}. Choose a later month or remove her from the plan.",
+    "prospectingLate_other": "Your plan counts on {{count}} partners who have not joined yet, but it is too late: to count in {{month}} they should have joined in {{joinMonth}}. Choose a later month or remove them from the plan."
   }
 }

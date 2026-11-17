@@ -1,5 +1,5 @@
 export { motivationKey } from './motivation'
-export { BUSINESS_CONVERSATIONS_PER_PARTNER, businessConversationsFor } from './prospecting'
+export { BUSINESS_CONVERSATIONS_PER_PARTNER, businessConversationsFor, latestJoiningMonth } from './prospecting'
 export { partnersNeeded, type PartnersNeeded } from './partners-needed'
 export {
   checkTarget,

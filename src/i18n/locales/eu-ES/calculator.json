@@ -182,7 +182,7 @@
     "done": "Gaur arte daramat (aukerakoa)",
     "pace": "{{missing}} puntu falta dira: {{perDay}} eguneko.",
     "paceDone": "Aurreikuspena beteta!",
-    "resultTitle": "Zure planifikazioa helburuaren aurrean",
+    "resultTitle": "Zure planifikazioa: {{month}}",
     "requirementMet": "✅ {{measure}}: {{actual}} / {{min}}",
     "requirementMissing": "❌ {{measure}}: {{actual}} / {{min}}, {{missing}} falta",
     "volumes": "Zure aurreikuspenarekin: VE {{tt}} · VE-1 {{tt1}} · VE-2 {{tt2}} · VE-3 {{tt3}}",
@@ -212,8 +212,13 @@
     "fictitious": "Bazkide fiktizioa (oraindik ez da sartu)",
     "fictitiousHelp": "Markatu oraindik lortu behar duzun bazkidea bada.",
     "prospectingTitle": "Behar dituzun bazkide berriak",
-    "prospecting_one": "Zure planak oraindik sartu ez den {{count}} bazkide dauka. Zure helburuaren hilabetean kontatzeko, aurreko hilabetean sartu behar du: hasi orain negozio-elkarrizketak (CN) egiten. Estatistikaren arabera, {{cn}} CN inguru.",
-    "prospecting_other": "Zure planak oraindik sartu ez diren {{count}} bazkide ditu. Zure helburuaren hilabetean kontatzeko, aurreko hilabetean sartu behar dute: hasi orain negozio-elkarrizketak (CN) egiten. Estatistikaren arabera, {{cn}} CN inguru.",
-    "prospectingNote": "Taldearen estatistika: 10 CN inguru bazkide berri bakoitzeko. Hilabete batean sartzen den bazkidea hurrengo hilabetetik aurrera kontatzen da, bi hilabeteetako puntuekin."
+    "prospecting_one": "Zure planak oraindik sartu ez den {{count}} bazkide dauka. {{month}} hilabetean kontatzeko, beranduenez {{joinMonth}} hilabetean sartu behar du: hasi orain negozio-elkarrizketak (CN) egiten. Estatistikaren arabera, {{cn}} CN inguru.",
+    "prospecting_other": "Zure planak oraindik sartu ez diren {{count}} bazkide ditu. {{month}} hilabetean kontatzeko, beranduenez {{joinMonth}} hilabetean sartu behar dute: hasi orain negozio-elkarrizketak (CN) egiten. Estatistikaren arabera, {{cn}} CN inguru.",
+    "prospectingNote": "Taldearen estatistika: 10 CN inguru bazkide berri bakoitzeko. Hilabete batean sartzen den bazkidea hurrengo hilabetetik aurrera kontatzen da, bi hilabeteetako puntuekin.",
+    "month": "Planifikatzen duzun hilabetea",
+    "pastMonth": "Hilabete hau amaitu da: aukeratu beste bat planifikatzen jarraitzeko.",
+    "futureMonth": "{{month}} planifikatzen ari zara: eguneko erritmoa eta «Gaur arte daramat» hilabetea hastean agertuko dira.",
+    "prospectingLate_one": "Zure planak oraindik sartu ez den {{count}} bazkide dauka, baina ez da garaiz iristen: {{month}} hilabetean kontatzeko {{joinMonth}} hilabetean sartu beharko zuen. Aukeratu geroagoko hilabete bat edo kendu plangintzatik.",
+    "prospectingLate_other": "Zure planak oraindik sartu ez diren {{count}} bazkide ditu, baina ez dira garaiz iristen: {{month}} hilabetean kontatzeko {{joinMonth}} hilabetean sartu beharko zuten. Aukeratu geroagoko hilabete bat edo kendu plangintzatik."
   }
 }

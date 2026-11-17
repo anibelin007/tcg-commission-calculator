@@ -182,7 +182,7 @@
     "done": "Porto fins avui (opcional)",
     "pace": "Falten {{missing}} punts: {{perDay}} al dia.",
     "paceDone": "Previsió complerta!",
-    "resultTitle": "La teva planificació davant de l'objectiu",
+    "resultTitle": "La teva planificació per a {{month}}",
     "requirementMet": "✅ {{measure}}: {{actual}} de {{min}}",
     "requirementMissing": "❌ {{measure}}: {{actual}} de {{min}}, en falten {{missing}}",
     "volumes": "Amb la teva previsió: VE {{tt}} · VE-1 {{tt1}} · VE-2 {{tt2}} · VE-3 {{tt3}}",
@@ -212,8 +212,13 @@
     "fictitious": "Sòcia fictícia (encara no ha entrat)",
     "fictitiousHelp": "Marca-ho si és una sòcia que encara has d'aconseguir.",
     "prospectingTitle": "Noves sòcies que necessites",
-    "prospecting_one": "El teu pla compta amb {{count}} sòcia que encara no ha entrat. Perquè compti en el mes de la teva meta ha d'entrar el mes anterior: posa't ja a fer converses de negoci (CN). Per estadística, unes {{cn}} CN.",
-    "prospecting_other": "El teu pla compta amb {{count}} sòcies que encara no han entrat. Perquè comptin en el mes de la teva meta han d'entrar el mes anterior: posa't ja a fer converses de negoci (CN). Per estadística, unes {{cn}} CN.",
-    "prospectingNote": "Estadística de l'equip: unes 10 CN per cada sòcia nova. Una sòcia que entra un mes compta a partir del mes següent, amb els seus punts dels dos mesos."
+    "prospecting_one": "El teu pla compta amb {{count}} sòcia que encara no ha entrat. Perquè compti a {{month}} ha d'entrar com a molt tard a {{joinMonth}}: posa't ja a fer converses de negoci (CN). Per estadística, unes {{cn}} CN.",
+    "prospecting_other": "El teu pla compta amb {{count}} sòcies que encara no han entrat. Perquè comptin a {{month}} han d'entrar com a molt tard a {{joinMonth}}: posa't ja a fer converses de negoci (CN). Per estadística, unes {{cn}} CN.",
+    "prospectingNote": "Estadística de l'equip: unes 10 CN per cada sòcia nova. Una sòcia que entra un mes compta a partir del mes següent, amb els seus punts dels dos mesos.",
+    "month": "Mes que planifiques",
+    "pastMonth": "Aquest mes ja s'ha acabat: tria'n un altre per continuar planificant.",
+    "futureMonth": "Planifiques {{month}}: el ritme diari i «Porto fins avui» apareixeran quan comenci el mes.",
+    "prospectingLate_one": "El teu pla compta amb {{count}} sòcia que encara no ha entrat, però ja no arriba a temps: per comptar a {{month}} hauria d'haver entrat a {{joinMonth}}. Tria un mes posterior o treu-la del pla.",
+    "prospectingLate_other": "El teu pla compta amb {{count}} sòcies que encara no han entrat, però ja no arriben a temps: per comptar a {{month}} haurien d'haver entrat a {{joinMonth}}. Tria un mes posterior o treu-les del pla."
   }
 }

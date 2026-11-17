@@ -24,16 +24,18 @@ interface PlanRowProps {
   invalidForecast: boolean
   invalidDone: boolean
   daysLeft: number
+  /** False when the planned month is not the current one: no «made so far» or pace. */
+  showDone?: boolean
   children?: ReactNode
 }
 
 /** One planning row: forecast for the month, optional points made so far and the daily pace. */
-export function PlanRow({ title, alias, fictitious, onRemove, onMoveUp, onMoveDown, forecast, done, onForecast, onDone, forecastLabel, invalidForecast, invalidDone, daysLeft }: PlanRowProps) {
+export function PlanRow({ title, alias, fictitious, onRemove, onMoveUp, onMoveDown, forecast, done, onForecast, onDone, forecastLabel, invalidForecast, invalidDone, daysLeft, showDone = true }: PlanRowProps) {
   const { t, i18n } = useTranslation('calculator')
   const aliasId = useId()
   const points = (value: number) => formatPoints(i18n.language, value)
   const status = pace(parsePoints(forecast) ?? 0, parsePoints(done) ?? 0, daysLeft)
-  const showPace = done.trim() !== '' && (parsePoints(forecast) ?? 0) > 0
+  const showPace = showDone && done.trim() !== '' && (parsePoints(forecast) ?? 0) > 0
 
   return (
     <section aria-label={title} className="flex flex-col gap-3 rounded border border-tcg-surface-strong bg-white p-4">
@@ -75,7 +77,7 @@ export function PlanRow({ title, alias, fictitious, onRemove, onMoveUp, onMoveDo
       )}
       <div className="grid gap-4 sm:grid-cols-2">
         <NumberField label={forecastLabel} value={forecast} onChange={onForecast} error={invalidForecast ? t('invalid') : undefined} />
-        <NumberField label={t('plan.done')} value={done} onChange={onDone} error={invalidDone ? t('invalid') : undefined} />
+        {showDone && <NumberField label={t('plan.done')} value={done} onChange={onDone} error={invalidDone ? t('invalid') : undefined} />}
       </div>
       {showPace && (
         <p className="text-sm font-semibold text-tcg-heading">

@@ -182,7 +182,7 @@
     "done": "Bisher erreicht (optional)",
     "pace": "Noch {{missing}} Punkte: {{perDay}} pro Tag.",
     "paceDone": "Prognose erreicht!",
-    "resultTitle": "Deine Planung im Vergleich zum Ziel",
+    "resultTitle": "Deine Planung für {{month}}",
     "requirementMet": "✅ {{measure}}: {{actual}} von {{min}}",
     "requirementMissing": "❌ {{measure}}: {{actual}} von {{min}}, es fehlen {{missing}}",
     "volumes": "Mit deiner Prognose: TU {{tt}} · TU-1 {{tt1}} · TU-2 {{tt2}} · TU-3 {{tt3}}",
@@ -212,8 +212,13 @@
     "fictitious": "Geplante Partnerin (noch nicht eingestiegen)",
     "fictitiousHelp": "Setze das Häkchen, wenn du diese Partnerin noch gewinnen musst.",
     "prospectingTitle": "Neue Partnerinnen, die du brauchst",
-    "prospecting_one": "Dein Plan rechnet mit {{count}} Partnerin, die noch nicht eingestiegen ist. Damit sie im Monat deines Ziels zählt, muss sie im Vormonat einsteigen: Fang jetzt mit Geschäftsgesprächen (GG) an. Statistisch etwa {{cn}} GG.",
-    "prospecting_other": "Dein Plan rechnet mit {{count}} Partnerinnen, die noch nicht eingestiegen sind. Damit sie im Monat deines Ziels zählen, müssen sie im Vormonat einsteigen: Fang jetzt mit Geschäftsgesprächen (GG) an. Statistisch etwa {{cn}} GG.",
-    "prospectingNote": "Teamstatistik: etwa 10 GG pro neuer Partnerin. Eine Partnerin, die in einem Monat einsteigt, zählt ab dem Folgemonat, mit ihren Punkten aus beiden Monaten."
+    "prospecting_one": "Dein Plan rechnet mit {{count}} Partnerin, die noch nicht eingestiegen ist. Damit sie im {{month}} zählt, muss sie spätestens im {{joinMonth}} einsteigen: Fang jetzt mit Geschäftsgesprächen (GG) an. Statistisch etwa {{cn}} GG.",
+    "prospecting_other": "Dein Plan rechnet mit {{count}} Partnerinnen, die noch nicht eingestiegen sind. Damit sie im {{month}} zählen, müssen sie spätestens im {{joinMonth}} einsteigen: Fang jetzt mit Geschäftsgesprächen (GG) an. Statistisch etwa {{cn}} GG.",
+    "prospectingNote": "Teamstatistik: etwa 10 GG pro neuer Partnerin. Eine Partnerin, die in einem Monat einsteigt, zählt ab dem Folgemonat, mit ihren Punkten aus beiden Monaten.",
+    "month": "Monat, den du planst",
+    "pastMonth": "Dieser Monat ist vorbei: Wähle einen anderen, um weiterzuplanen.",
+    "futureMonth": "Du planst {{month}}: Das Tagestempo und «Bisher erreicht» erscheinen, wenn der Monat beginnt.",
+    "prospectingLate_one": "Dein Plan rechnet mit {{count}} Partnerin, die noch nicht eingestiegen ist, aber es ist zu spät: Um im {{month}} zu zählen, hätte sie im {{joinMonth}} einsteigen müssen. Wähle einen späteren Monat oder nimm sie aus dem Plan.",
+    "prospectingLate_other": "Dein Plan rechnet mit {{count}} Partnerinnen, die noch nicht eingestiegen sind, aber es ist zu spät: Um im {{month}} zu zählen, hätten sie im {{joinMonth}} einsteigen müssen. Wähle einen späteren Monat oder nimm sie aus dem Plan."
   }
 }
