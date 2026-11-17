@@ -7,7 +7,7 @@ import type { OwnMeasure, Plan, TeamMeasure } from './plans'
  * Volumes are CT in the EU and MX plans and DT in the USA plan.
  */
 export interface CommissionInput {
-  /** CT: customer turnover as shown by the Online Office (VC), own orders included (BR-04, Q-16). */
+  /** CT: customer turnover as shown by the Online Office (VC); it already includes own consumption (BR-04, Q-16). */
   readonly customerTurnover: number
   /** PT: own purchases. USA plan only (BR-18); ignored elsewhere. */
   readonly personalTurnover?: number
