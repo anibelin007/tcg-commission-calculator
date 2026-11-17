@@ -47,6 +47,15 @@ describe('guideline cases (docs/qa/test-cases.md)', () => {
     expect(computeCommission(solo(1000), MX).amount).toBe(10140)
   })
 
+  it('TC-01 COL / ARG: 2,433,600 COP and 861,900 ARS (COL p. 13–14, ARG p. 13–14)', () => {
+    expect(computeCommission(solo(1000), market('CO')).amount).toBe(2433600)
+    expect(computeCommission(solo(1000), market('AR')).amount).toBe(861900)
+  })
+
+  it('TC-01 PER: 390 × 5.2 = 2,028 PEN (the PER guideline prints «2,208 PEN», an erratum, Q-21)', () => {
+    expect(computeCommission(solo(1000), market('PE')).amount).toBe(2028)
+  })
+
   it('TC-03: TT 4,500 and TT-1 2,700 (EU-ES p. 9–10)', () => {
     const { volumes } = computeCommission(GUIDE_TEAM, ES)
     expect(volumes.tt).toBe(4500)
@@ -65,6 +74,12 @@ describe('guideline cases (docs/qa/test-cases.md)', () => {
     it('same example in MX and USA: 17,914 MXN and $ 1,102.40 (MX p. 15–16, USA p. 15–16)', () => {
       expect(computeCommission(GUIDE_TEAM, MX, { strongestTeamLimit: 'commissionPoints' }).amount).toBe(17914)
       expect(computeCommission(GUIDE_TEAM, US, { strongestTeamLimit: 'commissionPoints' }).amount).toBe(1102.4)
+    })
+
+    it('same example in PER, COL and ARG: 3,582.8 PEN, 4,299,360 COP, 1,522,690 ARS (p. 15–16)', () => {
+      expect(computeCommission(GUIDE_TEAM, market('PE')).amount).toBe(3582.8)
+      expect(computeCommission(GUIDE_TEAM, market('CO')).amount).toBe(4299360)
+      expect(computeCommission(GUIDE_TEAM, market('AR')).amount).toBe(1522690)
     })
 
     it('by default (limit not applied, D-005) matches the guideline: 909.48 €, reporting the team above the limit', () => {

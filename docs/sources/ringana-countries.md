@@ -40,14 +40,14 @@ Mapped to the plans and points factors of `business-rules.md` (BR-14).
 | US | United States | USD | yes | usa | 1.6 | Verified rule (USA p. 13–14) |
 | LI | Liechtenstein | CHF | yes | eu? | **?** | Pending verification (Q-14): pays in CHF, but the guideline lists only Switzerland |
 | HK | Hong Kong | EUR | yes | **?** | **?** (1.32?) | Pending verification (Q-14): «all other RINGANA markets» use 1.32, but the EU guideline may not cover it |
-| AR | Argentina | ARS | yes | **?** | **?** | Pending verification (Q-13): no guideline |
-| CO | Colombia | COP | yes | **?** | **?** | Pending verification (Q-13): no guideline |
-| PE | Peru | PEN | yes | **?** | **?** | Pending verification (Q-13): no guideline |
-| TR | Türkiye | TRY | yes | **?** | **?** | Pending verification (Q-09, Q-13): GC Rules TR available, no commission guideline |
+| AR | Argentina | ARS | yes | ar | 2,210 | Verified rule (ARG p. 13–14) |
+| CO | Colombia | COP | yes | co | 6,240 | Verified rule (COL p. 13–14) |
+| PE | Peru | PEN | yes | pe | 5.2 | Verified rule (PER p. 13–14) |
+| TR | Türkiye | TRY | yes | **?** | **?** | Pending verification (Q-13): GC Rules TR available, no commission guideline |
 | MC | Monaco | EUR | **no** | — | — | Not offered: no partner registration (`partnerApplication: false`) |
 
 «Standard» = «En el resto de mercados RINGANA se aplica de forma estándar un factor de
 conversión de 1,32» (EU-ES p. 13).
 
-Phase 1 offers the 32 countries with a known plan and factor. Countries marked **?** are
+Phase 1 offers the 35 countries with a known plan and factor. Countries marked **?** are
 added when their rules are confirmed.

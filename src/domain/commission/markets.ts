@@ -1,13 +1,13 @@
 import type { PlanId } from './plans'
 
 /**
- * Markets offered by the calculator: the 32 countries of the RINGANA countries service (S-12)
+ * Markets offered by the calculator: the 35 countries of the RINGANA countries service (S-12)
  * with a known plan and points factor. See docs/sources/ringana-countries.md and BR-14, BR-16.
  * Country and contract names are not stored here: the UI translates them (country names via
  * `Intl.DisplayNames`, contract types via i18n keys).
  */
 
-export type CurrencyCode = 'EUR' | 'CHF' | 'SEK' | 'DKK' | 'GBP' | 'PLN' | 'CZK' | 'HUF' | 'MXN' | 'USD'
+export type CurrencyCode = 'EUR' | 'CHF' | 'SEK' | 'DKK' | 'GBP' | 'PLN' | 'CZK' | 'HUF' | 'MXN' | 'PEN' | 'COP' | 'ARS' | 'USD'
 
 /** Contract types with their own points factor (EU-ES p. 13). */
 export type ContractType = 'vdi' | 'mandataire' | 'occasionale' | 'partitaIva'
@@ -61,6 +61,10 @@ export const MARKETS: readonly Market[] = [
   local('CZ', 'CZK', 32.5),
   local('HU', 'HUF', 540),
   { id: 'MX', country: 'MX', plan: 'mx', currency: 'MXN', pointsFactor: 26, payoutThreshold: 1700, taxSpecificSettlement: true },
+  // No small-commission (voucher) threshold in the Peru, Colombia and Argentina guidelines.
+  { id: 'PE', country: 'PE', plan: 'pe', currency: 'PEN', pointsFactor: 5.2, payoutThreshold: null, taxSpecificSettlement: true },
+  { id: 'CO', country: 'CO', plan: 'co', currency: 'COP', pointsFactor: 6240, payoutThreshold: null, taxSpecificSettlement: true },
+  { id: 'AR', country: 'AR', plan: 'ar', currency: 'ARS', pointsFactor: 2210, payoutThreshold: null, taxSpecificSettlement: true },
   { id: 'US', country: 'US', plan: 'usa', currency: 'USD', pointsFactor: 1.6, payoutThreshold: 65, taxSpecificSettlement: false },
 ]
 
