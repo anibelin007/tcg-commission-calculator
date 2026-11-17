@@ -89,13 +89,6 @@
       "current": "Ahora estás en la meta {{level}}, con una comisión estimada de {{amount}}.",
       "currentNoLevel": "Ahora no llegas a la meta 1 (110 puntos de VC propios)."
     },
-    "target": {
-      "title": "¿Cuántos puntos necesitarías para…?",
-      "label": "Comisión que te gustaría ({{currency}})",
-      "reached": "Con tus puntos actuales ya llegas: {{amount}}.",
-      "needed": "Necesitarías {{extra}} puntos de VC más (VC total {{total}}): meta {{level}}, comisión estimada {{amount}}.",
-      "unreachable": "No se puede alcanzar solo con tus propios puntos."
-    },
     "chart": {
       "title": "Tu comisión estimada según tu VC",
       "subtitle": "Con tu equipo actual. Los saltos son los cambios de meta.",
@@ -123,5 +116,51 @@
   "emptyState": {
     "text": "Primero introduce tus puntos en «Mi comisión actual».",
     "action": "Ir a Mi comisión actual"
+  },
+  "reverse": {
+    "intro": "Escribe la comisión que te gustaría y te proponemos tres formas de llegar: solo con tus puntos, combinándolos con tu equipo o apoyándote más en tu equipo. Tus datos reales no cambian.",
+    "target": "Comisión que te gustaría ({{currency}})",
+    "reached": "Con tus datos actuales ya llegas: {{amount}}.",
+    "scenarios": {
+      "ownOnly": "Solo yo",
+      "balanced": "Mi equipo y yo",
+      "moreTeam": "Mayor aportación del equipo",
+      "manual": "Tu propio reparto"
+    },
+    "badges": {
+      "exact": "Mínimo exacto",
+      "proposal": "Propuesta"
+    },
+    "summary": "Si tú haces {{own}} puntos más y tu equipo {{team}}, llegarías a la meta {{level}} con una comisión estimada de {{amount}}.",
+    "fields": {
+      "ownExtra": "Tu VC adicional",
+      "teamExtra": "Puntos adicionales de tu equipo",
+      "perLeg": "Reparto por patas",
+      "finalCt": "VC final",
+      "level": "Meta",
+      "amount": "Comisión estimada",
+      "difference": "Sobre el objetivo",
+      "finalMeasure": "{{measure}} final"
+    },
+    "strategies": {
+      "levelling": "Reparto nivelado: primero las patas más débiles, que es lo que más sube tu VE-1.",
+      "proportional": "Reparto proporcional al VE de cada pata.",
+      "equal": "El mismo número de puntos para cada pata."
+    },
+    "infeasible": {
+      "noLegs": "Añade tus patas en «Mi comisión actual» para ver escenarios con tu equipo.",
+      "ownBelowLevel1": "Por debajo de la meta 1 (110 puntos de VC propios) tu equipo no te genera comisión: primero necesitas llegar a 110 puntos.",
+      "unreachable": "No se puede alcanzar con estos datos."
+    },
+    "manual": {
+      "title": "Ajusta tu aportación",
+      "label": "Tu VC adicional",
+      "help": "Elige cuántos puntos quieres hacer tú y calculamos cuántos necesitaría tu equipo."
+    },
+    "notes": {
+      "assumption": "Suponemos que los puntos de cada pata los hace la propia socia directa (1.ª generación): se pagan al porcentaje de esa generación y suben el VE de su pata.",
+      "proposal": "«Propuesta» es la mejor combinación que hemos encontrado entre varias formas de repartir; no tiene por qué ser la única ni la mínima absoluta.",
+      "estimate": "Son estimaciones y condiciones, no promesas de ingresos: la liquidación oficial es la de RINGANA."
+    }
   }
 }

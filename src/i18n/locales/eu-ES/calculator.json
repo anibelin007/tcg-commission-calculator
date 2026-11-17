@@ -89,13 +89,6 @@
       "current": "Orain {{level}}. helburuan zaude, {{amount}} komisio estimatuarekin.",
       "currentNoLevel": "Orain ez zara 1. helburura iristen (110 VC puntu propio)."
     },
-    "target": {
-      "title": "Zenbat puntu beharko zenituzke…?",
-      "label": "Nahi zenukeen komisioa ({{currency}})",
-      "reached": "Zure oraingo puntuekin iristen zara: {{amount}}.",
-      "needed": "{{extra}} VC puntu gehiago beharko zenituzke (VC guztira {{total}}): {{level}}. helburua, komisio estimatua {{amount}}.",
-      "unreachable": "Ezin da zure puntuekin bakarrik lortu."
-    },
     "chart": {
       "title": "Zure komisio estimatua zure VCaren arabera",
       "subtitle": "Zure oraingo taldearekin. Jauziak helburu-aldaketak dira.",
@@ -123,5 +116,51 @@
   "emptyState": {
     "text": "Lehenik, sartu zure puntuak «Nire oraingo komisioa» atalean.",
     "action": "Joan Nire oraingo komisioa atalera"
+  },
+  "reverse": {
+    "intro": "Idatzi nahi zenukeen komisioa eta hiru bide proposatuko dizkizugu: zure puntuekin bakarrik, zure taldearekin konbinatuta edo zure taldean gehiago oinarrituta. Zure benetako datuak ez dira aldatzen.",
+    "target": "Nahi zenukeen komisioa ({{currency}})",
+    "reached": "Zure oraingo datuekin iristen zara: {{amount}}.",
+    "scenarios": {
+      "ownOnly": "Ni bakarrik",
+      "balanced": "Nire taldea eta ni",
+      "moreTeam": "Taldearen ekarpen handiagoa",
+      "manual": "Zure banaketa"
+    },
+    "badges": {
+      "exact": "Gutxieneko zehatza",
+      "proposal": "Proposamena"
+    },
+    "summary": "Zuk {{own}} puntu gehiago eta zure taldeak {{team}} eginez gero, {{level}}. helburura iritsiko zinateke {{amount}} komisio estimatuarekin.",
+    "fields": {
+      "ownExtra": "Zure VC gehigarria",
+      "teamExtra": "Zure taldearen puntu gehigarriak",
+      "perLeg": "Banaketa adarka",
+      "finalCt": "Azken VC",
+      "level": "Helburua",
+      "amount": "Komisio estimatua",
+      "difference": "Helburuaren gainetik",
+      "finalMeasure": "Azken {{measure}}"
+    },
+    "strategies": {
+      "levelling": "Banaketa berdindua: lehenik adar ahulenak, horrek igotzen baitu gehien zure VE-1.",
+      "proportional": "Adar bakoitzaren VEaren araberako banaketa.",
+      "equal": "Puntu kopuru bera adar bakoitzarentzat."
+    },
+    "infeasible": {
+      "noLegs": "Gehitu zure adarrak «Nire oraingo komisioa» atalean taldearekin agertokiak ikusteko.",
+      "ownBelowLevel1": "1. helburutik behera (110 VC puntu propio) zure taldeak ez dizu komisiorik sortzen: lehenik 110 puntura iritsi behar zara.",
+      "unreachable": "Ezin da lortu datu hauekin."
+    },
+    "manual": {
+      "title": "Doitu zure ekarpena",
+      "label": "Zure VC gehigarria",
+      "help": "Aukeratu zuk zenbat puntu egin nahi dituzun eta zure taldeak zenbat beharko lituzkeen kalkulatuko dugu."
+    },
+    "notes": {
+      "assumption": "Adar bakoitzaren puntuak bazkide zuzenak berak egiten dituela suposatzen dugu (1. belaunaldia): belaunaldi horren ehunekoan ordaintzen dira eta bere adarraren VE igotzen dute.",
+      "proposal": "«Proposamena» banatzeko hainbat modutatik aurkitu dugun konbinaziorik onena da; ez du zertan bakarra edo gutxieneko absolutua izan.",
+      "estimate": "Estimazioak eta baldintzak dira, ez diru-sarreren promesak: likidazio ofiziala RINGANArena da."
+    }
   }
 }

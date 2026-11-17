@@ -89,13 +89,6 @@
       "current": "Du bist jetzt auf Zielstufe {{level}}, mit einer geschätzten Provision von {{amount}}.",
       "currentNoLevel": "Du erreichst Zielstufe 1 noch nicht (110 Punkte eigener KU)."
     },
-    "target": {
-      "title": "Wie viele Punkte bräuchtest du für…?",
-      "label": "Gewünschte Provision ({{currency}})",
-      "reached": "Mit deinen aktuellen Punkten erreichst du sie bereits: {{amount}}.",
-      "needed": "Du bräuchtest {{extra}} KU-Punkte mehr (KU gesamt {{total}}): Zielstufe {{level}}, geschätzte Provision {{amount}}.",
-      "unreachable": "Nur mit deinen eigenen Punkten nicht erreichbar."
-    },
     "chart": {
       "title": "Deine geschätzte Provision nach KU",
       "subtitle": "Mit deinem aktuellen Team. Die Sprünge sind Wechsel der Zielstufe.",
@@ -123,5 +116,51 @@
   "emptyState": {
     "text": "Gib zuerst deine Punkte unter «Meine aktuelle Provision» ein.",
     "action": "Zu Meine aktuelle Provision"
+  },
+  "reverse": {
+    "intro": "Gib die gewünschte Provision ein und wir schlagen dir drei Wege vor: nur mit deinen Punkten, kombiniert mit deinem Team oder stärker über dein Team. Deine echten Daten ändern sich nicht.",
+    "target": "Gewünschte Provision ({{currency}})",
+    "reached": "Mit deinen aktuellen Daten erreichst du sie bereits: {{amount}}.",
+    "scenarios": {
+      "ownOnly": "Nur ich",
+      "balanced": "Mein Team und ich",
+      "moreTeam": "Mehr von meinem Team",
+      "manual": "Deine eigene Aufteilung"
+    },
+    "badges": {
+      "exact": "Exaktes Minimum",
+      "proposal": "Vorschlag"
+    },
+    "summary": "Wenn du {{own}} Punkte mehr machst und dein Team {{team}}, würdest du Zielstufe {{level}} mit einer geschätzten Provision von {{amount}} erreichen.",
+    "fields": {
+      "ownExtra": "Dein zusätzlicher KU",
+      "teamExtra": "Zusätzliche Punkte deines Teams",
+      "perLeg": "Aufteilung nach Teams",
+      "finalCt": "KU am Ende",
+      "level": "Zielstufe",
+      "amount": "Geschätzte Provision",
+      "difference": "Über dem Ziel",
+      "finalMeasure": "{{measure}} am Ende"
+    },
+    "strategies": {
+      "levelling": "Ausgeglichene Aufteilung: zuerst die schwächsten Teams, das erhöht deinen TU-1 am meisten.",
+      "proportional": "Aufteilung im Verhältnis zum TU jedes Teams.",
+      "equal": "Gleich viele Punkte für jedes Team."
+    },
+    "infeasible": {
+      "noLegs": "Füge deine Teams unter «Meine aktuelle Provision» hinzu, um Szenarien mit deinem Team zu sehen.",
+      "ownBelowLevel1": "Unter Zielstufe 1 (110 Punkte eigener KU) bringt dir dein Team keine Provision: Du brauchst zuerst 110 Punkte.",
+      "unreachable": "Mit diesen Daten nicht erreichbar."
+    },
+    "manual": {
+      "title": "Passe deinen Beitrag an",
+      "label": "Dein zusätzlicher KU",
+      "help": "Wähle, wie viele Punkte du selbst machen möchtest, und wir berechnen, wie viele dein Team bräuchte."
+    },
+    "notes": {
+      "assumption": "Wir nehmen an, dass die Punkte jedes Teams von der direkten Partnerin selbst stammen (1. Generation): Sie werden mit dem Satz dieser Generation vergütet und erhöhen den TU ihres Teams.",
+      "proposal": "«Vorschlag» ist die beste Kombination, die wir unter mehreren Aufteilungen gefunden haben; sie ist nicht unbedingt die einzige oder das absolute Minimum.",
+      "estimate": "Es sind Schätzungen und Bedingungen, keine Einkommensversprechen: Maßgeblich ist die offizielle Abrechnung von RINGANA."
+    }
   }
 }

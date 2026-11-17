@@ -89,13 +89,6 @@
       "current": "Ara ets a la meta {{level}}, amb una comissió estimada de {{amount}}.",
       "currentNoLevel": "Ara no arribes a la meta 1 (110 punts de VC propis)."
     },
-    "target": {
-      "title": "Quants punts necessitaries per…?",
-      "label": "Comissió que t'agradaria ({{currency}})",
-      "reached": "Amb els teus punts actuals ja hi arribes: {{amount}}.",
-      "needed": "Necessitaries {{extra}} punts de VC més (VC total {{total}}): meta {{level}}, comissió estimada {{amount}}.",
-      "unreachable": "No s'hi pot arribar només amb els teus propis punts."
-    },
     "chart": {
       "title": "La teva comissió estimada segons el teu VC",
       "subtitle": "Amb el teu equip actual. Els salts són els canvis de meta.",
@@ -123,5 +116,51 @@
   "emptyState": {
     "text": "Primer introdueix els teus punts a «La meva comissió actual».",
     "action": "Ves a La meva comissió actual"
+  },
+  "reverse": {
+    "intro": "Escriu la comissió que t'agradaria i et proposem tres maneres d'arribar-hi: només amb els teus punts, combinant-los amb el teu equip o recolzant-te més en el teu equip. Les teves dades reals no canvien.",
+    "target": "Comissió que t'agradaria ({{currency}})",
+    "reached": "Amb les teves dades actuals ja hi arribes: {{amount}}.",
+    "scenarios": {
+      "ownOnly": "Només jo",
+      "balanced": "El meu equip i jo",
+      "moreTeam": "Més aportació de l'equip",
+      "manual": "El teu propi repartiment"
+    },
+    "badges": {
+      "exact": "Mínim exacte",
+      "proposal": "Proposta"
+    },
+    "summary": "Si tu fas {{own}} punts més i el teu equip {{team}}, arribaries a la meta {{level}} amb una comissió estimada de {{amount}}.",
+    "fields": {
+      "ownExtra": "El teu VC addicional",
+      "teamExtra": "Punts addicionals del teu equip",
+      "perLeg": "Repartiment per branques",
+      "finalCt": "VC final",
+      "level": "Meta",
+      "amount": "Comissió estimada",
+      "difference": "Per sobre de l'objectiu",
+      "finalMeasure": "{{measure}} final"
+    },
+    "strategies": {
+      "levelling": "Repartiment anivellat: primer les branques més febles, que és el que més puja el teu VE-1.",
+      "proportional": "Repartiment proporcional al VE de cada branca.",
+      "equal": "El mateix nombre de punts per a cada branca."
+    },
+    "infeasible": {
+      "noLegs": "Afegeix les teves branques a «La meva comissió actual» per veure escenaris amb el teu equip.",
+      "ownBelowLevel1": "Per sota de la meta 1 (110 punts de VC propis) el teu equip no et genera comissió: primer has d'arribar a 110 punts.",
+      "unreachable": "No s'hi pot arribar amb aquestes dades."
+    },
+    "manual": {
+      "title": "Ajusta la teva aportació",
+      "label": "El teu VC addicional",
+      "help": "Tria quants punts vols fer tu i calculem quants en necessitaria el teu equip."
+    },
+    "notes": {
+      "assumption": "Suposem que els punts de cada branca els fa la mateixa sòcia directa (1a generació): es paguen al percentatge d'aquesta generació i pugen el VE de la seva branca.",
+      "proposal": "«Proposta» és la millor combinació que hem trobat entre diverses maneres de repartir; no ha de ser l'única ni la mínima absoluta.",
+      "estimate": "Són estimacions i condicions, no promeses d'ingressos: la liquidació oficial és la de RINGANA."
+    }
   }
 }

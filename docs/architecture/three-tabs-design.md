@@ -5,8 +5,8 @@ Approved by the PO on 2026-11-17 (D-007 amended, D-019 to D-021). Implemented in
 | PR | Scope | Status |
 |---|---|---|
 | A | Three tabs, shared real data in memory and `sessionStorage`, leg aliases. No change in calculation behaviour. | Merged (#7) |
-| B | Scenario engine for reverse engineering (pure domain + tests): `src/domain/scenarios/`. | This PR |
-| C | Tab 3 UI: three scenarios, per-leg allocation, manual own-CT control. | After B |
+| B | Scenario engine for reverse engineering (pure domain + tests): `src/domain/scenarios/`. | Merged (#8) |
+| C | Tab 3 UI: three scenarios, per-leg allocation, manual own-CT control. | This PR |
 
 ## 1. One app, three tabs (D-019)
 

@@ -89,13 +89,6 @@
       "current": "You are now at Target Level {{level}}, with an estimated commission of {{amount}}.",
       "currentNoLevel": "You do not reach Target Level 1 yet (110 points of your own CT)."
     },
-    "target": {
-      "title": "How many points would you need for…?",
-      "label": "Commission you would like ({{currency}})",
-      "reached": "Your current points already get you there: {{amount}}.",
-      "needed": "You would need {{extra}} more CT points (total CT {{total}}): Target Level {{level}}, estimated commission {{amount}}.",
-      "unreachable": "It cannot be reached with your own points alone."
-    },
     "chart": {
       "title": "Your estimated commission by CT",
       "subtitle": "With your current team. The jumps are Target Level changes.",
@@ -123,5 +116,51 @@
   "emptyState": {
     "text": "First enter your points in «My current commission».",
     "action": "Go to My current commission"
+  },
+  "reverse": {
+    "intro": "Enter the commission you would like and we suggest three ways to get there: with your own points only, combining them with your team, or relying more on your team. Your real data does not change.",
+    "target": "Commission you would like ({{currency}})",
+    "reached": "Your current data already gets you there: {{amount}}.",
+    "scenarios": {
+      "ownOnly": "Just me",
+      "balanced": "My team and me",
+      "moreTeam": "More from my team",
+      "manual": "Your own split"
+    },
+    "badges": {
+      "exact": "Exact minimum",
+      "proposal": "Proposal"
+    },
+    "summary": "If you add {{own}} points and your team {{team}}, you would reach Target Level {{level}} with an estimated commission of {{amount}}.",
+    "fields": {
+      "ownExtra": "Your extra CT",
+      "teamExtra": "Extra points from your team",
+      "perLeg": "Split by team",
+      "finalCt": "Final CT",
+      "level": "Target Level",
+      "amount": "Estimated commission",
+      "difference": "Above the target",
+      "finalMeasure": "Final {{measure}}"
+    },
+    "strategies": {
+      "levelling": "Levelled split: the weakest teams first, which raises your TT-1 the most.",
+      "proportional": "Split in proportion to each team’s TT.",
+      "equal": "The same number of points for each team."
+    },
+    "infeasible": {
+      "noLegs": "Add your teams in «My current commission» to see scenarios with your team.",
+      "ownBelowLevel1": "Below Target Level 1 (110 points of your own CT) your team earns you no commission: you first need 110 points.",
+      "unreachable": "It cannot be reached with this data."
+    },
+    "manual": {
+      "title": "Adjust your contribution",
+      "label": "Your extra CT",
+      "help": "Choose how many points you want to add yourself and we calculate how many your team would need."
+    },
+    "notes": {
+      "assumption": "We assume each team’s points are made by the direct partner herself (1st generation): they are paid at that generation’s rate and raise her team’s TT.",
+      "proposal": "«Proposal» is the best combination we found among several ways of splitting; it is not necessarily the only one or the absolute minimum.",
+      "estimate": "These are estimates and conditions, not income promises: the official settlement is RINGANA’s."
+    }
   }
 }
