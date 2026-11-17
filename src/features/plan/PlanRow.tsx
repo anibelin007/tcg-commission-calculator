@@ -1,5 +1,6 @@
 import { useId, type ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
+import { MoveButtons } from '../../components/MoveButtons'
 import { NumberField } from '../../components/NumberField'
 import { pace } from '../../domain/planning'
 import { formatPoints } from '../../shared/format'
@@ -11,6 +12,8 @@ interface PlanRowProps {
   /** Optional name field (legs) and remove action. */
   alias?: { value: string; onChange: (value: string) => void }
   onRemove?: () => void
+  onMoveUp?: () => void
+  onMoveDown?: () => void
   forecast: string
   done: string
   onForecast: (value: string) => void
@@ -23,7 +26,7 @@ interface PlanRowProps {
 }
 
 /** One planning row: forecast for the month, optional points made so far and the daily pace. */
-export function PlanRow({ title, alias, onRemove, forecast, done, onForecast, onDone, forecastLabel, invalidForecast, invalidDone, daysLeft }: PlanRowProps) {
+export function PlanRow({ title, alias, onRemove, onMoveUp, onMoveDown, forecast, done, onForecast, onDone, forecastLabel, invalidForecast, invalidDone, daysLeft }: PlanRowProps) {
   const { t, i18n } = useTranslation('calculator')
   const aliasId = useId()
   const points = (value: number) => formatPoints(i18n.language, value)
@@ -35,9 +38,12 @@ export function PlanRow({ title, alias, onRemove, forecast, done, onForecast, on
       <div className="flex items-center justify-between gap-4">
         <h3 className="text-lg">{title}</h3>
         {onRemove && (
-          <button type="button" onClick={onRemove} className="text-sm font-semibold text-tcg-primary underline">
-            {t('legs.remove', { name: title })}
-          </button>
+          <div className="flex items-center gap-3">
+            <MoveButtons name={title} onUp={onMoveUp} onDown={onMoveDown} />
+            <button type="button" onClick={onRemove} className="text-sm font-semibold text-tcg-primary underline">
+              {t('legs.remove', { name: title })}
+            </button>
+          </div>
         )}
       </div>
       {alias && (

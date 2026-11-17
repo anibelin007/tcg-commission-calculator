@@ -91,7 +91,9 @@
     "alias": "Name (optional)",
     "aliasHelp": "Her first name, to recognise her. Only kept in this browser tab.",
     "remove": "Remove {{name}}",
-    "add": "Add team"
+    "add": "Add team",
+    "moveUp": "Move {{name}} up",
+    "moveDown": "Move {{name}} down"
   },
   "data": {
     "note": "Your data is kept only in this browser tab and deleted when you close it.",
@@ -203,6 +205,8 @@
       "level8": "LEADER in the making 🥳",
       "level9": "AMAZING 💥",
       "level10": "⭐ OMG.. TARGET LEVEL 10 🤩"
-    }
+    },
+    "remember": "Keep my plan on this device until I reach my goal",
+    "rememberHelp": "Kept only in this browser, with no server, even if you close the tab. Untick it or press «Delete plan» to remove it."
   }
 }

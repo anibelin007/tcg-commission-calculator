@@ -91,7 +91,9 @@
     "alias": "Nombre (opcional)",
     "aliasHelp": "Su nombre de pila, para reconocerla. Solo se guarda en esta pestaña del navegador.",
     "remove": "Quitar {{name}}",
-    "add": "Añadir pata"
+    "add": "Añadir pata",
+    "moveUp": "Subir {{name}}",
+    "moveDown": "Bajar {{name}}"
   },
   "data": {
     "note": "Tus datos se guardan solo en esta pestaña del navegador y se borran al cerrarla.",
@@ -203,6 +205,8 @@
       "level8": "LEADER en potencia 🥳",
       "level9": "BRU TAL 💥",
       "level10": "⭐ OMG.. META 10 🤩"
-    }
+    },
+    "remember": "Guardar mi planificación en este dispositivo hasta conseguir mi objetivo",
+    "rememberHelp": "Se guarda solo en este navegador, sin servidor, aunque cierres la pestaña. Desmárcalo o pulsa «Borrar planificación» para quitarla."
   }
 }

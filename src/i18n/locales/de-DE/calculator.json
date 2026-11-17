@@ -91,7 +91,9 @@
     "alias": "Name (optional)",
     "aliasHelp": "Ihr Vorname, damit du sie erkennst. Wird nur in diesem Browser-Tab gespeichert.",
     "remove": "{{name}} entfernen",
-    "add": "Team hinzufügen"
+    "add": "Team hinzufügen",
+    "moveUp": "{{name}} nach oben",
+    "moveDown": "{{name}} nach unten"
   },
   "data": {
     "note": "Deine Daten werden nur in diesem Browser-Tab gespeichert und beim Schließen gelöscht.",
@@ -203,6 +205,8 @@
       "level8": "LEADER in spe 🥳",
       "level9": "WAHNSINN 💥",
       "level10": "⭐ OMG.. ZIELSTUFE 10 🤩"
-    }
+    },
+    "remember": "Meine Planung auf diesem Gerät speichern, bis ich mein Ziel erreiche",
+    "rememberHelp": "Wird nur in diesem Browser gespeichert, ohne Server, auch wenn du den Tab schließt. Entferne das Häkchen oder tippe auf «Planung löschen», um sie zu entfernen."
   }
 }

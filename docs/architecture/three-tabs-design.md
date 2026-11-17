@@ -123,8 +123,10 @@ and its own data:
 - **Approximate commission of a plan:** legs only give team totals, so their points are spread
   over generations like the real generations of tab 1 (or all in generation 1 without data).
 - Tab 3 is independent and usable from empty; it is prefilled from the plan of tab 2.
-- Each tab keeps its form in `sessionStorage` (option A, D-007). Keeping the plan across
-  sessions for daily follow-up is pending (Q-22). Yearly history and fortnightly follow-up of
+- Each tab keeps its form in `sessionStorage` (D-007). The plan of tab 2 can also be kept in
+  `localStorage` with an opt-in checkbox until the goal is reached (D-023, Q-22 option B).
+- Legs can be reordered with ↑ ↓ buttons in tabs 2 and 3 (order is display only; the engine
+  sorts legs by VE). Yearly history and fortnightly follow-up of
   the planner sheet wait for a server and a database.
 - Motivational messages per reached level come from the planner sheet (editable texts).
 

@@ -6,7 +6,8 @@ import { checkTarget, daysLeftInMonth, generationShares, motivationKey, planToIn
 import { formatAmount, formatPoints } from '../../shared/format'
 import { usePartnerData } from '../../state/partner-data-context'
 import { PLAN_STORAGE_KEY, initialPlanData, isEmptyPlanData, isPlanData, parsePlanData, targetLevelOf, type PlanData } from '../../state/plan-data'
-import { useSessionState } from '../../state/use-session-state'
+import { useRememberableState } from '../../state/use-session-state'
+import { moveItem } from '../../shared/move-item'
 import { CommissionChart } from './CommissionChart'
 import { PlanRow } from './PlanRow'
 
@@ -21,7 +22,7 @@ export function PlanningPage() {
   const locale = i18n.language
   const targetId = useId()
   const { market, parsed: real, newLegId } = usePartnerData()
-  const [data, setData, reset] = useSessionState<PlanData>(PLAN_STORAGE_KEY, initialPlanData, isPlanData, isEmptyPlanData)
+  const { state: data, setState: setData, reset, remember, setRemember } = useRememberableState<PlanData>(PLAN_STORAGE_KEY, initialPlanData, isPlanData, isEmptyPlanData)
   const update = useCallback((patch: Partial<PlanData>) => setData((current) => ({ ...current, ...patch })), [setData])
   const shares = useMemo(() => generationShares(real.input.generationVolumes), [real.input.generationVolumes])
   const parsed = useMemo(() => parsePlanData(data, shares), [data, shares])
@@ -38,6 +39,13 @@ export function PlanningPage() {
   return (
     <div className="flex flex-col gap-6">
       <p>{t('plan.intro')}</p>
+      <label className="flex items-start gap-3 rounded border border-tcg-surface-strong bg-white p-4">
+        <input type="checkbox" checked={remember} onChange={(event) => setRemember(event.target.checked)} className="mt-1 size-5 accent-tcg-primary" />
+        <span className="flex flex-col gap-1">
+          <span className="font-semibold text-tcg-heading">{t('plan.remember')}</span>
+          <span className="text-sm">{t('plan.rememberHelp')}</span>
+        </span>
+      </label>
 
       <div className="flex flex-col gap-1">
         <label htmlFor={targetId} className="text-xl font-semibold text-tcg-heading">
@@ -90,6 +98,8 @@ export function PlanningPage() {
               title={legName(index)}
               alias={{ value: leg.alias, onChange: (alias) => setLeg({ alias }) }}
               onRemove={() => update({ legs: data.legs.filter((l) => l.id !== leg.id) })}
+              onMoveUp={index > 0 ? () => update({ legs: moveItem(data.legs, index, -1) }) : undefined}
+              onMoveDown={index < data.legs.length - 1 ? () => update({ legs: moveItem(data.legs, index, 1) }) : undefined}
               forecastLabel={t('plan.legForecast')}
               forecast={leg.volume}
               done={leg.done}

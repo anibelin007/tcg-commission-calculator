@@ -91,7 +91,9 @@
     "alias": "Izena (aukerakoa)",
     "aliasHelp": "Bere izena, ezagutzeko. Nabigatzailearen fitxa honetan bakarrik gordetzen da.",
     "remove": "Kendu {{name}}",
-    "add": "Gehitu adarra"
+    "add": "Gehitu adarra",
+    "moveUp": "Igo {{name}}",
+    "moveDown": "Jaitsi {{name}}"
   },
   "data": {
     "note": "Zure datuak nabigatzailearen fitxa honetan bakarrik gordetzen dira eta ixtean ezabatzen dira.",
@@ -203,6 +205,8 @@
       "level8": "LEADER izateko bidean 🥳",
       "level9": "IZUGARRIA 💥",
       "level10": "⭐ OMG.. 10. HELBURUA 🤩"
-    }
+    },
+    "remember": "Gorde nire planifikazioa gailu honetan nire helburua lortu arte",
+    "rememberHelp": "Nabigatzaile honetan bakarrik gordetzen da, zerbitzaririk gabe, fitxa itxi arren. Desmarkatu edo sakatu «Ezabatu planifikazioa» kentzeko."
   }
 }

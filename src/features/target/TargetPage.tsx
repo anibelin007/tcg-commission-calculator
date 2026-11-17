@@ -1,7 +1,9 @@
 import { Button } from '@anibelin007/tcg-ui'
 import { useCallback, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
+import { MoveButtons } from '../../components/MoveButtons'
 import { NumberField } from '../../components/NumberField'
+import { moveItem } from '../../shared/move-item'
 import { generationShares, planToInput } from '../../domain/planning'
 import { usePartnerData } from '../../state/partner-data-context'
 import { PLAN_STORAGE_KEY, isPlanData } from '../../state/plan-data'
@@ -83,13 +85,20 @@ export function TargetPage() {
                   onChange={(volume) => update({ legs: data.legs.map((l) => (l.id === leg.id ? { ...l, volume } : l)) })}
                   error={error(`leg-${index}`)}
                 />
-                <button
-                  type="button"
-                  onClick={() => update({ legs: data.legs.filter((l) => l.id !== leg.id) })}
-                  className="self-start text-sm font-semibold text-tcg-primary underline sm:self-center"
-                >
-                  {t('legs.remove', { name: legNames[index] })}
-                </button>
+                <div className="flex items-center gap-3 sm:self-center">
+                  <MoveButtons
+                    name={legNames[index] ?? ''}
+                    onUp={index > 0 ? () => update({ legs: moveItem(data.legs, index, -1) }) : undefined}
+                    onDown={index < data.legs.length - 1 ? () => update({ legs: moveItem(data.legs, index, 1) }) : undefined}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => update({ legs: data.legs.filter((l) => l.id !== leg.id) })}
+                    className="text-sm font-semibold text-tcg-primary underline"
+                  >
+                    {t('legs.remove', { name: legNames[index] })}
+                  </button>
+                </div>
               </div>
             ))}
             <Button className="self-start" onClick={() => update({ legs: [...data.legs, { id: newLegId(), alias: '', volume: '' }] })}>

@@ -43,7 +43,8 @@ she needs for the next target level and how many points she would need for a tar
   GitHub Actions — same as `tcg-skin-test`. Shared UI from `@anibelin007/tcg-ui`.
 - **Not decided — do not choose or configure:** backend, hosting.
 - **Nothing leaves the browser** (D-007): the real form data and the RINGANA session token
-  (D-018) live only in `sessionStorage` of the tab; scenarios are never stored. Never store or
+  (D-018) live only in `sessionStorage` of the tab; scenarios are never stored. Only exception: the opt-in
+  «keep my plan» checkbox of tab 2 also keeps the plan in `localStorage` (D-023). Never store or
   log passwords. The RINGANA import uses only `/teams/generations` and `/teams/revenue`.
 
 ## Architecture Principles

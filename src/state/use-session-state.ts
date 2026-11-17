@@ -44,3 +44,55 @@ export function useSessionState<T>(
 export function peekSessionState<T>(key: string, isValid: (value: unknown) => value is T, storage: Storage | undefined = globalThis.sessionStorage): T | null {
   return read(storage, key, isValid)
 }
+
+/**
+ * Like `useSessionState`, plus an opt-in «remember on this device» (D-023): when on, the form is
+ * also kept in `localStorage` of this browser (no server) until the partner turns it off or
+ * clears the form. The choice itself is remembered on the device.
+ */
+export function useRememberableState<T>(
+  key: string,
+  initial: () => T,
+  isValid: (value: unknown) => value is T,
+  isEmpty: (value: T) => boolean,
+  session: Storage | undefined = globalThis.sessionStorage,
+  device: Storage | undefined = globalThis.localStorage,
+): { state: T; setState: (update: T | ((current: T) => T)) => void; reset: () => void; remember: boolean; setRemember: (on: boolean) => void } {
+  const flagKey = `${key}/remember`
+  const [remember, setRememberFlag] = useState(() => {
+    try {
+      return device?.getItem(flagKey) === '1'
+    } catch {
+      return false
+    }
+  })
+  const [state, setState] = useState<T>(() => (remember ? read(device, key, isValid) : null) ?? read(session, key, isValid) ?? initial())
+
+  useEffect(() => {
+    const write = (storage: Storage | undefined, keep: boolean) => {
+      try {
+        if (!keep || isEmpty(state)) storage?.removeItem(key)
+        else storage?.setItem(key, JSON.stringify(state))
+      } catch {
+        // Ignore: the state still lives in memory.
+      }
+    }
+    write(session, true)
+    write(device, remember)
+  }, [session, device, key, state, isEmpty, remember])
+
+  const setRemember = useCallback(
+    (on: boolean) => {
+      try {
+        if (on) device?.setItem(flagKey, '1')
+        else device?.removeItem(flagKey)
+      } catch {
+        // Ignore.
+      }
+      setRememberFlag(on)
+    },
+    [device, flagKey],
+  )
+  const reset = useCallback(() => setState(initial()), [initial])
+  return { state, setState, reset, remember, setRemember }
+}

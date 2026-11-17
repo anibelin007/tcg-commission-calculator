@@ -91,7 +91,9 @@
     "alias": "Nom (opcional)",
     "aliasHelp": "El seu nom de pila, per reconèixer-la. Només es desa en aquesta pestanya del navegador.",
     "remove": "Treu {{name}}",
-    "add": "Afegeix una branca"
+    "add": "Afegeix una branca",
+    "moveUp": "Puja {{name}}",
+    "moveDown": "Baixa {{name}}"
   },
   "data": {
     "note": "Les teves dades es desen només en aquesta pestanya del navegador i s'esborren en tancar-la.",
@@ -203,6 +205,8 @@
       "level8": "LEADER en potència 🥳",
       "level9": "BRU TAL 💥",
       "level10": "⭐ OMG.. META 10 🤩"
-    }
+    },
+    "remember": "Desa la meva planificació en aquest dispositiu fins que aconsegueixi el meu objectiu",
+    "rememberHelp": "Es desa només en aquest navegador, sense servidor, encara que tanquis la pestanya. Desmarca-ho o prem «Esborra la planificació» per treure-la."
   }
 }
