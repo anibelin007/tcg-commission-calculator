@@ -25,6 +25,12 @@ export interface CommissionInput {
    * attained level (BR-12); otherwise ignored.
    */
   readonly strongestTeamGenerations?: readonly number[]
+  /**
+   * TT-1, TT-2 and TT-3 as reported by the Online Office (the partner's own row in the list of
+   * partners). When given, they replace the values computed from `teamVolumes`; a missing one
+   * counts as the own volume, the lowest possible (never overestimates the level).
+   */
+  readonly reportedTeamMinus?: { readonly tt1?: number; readonly tt2?: number; readonly tt3?: number }
 }
 
 export interface Volumes {
@@ -61,6 +67,10 @@ export function computeVolumes(plan: Plan, input: CommissionInput): Volumes {
   const tt = own + downline
   const strongestFirst = [...input.teamVolumes].sort((a, b) => b - a)
   const withoutStrongest = (n: number) => own + sum(strongestFirst.slice(n)) + notInLegs
+  const reported = input.reportedTeamMinus
+  if (reported) {
+    return { ct, dt, own, downline, teamVolumes: input.teamVolumes, tt, tt1: reported.tt1 ?? own, tt2: reported.tt2 ?? own, tt3: reported.tt3 ?? own }
+  }
   return { ct, dt, own, downline, teamVolumes: input.teamVolumes, tt, tt1: withoutStrongest(1), tt2: withoutStrongest(2), tt3: withoutStrongest(3) }
 }
 

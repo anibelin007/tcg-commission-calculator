@@ -226,5 +226,9 @@ Approved direction by the PO (D-002, D-013); exact behaviour still to be specifi
   UI in tab 3 (`src/features/target/`). Each scenario is worded as a condition («si tú haces X
   puntos más y tu equipo Y, llegarías a…»), with the per-leg split by name, final CT, VE,
   VE-1/2/3, level, estimated commission and margin over the target.
+- **PF-09 Planner** (D-022, design §7): target level, forecast per leg and for the partner,
+  live comparison with the target, own CT needed (exact: own CT raises TT-n one to one), points
+  missing per day until month end, approximate commission (legs spread like the real
+  generations). Based on the team planner sheet «Planificador de metas TCG».
 - **PF-05 Import** of current and previous-month points from RINGANA with the partner's own
   session (D-018); prerequisites Q-17 to Q-19.

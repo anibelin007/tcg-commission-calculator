@@ -58,6 +58,19 @@ Property tests (seeded random partners in ES, MX, US, PL): the commission never 
 own or leg points grow; every returned scenario reaches the target when recomputed with the
 engine; the two team scenarios never dominate each other.
 
+## Planner and tab 3 (D-022)
+
+Synthetic plan P: own CT 600, legs expected at 1,000 and 600. Tests in `src/domain/planning/`
+and `src/features/target/`.
+
+| ID | Case | Expected |
+|---|---|---|
+| P-01 | Target level 5 | VE-2 = 600 (own only: two legs are the two strongest) → missing 3,400; own CT needed 4,000 |
+| P-02 | Target level 3 | missing VE-1 400 or CT 225; own CT needed 825; estimated 593.67 € (legs in generation 1) |
+| P-03 | Legs 2,000 / 2,000 / 1,000, target 5 | own CT needed 3,000 (VE-2 = own + 1,000) |
+| P-04 | Pace: forecast 1,000, made 400, 14 days left | 600 missing, 42.86 a day |
+| P-05 | Tab 3: willing 600, legs 1,000 / 600 (generations 900 / 700), target 600 € | not enough (361.68 €, 238.32 € short); +225 own CT; or +1,069.28 from the legs; partners at 800 on average: 2 more (656.04 €) |
+
 ## Cross-plan and cross-locale checks
 
 - Same inputs ⇒ same level and points in every UI language; only the formatting changes.

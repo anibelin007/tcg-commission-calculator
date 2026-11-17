@@ -169,6 +169,28 @@ describe('strongest-team limit input (BR-12)', () => {
     expect(warnings).toEqual(['teamVolumesExceedDownline'])
   })
 
+  it('uses TT-1/2/3 as reported by the Online Office when given (tab 1)', () => {
+    // Same as TC-02 without legs: TT 4,500 from CT + generations; TT-1 2,700 from the Office.
+    const input = { customerTurnover: 1000, generationVolumes: [1600, 1900], teamVolumes: [], reportedTeamMinus: { tt1: 2700, tt2: 1000, tt3: 1000 } }
+    const result = computeCommission(input, ES)
+    expect(result.volumes).toMatchObject({ tt: 4500, tt1: 2700, tt2: 1000, tt3: 1000 })
+    expect(result.level).toBe(3)
+    expect(result.amount).toBe(909.48)
+    expect(result.warnings).toEqual([])
+  })
+
+  it('counts a missing reported TT-n as the own volume and warns', () => {
+    const input = { customerTurnover: 1000, generationVolumes: [1600, 1900], teamVolumes: [], reportedTeamMinus: {} }
+    const result = computeCommission(input, ES)
+    expect(result.volumes).toMatchObject({ tt1: 1000, tt2: 1000, tt3: 1000 })
+    expect(result.warnings).toEqual(['teamMinusMissing'])
+  })
+
+  it('warns when reported TT-n values cannot be right', () => {
+    const input = { customerTurnover: 1000, generationVolumes: [1600, 1900], teamVolumes: [], reportedTeamMinus: { tt1: 2700, tt2: 3000, tt3: 900 } }
+    expect(computeCommission(input, ES).warnings).toEqual(['teamMinusInconsistent'])
+  })
+
   it('warns about inconsistent input', () => {
     expect(computeCommission({ customerTurnover: 400, generationVolumes: [500], teamVolumes: [600] }, ES).warnings).toEqual([
       'teamVolumesExceedDownline',

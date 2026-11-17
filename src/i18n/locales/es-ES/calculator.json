@@ -55,19 +55,15 @@
     "add": "Añadir generación",
     "total": "Total de tu equipo: {{volume}} puntos"
   },
-  "breakdown": {
-    "legend": "Tope de la pata más fuerte",
-    "help": "Tu pata más fuerte ({{team}}) tiene un VE de {{volume}} puntos y supera el tope de la meta {{level}} ({{limit}} puntos). Para aplicar el tope, indica los puntos de esa pata por generación: la generación 1 es la propia socia directa (su VC).",
-    "total": "Total de la pata: {{volume}} puntos"
-  },
   "warnings": {
     "teamVolumesMissing": "Falta el VE de tus socias directas: sin él no se pueden descontar tus patas más fuertes y la meta puede salir más alta de la real.",
     "teamVolumesExceedDownline": "La suma del VE de tus socias directas es mayor que la suma de todas las generaciones. Revisa los datos.",
     "breakdownDoesNotMatchTeam": "El desglose de la pata más fuerte no suma su VE. Revisa los datos.",
-    "breakdownExceedsGeneration": "Alguna generación del desglose es mayor que el total de esa generación. Revisa los datos."
+    "breakdownExceedsGeneration": "Alguna generación del desglose es mayor que el total de esa generación. Revisa los datos.",
+    "teamMinusMissing": "Faltan tu VE-1, VE-2 o VE-3: sin ellos tu meta puede salir más baja de la real. Cópialos de la Office Online.",
+    "teamMinusInconsistent": "Tus VE-1, VE-2 y VE-3 no cuadran (cada uno debe estar entre tu VC y el anterior, sin superar tu VE). Revisa los datos."
   },
   "simulation": {
-    "intro": "Calculadas con tu equipo tal como está ahora: solo cambian tus propios puntos (VC).",
     "measures": {
       "ct": "VC",
       "dt": "DT",
@@ -77,22 +73,12 @@
       "tt3": "VE-3"
     },
     "next": {
-      "title": "Siguiente meta",
-      "top": "Ya estás en la meta 10, la más alta.",
-      "for": "Para llegar a la meta {{level}}:",
       "option": "Opción {{number}}",
-      "met": "{{measure}}: cumplido",
-      "missing": "{{measure}}: te faltan {{missing}} puntos (necesitas {{min}})",
-      "ownOnly": "Solo con tus ventas, necesitarías {{extra}} puntos de VC más (VC total {{total}}).",
-      "newPartners": "Las socias que entren este mes no cuentan hasta el mes que viene; entonces cuentan sus puntos de los dos meses.",
-      "current": "Ahora estás en la meta {{level}}, con una comisión estimada de {{amount}}.",
-      "currentNoLevel": "Ahora no llegas a la meta 1 (110 puntos de VC propios).",
-      "amountLabel": "Comisión estimada en la meta {{level}}",
-      "delta": "+{{delta}} más que ahora"
+      "newPartners": "Las socias que entren este mes no cuentan hasta el mes que viene; entonces cuentan sus puntos de los dos meses."
     },
     "chart": {
       "title": "Tu comisión estimada según tu VC",
-      "subtitle": "Con tu equipo actual. Los saltos son los cambios de meta.",
+      "subtitle": "Con la previsión de tus patas. Los saltos son los cambios de meta.",
       "xAxis": "Tu VC (puntos)",
       "current": "Ahora",
       "tooltip": "VC {{ct}} → {{amount}} ({{level}})",
@@ -100,13 +86,10 @@
     }
   },
   "legs": {
-    "legend": "Tus patas (socias directas)",
-    "help": "Cada socia directa es una pata. Copia su VE de la Office Online: lista de tus socias directas, columna «VE». Sirve para calcular tu VE-1, VE-2 y VE-3 y, con ellos, tu meta.",
     "empty": "Sin socias directas.",
     "defaultName": "Pata {{number}}",
     "alias": "Nombre (opcional)",
     "aliasHelp": "Su nombre de pila, para reconocerla. Solo se guarda en esta pestaña del navegador.",
-    "volume": "VE de la pata",
     "remove": "Quitar {{name}}",
     "add": "Añadir pata"
   },
@@ -119,14 +102,13 @@
     "action": "Ir a Mi comisión actual"
   },
   "reverse": {
-    "intro": "Escribe la comisión que te gustaría y te proponemos tres formas de llegar: solo con tus puntos, combinándolos con tu equipo o apoyándote más en tu equipo. Tus datos reales no cambian.",
+    "intro": "Escribe cuánto te gustaría ganar, cuánto VC estás dispuesta a hacer y cuánto crees que hará tu equipo. Te diremos si llegas y, si no, qué alternativas tienes. Lo que cambies aquí no afecta a las otras pestañas.",
     "target": "Comisión que te gustaría ({{currency}})",
-    "reached": "Con tus datos actuales ya llegas: {{amount}}.",
     "scenarios": {
-      "ownOnly": "Solo yo",
-      "balanced": "Mi equipo y yo",
-      "moreTeam": "Mayor aportación del equipo",
-      "manual": "Tu propio reparto"
+      "ownOnly": "Más VC tuyo",
+      "moreTeam": "Más puntos de tus patas",
+      "balanced": "Combinado",
+      "partners": "Más socias"
     },
     "badges": {
       "exact": "Mínimo exacto",
@@ -149,19 +131,78 @@
       "equal": "El mismo número de puntos para cada pata."
     },
     "infeasible": {
-      "noLegs": "Añade tus patas en «Mi comisión actual» para ver escenarios con tu equipo.",
+      "noLegs": "Añade tus patas arriba (o indica una media) para ver alternativas con tu equipo.",
       "ownBelowLevel1": "Por debajo de la meta 1 (110 puntos de VC propios) tu equipo no te genera comisión: primero necesitas llegar a 110 puntos.",
       "unreachable": "No se puede alcanzar con estos datos."
-    },
-    "manual": {
-      "title": "Ajusta tu aportación",
-      "label": "Tu VC adicional",
-      "help": "Elige cuántos puntos quieres hacer tú y calculamos cuántos necesitaría tu equipo."
     },
     "notes": {
       "assumption": "Suponemos que los puntos de cada pata los hace la propia socia directa (1.ª generación): se pagan al porcentaje de esa generación y suben el VE de su pata.",
       "proposal": "«Propuesta» es la mejor combinación que hemos encontrado entre varias formas de repartir; no tiene por qué ser la única ni la mínima absoluta.",
       "estimate": "Son estimaciones y condiciones, no promesas de ingresos: la liquidación oficial es la de RINGANA."
+    },
+    "willingOwn": "VC que estás dispuesta a hacer",
+    "willingOwnHelp": "Si vienes de «Planificar mi meta», es tu VC previsto.",
+    "team": "Tu equipo",
+    "modes": {
+      "legs": "Pata a pata",
+      "average": "Con una media"
+    },
+    "expected": "Cuánto crees que hará (VE)",
+    "legCount": "Número de patas activas (máx. {{max}})",
+    "average": "Media de puntos por pata",
+    "enough": "¡Con tu plan llegas! Meta {{level}}, comisión estimada {{amount}}.",
+    "notEnough": "Con tu plan no es suficiente: llegarías a {{amount}} (meta {{level}}) y te faltan {{missing}}.",
+    "notEnoughNoLevel": "Con tu plan no llegas a la meta 1 (110 puntos de VC propios): te faltan {{missing}}.",
+    "alternatives": "Alternativas para llegar",
+    "partners": "Con patas que hagan de media {{average}} puntos, necesitarías {{count}} patas activas más: meta {{level}}, comisión estimada {{amount}}.",
+    "partnersNone": "Con esa media no llegarías ni con {{max}} patas más.",
+    "partnersNoAverage": "Indica cuánto crees que harán tus patas para calcular cuántas socias más necesitarías.",
+    "partnersNote": "Una socia nueva cuenta a partir del mes siguiente a su entrada.",
+    "reset": "Empezar de nuevo"
+  },
+  "teamMinus": {
+    "legend": "Tu VE-1, VE-2 y VE-3",
+    "help": "Cópialos de la Office Online: en la lista de socios, tu propia fila (columnas VE-1, VE-2 y VE-3). Con ellos calculamos tu meta."
+  },
+  "plan": {
+    "intro": "Elige la meta a la que quieres llegar y pon cuánto crees que haréis tú y cada pata este mes. Verás al momento si llegas y qué te falta.",
+    "target": "Meta objetivo",
+    "choose": "Elige una meta",
+    "meaning": "Para la meta {{level}} necesitas:",
+    "and": "y",
+    "or": "o bien",
+    "forecastLegend": "Tu previsión del mes",
+    "daysLeft": "Quedan {{days}} días para el cierre del mes (incluido hoy).",
+    "me": "Yo",
+    "ownForecast": "Mi VC previsto este mes",
+    "legForecast": "VE previsto de la pata",
+    "done": "Llevo hasta hoy (opcional)",
+    "pace": "Faltan {{missing}} puntos: {{perDay}} al día.",
+    "paceDone": "¡Previsión cumplida!",
+    "resultTitle": "Tu planificación frente al objetivo",
+    "requirementMet": "✅ {{measure}}: {{actual}} de {{min}}",
+    "requirementMissing": "❌ {{measure}}: {{actual}} de {{min}}, faltan {{missing}}",
+    "volumes": "Con tu previsión: VE {{tt}} · VE-1 {{tt1}} · VE-2 {{tt2}} · VE-3 {{tt3}}",
+    "targetMet": "¡Con esta previsión llegas a la meta {{level}}!",
+    "ownNeeded": "Para la meta {{level}}, con lo que prevés de tus patas, tú necesitarías {{own}} puntos de VC (te faltan {{extra}}).",
+    "reached": "Con tu previsión llegarías a la meta {{level}}",
+    "reachedNone": "Con tu previsión no llegarías a la meta 1.",
+    "surplus": "{{percent}} por encima del requisito principal de esa meta.",
+    "commission": "Comisión estimada de tu planificación",
+    "commissionWithOwn": "Si haces esos {{own}} puntos de VC: {{amount}}.",
+    "approximate": "Comisión aproximada: no sabemos en qué generación están los puntos de tus patas, así que los repartimos como tus generaciones de «Mi comisión actual» (o todos en 1.ª generación si no hay datos).",
+    "clear": "Borrar planificación",
+    "motivation": {
+      "level1": "Activo 🔄",
+      "level2": "Vamos Crazy 🥦🥦🥦",
+      "level3": "Esto ya mola 💰💰💰",
+      "level4": "Equipo creciendo 🚀",
+      "level5": "Inspiración en acción 💚",
+      "level6": "Superado el 50 % 🔥",
+      "level7": "Eres imparable 💗",
+      "level8": "LEADER en potencia 🥳",
+      "level9": "BRU TAL 💥",
+      "level10": "⭐ OMG.. META 10 🤩"
     }
   }
 }

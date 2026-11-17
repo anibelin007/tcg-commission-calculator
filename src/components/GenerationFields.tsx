@@ -1,20 +1,19 @@
 import { Button } from '@anibelin007/tcg-ui'
 import { useTranslation } from 'react-i18next'
-import { MAX_GENERATION_FIELDS, parsePoints, type FieldId } from '../state/partner-data'
+import { MAX_GENERATION_FIELDS, parsePoints } from '../state/partner-data'
 import { formatPoints } from '../shared/format'
 import { NumberField } from './NumberField'
 
 interface GenerationFieldsProps {
   values: readonly string[]
-  /** Prefix of the field IDs used for validation messages. */
-  fieldPrefix: 'generation' | 'breakdown'
-  invalid: readonly FieldId[]
+  /** Field IDs with an invalid value (`generation-<index>`). */
+  invalid: readonly string[]
   onChange: (values: readonly string[]) => void
   onAdd?: () => void
 }
 
 /** Points per generation; the last possible field holds generation 10 and deeper. */
-export function GenerationFields({ values, fieldPrefix, invalid, onChange, onAdd }: GenerationFieldsProps) {
+export function GenerationFields({ values, invalid, onChange, onAdd }: GenerationFieldsProps) {
   const { t, i18n } = useTranslation('calculator')
   const total = values.reduce((sum, raw) => sum + (parsePoints(raw) ?? 0), 0)
   return (
@@ -29,7 +28,7 @@ export function GenerationFields({ values, fieldPrefix, invalid, onChange, onAdd
               help={deep ? t('generations.deepHelp') : undefined}
               value={raw}
               onChange={(value) => onChange(values.map((current, i) => (i === index ? value : current)))}
-              error={invalid.includes(`${fieldPrefix}-${index}`) ? t('invalid') : undefined}
+              error={invalid.includes(`generation-${index}`) ? t('invalid') : undefined}
             />
           )
         })}

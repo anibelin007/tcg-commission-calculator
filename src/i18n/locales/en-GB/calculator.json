@@ -55,19 +55,15 @@
     "add": "Add generation",
     "total": "Your team in total: {{volume}} points"
   },
-  "breakdown": {
-    "legend": "Limit for the strongest team",
-    "help": "Your strongest team ({{team}}) has a TT of {{volume}} points and exceeds the limit of Target Level {{level}} ({{limit}} points). To apply the limit, enter the points of that team by generation: generation 1 is the direct partner herself (her CT).",
-    "total": "Team total: {{volume}} points"
-  },
   "warnings": {
     "teamVolumesMissing": "The TT of your direct partners is missing: without it your strongest teams cannot be subtracted and the Target Level may come out higher than the real one.",
     "teamVolumesExceedDownline": "The TT of your direct partners adds up to more than all generations together. Please check the data.",
     "breakdownDoesNotMatchTeam": "The breakdown of the strongest team does not add up to its TT. Please check the data.",
-    "breakdownExceedsGeneration": "A generation of the breakdown is larger than that generation’s total. Please check the data."
+    "breakdownExceedsGeneration": "A generation of the breakdown is larger than that generation’s total. Please check the data.",
+    "teamMinusMissing": "Your TT-1, TT-2 or TT-3 is missing: without them your Target Level may come out lower than the real one. Copy them from the Online Office.",
+    "teamMinusInconsistent": "Your TT-1, TT-2 and TT-3 do not add up (each must be between your CT and the previous one, not above your TT). Please check the data."
   },
   "simulation": {
-    "intro": "Calculated with your team as it is now: only your own points (CT) change.",
     "measures": {
       "ct": "CT",
       "dt": "DT",
@@ -77,22 +73,12 @@
       "tt3": "TT-3"
     },
     "next": {
-      "title": "Next Target Level",
-      "top": "You are already at Target Level 10, the highest.",
-      "for": "To reach Target Level {{level}}:",
       "option": "Option {{number}}",
-      "met": "{{measure}}: met",
-      "missing": "{{measure}}: {{missing}} points missing (you need {{min}})",
-      "ownOnly": "With your own sales alone, you would need {{extra}} more CT points (total CT {{total}}).",
-      "newPartners": "Partners who join this month do not count until next month; then their points of both months count.",
-      "current": "You are now at Target Level {{level}}, with an estimated commission of {{amount}}.",
-      "currentNoLevel": "You do not reach Target Level 1 yet (110 points of your own CT).",
-      "amountLabel": "Estimated commission at Target Level {{level}}",
-      "delta": "+{{delta}} more than now"
+      "newPartners": "Partners who join this month do not count until next month; then their points of both months count."
     },
     "chart": {
       "title": "Your estimated commission by CT",
-      "subtitle": "With your current team. The jumps are Target Level changes.",
+      "subtitle": "With your teams’ forecast. The jumps are Target Level changes.",
       "xAxis": "Your CT (points)",
       "current": "Now",
       "tooltip": "CT {{ct}} → {{amount}} ({{level}})",
@@ -100,13 +86,10 @@
     }
   },
   "legs": {
-    "legend": "Your teams (direct partners)",
-    "help": "Each direct partner is one team. Copy her TT from the Online Office: list of your direct partners, «TT» column. It is used to calculate your TT-1, TT-2 and TT-3 and, with them, your Target Level.",
     "empty": "No direct partners.",
     "defaultName": "Team {{number}}",
     "alias": "Name (optional)",
     "aliasHelp": "Her first name, to recognise her. Only kept in this browser tab.",
-    "volume": "Team TT",
     "remove": "Remove {{name}}",
     "add": "Add team"
   },
@@ -119,14 +102,13 @@
     "action": "Go to My current commission"
   },
   "reverse": {
-    "intro": "Enter the commission you would like and we suggest three ways to get there: with your own points only, combining them with your team, or relying more on your team. Your real data does not change.",
+    "intro": "Enter how much you would like to earn, how much CT you are willing to make and how much you think your team will make. We tell you whether you get there and, if not, your alternatives. Changes here do not affect the other tabs.",
     "target": "Commission you would like ({{currency}})",
-    "reached": "Your current data already gets you there: {{amount}}.",
     "scenarios": {
-      "ownOnly": "Just me",
-      "balanced": "My team and me",
-      "moreTeam": "More from my team",
-      "manual": "Your own split"
+      "ownOnly": "More CT from you",
+      "moreTeam": "More points from your teams",
+      "balanced": "Combined",
+      "partners": "More partners"
     },
     "badges": {
       "exact": "Exact minimum",
@@ -149,19 +131,78 @@
       "equal": "The same number of points for each team."
     },
     "infeasible": {
-      "noLegs": "Add your teams in «My current commission» to see scenarios with your team.",
+      "noLegs": "Add your teams above (or enter an average) to see alternatives with your team.",
       "ownBelowLevel1": "Below Target Level 1 (110 points of your own CT) your team earns you no commission: you first need 110 points.",
       "unreachable": "It cannot be reached with this data."
-    },
-    "manual": {
-      "title": "Adjust your contribution",
-      "label": "Your extra CT",
-      "help": "Choose how many points you want to add yourself and we calculate how many your team would need."
     },
     "notes": {
       "assumption": "We assume each team’s points are made by the direct partner herself (1st generation): they are paid at that generation’s rate and raise her team’s TT.",
       "proposal": "«Proposal» is the best combination we found among several ways of splitting; it is not necessarily the only one or the absolute minimum.",
       "estimate": "These are estimates and conditions, not income promises: the official settlement is RINGANA’s."
+    },
+    "willingOwn": "CT you are willing to make",
+    "willingOwnHelp": "If you come from «Plan my Target Level», it is your expected CT.",
+    "team": "Your team",
+    "modes": {
+      "legs": "Team by team",
+      "average": "With an average"
+    },
+    "expected": "What you think she will make (TT)",
+    "legCount": "Number of active teams (max. {{max}})",
+    "average": "Average points per team",
+    "enough": "Your plan gets you there! Target Level {{level}}, estimated commission {{amount}}.",
+    "notEnough": "Your plan is not enough: you would reach {{amount}} (Target Level {{level}}), {{missing}} short.",
+    "notEnoughNoLevel": "With your plan you do not reach Target Level 1 (110 points of your own CT): {{missing}} short.",
+    "alternatives": "Ways to get there",
+    "partners": "With teams making {{average}} points on average, you would need {{count}} more active teams: Target Level {{level}}, estimated commission {{amount}}.",
+    "partnersNone": "With that average you would not get there even with {{max}} more teams.",
+    "partnersNoAverage": "Enter what you think your teams will make to work out how many more partners you would need.",
+    "partnersNote": "A new partner counts from the month after she joins.",
+    "reset": "Start again"
+  },
+  "teamMinus": {
+    "legend": "Your TT-1, TT-2 and TT-3",
+    "help": "Copy them from the Online Office: in the list of partners, your own row (columns TT-1, TT-2 and TT-3). We use them to work out your Target Level."
+  },
+  "plan": {
+    "intro": "Choose the Target Level you want to reach and enter how much you and each team expect to make this month. You will see straight away whether you get there and what is missing.",
+    "target": "Target Level goal",
+    "choose": "Choose a Target Level",
+    "meaning": "For Target Level {{level}} you need:",
+    "and": "and",
+    "or": "or",
+    "forecastLegend": "Your forecast for the month",
+    "daysLeft": "{{days}} days left until the month closes (today included).",
+    "me": "Me",
+    "ownForecast": "My expected CT this month",
+    "legForecast": "Expected TT of the team",
+    "done": "Made so far (optional)",
+    "pace": "{{missing}} points to go: {{perDay}} a day.",
+    "paceDone": "Forecast reached!",
+    "resultTitle": "Your plan against the goal",
+    "requirementMet": "✅ {{measure}}: {{actual}} of {{min}}",
+    "requirementMissing": "❌ {{measure}}: {{actual}} of {{min}}, {{missing}} missing",
+    "volumes": "With your forecast: TT {{tt}} · TT-1 {{tt1}} · TT-2 {{tt2}} · TT-3 {{tt3}}",
+    "targetMet": "With this forecast you reach Target Level {{level}}!",
+    "ownNeeded": "For Target Level {{level}}, with what you expect from your teams, you would need {{own}} CT points ({{extra}} more).",
+    "reached": "With your forecast you would reach Target Level {{level}}",
+    "reachedNone": "With your forecast you would not reach Target Level 1.",
+    "surplus": "{{percent}} above that level’s main requirement.",
+    "commission": "Estimated commission of your plan",
+    "commissionWithOwn": "If you make those {{own}} CT points: {{amount}}.",
+    "approximate": "Approximate commission: we do not know in which generation your teams’ points are, so we spread them like your generations in «My current commission» (or all in the 1st generation if there is no data).",
+    "clear": "Delete plan",
+    "motivation": {
+      "level1": "Active 🔄",
+      "level2": "Go Crazy 🥦🥦🥦",
+      "level3": "Now we’re talking 💰💰💰",
+      "level4": "Team growing 🚀",
+      "level5": "Inspiration in action 💚",
+      "level6": "Past the halfway mark 🔥",
+      "level7": "You’re unstoppable 💗",
+      "level8": "LEADER in the making 🥳",
+      "level9": "AMAZING 💥",
+      "level10": "⭐ OMG.. TARGET LEVEL 10 🤩"
     }
   }
 }

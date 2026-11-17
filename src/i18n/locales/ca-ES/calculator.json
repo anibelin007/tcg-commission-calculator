@@ -55,19 +55,15 @@
     "add": "Afegeix una generació",
     "total": "Total del teu equip: {{volume}} punts"
   },
-  "breakdown": {
-    "legend": "Límit de la branca més forta",
-    "help": "La teva branca més forta ({{team}}) té un VE de {{volume}} punts i supera el límit de la meta {{level}} ({{limit}} punts). Per aplicar el límit, indica els punts d'aquesta branca per generació: la generació 1 és la mateixa sòcia directa (el seu VC).",
-    "total": "Total de la branca: {{volume}} punts"
-  },
   "warnings": {
     "teamVolumesMissing": "Falta el VE de les teves sòcies directes: sense ell no es poden descomptar les teves branques més fortes i la meta pot sortir més alta que la real.",
     "teamVolumesExceedDownline": "La suma del VE de les teves sòcies directes és més gran que la suma de totes les generacions. Revisa les dades.",
     "breakdownDoesNotMatchTeam": "El desglossament de la branca més forta no suma el seu VE. Revisa les dades.",
-    "breakdownExceedsGeneration": "Alguna generació del desglossament és més gran que el total d'aquesta generació. Revisa les dades."
+    "breakdownExceedsGeneration": "Alguna generació del desglossament és més gran que el total d'aquesta generació. Revisa les dades.",
+    "teamMinusMissing": "Falten el teu VE-1, VE-2 o VE-3: sense ells la teva meta pot sortir més baixa que la real. Copia'ls de l'Office Online.",
+    "teamMinusInconsistent": "El teu VE-1, VE-2 i VE-3 no quadren (cadascun ha d'estar entre el teu VC i l'anterior, sense superar el teu VE). Revisa les dades."
   },
   "simulation": {
-    "intro": "Calculades amb el teu equip tal com està ara: només canvien els teus propis punts (VC).",
     "measures": {
       "ct": "VC",
       "dt": "DT",
@@ -77,22 +73,12 @@
       "tt3": "VE-3"
     },
     "next": {
-      "title": "Següent meta",
-      "top": "Ja ets a la meta 10, la més alta.",
-      "for": "Per arribar a la meta {{level}}:",
       "option": "Opció {{number}}",
-      "met": "{{measure}}: complert",
-      "missing": "{{measure}}: et falten {{missing}} punts (en necessites {{min}})",
-      "ownOnly": "Només amb les teves vendes, necessitaries {{extra}} punts de VC més (VC total {{total}}).",
-      "newPartners": "Les sòcies que entrin aquest mes no compten fins al mes que ve; llavors compten els seus punts dels dos mesos.",
-      "current": "Ara ets a la meta {{level}}, amb una comissió estimada de {{amount}}.",
-      "currentNoLevel": "Ara no arribes a la meta 1 (110 punts de VC propis).",
-      "amountLabel": "Comissió estimada a la meta {{level}}",
-      "delta": "+{{delta}} més que ara"
+      "newPartners": "Les sòcies que entrin aquest mes no compten fins al mes que ve; llavors compten els seus punts dels dos mesos."
     },
     "chart": {
       "title": "La teva comissió estimada segons el teu VC",
-      "subtitle": "Amb el teu equip actual. Els salts són els canvis de meta.",
+      "subtitle": "Amb la previsió de les teves branques. Els salts són els canvis de meta.",
       "xAxis": "El teu VC (punts)",
       "current": "Ara",
       "tooltip": "VC {{ct}} → {{amount}} ({{level}})",
@@ -100,13 +86,10 @@
     }
   },
   "legs": {
-    "legend": "Les teves branques (sòcies directes)",
-    "help": "Cada sòcia directa és una branca. Copia el seu VE de l'Office Online: llista de les teves sòcies directes, columna «VE». Serveix per calcular el teu VE-1, VE-2 i VE-3 i, amb ells, la teva meta.",
     "empty": "Sense sòcies directes.",
     "defaultName": "Branca {{number}}",
     "alias": "Nom (opcional)",
     "aliasHelp": "El seu nom de pila, per reconèixer-la. Només es desa en aquesta pestanya del navegador.",
-    "volume": "VE de la branca",
     "remove": "Treu {{name}}",
     "add": "Afegeix una branca"
   },
@@ -119,14 +102,13 @@
     "action": "Ves a La meva comissió actual"
   },
   "reverse": {
-    "intro": "Escriu la comissió que t'agradaria i et proposem tres maneres d'arribar-hi: només amb els teus punts, combinant-los amb el teu equip o recolzant-te més en el teu equip. Les teves dades reals no canvien.",
+    "intro": "Escriu quant t'agradaria guanyar, quant VC estàs disposada a fer i quant creus que farà el teu equip. Et direm si hi arribes i, si no, quines alternatives tens. El que canviïs aquí no afecta les altres pestanyes.",
     "target": "Comissió que t'agradaria ({{currency}})",
-    "reached": "Amb les teves dades actuals ja hi arribes: {{amount}}.",
     "scenarios": {
-      "ownOnly": "Només jo",
-      "balanced": "El meu equip i jo",
-      "moreTeam": "Més aportació de l'equip",
-      "manual": "El teu propi repartiment"
+      "ownOnly": "Més VC teu",
+      "moreTeam": "Més punts de les teves branques",
+      "balanced": "Combinat",
+      "partners": "Més sòcies"
     },
     "badges": {
       "exact": "Mínim exacte",
@@ -149,19 +131,78 @@
       "equal": "El mateix nombre de punts per a cada branca."
     },
     "infeasible": {
-      "noLegs": "Afegeix les teves branques a «La meva comissió actual» per veure escenaris amb el teu equip.",
+      "noLegs": "Afegeix les teves branques a dalt (o indica una mitjana) per veure alternatives amb el teu equip.",
       "ownBelowLevel1": "Per sota de la meta 1 (110 punts de VC propis) el teu equip no et genera comissió: primer has d'arribar a 110 punts.",
       "unreachable": "No s'hi pot arribar amb aquestes dades."
-    },
-    "manual": {
-      "title": "Ajusta la teva aportació",
-      "label": "El teu VC addicional",
-      "help": "Tria quants punts vols fer tu i calculem quants en necessitaria el teu equip."
     },
     "notes": {
       "assumption": "Suposem que els punts de cada branca els fa la mateixa sòcia directa (1a generació): es paguen al percentatge d'aquesta generació i pugen el VE de la seva branca.",
       "proposal": "«Proposta» és la millor combinació que hem trobat entre diverses maneres de repartir; no ha de ser l'única ni la mínima absoluta.",
       "estimate": "Són estimacions i condicions, no promeses d'ingressos: la liquidació oficial és la de RINGANA."
+    },
+    "willingOwn": "VC que estàs disposada a fer",
+    "willingOwnHelp": "Si vens de «Planificar la meva meta», és el teu VC previst.",
+    "team": "El teu equip",
+    "modes": {
+      "legs": "Branca a branca",
+      "average": "Amb una mitjana"
+    },
+    "expected": "Quant creus que farà (VE)",
+    "legCount": "Nombre de branques actives (màx. {{max}})",
+    "average": "Mitjana de punts per branca",
+    "enough": "Amb el teu pla hi arribes! Meta {{level}}, comissió estimada {{amount}}.",
+    "notEnough": "Amb el teu pla no n'hi ha prou: arribaries a {{amount}} (meta {{level}}) i et falten {{missing}}.",
+    "notEnoughNoLevel": "Amb el teu pla no arribes a la meta 1 (110 punts de VC propis): et falten {{missing}}.",
+    "alternatives": "Alternatives per arribar-hi",
+    "partners": "Amb branques que facin de mitjana {{average}} punts, necessitaries {{count}} branques actives més: meta {{level}}, comissió estimada {{amount}}.",
+    "partnersNone": "Amb aquesta mitjana no hi arribaries ni amb {{max}} branques més.",
+    "partnersNoAverage": "Indica quant creus que faran les teves branques per calcular quantes sòcies més necessitaries.",
+    "partnersNote": "Una sòcia nova compta a partir del mes següent a la seva entrada.",
+    "reset": "Torna a començar"
+  },
+  "teamMinus": {
+    "legend": "El teu VE-1, VE-2 i VE-3",
+    "help": "Copia'ls de l'Office Online: a la llista de socis, la teva fila (columnes VE-1, VE-2 i VE-3). Amb ells calculem la teva meta."
+  },
+  "plan": {
+    "intro": "Tria la meta a la qual vols arribar i posa quant creus que fareu tu i cada branca aquest mes. Veuràs al moment si hi arribes i què et falta.",
+    "target": "Meta objectiu",
+    "choose": "Tria una meta",
+    "meaning": "Per a la meta {{level}} necessites:",
+    "and": "i",
+    "or": "o bé",
+    "forecastLegend": "La teva previsió del mes",
+    "daysLeft": "Queden {{days}} dies per al tancament del mes (avui inclòs).",
+    "me": "Jo",
+    "ownForecast": "El meu VC previst aquest mes",
+    "legForecast": "VE previst de la branca",
+    "done": "Porto fins avui (opcional)",
+    "pace": "Falten {{missing}} punts: {{perDay}} al dia.",
+    "paceDone": "Previsió complerta!",
+    "resultTitle": "La teva planificació davant de l'objectiu",
+    "requirementMet": "✅ {{measure}}: {{actual}} de {{min}}",
+    "requirementMissing": "❌ {{measure}}: {{actual}} de {{min}}, en falten {{missing}}",
+    "volumes": "Amb la teva previsió: VE {{tt}} · VE-1 {{tt1}} · VE-2 {{tt2}} · VE-3 {{tt3}}",
+    "targetMet": "Amb aquesta previsió arribes a la meta {{level}}!",
+    "ownNeeded": "Per a la meta {{level}}, amb el que preveus de les teves branques, tu necessitaries {{own}} punts de VC (et falten {{extra}}).",
+    "reached": "Amb la teva previsió arribaries a la meta {{level}}",
+    "reachedNone": "Amb la teva previsió no arribaries a la meta 1.",
+    "surplus": "{{percent}} per sobre del requisit principal d'aquesta meta.",
+    "commission": "Comissió estimada de la teva planificació",
+    "commissionWithOwn": "Si fas aquests {{own}} punts de VC: {{amount}}.",
+    "approximate": "Comissió aproximada: no sabem en quina generació són els punts de les teves branques, així que els repartim com les teves generacions de «La meva comissió actual» (o tots a la 1a generació si no hi ha dades).",
+    "clear": "Esborra la planificació",
+    "motivation": {
+      "level1": "Activa 🔄",
+      "level2": "Som-hi Crazy 🥦🥦🥦",
+      "level3": "Això ja mola 💰💰💰",
+      "level4": "Equip creixent 🚀",
+      "level5": "Inspiració en acció 💚",
+      "level6": "Superat el 50 % 🔥",
+      "level7": "Ets imparable 💗",
+      "level8": "LEADER en potència 🥳",
+      "level9": "BRU TAL 💥",
+      "level10": "⭐ OMG.. META 10 🤩"
     }
   }
 }

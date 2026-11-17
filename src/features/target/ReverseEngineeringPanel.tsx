@@ -1,86 +1,93 @@
-import { useId, useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import type { CommissionInput, CommissionResult, Market } from '../../domain/commission'
-import { reverseEngineer, scenarioForOwnExtra } from '../../domain/scenarios'
-import { NumberField } from '../../components/NumberField'
-import { formatAmount } from '../../shared/format'
-import { parsePoints } from '../../state/partner-data'
+import { computeCommission, type CommissionInput, type Market } from '../../domain/commission'
+import { partnersNeeded, type PartnersNeeded } from '../../domain/planning'
+import { reverseEngineer, scenarioForOwnExtra, type ReverseEngineering, type ScenarioOutcome } from '../../domain/scenarios'
+import { formatAmount, formatPoints } from '../../shared/format'
 import { ScenarioCard } from './ScenarioCard'
 
+/** Additional legs tried at most in «Más socias». */
+const MAX_NEW_PARTNERS = 50
+
 interface ReverseEngineeringPanelProps {
+  /** The partner's plan as engine input: willing own CT and the legs she expects. */
   input: CommissionInput
   market: Market
-  current: CommissionResult
+  target: number
+  /** Average points per leg, for «Más socias». */
+  average: number
   legNames: readonly string[]
-  /** Initial values (used by tests). */
-  initialTarget?: string
-  initialOwn?: string
+}
+
+interface Evaluation {
+  readonly reverse: ReverseEngineering
+  readonly moreTeam: ScenarioOutcome
+  readonly partners: PartnersNeeded | null
 }
 
 /**
- * Tab 3 content (D-021): a target commission, three scenarios and a manual own-effort control.
- * Everything is computed from the real data without modifying it; nothing is stored.
+ * Tab 3 result (design §7): does the plan reach the target? If not, the alternatives: more own
+ * CT, more points from the legs (own CT as planned), a combination, and how many more partners.
  */
-export function ReverseEngineeringPanel({ input, market, current, legNames, initialTarget = '', initialOwn }: ReverseEngineeringPanelProps) {
+export function ReverseEngineeringPanel({ input, market, target, average, legNames }: ReverseEngineeringPanelProps) {
   const { t, i18n } = useTranslation('calculator')
-  const sliderId = useId()
-  const [target, setTarget] = useState(initialTarget)
-  const [manualOwn, setManualOwn] = useState<string | undefined>(initialOwn)
-  const targetAmount = parsePoints(target) ?? 0
-  const result = useMemo(() => (targetAmount > 0 ? reverseEngineer(input, market, targetAmount) : null), [input, market, targetAmount])
+  const locale = i18n.language
+  const money = (value: number) => formatAmount(locale, value, market.currency)
+  const points = (value: number) => formatPoints(locale, value)
+  const current = useMemo(() => computeCommission(input, market), [input, market])
+  const evaluation = useMemo<Evaluation | null>(() => {
+    if (!(target > 0) || current.amount >= target) return null
+    return {
+      reverse: reverseEngineer(input, market, target),
+      moreTeam: scenarioForOwnExtra(input, market, target, 0),
+      partners: partnersNeeded(input, market, target, average, MAX_NEW_PARTNERS),
+    }
+  }, [input, market, target, average, current.amount])
 
-  const ownMaximum = result?.ownOnly.status === 'ok' ? Math.ceil(result.ownOnly.scenario.ownExtra) : 0
-  const defaultOwn = result?.balanced.status === 'ok' ? result.balanced.scenario.ownExtra : 0
-  const own = manualOwn === undefined ? defaultOwn : (parsePoints(manualOwn) ?? 0)
-  const manual = useMemo(
-    () => (result && !result.alreadyReached ? scenarioForOwnExtra(input, market, targetAmount, own) : null),
-    [result, input, market, targetAmount, own],
-  )
+  if (!(target > 0)) return null
 
   return (
     <div className="flex flex-col gap-6">
-      <p>{t('reverse.intro')}</p>
-      <NumberField label={t('reverse.target', { currency: market.currency })} value={target} onChange={setTarget} />
-
-      {result?.alreadyReached && (
+      {current.amount >= target ? (
+        <p className="rounded bg-tcg-surface px-4 py-3 text-lg font-semibold text-tcg-primary">
+          {t('reverse.enough', { level: current.level, amount: money(current.amount) })}
+        </p>
+      ) : (
         <p className="rounded bg-tcg-surface px-4 py-3 font-semibold text-tcg-heading">
-          {t('reverse.reached', { amount: formatAmount(i18n.language, current.amount, market.currency) })}
+          {current.level === null
+            ? t('reverse.notEnoughNoLevel', { missing: money(target - current.amount) })
+            : t('reverse.notEnough', { amount: money(current.amount), level: current.level, missing: money(target - current.amount) })}
         </p>
       )}
 
-      {result && !result.alreadyReached && (
+      {evaluation && (
         <>
-          <ScenarioCard kind="ownOnly" outcome={result.ownOnly} input={input} market={market} legNames={legNames} />
-          <ScenarioCard kind="balanced" outcome={result.balanced} input={input} market={market} legNames={legNames} />
-          <ScenarioCard kind="moreTeam" outcome={result.moreTeam} input={input} market={market} legNames={legNames} />
-          {manual && (
-            <ScenarioCard kind="manual" outcome={manual} input={input} market={market} legNames={legNames}>
-              <p className="text-sm">{t('reverse.manual.help')}</p>
-              {ownMaximum > 0 && (
-                <div className="flex flex-col gap-1">
-                  {/* Same label as the number field below, which shows it; screen readers still get it. */}
-                  <label htmlFor={sliderId} className="sr-only">
-                    {t('reverse.manual.label')}
-                  </label>
-                  <input
-                    id={sliderId}
-                    type="range"
-                    min={0}
-                    max={ownMaximum}
-                    step={1}
-                    value={Math.min(own, ownMaximum)}
-                    onChange={(event) => setManualOwn(event.target.value)}
-                    className="accent-tcg-primary"
-                  />
-                </div>
-              )}
-              <NumberField label={t('reverse.manual.label')} value={manualOwn ?? String(defaultOwn)} onChange={setManualOwn} />
-            </ScenarioCard>
-          )}
+          <h2 className="text-2xl">{t('reverse.alternatives')}</h2>
+          <ScenarioCard kind="ownOnly" outcome={evaluation.reverse.ownOnly} input={input} market={market} legNames={legNames} />
+          <ScenarioCard kind="moreTeam" outcome={evaluation.moreTeam} input={input} market={market} legNames={legNames} />
+          <ScenarioCard kind="balanced" outcome={evaluation.reverse.balanced} input={input} market={market} legNames={legNames} />
+          <section aria-label={t('reverse.scenarios.partners')} className="flex flex-col gap-2 rounded border border-tcg-surface-strong bg-white p-4 sm:p-6">
+            <h2 className="text-xl">{t('reverse.scenarios.partners')}</h2>
+            {!(average > 0) ? (
+              <p>{t('reverse.partnersNoAverage')}</p>
+            ) : evaluation.partners ? (
+              <p className="font-semibold text-tcg-heading">
+                {t('reverse.partners', {
+                  average: points(average),
+                  count: evaluation.partners.count,
+                  level: evaluation.partners.result.level,
+                  amount: money(evaluation.partners.result.amount),
+                })}
+              </p>
+            ) : (
+              <p>{t('reverse.partnersNone', { max: MAX_NEW_PARTNERS })}</p>
+            )}
+            <p className="text-sm italic">{t('reverse.partnersNote')}</p>
+          </section>
           <ul className="flex list-disc flex-col gap-1 pl-5 text-sm">
             <li>{t('reverse.notes.assumption')}</li>
             <li>{t('reverse.notes.proposal')}</li>
-            <li>{t('simulation.next.newPartners')}</li>
+            <li>{t('plan.approximate')}</li>
             <li>{t('reverse.notes.estimate')}</li>
           </ul>
         </>

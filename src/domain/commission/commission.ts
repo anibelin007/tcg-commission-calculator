@@ -46,6 +46,10 @@ export interface StrongestTeamResult {
 export type InputWarning =
   /** There is downline volume but no direct partner's VE: TT-1/2/3 equal TT and the level may be too high. */
   | 'teamVolumesMissing'
+  /** Downline volume without the reported TT-1/2/3: they count as the own volume, so the level may be too low. */
+  | 'teamMinusMissing'
+  /** Reported TT-n values that cannot be right (each must be between the own volume and the previous one, up to TT). */
+  | 'teamMinusInconsistent'
   /** The VE of the direct partners add up to more than all generations together. */
   | 'teamVolumesExceedDownline'
   /** The strongest-team breakdown does not add up to that team's VE. */
@@ -90,7 +94,13 @@ const TOLERANCE = 0.01
 
 function inputWarnings(input: CommissionInput, volumes: Volumes, strongest: number): InputWarning[] {
   const warnings: InputWarning[] = []
-  if (volumes.downline > 0 && input.teamVolumes.length === 0) warnings.push('teamVolumesMissing')
+  const reported = input.reportedTeamMinus
+  if (reported) {
+    const { tt1, tt2, tt3 } = reported
+    if (volumes.downline > 0 && (tt1 === undefined || tt2 === undefined || tt3 === undefined)) warnings.push('teamMinusMissing')
+    const chain = [volumes.own, volumes.tt3, volumes.tt2, volumes.tt1, volumes.tt]
+    if (chain.some((value, index) => index > 0 && value + TOLERANCE < chain[index - 1]!)) warnings.push('teamMinusInconsistent')
+  } else if (volumes.downline > 0 && input.teamVolumes.length === 0) warnings.push('teamVolumesMissing')
   if (sum(input.teamVolumes) > sum(input.generationVolumes) + TOLERANCE) warnings.push('teamVolumesExceedDownline')
   const breakdown = input.strongestTeamGenerations
   if (breakdown && breakdown.length > 0 && strongest >= 0) {

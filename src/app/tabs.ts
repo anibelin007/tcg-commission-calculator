@@ -3,12 +3,12 @@
  * so the browser's back/forward buttons move between tabs and a reload keeps the tab, with no
  * server configuration. IDs are stable and language-independent.
  */
-export const TABS = ['commission', 'next-level', 'target'] as const
+export const TABS = ['commission', 'plan', 'target'] as const
 export type TabId = (typeof TABS)[number]
 
 export const DEFAULT_TAB: TabId = 'commission'
 
-/** `#next-level` → `next-level`; anything unknown → the default tab. */
+/** `#plan` → `plan`; anything unknown → the default tab. */
 export function tabFromHash(hash: string): TabId {
   const id = hash.replace(/^#\/?/, '')
   return (TABS as readonly string[]).includes(id) ? (id as TabId) : DEFAULT_TAB

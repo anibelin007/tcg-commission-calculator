@@ -55,19 +55,15 @@
     "add": "Generation hinzufügen",
     "total": "Dein Team insgesamt: {{volume}} Punkte"
   },
-  "breakdown": {
-    "legend": "Begrenzung für das stärkste Team",
-    "help": "Dein stärkstes Team ({{team}}) hat einen TU von {{volume}} Punkten und überschreitet die Grenze der Zielstufe {{level}} ({{limit}} Punkte). Um die Begrenzung anzuwenden, gib die Punkte dieses Teams nach Generation ein: Generation 1 ist die direkte Partnerin selbst (ihr KU).",
-    "total": "Team insgesamt: {{volume}} Punkte"
-  },
   "warnings": {
     "teamVolumesMissing": "Der TU deiner direkten Partnerinnen fehlt: Ohne ihn können deine stärksten Teams nicht abgezogen werden, und die Zielstufe kann höher ausfallen als die tatsächliche.",
     "teamVolumesExceedDownline": "Der TU deiner direkten Partnerinnen ist zusammen größer als alle Generationen zusammen. Bitte prüfe die Daten.",
     "breakdownDoesNotMatchTeam": "Die Aufschlüsselung des stärksten Teams ergibt nicht seinen TU. Bitte prüfe die Daten.",
-    "breakdownExceedsGeneration": "Eine Generation der Aufschlüsselung ist größer als die Summe dieser Generation. Bitte prüfe die Daten."
+    "breakdownExceedsGeneration": "Eine Generation der Aufschlüsselung ist größer als die Summe dieser Generation. Bitte prüfe die Daten.",
+    "teamMinusMissing": "Dein TU-1, TU-2 oder TU-3 fehlt: Ohne sie kann deine Zielstufe niedriger ausfallen als die tatsächliche. Übernimm sie aus dem Online Office.",
+    "teamMinusInconsistent": "Dein TU-1, TU-2 und TU-3 passen nicht zusammen (jeder muss zwischen deinem KU und dem vorherigen liegen, nicht über deinem TU). Bitte prüfe die Daten."
   },
   "simulation": {
-    "intro": "Berechnet mit deinem Team, wie es jetzt ist: Nur deine eigenen Punkte (KU) ändern sich.",
     "measures": {
       "ct": "KU",
       "dt": "DT",
@@ -77,22 +73,12 @@
       "tt3": "TU-3"
     },
     "next": {
-      "title": "Nächste Zielstufe",
-      "top": "Du bist bereits auf Zielstufe 10, der höchsten.",
-      "for": "Um Zielstufe {{level}} zu erreichen:",
       "option": "Option {{number}}",
-      "met": "{{measure}}: erfüllt",
-      "missing": "{{measure}}: Es fehlen {{missing}} Punkte (du brauchst {{min}})",
-      "ownOnly": "Nur mit deinen eigenen Verkäufen bräuchtest du {{extra}} KU-Punkte mehr (KU gesamt {{total}}).",
-      "newPartners": "Partnerinnen, die diesen Monat einsteigen, zählen erst ab nächstem Monat; dann zählen ihre Punkte aus beiden Monaten.",
-      "current": "Du bist jetzt auf Zielstufe {{level}}, mit einer geschätzten Provision von {{amount}}.",
-      "currentNoLevel": "Du erreichst Zielstufe 1 noch nicht (110 Punkte eigener KU).",
-      "amountLabel": "Geschätzte Provision auf Zielstufe {{level}}",
-      "delta": "+{{delta}} mehr als jetzt"
+      "newPartners": "Partnerinnen, die diesen Monat einsteigen, zählen erst ab nächstem Monat; dann zählen ihre Punkte aus beiden Monaten."
     },
     "chart": {
       "title": "Deine geschätzte Provision nach KU",
-      "subtitle": "Mit deinem aktuellen Team. Die Sprünge sind Wechsel der Zielstufe.",
+      "subtitle": "Mit der Prognose deiner Teams. Die Sprünge sind Wechsel der Zielstufe.",
       "xAxis": "Dein KU (Punkte)",
       "current": "Jetzt",
       "tooltip": "KU {{ct}} → {{amount}} ({{level}})",
@@ -100,13 +86,10 @@
     }
   },
   "legs": {
-    "legend": "Deine Teams (direkte Partnerinnen)",
-    "help": "Jede direkte Partnerin ist ein Team. Übernimm ihren TU aus dem Online Office: Liste deiner direkten Partnerinnen, Spalte «TU». Damit werden dein TU-1, TU-2 und TU-3 und daraus deine Zielstufe berechnet.",
     "empty": "Keine direkten Partnerinnen.",
     "defaultName": "Team {{number}}",
     "alias": "Name (optional)",
     "aliasHelp": "Ihr Vorname, damit du sie erkennst. Wird nur in diesem Browser-Tab gespeichert.",
-    "volume": "TU des Teams",
     "remove": "{{name}} entfernen",
     "add": "Team hinzufügen"
   },
@@ -119,14 +102,13 @@
     "action": "Zu Meine aktuelle Provision"
   },
   "reverse": {
-    "intro": "Gib die gewünschte Provision ein und wir schlagen dir drei Wege vor: nur mit deinen Punkten, kombiniert mit deinem Team oder stärker über dein Team. Deine echten Daten ändern sich nicht.",
+    "intro": "Gib ein, wie viel du verdienen möchtest, wie viel KU du bereit bist zu machen und wie viel dein Team voraussichtlich macht. Wir sagen dir, ob es reicht, und sonst, welche Alternativen du hast. Änderungen hier wirken sich nicht auf die anderen Bereiche aus.",
     "target": "Gewünschte Provision ({{currency}})",
-    "reached": "Mit deinen aktuellen Daten erreichst du sie bereits: {{amount}}.",
     "scenarios": {
-      "ownOnly": "Nur ich",
-      "balanced": "Mein Team und ich",
-      "moreTeam": "Mehr von meinem Team",
-      "manual": "Deine eigene Aufteilung"
+      "ownOnly": "Mehr KU von dir",
+      "moreTeam": "Mehr Punkte deiner Teams",
+      "balanced": "Kombiniert",
+      "partners": "Mehr Partnerinnen"
     },
     "badges": {
       "exact": "Exaktes Minimum",
@@ -149,19 +131,78 @@
       "equal": "Gleich viele Punkte für jedes Team."
     },
     "infeasible": {
-      "noLegs": "Füge deine Teams unter «Meine aktuelle Provision» hinzu, um Szenarien mit deinem Team zu sehen.",
+      "noLegs": "Füge oben deine Teams hinzu (oder gib einen Durchschnitt an), um Alternativen mit deinem Team zu sehen.",
       "ownBelowLevel1": "Unter Zielstufe 1 (110 Punkte eigener KU) bringt dir dein Team keine Provision: Du brauchst zuerst 110 Punkte.",
       "unreachable": "Mit diesen Daten nicht erreichbar."
-    },
-    "manual": {
-      "title": "Passe deinen Beitrag an",
-      "label": "Dein zusätzlicher KU",
-      "help": "Wähle, wie viele Punkte du selbst machen möchtest, und wir berechnen, wie viele dein Team bräuchte."
     },
     "notes": {
       "assumption": "Wir nehmen an, dass die Punkte jedes Teams von der direkten Partnerin selbst stammen (1. Generation): Sie werden mit dem Satz dieser Generation vergütet und erhöhen den TU ihres Teams.",
       "proposal": "«Vorschlag» ist die beste Kombination, die wir unter mehreren Aufteilungen gefunden haben; sie ist nicht unbedingt die einzige oder das absolute Minimum.",
       "estimate": "Es sind Schätzungen und Bedingungen, keine Einkommensversprechen: Maßgeblich ist die offizielle Abrechnung von RINGANA."
+    },
+    "willingOwn": "KU, den du bereit bist zu machen",
+    "willingOwnHelp": "Wenn du von «Meine Zielstufe planen» kommst, ist es dein erwarteter KU.",
+    "team": "Dein Team",
+    "modes": {
+      "legs": "Team für Team",
+      "average": "Mit einem Durchschnitt"
+    },
+    "expected": "Was sie voraussichtlich macht (TU)",
+    "legCount": "Anzahl aktiver Teams (max. {{max}})",
+    "average": "Durchschnittliche Punkte pro Team",
+    "enough": "Mit deinem Plan schaffst du es! Zielstufe {{level}}, geschätzte Provision {{amount}}.",
+    "notEnough": "Dein Plan reicht nicht: Du kämst auf {{amount}} (Zielstufe {{level}}), es fehlen {{missing}}.",
+    "notEnoughNoLevel": "Mit deinem Plan erreichst du Zielstufe 1 nicht (110 Punkte eigener KU): Es fehlen {{missing}}.",
+    "alternatives": "Wege zum Ziel",
+    "partners": "Mit Teams, die im Schnitt {{average}} Punkte machen, bräuchtest du {{count}} aktive Teams mehr: Zielstufe {{level}}, geschätzte Provision {{amount}}.",
+    "partnersNone": "Mit diesem Durchschnitt würdest du es selbst mit {{max}} Teams mehr nicht schaffen.",
+    "partnersNoAverage": "Gib an, was deine Teams voraussichtlich machen, um zu berechnen, wie viele Partnerinnen du zusätzlich bräuchtest.",
+    "partnersNote": "Eine neue Partnerin zählt ab dem Monat nach ihrem Einstieg.",
+    "reset": "Neu beginnen"
+  },
+  "teamMinus": {
+    "legend": "Dein TU-1, TU-2 und TU-3",
+    "help": "Übernimm sie aus dem Online Office: in der Partnerliste deine eigene Zeile (Spalten TU-1, TU-2 und TU-3). Damit berechnen wir deine Zielstufe."
+  },
+  "plan": {
+    "intro": "Wähle die Zielstufe, die du erreichen möchtest, und gib ein, wie viel du und jedes Team diesen Monat voraussichtlich macht. Du siehst sofort, ob es reicht und was fehlt.",
+    "target": "Ziel-Zielstufe",
+    "choose": "Wähle eine Zielstufe",
+    "meaning": "Für Zielstufe {{level}} brauchst du:",
+    "and": "und",
+    "or": "oder",
+    "forecastLegend": "Deine Prognose für den Monat",
+    "daysLeft": "Noch {{days}} Tage bis zum Monatsabschluss (heute inbegriffen).",
+    "me": "Ich",
+    "ownForecast": "Mein erwarteter KU diesen Monat",
+    "legForecast": "Erwarteter TU des Teams",
+    "done": "Bisher erreicht (optional)",
+    "pace": "Noch {{missing}} Punkte: {{perDay}} pro Tag.",
+    "paceDone": "Prognose erreicht!",
+    "resultTitle": "Deine Planung im Vergleich zum Ziel",
+    "requirementMet": "✅ {{measure}}: {{actual}} von {{min}}",
+    "requirementMissing": "❌ {{measure}}: {{actual}} von {{min}}, es fehlen {{missing}}",
+    "volumes": "Mit deiner Prognose: TU {{tt}} · TU-1 {{tt1}} · TU-2 {{tt2}} · TU-3 {{tt3}}",
+    "targetMet": "Mit dieser Prognose erreichst du Zielstufe {{level}}!",
+    "ownNeeded": "Für Zielstufe {{level}} bräuchtest du mit der Prognose deiner Teams {{own}} KU-Punkte ({{extra}} mehr).",
+    "reached": "Mit deiner Prognose würdest du Zielstufe {{level}} erreichen",
+    "reachedNone": "Mit deiner Prognose würdest du Zielstufe 1 nicht erreichen.",
+    "surplus": "{{percent}} über der Hauptanforderung dieser Zielstufe.",
+    "commission": "Geschätzte Provision deiner Planung",
+    "commissionWithOwn": "Wenn du diese {{own}} KU-Punkte machst: {{amount}}.",
+    "approximate": "Ungefähre Provision: Wir wissen nicht, in welcher Generation die Punkte deiner Teams liegen, daher verteilen wir sie wie deine Generationen unter «Meine aktuelle Provision» (oder alle in der 1. Generation, wenn keine Daten vorliegen).",
+    "clear": "Planung löschen",
+    "motivation": {
+      "level1": "Aktiv 🔄",
+      "level2": "Los, Crazy 🥦🥦🥦",
+      "level3": "Jetzt wird’s richtig gut 💰💰💰",
+      "level4": "Das Team wächst 🚀",
+      "level5": "Inspiration in Aktion 💚",
+      "level6": "Über 50 % geschafft 🔥",
+      "level7": "Du bist nicht zu stoppen 💗",
+      "level8": "LEADER in spe 🥳",
+      "level9": "WAHNSINN 💥",
+      "level10": "⭐ OMG.. ZIELSTUFE 10 🤩"
     }
   }
 }
