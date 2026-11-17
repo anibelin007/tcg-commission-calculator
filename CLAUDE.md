@@ -42,14 +42,18 @@ she needs for the next target level and how many points she would need for a tar
 - Stack (D-014, accepted): React, TypeScript (strict), Vite, Tailwind CSS v4, Vitest, oxlint,
   GitHub Actions — same as `tcg-skin-test`. Shared UI from `@anibelin007/tcg-ui`.
 - **Not decided — do not choose or configure:** backend, hosting.
-- **No persistence of inputs** (D-007). Only exception: the RINGANA session token in
-  `sessionStorage` (D-018). Never store or log passwords. The RINGANA import uses only
-  `/teams/generations` and `/teams/revenue`.
+- **Nothing leaves the browser** (D-007): the real form data and the RINGANA session token
+  (D-018) live only in `sessionStorage` of the tab; scenarios are never stored. Never store or
+  log passwords. The RINGANA import uses only `/teams/generations` and `/teams/revenue`.
 
 ## Architecture Principles
 
 - `src/domain/commission/`: pure rules, no I/O, no React, no i18n. Plans as data.
-- `src/features/calculator/`: UI. `src/i18n/`: app-specific texts (shared setup in `tcg-ui`).
+- One page, three tabs synced with the URL hash (D-019): `src/features/current/`,
+  `src/features/next-level/`, `src/features/target/`. Shared real data in `src/state/`
+  (`usePartnerData()`); scenarios are separate and never modify it. Shared form components in
+  `src/components/`. Design: `docs/architecture/three-tabs-design.md`.
+- `src/i18n/`: app-specific texts (shared setup in `tcg-ui`).
 - Business logic uses stable IDs; translated labels never drive rules.
 - Use `tcg-*` design tokens; never hard-code colours or user-facing text.
 

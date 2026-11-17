@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { commissionCurve, computeCommission, type CommissionInput, type CommissionResult, type Market } from '../../domain/commission'
 import { niceTicks } from './chart-scale'
-import { formatAmount, formatPoints } from './format'
+import { formatAmount, formatPoints } from '../../shared/format'
 
 interface CommissionChartProps {
   input: CommissionInput

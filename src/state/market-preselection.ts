@@ -1,4 +1,4 @@
-import { MARKETS } from '../../domain/commission'
+import { MARKETS } from '../domain/commission'
 
 /** Market used when neither the browser nor the UI language indicates a known country. */
 export const FALLBACK_MARKET_ID = 'ES'

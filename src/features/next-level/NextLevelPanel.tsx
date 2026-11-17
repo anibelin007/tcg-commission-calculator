@@ -1,12 +1,9 @@
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { simulateNextLevel, simulateTargetAmount, type CommissionInput, type CommissionResult, type Market } from '../../domain/commission'
-import { CommissionChart } from './CommissionChart'
-import { parsePoints } from './form-model'
-import { formatAmount, formatPoints } from './format'
-import { NumberField } from './NumberField'
+import { simulateNextLevel, type CommissionInput, type CommissionResult, type Market } from '../../domain/commission'
+import { formatAmount, formatPoints } from '../../shared/format'
 
-interface SimulationPanelProps {
+interface NextLevelPanelProps {
   input: CommissionInput
   market: Market
   current: CommissionResult
@@ -14,29 +11,16 @@ interface SimulationPanelProps {
 
 const sectionTitle = 'text-lg font-semibold text-tcg-heading'
 
-/** Next level, target amount and step chart (PF-02 to PF-04). Wording per BR-21. */
-export function SimulationPanel({ input, market, current }: SimulationPanelProps) {
+/** What is missing for the next level, reached with own CT only (PF-02). Wording per BR-21. */
+export function NextLevelPanel({ input, market, current }: NextLevelPanelProps) {
   const { t, i18n } = useTranslation('calculator')
   const locale = i18n.language
   const points = (value: number) => formatPoints(locale, value)
   const money = (value: number) => formatAmount(locale, value, market.currency)
-  const [target, setTarget] = useState('')
   const next = useMemo(() => simulateNextLevel(input, market), [input, market])
-  const targetAmount = parsePoints(target)
-  const targetSimulation = useMemo(
-    () => (targetAmount ? simulateTargetAmount(input, market, targetAmount) : undefined),
-    [input, market, targetAmount],
-  )
 
   return (
-    <section className="flex flex-col gap-6 rounded border border-tcg-surface-strong bg-white p-4 sm:p-6" aria-labelledby="simulation-title">
-      <div className="flex flex-col gap-1">
-        <h2 id="simulation-title" className="text-2xl">
-          {t('simulation.title')}
-        </h2>
-        <p className="text-sm">{t('simulation.intro')}</p>
-      </div>
-
+    <section className="flex flex-col gap-6 rounded border border-tcg-surface-strong bg-white p-4 sm:p-6" aria-label={t('simulation.next.title')}>
       <div className="flex flex-col gap-2">
         <h3 className={sectionTitle}>{t('simulation.next.title')}</h3>
         {next === null ? (
@@ -79,24 +63,6 @@ export function SimulationPanel({ input, market, current }: SimulationPanelProps
         )}
       </div>
 
-      <div className="flex flex-col gap-2">
-        <h3 className={sectionTitle}>{t('simulation.target.title')}</h3>
-        <NumberField label={t('simulation.target.label', { currency: market.currency })} value={target} onChange={setTarget} />
-        {targetSimulation === null && <p>{t('simulation.target.unreachable')}</p>}
-        {targetSimulation && targetSimulation.extraOwn === 0 && <p>{t('simulation.target.reached', { amount: money(current.amount) })}</p>}
-        {targetSimulation && targetSimulation.extraOwn > 0 && (
-          <p className="font-semibold text-tcg-heading">
-            {t('simulation.target.needed', {
-              extra: points(targetSimulation.extraOwn),
-              total: points(input.customerTurnover + targetSimulation.extraOwn),
-              level: targetSimulation.result.level,
-              amount: money(targetSimulation.result.amount),
-            })}
-          </p>
-        )}
-      </div>
-
-      <CommissionChart input={input} market={market} current={current} nextExtraOwn={next?.extraOwn ?? null} />
     </section>
   )
 }

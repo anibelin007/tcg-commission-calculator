@@ -31,7 +31,7 @@
     "own": "Zure VC",
     "ownUsa": "Zure DT (CT + PT)",
     "generation": "{{number}}. belaunaldia",
-    "limit": "Adar indartsuenaren muga ({{team}}. bazkide zuzena: VE {{volume}}, muga {{limit}})",
+    "limit": "Adar indartsuenaren muga ({{team}}: VE {{volume}}, muga {{limit}})",
     "totalPoints": "Komisio-puntuak guztira",
     "factor": "Bihurketa-faktorea",
     "amount": "Komisio estimatua",
@@ -43,7 +43,7 @@
       "exceptions": "Zure fair scorea % 100 baino txikiagoa bada edo «RINGANA only» araua aplikatzen bazaizu, zure benetako komisioa txikiagoa izango da.",
       "bonuses": "Ez ditu hobariak barne hartzen (Fast Track, hazkunde-hobaria, Beyond Target 10).",
       "breakdownMissing": "Adar indartsuenaren muga ez da oraindik aplikatu: bete adar horren banakapena emaitza zehatzagoa lortzeko.",
-      "limitNotApplied": "Zure adar indartsuenak ({{team}}. bazkide zuzena, VE {{volume}}) {{level}}. helburuaren muga ({{limit}}) gainditzen du. Oraindik baieztatzen ari gara RINGANAk nola aplikatzen duen; beraz, oraingoz ez da kentzen: zure benetako komisioa txikiagoa izan liteke."
+      "limitNotApplied": "Zure adar indartsuenak ({{team}}, VE {{volume}}) {{level}}. helburuaren muga ({{limit}}) gainditzen du. Oraindik baieztatzen ari gara RINGANAk nola aplikatzen duen; beraz, oraingoz ez da kentzen: zure benetako komisioa txikiagoa izan liteke."
     }
   },
   "generations": {
@@ -55,17 +55,9 @@
     "add": "Gehitu belaunaldia",
     "total": "Zure taldea guztira: {{volume}} puntu"
   },
-  "partners": {
-    "legend": "Zure bazkide zuzenen VE",
-    "help": "Bazkide zuzen bakoitza adar bat da. Kopiatu Office Onlinetik: zure bazkide zuzenen zerrenda, «VE» zutabea. Zure VE-1, VE-2 eta VE-3 kalkulatzeko balio du, eta haiekin zure helburua.",
-    "empty": "Bazkide zuzenik ez.",
-    "partner": "{{number}}. bazkide zuzena (VE)",
-    "remove": "Kendu {{number}}. bazkide zuzena",
-    "add": "Gehitu bazkide zuzena"
-  },
   "breakdown": {
     "legend": "Adar indartsuenaren muga",
-    "help": "{{number}}. bazkide zuzenaren adarrak {{volume}} puntuko VE du eta {{level}}. helburuaren muga ({{limit}} puntu) gainditzen du. Muga aplikatzeko, adierazi adar horren puntuak belaunaldika: 1. belaunaldia bazkide zuzena bera da (bere VC).",
+    "help": "Zure adar indartsuenak ({{team}}) {{volume}} puntuko VE du eta {{level}}. helburuaren muga ({{limit}} puntu) gainditzen du. Muga aplikatzeko, adierazi adar horren puntuak belaunaldika: 1. belaunaldia bazkide zuzena bera da (bere VC).",
     "total": "Adarra guztira: {{volume}} puntu"
   },
   "warnings": {
@@ -75,7 +67,6 @@
     "breakdownExceedsGeneration": "Banakapeneko belaunaldiren bat belaunaldi horren guztizkoa baino handiagoa da. Berrikusi datuak."
   },
   "simulation": {
-    "title": "Simulazioak",
     "intro": "Zure taldea orain dagoen bezala kalkulatuta: zure puntuak (VC) bakarrik aldatzen dira.",
     "measures": {
       "ct": "VC",
@@ -94,7 +85,9 @@
       "missing": "{{measure}}: {{missing}} puntu falta zaizkizu ({{min}} behar dituzu)",
       "ownOnly": "Zure salmentekin bakarrik, {{extra}} VC puntu gehiago beharko zenituzke (VC guztira {{total}}).",
       "amount": "Komisio estimatua {{level}}. helburuan: {{amount}} (orain baino {{delta}} gehiago).",
-      "newPartners": "Hilabete honetan sartzen diren bazkideak ez dira hurrengo hilabetera arte zenbatzen; orduan bi hilabeteetako puntuak zenbatzen dira."
+      "newPartners": "Hilabete honetan sartzen diren bazkideak ez dira hurrengo hilabetera arte zenbatzen; orduan bi hilabeteetako puntuak zenbatzen dira.",
+      "current": "Orain {{level}}. helburuan zaude, {{amount}} komisio estimatuarekin.",
+      "currentNoLevel": "Orain ez zara 1. helburura iristen (110 VC puntu propio)."
     },
     "target": {
       "title": "Zenbat puntu beharko zenituzke…?",
@@ -111,5 +104,24 @@
       "tooltip": "VC {{ct}} → {{amount}} ({{level}})",
       "noLevel": "helbururik ez"
     }
+  },
+  "legs": {
+    "legend": "Zure adarrak (bazkide zuzenak)",
+    "help": "Bazkide zuzen bakoitza adar bat da. Kopiatu bere VE Office Onlinetik: zure bazkide zuzenen zerrenda, «VE» zutabea. Zure VE-1, VE-2 eta VE-3 kalkulatzeko balio du, eta haiekin zure helburua.",
+    "empty": "Bazkide zuzenik ez.",
+    "defaultName": "{{number}}. adarra",
+    "alias": "Izena (aukerakoa)",
+    "aliasHelp": "Bere izena, ezagutzeko. Nabigatzailearen fitxa honetan bakarrik gordetzen da.",
+    "volume": "Adarraren VE",
+    "remove": "Kendu {{name}}",
+    "add": "Gehitu adarra"
+  },
+  "data": {
+    "note": "Zure datuak nabigatzailearen fitxa honetan bakarrik gordetzen dira eta ixtean ezabatzen dira.",
+    "clear": "Ezabatu nire datuak"
+  },
+  "emptyState": {
+    "text": "Lehenik, sartu zure puntuak «Nire oraingo komisioa» atalean.",
+    "action": "Joan Nire oraingo komisioa atalera"
   }
 }

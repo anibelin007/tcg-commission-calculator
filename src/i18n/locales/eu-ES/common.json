@@ -8,5 +8,11 @@
   },
   "languageSelector": {
     "label": "Hizkuntza"
+  },
+  "nav": {
+    "label": "Kalkulagailuaren atalak",
+    "commission": "Nire oraingo komisioa",
+    "next-level": "Nire hurrengo helburua",
+    "target": "Alderantzizko ingeniaritza"
   }
 }

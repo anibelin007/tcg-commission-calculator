@@ -31,7 +31,7 @@
     "own": "Tu VC",
     "ownUsa": "Tu DT (CT + PT)",
     "generation": "Generación {{number}}",
-    "limit": "Tope de la pata más fuerte (socia directa {{team}}: VE {{volume}}, límite {{limit}})",
+    "limit": "Tope de la pata más fuerte ({{team}}: VE {{volume}}, límite {{limit}})",
     "totalPoints": "Total de puntos de comisión",
     "factor": "Factor de conversión",
     "amount": "Comisión estimada",
@@ -43,7 +43,7 @@
       "exceptions": "Si tu fair score es inferior al 100 % o te aplica la regla «RINGANA only», tu comisión real será menor.",
       "bonuses": "No incluye bonificaciones (Fast Track, bonificación por crecimiento, Beyond Target 10).",
       "breakdownMissing": "El tope de la pata más fuerte todavía no está aplicado: completa el desglose de esa pata para un resultado más exacto.",
-      "limitNotApplied": "Tu pata más fuerte (socia directa {{team}}, VE {{volume}}) supera el tope de la meta {{level}} ({{limit}}). Todavía estamos confirmando cómo lo aplica RINGANA, así que por ahora no se descuenta: tu comisión real podría ser menor."
+      "limitNotApplied": "Tu pata más fuerte ({{team}}, VE {{volume}}) supera el tope de la meta {{level}} ({{limit}}). Todavía estamos confirmando cómo lo aplica RINGANA, así que por ahora no se descuenta: tu comisión real podría ser menor."
     }
   },
   "generations": {
@@ -55,17 +55,9 @@
     "add": "Añadir generación",
     "total": "Total de tu equipo: {{volume}} puntos"
   },
-  "partners": {
-    "legend": "VE de tus socias directas",
-    "help": "Cada socia directa es una pata. Cópialo de la Office Online: lista de tus socias directas, columna «VE». Sirve para calcular tu VE-1, VE-2 y VE-3 y, con ellos, tu meta.",
-    "empty": "Sin socias directas.",
-    "partner": "Socia directa {{number}} (VE)",
-    "remove": "Quitar la socia directa {{number}}",
-    "add": "Añadir socia directa"
-  },
   "breakdown": {
     "legend": "Tope de la pata más fuerte",
-    "help": "La pata de la socia directa {{number}} tiene un VE de {{volume}} puntos y supera el tope de la meta {{level}} ({{limit}} puntos). Para aplicar el tope, indica los puntos de esa pata por generación: la generación 1 es la propia socia directa (su VC).",
+    "help": "Tu pata más fuerte ({{team}}) tiene un VE de {{volume}} puntos y supera el tope de la meta {{level}} ({{limit}} puntos). Para aplicar el tope, indica los puntos de esa pata por generación: la generación 1 es la propia socia directa (su VC).",
     "total": "Total de la pata: {{volume}} puntos"
   },
   "warnings": {
@@ -75,7 +67,6 @@
     "breakdownExceedsGeneration": "Alguna generación del desglose es mayor que el total de esa generación. Revisa los datos."
   },
   "simulation": {
-    "title": "Simulaciones",
     "intro": "Calculadas con tu equipo tal como está ahora: solo cambian tus propios puntos (VC).",
     "measures": {
       "ct": "VC",
@@ -94,7 +85,9 @@
       "missing": "{{measure}}: te faltan {{missing}} puntos (necesitas {{min}})",
       "ownOnly": "Solo con tus ventas, necesitarías {{extra}} puntos de VC más (VC total {{total}}).",
       "amount": "Comisión estimada en la meta {{level}}: {{amount}} ({{delta}} más que ahora).",
-      "newPartners": "Las socias que entren este mes no cuentan hasta el mes que viene; entonces cuentan sus puntos de los dos meses."
+      "newPartners": "Las socias que entren este mes no cuentan hasta el mes que viene; entonces cuentan sus puntos de los dos meses.",
+      "current": "Ahora estás en la meta {{level}}, con una comisión estimada de {{amount}}.",
+      "currentNoLevel": "Ahora no llegas a la meta 1 (110 puntos de VC propios)."
     },
     "target": {
       "title": "¿Cuántos puntos necesitarías para…?",
@@ -111,5 +104,24 @@
       "tooltip": "VC {{ct}} → {{amount}} ({{level}})",
       "noLevel": "sin meta"
     }
+  },
+  "legs": {
+    "legend": "Tus patas (socias directas)",
+    "help": "Cada socia directa es una pata. Copia su VE de la Office Online: lista de tus socias directas, columna «VE». Sirve para calcular tu VE-1, VE-2 y VE-3 y, con ellos, tu meta.",
+    "empty": "Sin socias directas.",
+    "defaultName": "Pata {{number}}",
+    "alias": "Nombre (opcional)",
+    "aliasHelp": "Su nombre de pila, para reconocerla. Solo se guarda en esta pestaña del navegador.",
+    "volume": "VE de la pata",
+    "remove": "Quitar {{name}}",
+    "add": "Añadir pata"
+  },
+  "data": {
+    "note": "Tus datos se guardan solo en esta pestaña del navegador y se borran al cerrarla.",
+    "clear": "Borrar mis datos"
+  },
+  "emptyState": {
+    "text": "Primero introduce tus puntos en «Mi comisión actual».",
+    "action": "Ir a Mi comisión actual"
   }
 }
