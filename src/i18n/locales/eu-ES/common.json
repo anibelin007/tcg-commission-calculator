@@ -1,9 +1,12 @@
 {
   "app": {
     "title": "Komisio-kalkulagailua",
-    "status": "Tresna prestatzen ari gara. Oraindik ezin dira komisioak kalkulatu.",
     "unofficial": "TCG taldearen tresna ez-ofiziala. Emaitzak estimazioak dira: likidazio ofiziala RINGANArena da."
   },
-  "brand": { "logoAlt": "The Crazy Greens logotipoa" },
-  "languageSelector": { "label": "Hizkuntza" }
+  "brand": {
+    "logoAlt": "The Crazy Greens logotipoa"
+  },
+  "languageSelector": {
+    "label": "Hizkuntza"
+  }
 }

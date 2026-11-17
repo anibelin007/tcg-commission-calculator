@@ -1,0 +1,60 @@
+{
+  "intro": "Sartu hilabeteko zure puntuak. Kalkulua zure nabigatzailean egiten da: ez da ezer gordetzen ez bidaltzen.",
+  "invalid": "Sartu 0 edo handiagoa den puntu kopuru bat.",
+  "market": {
+    "legend": "Merkatua",
+    "country": "Fakturazio-herrialdea",
+    "contract": "Kontratu mota",
+    "contracts": {
+      "vdi": "VDI",
+      "mandataire": "Mandataire Professionnel",
+      "occasionale": "Porta a Porta Occasionale",
+      "partitaIva": "Porta a Porta incl. partita IVA"
+    }
+  },
+  "own": {
+    "legend": "Zure puntuak",
+    "customerTurnover": "Zure VC (bezeroei egindako salmenten bolumena)",
+    "customerTurnoverHelp": "Zure bezeroek hilabete honetan ordaindutako eskaeren puntuak, zure eskaerak barne.",
+    "customerTurnoverHelpUsa": "Zure bezeroek hilabete honetan ordaindutako eskaeren puntuak, zure erosketak kanpo.",
+    "personalTurnover": "Zure PT (zure erosketak)",
+    "personalTurnoverHelp": "Hilabete honetan ordaindutako zure erosketen puntuak."
+  },
+  "teams": {
+    "legend": "Zure taldea",
+    "help": "Adar bakoitza bazkide zuzen bat da bere talde osoarekin. Sartu adar horren belaunaldi bakoitzaren puntuak (VC): 1. belaunaldia bazkide zuzena bera da.",
+    "empty": "Talderik ez. Bazkideak badituzu, gehitu adar bat bazkide zuzen bakoitzeko.",
+    "team": "{{number}}. adarra",
+    "generation": "{{number}}. belaunaldia",
+    "deepGenerations": "10. belaunaldia eta hurrengoak",
+    "deepGenerationsHelp": "VErako bakarrik zenbatzen dira: ez dute komisiorik sortzen.",
+    "teamVolume": "Adarraren VE: {{volume}} puntu",
+    "addTeam": "Gehitu adarra",
+    "removeTeam": "Kendu {{number}}. adarra",
+    "addGeneration": "Gehitu belaunaldia"
+  },
+  "result": {
+    "title": "Komisio estimatua",
+    "noLevel": "Puntu hauekin ez zara 1. helburura iristen (110 VC puntu propio). Hilabete honetan ez legoke komisiorik.",
+    "level": "{{level}}. helburua",
+    "concept": "Kontzeptua",
+    "volume": "Puntuak",
+    "rate": "%",
+    "points": "Komisio-puntuak",
+    "own": "Zure VC",
+    "ownUsa": "Zure DT (CT + PT)",
+    "generation": "{{number}}. belaunaldia",
+    "limit": "Adar indartsuenaren muga ({{team}}. adarra: VE {{volume}}, muga {{limit}})",
+    "totalPoints": "Komisio-puntuak guztira",
+    "factor": "Bihurketa-faktorea",
+    "amount": "Komisio estimatua",
+    "volumes": "VE {{tt}} · VE-1 {{tt1}} · VE-2 {{tt2}} · VE-3 {{tt3}}",
+    "notes": {
+      "voucher": "Gogoratu: {{threshold}} gainditzen ez duenez, deskontu-bale moduan ordainduko zaizu.",
+      "taxSettlement": "Merkatu honetan RINGANAk likidazio-dokumentu gehigarri bat bidaltzen du arrazoi fiskalengatik: azken zenbatekoa desberdina izan daiteke.",
+      "provisionalLimit": "Adar indartsuenaren muga behin-behinean aplikatzen da, RINGANArekin nola kalkulatzen den baieztatu bitartean.",
+      "exceptions": "Zure fair scorea % 100 baino txikiagoa bada edo «RINGANA only» araua aplikatzen bazaizu, zure benetako komisioa txikiagoa izango da.",
+      "bonuses": "Ez ditu hobariak barne hartzen (Fast Track, hazkunde-hobaria, Beyond Target 10)."
+    }
+  }
+}

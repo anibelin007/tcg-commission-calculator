@@ -14,5 +14,5 @@
 1. ✅ `tcg-ui`: tokens, base styles, language selector and i18n setup, private publishing (0.1.0).
 2. ✅ App shell (header, language selector, 7 locales) and engine in `src/domain/commission/` (pure TypeScript, plans as versioned data, table-driven
    tests from `docs/qa/test-cases.md`).
-3. Manual input form and result breakdown.
+3. ✅ Manual input form (market, own points, teams by generation) and result breakdown.
 4. Simulations (PF-02 to PF-04).

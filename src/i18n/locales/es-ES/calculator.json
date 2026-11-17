@@ -1,0 +1,60 @@
+{
+  "intro": "Introduce tus puntos del mes. El cálculo se hace en tu navegador: no se guarda ni se envía nada.",
+  "invalid": "Introduce un número de puntos igual o mayor que 0.",
+  "market": {
+    "legend": "Mercado",
+    "country": "País de facturación",
+    "contract": "Tipo de contrato",
+    "contracts": {
+      "vdi": "VDI",
+      "mandataire": "Mandataire Professionnel",
+      "occasionale": "Porta a Porta Occasionale",
+      "partitaIva": "Porta a Porta incl. partita IVA"
+    }
+  },
+  "own": {
+    "legend": "Tus puntos",
+    "customerTurnover": "Tu VC (volumen de ventas a clientes)",
+    "customerTurnoverHelp": "Puntos de los pedidos pagados este mes por tus clientas, incluidos tus propios pedidos.",
+    "customerTurnoverHelpUsa": "Puntos de los pedidos pagados este mes por tus clientas, sin tus propias compras.",
+    "personalTurnover": "Tu PT (compras propias)",
+    "personalTurnoverHelp": "Puntos de tus propias compras pagadas este mes."
+  },
+  "teams": {
+    "legend": "Tu equipo",
+    "help": "Cada pata es una socia directa con todo su equipo. Introduce los puntos (VC) de cada generación de esa pata: la generación 1 es la propia socia directa.",
+    "empty": "Sin equipo. Si tienes socias, añade una pata por cada socia directa.",
+    "team": "Pata {{number}}",
+    "generation": "Generación {{number}}",
+    "deepGenerations": "Generación 10 y siguientes",
+    "deepGenerationsHelp": "Solo cuentan para el VE: no generan comisión.",
+    "teamVolume": "VE de la pata: {{volume}} puntos",
+    "addTeam": "Añadir pata",
+    "removeTeam": "Quitar la pata {{number}}",
+    "addGeneration": "Añadir generación"
+  },
+  "result": {
+    "title": "Comisión estimada",
+    "noLevel": "Con estos puntos no llegas a la meta 1 (110 puntos de VC propios). Este mes no habría comisión.",
+    "level": "Meta {{level}}",
+    "concept": "Concepto",
+    "volume": "Puntos",
+    "rate": "%",
+    "points": "Puntos de comisión",
+    "own": "Tu VC",
+    "ownUsa": "Tu DT (CT + PT)",
+    "generation": "Generación {{number}}",
+    "limit": "Tope de la pata más fuerte (pata {{team}}: VE {{volume}}, límite {{limit}})",
+    "totalPoints": "Total de puntos de comisión",
+    "factor": "Factor de conversión",
+    "amount": "Comisión estimada",
+    "volumes": "VE {{tt}} · VE-1 {{tt1}} · VE-2 {{tt2}} · VE-3 {{tt3}}",
+    "notes": {
+      "voucher": "Recuerda: como no supera {{threshold}}, se te pagará en forma de vale de descuento.",
+      "taxSettlement": "En este mercado RINGANA envía además un documento de liquidación por motivos fiscales: el importe final puede ser distinto.",
+      "provisionalLimit": "El tope de la pata más fuerte se aplica de forma provisional mientras confirmamos con RINGANA cómo se calcula.",
+      "exceptions": "Si tu fair score es inferior al 100 % o te aplica la regla «RINGANA only», tu comisión real será menor.",
+      "bonuses": "No incluye bonificaciones (Fast Track, bonificación por crecimiento, Beyond Target 10)."
+    }
+  }
+}

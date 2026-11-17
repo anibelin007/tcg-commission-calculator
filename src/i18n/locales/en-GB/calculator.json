@@ -1,0 +1,60 @@
+{
+  "intro": "Enter your points for the month. The calculation runs in your browser: nothing is stored or sent.",
+  "invalid": "Enter a number of points equal to or greater than 0.",
+  "market": {
+    "legend": "Market",
+    "country": "Billing country",
+    "contract": "Contract type",
+    "contracts": {
+      "vdi": "VDI",
+      "mandataire": "Mandataire Professionnel",
+      "occasionale": "Porta a Porta Occasionale",
+      "partitaIva": "Porta a Porta incl. partita IVA"
+    }
+  },
+  "own": {
+    "legend": "Your points",
+    "customerTurnover": "Your CT (customer turnover)",
+    "customerTurnoverHelp": "Points of the orders paid this month by your customers, including your own orders.",
+    "customerTurnoverHelpUsa": "Points of the orders paid this month by your customers, excluding your own purchases.",
+    "personalTurnover": "Your PT (personal turnover)",
+    "personalTurnoverHelp": "Points of your own purchases paid this month."
+  },
+  "teams": {
+    "legend": "Your team",
+    "help": "Each team is one direct partner with her whole downline. Enter the points (CT) of each generation of that team: generation 1 is the direct partner herself.",
+    "empty": "No team. If you have partners, add one team per direct partner.",
+    "team": "Team {{number}}",
+    "generation": "Generation {{number}}",
+    "deepGenerations": "Generation 10 and deeper",
+    "deepGenerationsHelp": "They only count for TT: they earn no commission.",
+    "teamVolume": "Team TT: {{volume}} points",
+    "addTeam": "Add team",
+    "removeTeam": "Remove team {{number}}",
+    "addGeneration": "Add generation"
+  },
+  "result": {
+    "title": "Estimated commission",
+    "noLevel": "With these points you do not reach Target Level 1 (110 points of your own CT). There would be no commission this month.",
+    "level": "Target Level {{level}}",
+    "concept": "Item",
+    "volume": "Points",
+    "rate": "%",
+    "points": "Commission points",
+    "own": "Your CT",
+    "ownUsa": "Your DT (CT + PT)",
+    "generation": "Generation {{number}}",
+    "limit": "Limit for the strongest team (team {{team}}: TT {{volume}}, limit {{limit}})",
+    "totalPoints": "Total commission points",
+    "factor": "Points factor",
+    "amount": "Estimated commission",
+    "volumes": "TT {{tt}} · TT-1 {{tt1}} · TT-2 {{tt2}} · TT-3 {{tt3}}",
+    "notes": {
+      "voucher": "Remember: as it does not exceed {{threshold}}, it will be paid as a discount voucher.",
+      "taxSettlement": "In this market RINGANA also sends a settlement document for tax reasons: the final amount may differ.",
+      "provisionalLimit": "The limit for the strongest team is applied provisionally while we confirm with RINGANA how it is calculated.",
+      "exceptions": "If your fair score is below 100 % or the «RINGANA only» rule applies to you, your actual commission will be lower.",
+      "bonuses": "Bonuses are not included (Fast Track, Growth Bonus, Beyond Target 10)."
+    }
+  }
+}
