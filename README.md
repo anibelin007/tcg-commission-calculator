@@ -20,7 +20,7 @@ npm run check   # typecheck + lint + tests + build
 ### Preview on GitHub Pages
 
 Every push to `main` publishes a preview to `https://anibelin007.github.io/tcg-commission-calculator/`
-(`.github/workflows/deploy-pages.yml`, D-022). Temporary, for feedback only; it is not the final
+(`.github/workflows/deploy-pages.yml`, D-026). Temporary, for feedback only; it is not the final
 hosting. To check the Pages build locally:
 
 ```bash

@@ -15,7 +15,7 @@ function memoryStorage() {
 const sample = {
   ...initialPartnerData('ES'),
   customerTurnover: '600',
-  legs: [{ id: 'a', alias: 'Ana', volume: '1000' }],
+  ve1: '1200',
 }
 
 describe('session storage of the real data (D-007)', () => {
@@ -38,7 +38,7 @@ describe('session storage of the real data (D-007)', () => {
     expect(loadPartnerData(storage)).toBeNull()
     storage.setItem(STORAGE_KEY, '{not json')
     expect(loadPartnerData(storage)).toBeNull()
-    storage.setItem(STORAGE_KEY, JSON.stringify({ ...sample, legs: [{ id: 1 }] }))
+    storage.setItem(STORAGE_KEY, JSON.stringify({ ...sample, ve1: 1200 }))
     expect(loadPartnerData(storage)).toBeNull()
   })
 

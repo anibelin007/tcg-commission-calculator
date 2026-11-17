@@ -55,19 +55,15 @@
     "add": "Gehitu belaunaldia",
     "total": "Zure taldea guztira: {{volume}} puntu"
   },
-  "breakdown": {
-    "legend": "Adar indartsuenaren muga",
-    "help": "Zure adar indartsuenak ({{team}}) {{volume}} puntuko VE du eta {{level}}. helburuaren muga ({{limit}} puntu) gainditzen du. Muga aplikatzeko, adierazi adar horren puntuak belaunaldika: 1. belaunaldia bazkide zuzena bera da (bere VC).",
-    "total": "Adarra guztira: {{volume}} puntu"
-  },
   "warnings": {
     "teamVolumesMissing": "Zure bazkide zuzenen VE falta da: hori gabe ezin dira zure adar indartsuenak kendu eta helburua benetakoa baino altuagoa atera daiteke.",
     "teamVolumesExceedDownline": "Zure bazkide zuzenen VEen batura belaunaldi guztien batura baino handiagoa da. Berrikusi datuak.",
     "breakdownDoesNotMatchTeam": "Adar indartsuenaren banakapenak ez du bere VE ematen. Berrikusi datuak.",
-    "breakdownExceedsGeneration": "Banakapeneko belaunaldiren bat belaunaldi horren guztizkoa baino handiagoa da. Berrikusi datuak."
+    "breakdownExceedsGeneration": "Banakapeneko belaunaldiren bat belaunaldi horren guztizkoa baino handiagoa da. Berrikusi datuak.",
+    "teamMinusMissing": "Zure VE-1, VE-2 edo VE-3 falta dira: horiek gabe zure helburua benetakoa baino baxuagoa atera daiteke. Kopiatu Office Onlinetik.",
+    "teamMinusInconsistent": "Zure VE-1, VE-2 eta VE-3 ez datoz bat (bakoitzak zure VCaren eta aurrekoaren artean egon behar du, zure VE gainditu gabe). Berrikusi datuak."
   },
   "simulation": {
-    "intro": "Zure taldea orain dagoen bezala kalkulatuta: zure puntuak (VC) bakarrik aldatzen dira.",
     "measures": {
       "ct": "VC",
       "dt": "DT",
@@ -77,28 +73,12 @@
       "tt3": "VE-3"
     },
     "next": {
-      "title": "Hurrengo helburua",
-      "top": "Dagoeneko 10. helburuan zaude, altuenean.",
-      "for": "{{level}}. helburura iristeko:",
       "option": "{{number}}. aukera",
-      "met": "{{measure}}: beteta",
-      "missing": "{{measure}}: {{missing}} puntu falta zaizkizu ({{min}} behar dituzu)",
-      "ownOnly": "Zure salmentekin bakarrik, {{extra}} VC puntu gehiago beharko zenituzke (VC guztira {{total}}).",
-      "amount": "Komisio estimatua {{level}}. helburuan: {{amount}} (orain baino {{delta}} gehiago).",
-      "newPartners": "Hilabete honetan sartzen diren bazkideak ez dira hurrengo hilabetera arte zenbatzen; orduan bi hilabeteetako puntuak zenbatzen dira.",
-      "current": "Orain {{level}}. helburuan zaude, {{amount}} komisio estimatuarekin.",
-      "currentNoLevel": "Orain ez zara 1. helburura iristen (110 VC puntu propio)."
-    },
-    "target": {
-      "title": "Zenbat puntu beharko zenituzke…?",
-      "label": "Nahi zenukeen komisioa ({{currency}})",
-      "reached": "Zure oraingo puntuekin iristen zara: {{amount}}.",
-      "needed": "{{extra}} VC puntu gehiago beharko zenituzke (VC guztira {{total}}): {{level}}. helburua, komisio estimatua {{amount}}.",
-      "unreachable": "Ezin da zure puntuekin bakarrik lortu."
+      "newPartners": "Hilabete honetan sartzen diren bazkideak ez dira hurrengo hilabetera arte zenbatzen; orduan bi hilabeteetako puntuak zenbatzen dira."
     },
     "chart": {
       "title": "Zure komisio estimatua zure VCaren arabera",
-      "subtitle": "Zure oraingo taldearekin. Jauziak helburu-aldaketak dira.",
+      "subtitle": "Zure adarren aurreikuspenarekin. Jauziak helburu-aldaketak dira.",
       "xAxis": "Zure VC (puntuak)",
       "current": "Orain",
       "tooltip": "VC {{ct}} → {{amount}} ({{level}})",
@@ -106,22 +86,142 @@
     }
   },
   "legs": {
-    "legend": "Zure adarrak (bazkide zuzenak)",
-    "help": "Bazkide zuzen bakoitza adar bat da. Kopiatu bere VE Office Onlinetik: zure bazkide zuzenen zerrenda, «VE» zutabea. Zure VE-1, VE-2 eta VE-3 kalkulatzeko balio du, eta haiekin zure helburua.",
     "empty": "Bazkide zuzenik ez.",
     "defaultName": "{{number}}. adarra",
     "alias": "Izena (aukerakoa)",
     "aliasHelp": "Bere izena, ezagutzeko. Nabigatzailearen fitxa honetan bakarrik gordetzen da.",
-    "volume": "Adarraren VE",
     "remove": "Kendu {{name}}",
-    "add": "Gehitu adarra"
+    "add": "Gehitu adarra",
+    "moveUp": "Igo {{name}}",
+    "moveDown": "Jaitsi {{name}}"
   },
   "data": {
     "note": "Zure datuak nabigatzailearen fitxa honetan bakarrik gordetzen dira eta ixtean ezabatzen dira.",
     "clear": "Ezabatu nire datuak"
   },
   "emptyState": {
-    "text": "Lehenik, sartu zure puntuak «Nire oraingo komisioa» atalean.",
+    "text": "Zerotik abiatzen ari zara, planifikatzeko erabilgarria. Zure benetako datuetatik abiatu nahi baduzu, sartu itzazu «Nire oraingo komisioa» atalean.",
     "action": "Joan Nire oraingo komisioa atalera"
+  },
+  "reverse": {
+    "intro": "Idatzi zenbat irabazi nahi zenukeen, zenbat VC egiteko prest zauden eta zure taldeak zenbat egingo duela uste duzun. Iristen zaren esango dizugu eta, bestela, zein aukera dituzun. Hemen aldatzen duzunak ez die beste fitxei eragiten.",
+    "target": "Nahi zenukeen komisioa ({{currency}})",
+    "scenarios": {
+      "ownOnly": "Zure VC gehiago",
+      "moreTeam": "Zure adarren puntu gehiago",
+      "balanced": "Konbinatua",
+      "partners": "Bazkide gehiago"
+    },
+    "badges": {
+      "exact": "Gutxieneko zehatza",
+      "proposal": "Proposamena"
+    },
+    "summary": "Zuk {{own}} puntu gehiago eta zure taldeak {{team}} eginez gero, {{level}}. helburura iritsiko zinateke {{amount}} komisio estimatuarekin.",
+    "fields": {
+      "ownExtra": "Zure VC gehigarria",
+      "teamExtra": "Zure taldearen puntu gehigarriak",
+      "perLeg": "Banaketa adarka",
+      "finalCt": "Azken VC",
+      "level": "Helburua",
+      "amount": "Komisio estimatua",
+      "difference": "Helburuaren gainetik",
+      "finalMeasure": "Azken {{measure}}"
+    },
+    "strategies": {
+      "levelling": "Banaketa berdindua: lehenik adar ahulenak, horrek igotzen baitu gehien zure VE-1.",
+      "proportional": "Adar bakoitzaren VEaren araberako banaketa.",
+      "equal": "Puntu kopuru bera adar bakoitzarentzat."
+    },
+    "infeasible": {
+      "noLegs": "Gehitu zure adarrak goian (edo adierazi batez besteko bat) zure taldearekin aukerak ikusteko.",
+      "ownBelowLevel1": "1. helburutik behera (110 VC puntu propio) zure taldeak ez dizu komisiorik sortzen: lehenik 110 puntura iritsi behar zara.",
+      "unreachable": "Ezin da lortu datu hauekin."
+    },
+    "notes": {
+      "assumption": "Adar bakoitzaren puntuak bazkide zuzenak berak egiten dituela suposatzen dugu (1. belaunaldia): belaunaldi horren ehunekoan ordaintzen dira eta bere adarraren VE igotzen dute.",
+      "proposal": "«Proposamena» banatzeko hainbat modutatik aurkitu dugun konbinaziorik onena da; ez du zertan bakarra edo gutxieneko absolutua izan.",
+      "estimate": "Estimazioak eta baldintzak dira, ez diru-sarreren promesak: likidazio ofiziala RINGANArena da."
+    },
+    "willingOwn": "Egiteko prest zauden VC",
+    "willingOwnHelp": "«Nire helburua planifikatu» ataletik bazatoz, zure aurreikusitako VC da.",
+    "team": "Zure taldea",
+    "modes": {
+      "legs": "Adarrez adar",
+      "average": "Batez bestekoarekin"
+    },
+    "expected": "Zenbat egingo duela uste duzu (VE)",
+    "legCount": "Adar aktiboen kopurua (gehienez {{max}})",
+    "average": "Adar bakoitzeko batez besteko puntuak",
+    "enough": "Zure planarekin iristen zara! {{level}}. helburua, komisio estimatua {{amount}}.",
+    "notEnough": "Zure planarekin ez da nahikoa: {{amount}}ra iritsiko zinateke ({{level}}. helburua) eta {{missing}} falta zaizkizu.",
+    "notEnoughNoLevel": "Zure planarekin ez zara 1. helburura iristen (110 VC puntu propio): {{missing}} falta zaizkizu.",
+    "alternatives": "Iristeko aukerak",
+    "partners": "Batez beste {{average}} puntu egiten dituzten adarrekin, {{count}} adar aktibo gehiago beharko zenituzke: {{level}}. helburua, komisio estimatua {{amount}}.",
+    "partnersNone": "Batez besteko horrekin ez zinateke iritsiko {{max}} adar gehiagorekin ere.",
+    "partnersNoAverage": "Adierazi zure adarrek zenbat egingo dutela uste duzun, zenbat bazkide gehiago beharko zenituzkeen kalkulatzeko.",
+    "partnersNote": "Bazkide berri bat sartu eta hurrengo hilabetetik aurrera zenbatzen da.",
+    "reset": "Hasi berriro",
+    "partnersProspecting": "Estatistikaren arabera, {{cn}} negozio-elkarrizketa (CN) inguru haiek lortzeko, eta zure helburuaren aurreko hilabetean sartu behar dute.",
+    "loadFromPlan": "Kargatu «Nire helburua planifikatu» ataleko hankak (hemengoak ordezkatzen ditu):",
+    "loadReal": "Benetako bazkideak bakarrik ({{count}})",
+    "loadAll": "Guztiak, fiktizioak barne ({{count}})"
+  },
+  "teamMinus": {
+    "legend": "Zure VE-1, VE-2 eta VE-3",
+    "help": "Kopiatu Office Onlinetik: bazkideen zerrendan, zure errenkada (VE-1, VE-2 eta VE-3 zutabeak). Haiekin kalkulatzen dugu zure helburua."
+  },
+  "plan": {
+    "intro": "Aukeratu iritsi nahi duzun helburua eta jarri zuk eta adar bakoitzak hilabete honetan zenbat egingo duzuen uste duzun. Berehala ikusiko duzu iristen zaren eta zer falta zaizun.",
+    "target": "Helburua",
+    "choose": "Aukeratu helburu bat",
+    "meaning": "{{level}}. helbururako behar duzu:",
+    "and": "eta",
+    "or": "edo",
+    "forecastLegend": "Zure hilabeteko aurreikuspena",
+    "daysLeft": "{{days}} egun falta dira hilabetea ixteko (gaur barne).",
+    "me": "Ni",
+    "ownForecast": "Hilabete honetan aurreikusten dudan VC",
+    "legForecast": "Adarraren aurreikusitako VE",
+    "done": "Gaur arte daramat (aukerakoa)",
+    "pace": "{{missing}} puntu falta dira: {{perDay}} eguneko.",
+    "paceDone": "Aurreikuspena beteta!",
+    "resultTitle": "Zure planifikazioa: {{month}}",
+    "requirementMet": "✅ {{measure}}: {{actual}} / {{min}}",
+    "requirementMissing": "❌ {{measure}}: {{actual}} / {{min}}, {{missing}} falta",
+    "volumes": "Zure aurreikuspenarekin: VE {{tt}} · VE-1 {{tt1}} · VE-2 {{tt2}} · VE-3 {{tt3}}",
+    "targetMet": "Aurreikuspen honekin {{level}}. helburura iristen zara!",
+    "ownNeeded": "{{level}}. helbururako, zure adarrengandik aurreikusten duzunarekin, zuk {{own}} VC puntu beharko zenituzke ({{extra}} falta zaizkizu).",
+    "reached": "Zure aurreikuspenarekin {{level}}. helburura iritsiko zinateke",
+    "reachedNone": "Zure aurreikuspenarekin ez zinateke 1. helburura iritsiko.",
+    "surplus": "Helburu horren baldintza nagusiaren gainetik {{percent}}.",
+    "commission": "Zure planifikazioaren komisio estimatua",
+    "commissionWithOwn": "{{own}} VC puntu horiek egiten badituzu: {{amount}}.",
+    "approximate": "Gutxi gorabeherako komisioa: ez dakigu zure adarren puntuak zein belaunaldiatan dauden; beraz, «Nire oraingo komisioa» ataleko zure belaunaldiak bezala banatzen ditugu (edo denak 1. belaunaldian daturik ez badago).",
+    "clear": "Ezabatu planifikazioa",
+    "motivation": {
+      "level1": "Aktibo 🔄",
+      "level2": "Aurrera Crazy 🥦🥦🥦",
+      "level3": "Hau jada bikaina da 💰💰💰",
+      "level4": "Taldea hazten 🚀",
+      "level5": "Inspirazioa martxan 💚",
+      "level6": "% 50a gaindituta 🔥",
+      "level7": "Geldiezina zara 💗",
+      "level8": "LEADER izateko bidean 🥳",
+      "level9": "IZUGARRIA 💥",
+      "level10": "⭐ OMG.. 10. HELBURUA 🤩"
+    },
+    "remember": "Gorde nire planifikazioa gailu honetan nire helburua lortu arte",
+    "rememberHelp": "Nabigatzaile honetan bakarrik gordetzen da, zerbitzaririk gabe, fitxa itxi arren. Desmarkatu edo sakatu «Ezabatu planifikazioa» kentzeko.",
+    "fictitious": "Bazkide fiktizioa (oraindik ez da sartu)",
+    "fictitiousHelp": "Markatu oraindik lortu behar duzun bazkidea bada.",
+    "prospectingTitle": "Behar dituzun bazkide berriak",
+    "prospecting_one": "Zure planak oraindik sartu ez den {{count}} bazkide dauka. {{month}} hilabetean kontatzeko, beranduenez {{joinMonth}} hilabetean sartu behar du: hasi orain negozio-elkarrizketak (CN) egiten. Estatistikaren arabera, {{cn}} CN inguru.",
+    "prospecting_other": "Zure planak oraindik sartu ez diren {{count}} bazkide ditu. {{month}} hilabetean kontatzeko, beranduenez {{joinMonth}} hilabetean sartu behar dute: hasi orain negozio-elkarrizketak (CN) egiten. Estatistikaren arabera, {{cn}} CN inguru.",
+    "prospectingNote": "Taldearen estatistika: 10 CN inguru bazkide berri bakoitzeko. Hilabete batean sartzen den bazkidea hurrengo hilabetetik aurrera kontatzen da, bi hilabeteetako puntuekin.",
+    "month": "Planifikatzen duzun hilabetea",
+    "pastMonth": "Hilabete hau amaitu da: aukeratu beste bat planifikatzen jarraitzeko.",
+    "futureMonth": "{{month}} planifikatzen ari zara: eguneko erritmoa eta «Gaur arte daramat» hilabetea hastean agertuko dira.",
+    "prospectingLate_one": "Zure planak oraindik sartu ez den {{count}} bazkide dauka, baina ez da garaiz iristen: {{month}} hilabetean kontatzeko {{joinMonth}} hilabetean sartu beharko zuen. Aukeratu geroagoko hilabete bat edo kendu plangintzatik.",
+    "prospectingLate_other": "Zure planak oraindik sartu ez diren {{count}} bazkide ditu, baina ez dira garaiz iristen: {{month}} hilabetean kontatzeko {{joinMonth}} hilabetean sartu beharko zuten. Aukeratu geroagoko hilabete bat edo kendu plangintzatik."
   }
 }

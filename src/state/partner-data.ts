@@ -1,8 +1,9 @@
 import type { CommissionInput } from '../domain/commission'
 
 /**
- * The partner's real data, entered once in «Mi comisión actual» and read by every tab
- * (D-019). Raw field values, shaped like the Online Office (Q-12). Simulations never modify
+ * The partner's real data (tab 1 «Mi comisión actual»), as in the Online Office: CT, points
+ * per generation and her TT-1/2/3 (design §7). Imported from the Office when available, else
+ * typed in (D-018). Raw field values, shaped like the Online Office (Q-12). Simulations never modify
  * it: they build hypothetical inputs from it.
  */
 
@@ -10,13 +11,13 @@ import type { CommissionInput } from '../domain/commission'
 export const MAX_GENERATION_FIELDS = 10
 export const INITIAL_GENERATION_FIELDS = 5
 
-/** A direct partner and her whole team (*pata*). */
+/** A direct partner and her whole team (*pata*), used by the planning tabs. */
 export interface LegDraft {
   /** Stable ID, independent of the position in the list. */
   readonly id: string
   /** First name or nickname chosen by the partner; may be empty. Never sent anywhere. */
   readonly alias: string
-  /** VE of the leg, as in the Online Office list of direct partners. */
+  /** Points of the leg (expected VE in the planning tabs). */
   readonly volume: string
 }
 
@@ -26,17 +27,20 @@ export interface PartnerData {
   readonly personalTurnover: string
   /** «Estructura de equipo»: points per generation, index 0 = generation 1. */
   readonly generations: readonly string[]
-  readonly legs: readonly LegDraft[]
-  /** Points by generation of the strongest leg; only used by a strongest-team limit strategy (D-005). */
-  readonly breakdown: readonly string[]
+  /** VE-1, VE-2 and VE-3 from the partner's own row in the Online Office list of partners. */
+  readonly ve1: string
+  readonly ve2: string
+  readonly ve3: string
 }
 
 export type FieldId =
   | 'customerTurnover'
   | 'personalTurnover'
   | `generation-${number}`
+  | 've1'
+  | 've2'
+  | 've3'
   | `leg-${number}`
-  | `breakdown-${number}`
 
 export interface ParsedPartnerData {
   readonly input: CommissionInput
@@ -63,20 +67,16 @@ export function initialPartnerData(marketId: string): PartnerData {
     customerTurnover: '',
     personalTurnover: '',
     generations: empty(INITIAL_GENERATION_FIELDS),
-    legs: [],
-    breakdown: empty(INITIAL_GENERATION_FIELDS),
+    ve1: '',
+    ve2: '',
+    ve3: '',
   }
-}
-
-export function newLeg(id: string): LegDraft {
-  return { id, alias: '', volume: '' }
 }
 
 /** True when nothing has been entered yet (the other tabs then ask to fill in the data first). */
 export function isEmptyPartnerData(data: PartnerData): boolean {
   return (
-    [data.customerTurnover, data.personalTurnover, ...data.generations].every((raw) => raw.trim() === '') &&
-    data.legs.every((leg) => leg.volume.trim() === '')
+    [data.customerTurnover, data.personalTurnover, ...data.generations, data.ve1, data.ve2, data.ve3].every((raw) => raw.trim() === '')
   )
 }
 
@@ -88,22 +88,21 @@ export function parsePartnerData(data: PartnerData): ParsedPartnerData {
     if (points === null) invalid.push(field)
     return points ?? 0
   }
-  const breakdown = data.breakdown.map((raw, index) => read(raw, `breakdown-${index}`))
+  const reported = (raw: string, field: 've1' | 've2' | 've3') => (raw.trim() === '' ? undefined : read(raw, field))
   return {
     input: {
       customerTurnover: read(data.customerTurnover, 'customerTurnover'),
       personalTurnover: read(data.personalTurnover, 'personalTurnover'),
       generationVolumes: data.generations.map((raw, index) => read(raw, `generation-${index}`)),
-      teamVolumes: data.legs.map((leg, index) => read(leg.volume, `leg-${index}`)),
-      // An untouched breakdown means «not given».
-      ...(data.breakdown.some((raw) => raw.trim() !== '') ? { strongestTeamGenerations: breakdown } : {}),
+      teamVolumes: [],
+      reportedTeamMinus: { tt1: reported(data.ve1, 've1'), tt2: reported(data.ve2, 've2'), tt3: reported(data.ve3, 've3') },
     },
     invalid,
   }
 }
 
-/** Adds a generation field to the generations and to the breakdown, up to the maximum. */
+/** Adds a generation field, up to the maximum. */
 export function addGeneration(data: PartnerData): PartnerData {
   if (data.generations.length >= MAX_GENERATION_FIELDS) return data
-  return { ...data, generations: [...data.generations, ''], breakdown: [...data.breakdown, ''] }
+  return { ...data, generations: [...data.generations, ''] }
 }

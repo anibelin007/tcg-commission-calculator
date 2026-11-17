@@ -158,6 +158,39 @@ describe('strongest-team limit input (BR-12)', () => {
     expect(result.level).toBe(5) // TT-2 = TT = 4,500 without teams; level 3 once the VE are given (TC-02)
   })
 
+  it('TT-n adds the legs that are not the strongest, so it is never negative (PO, 2026-11-17)', () => {
+    // Legs entered but generations left at 0: TT-1 = own 500 + the other leg 1,000, not 500 − 6,000.
+    const input = { customerTurnover: 500, generationVolumes: [0, 0, 0, 0, 0], teamVolumes: [6000, 1000] }
+    const { volumes, warnings } = computeCommission(input, ES)
+    expect(volumes.tt).toBe(7500)
+    expect(volumes.tt1).toBe(1500)
+    expect(volumes.tt2).toBe(500)
+    expect(volumes.tt3).toBe(500)
+    expect(warnings).toEqual(['teamVolumesExceedDownline'])
+  })
+
+  it('uses TT-1/2/3 as reported by the Online Office when given (tab 1)', () => {
+    // Same as TC-02 without legs: TT 4,500 from CT + generations; TT-1 2,700 from the Office.
+    const input = { customerTurnover: 1000, generationVolumes: [1600, 1900], teamVolumes: [], reportedTeamMinus: { tt1: 2700, tt2: 1000, tt3: 1000 } }
+    const result = computeCommission(input, ES)
+    expect(result.volumes).toMatchObject({ tt: 4500, tt1: 2700, tt2: 1000, tt3: 1000 })
+    expect(result.level).toBe(3)
+    expect(result.amount).toBe(909.48)
+    expect(result.warnings).toEqual([])
+  })
+
+  it('counts a missing reported TT-n as the own volume and warns', () => {
+    const input = { customerTurnover: 1000, generationVolumes: [1600, 1900], teamVolumes: [], reportedTeamMinus: {} }
+    const result = computeCommission(input, ES)
+    expect(result.volumes).toMatchObject({ tt1: 1000, tt2: 1000, tt3: 1000 })
+    expect(result.warnings).toEqual(['teamMinusMissing'])
+  })
+
+  it('warns when reported TT-n values cannot be right', () => {
+    const input = { customerTurnover: 1000, generationVolumes: [1600, 1900], teamVolumes: [], reportedTeamMinus: { tt1: 2700, tt2: 3000, tt3: 900 } }
+    expect(computeCommission(input, ES).warnings).toEqual(['teamMinusInconsistent'])
+  })
+
   it('warns about inconsistent input', () => {
     expect(computeCommission({ customerTurnover: 400, generationVolumes: [500], teamVolumes: [600] }, ES).warnings).toEqual([
       'teamVolumesExceedDownline',

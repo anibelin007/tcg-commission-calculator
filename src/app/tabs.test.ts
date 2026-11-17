@@ -5,7 +5,7 @@ describe('tabs (D-019)', () => {
   it.each([
     ['', 'commission'],
     ['#commission', 'commission'],
-    ['#next-level', 'next-level'],
+    ['#plan', 'plan'],
     ['#/target', 'target'],
     ['#unknown', DEFAULT_TAB],
   ])('%j → %s', (hash, tab) => {

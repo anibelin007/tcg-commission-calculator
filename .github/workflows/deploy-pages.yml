@@ -1,6 +1,6 @@
 name: Deploy preview to GitHub Pages
 
-# Temporary preview for feedback (D-022). Not the final hosting decision.
+# Temporary preview for feedback (D-026). Not the final hosting decision.
 on:
   push:
     branches: [main]

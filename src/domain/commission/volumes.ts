@@ -25,6 +25,12 @@ export interface CommissionInput {
    * attained level (BR-12); otherwise ignored.
    */
   readonly strongestTeamGenerations?: readonly number[]
+  /**
+   * TT-1, TT-2 and TT-3 as reported by the Online Office (the partner's own row in the list of
+   * partners). When given, they replace the values computed from `teamVolumes`; a missing one
+   * counts as the own volume, the lowest possible (never overestimates the level).
+   */
+  readonly reportedTeamMinus?: { readonly tt1?: number; readonly tt2?: number; readonly tt3?: number }
 }
 
 export interface Volumes {
@@ -42,16 +48,30 @@ export interface Volumes {
 
 export const sum = (values: readonly number[]) => values.reduce((total, value) => total + value, 0)
 
-/** TT = own volume + all downline generations; TT-n = TT minus the n strongest teams (BR-05, BR-06). */
+/**
+ * TT and TT-n (BR-05, BR-06), built by **adding**, so they can never be negative:
+ * - TT = own volume + the whole downline;
+ * - TT-n = own volume + every leg except the n strongest + downline volume not in any listed leg.
+ * The downline is the larger of the generation total and the legs total, so inconsistent
+ * input (legs adding up to more than the generations) never removes points; the input warnings
+ * report the inconsistency.
+ */
 export function computeVolumes(plan: Plan, input: CommissionInput): Volumes {
   const ct = input.customerTurnover
   const dt = ct + (plan.ownMeasure === 'dt' ? (input.personalTurnover ?? 0) : 0)
   const own = plan.ownMeasure === 'dt' ? dt : ct
-  const downline = sum(input.generationVolumes)
+  const generationsTotal = sum(input.generationVolumes)
+  const legsTotal = sum(input.teamVolumes)
+  const downline = Math.max(generationsTotal, legsTotal)
+  const notInLegs = downline - legsTotal
   const tt = own + downline
   const strongestFirst = [...input.teamVolumes].sort((a, b) => b - a)
-  const minusStrongest = (n: number) => tt - sum(strongestFirst.slice(0, n))
-  return { ct, dt, own, downline, teamVolumes: input.teamVolumes, tt, tt1: minusStrongest(1), tt2: minusStrongest(2), tt3: minusStrongest(3) }
+  const withoutStrongest = (n: number) => own + sum(strongestFirst.slice(n)) + notInLegs
+  const reported = input.reportedTeamMinus
+  if (reported) {
+    return { ct, dt, own, downline, teamVolumes: input.teamVolumes, tt, tt1: reported.tt1 ?? own, tt2: reported.tt2 ?? own, tt3: reported.tt3 ?? own }
+  }
+  return { ct, dt, own, downline, teamVolumes: input.teamVolumes, tt, tt1: withoutStrongest(1), tt2: withoutStrongest(2), tt3: withoutStrongest(3) }
 }
 
 export function ownMeasureValue(volumes: Volumes, measure: OwnMeasure): number {

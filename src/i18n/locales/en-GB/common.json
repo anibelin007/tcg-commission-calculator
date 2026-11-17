@@ -12,7 +12,7 @@
   "nav": {
     "label": "Calculator sections",
     "commission": "My current commission",
-    "next-level": "My next Target Level",
+    "plan": "Plan my Target Level",
     "target": "Reverse engineering"
   }
 }

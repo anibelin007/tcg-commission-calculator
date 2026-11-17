@@ -21,9 +21,9 @@ export function PartnerDataProvider({ initialMarketId, storage, children }: Part
   const [data, setData] = useState<PartnerData>(() => loadPartnerData(storage) ?? initialPartnerData(initialMarketId))
   const legCounter = useRef(0)
 
-  // Nothing entered (no points, no legs) → nothing kept: «Borrar mis datos» leaves no trace.
+  // Nothing entered → nothing kept: «Borrar mis datos» leaves no trace.
   useEffect(() => {
-    if (isEmptyPartnerData(data) && data.legs.length === 0) clearPartnerData(storage)
+    if (isEmptyPartnerData(data)) clearPartnerData(storage)
     else savePartnerData(storage, data)
   }, [storage, data])
 

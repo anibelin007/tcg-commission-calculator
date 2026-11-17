@@ -5,14 +5,14 @@ import type { LegDraft, PartnerData } from './partner-data'
  * 2026-11-17): it survives reloads and back/forward navigation, is deleted when the tab
  * closes or with «Borrar mis datos», and never leaves the browser. Scenarios are not stored.
  */
-export const STORAGE_KEY = 'tcg-commission-calculator/partner-data/v1'
+export const STORAGE_KEY = 'tcg-commission-calculator/partner-data/v2'
 
 type Storage = Pick<globalThis.Storage, 'getItem' | 'setItem' | 'removeItem'>
 
 const isString = (value: unknown): value is string => typeof value === 'string'
 const isStringArray = (value: unknown): value is string[] => Array.isArray(value) && value.every(isString)
 
-function isLeg(value: unknown): value is LegDraft {
+export function isLeg(value: unknown): value is LegDraft {
   if (typeof value !== 'object' || value === null) return false
   const leg = value as Record<string, unknown>
   return isString(leg.id) && isString(leg.alias) && isString(leg.volume)
@@ -27,9 +27,9 @@ export function isPartnerData(value: unknown): value is PartnerData {
     isString(data.customerTurnover) &&
     isString(data.personalTurnover) &&
     isStringArray(data.generations) &&
-    isStringArray(data.breakdown) &&
-    Array.isArray(data.legs) &&
-    data.legs.every(isLeg)
+    isString(data.ve1) &&
+    isString(data.ve2) &&
+    isString(data.ve3)
   )
 }
 

@@ -2,7 +2,7 @@ import { AppHeader, LanguageSelector, type LocalePreference } from '@anibelin007
 import logo from '@anibelin007/tcg-ui/brand/tcg-logo-green.png'
 import { useTranslation } from 'react-i18next'
 import { CurrentCommissionPage } from '../features/current/CurrentCommissionPage'
-import { NextLevelPage } from '../features/next-level/NextLevelPage'
+import { PlanningPage } from '../features/plan/PlanningPage'
 import { TargetPage } from '../features/target/TargetPage'
 import { SUPPORTED_LOCALES, isSupportedLocale, type Locale } from '../i18n/locales'
 import { PartnerDataProvider } from '../state/PartnerDataProvider'
@@ -21,7 +21,7 @@ interface AppProps {
 
 const PAGES: Record<TabId, () => React.JSX.Element> = {
   commission: CurrentCommissionPage,
-  'next-level': NextLevelPage,
+  plan: PlanningPage,
   target: TargetPage,
 }
 

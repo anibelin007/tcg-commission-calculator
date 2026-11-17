@@ -5,8 +5,8 @@ Approved by the PO on 2026-11-17 (D-007 amended, D-019 to D-021). Implemented in
 | PR | Scope | Status |
 |---|---|---|
 | A | Three tabs, shared real data in memory and `sessionStorage`, leg aliases. No change in calculation behaviour. | Merged (#7) |
-| B | Scenario engine for reverse engineering (pure domain + tests): `src/domain/scenarios/`. | This PR |
-| C | Tab 3 UI: three scenarios, per-leg allocation, manual own-CT control. | After B |
+| B | Scenario engine for reverse engineering (pure domain + tests): `src/domain/scenarios/`. | Merged (#8) |
+| C | Tab 3 UI: three scenarios, per-leg allocation, manual own-CT control. | This PR |
 
 ## 1. One app, three tabs (D-019)
 
@@ -23,7 +23,8 @@ A single page that shows one of three tabs. The active tab is reflected in the U
 | **Mi siguiente meta** (`#next-level`) | Current level and amount, what is missing for the next level (own CT route) and the step chart. |
 | **Ingeniería inversa** (`#target`) | Target amount → points needed. Today the own-CT route; PRs B and C add the team scenarios. |
 
-The simulation tabs show a notice with a link to tab 1 until data has been entered.
+The simulation tabs always work: without real data they start from zero (planning ahead), with a
+non-blocking notice and a link to tab 1 (PO, 2026-11-17).
 
 ## 2. Code layout
 
@@ -105,3 +106,33 @@ VE, VE-1/2/3, level, estimated commission and difference to the target, worded a
 Market preselection, coherence warnings, the 7 locales, the strongest-team note (now with the
 leg's alias), the step chart and all existing tests. Checked in Chromium (mobile): deep link to
 a tab, data shared between tabs, back/forward, reload, «Borrar mis datos» and no external requests.
+
+## 7. Tab redesign (PO, 2026-11-17)
+
+Testing showed that mixing points per generation and legs in one tab confused two different
+things: **generations give the commission, legs give the level**. Each tab now has one purpose
+and its own data:
+
+| Tab | Purpose | Inputs | Output |
+|---|---|---|---|
+| **Mi comisión actual** (`#commission`) | The reality, as in the Online Office (imported when available, D-018; typed otherwise) | CT, points per generation, the partner's own VE-1, VE-2, VE-3 (her row in the Office list) | Level and commission. No legs. |
+| **Planificar mi meta** (`#plan`) | Play with the points, like the team planner sheet | Target level first; then «Yo» and each leg: forecast for the month and, optionally, made so far | Requirement-by-requirement comparison with the target, own CT needed with the legs as planned, level reached with a motivational message, % above its main requirement, points missing per day until month end, estimated commission (approximate) and the step chart |
+| **Ingeniería inversa** (`#target`) | «I want to earn X» | Target, own CT she is willing to make, her legs (each with what she expects, or a count and an average) | Whether the plan is enough; if not: more own CT (exact), more from the legs with own CT as planned, a combination, and how many more partners at the average |
+
+- TT-n is built by adding the legs that are not the strongest (BR-06), so it is never negative.
+- **Approximate commission of a plan:** legs only give team totals, so their points are spread
+  over generations like the real generations of tab 1 (or all in generation 1 without data).
+- Tab 3 is independent and usable from empty; it is prefilled from the plan of tab 2 (also when
+  the plan is only kept on the device, D-023). Buttons reload the plan's legs at any time: real
+  partners only, or all including fictitious ones (D-024).
+- Each tab keeps its form in `sessionStorage` (D-007). The plan of tab 2 can also be kept in
+  `localStorage` with an opt-in checkbox until the goal is reached (D-023, Q-22 option B).
+- Tab 2 starts with the month planned (month and year, D-025); «made so far» and the pace only
+  apply to the current month.
+- A leg can be marked as a fictitious (planned) partner: the plan then reminds that she must
+  join the month before the goal month and suggests 10 business conversations per partner (D-024).
+- Legs can be reordered with ↑ ↓ buttons in tabs 2 and 3 (order is display only; the engine
+  sorts legs by VE). Yearly history and fortnightly follow-up of
+  the planner sheet wait for a server and a database.
+- Motivational messages per reached level come from the planner sheet (editable texts).
+

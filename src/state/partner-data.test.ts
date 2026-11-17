@@ -4,7 +4,6 @@ import {
   addGeneration,
   initialPartnerData,
   isEmptyPartnerData,
-  newLeg,
   parsePartnerData,
   parsePoints,
 } from './partner-data'
@@ -26,31 +25,25 @@ describe('parsePoints', () => {
 })
 
 describe('parsePartnerData', () => {
-  it('converts the Online Office figures into engine input; aliases never reach the engine', () => {
+  it('converts the Online Office figures into engine input, with the reported VE-1/2/3', () => {
     const data = {
       ...initialPartnerData('ES'),
       customerTurnover: '1000',
       generations: ['1600', '1900', '', '', ''],
-      legs: [
-        { id: 'a', alias: 'Ana', volume: '1700' },
-        { id: 'b', alias: '', volume: '1800' },
-      ],
-      breakdown: ['900', '900', '', '', ''],
+      ve1: '2700',
+      ve2: '1000',
+      ve3: '',
     }
     expect(parsePartnerData(data)).toEqual({
       input: {
         customerTurnover: 1000,
         personalTurnover: 0,
         generationVolumes: [1600, 1900, 0, 0, 0],
-        teamVolumes: [1700, 1800],
-        strongestTeamGenerations: [900, 900, 0, 0, 0],
+        teamVolumes: [],
+        reportedTeamMinus: { tt1: 2700, tt2: 1000, tt3: undefined },
       },
       invalid: [],
     })
-  })
-
-  it('treats an untouched breakdown as not given', () => {
-    expect(parsePartnerData(initialPartnerData('ES')).input.strongestTeamGenerations).toBeUndefined()
   })
 
   it('reports invalid fields and counts them as 0', () => {
@@ -58,10 +51,10 @@ describe('parsePartnerData', () => {
       ...initialPartnerData('ES'),
       customerTurnover: '-5',
       generations: ['x', '', '', '', ''],
-      legs: [{ id: 'a', alias: 'Ana', volume: '-1' }],
+      ve1: '-1',
     }
     const parsed = parsePartnerData(data)
-    expect(parsed.invalid).toEqual(['customerTurnover', 'generation-0', 'leg-0'])
+    expect(parsed.invalid).toEqual(['customerTurnover', 'generation-0', 've1'])
     expect(parsed.input.customerTurnover).toBe(0)
   })
 
@@ -70,12 +63,11 @@ describe('parsePartnerData', () => {
     expect(data.generations).toHaveLength(5)
     for (let i = 0; i < 10; i++) data = addGeneration(data)
     expect(data.generations).toHaveLength(MAX_GENERATION_FIELDS)
-    expect(data.breakdown).toHaveLength(MAX_GENERATION_FIELDS)
   })
 
-  it('knows when nothing has been entered yet (aliases alone do not count)', () => {
+  it('knows when nothing has been entered yet', () => {
     expect(isEmptyPartnerData(initialPartnerData('ES'))).toBe(true)
-    expect(isEmptyPartnerData({ ...initialPartnerData('ES'), legs: [{ ...newLeg('a'), alias: 'Ana' }] })).toBe(true)
+    expect(isEmptyPartnerData({ ...initialPartnerData('ES'), ve1: '10' })).toBe(false)
     expect(isEmptyPartnerData({ ...initialPartnerData('ES'), customerTurnover: '10' })).toBe(false)
   })
 })
