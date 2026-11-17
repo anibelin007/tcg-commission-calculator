@@ -20,19 +20,6 @@
     "personalTurnover": "Zure PT (zure erosketak)",
     "personalTurnoverHelp": "Hilabete honetan ordaindutako zure erosketen puntuak."
   },
-  "teams": {
-    "legend": "Zure taldea",
-    "help": "Adar bakoitza bazkide zuzen bat da bere talde osoarekin. Sartu adar horren belaunaldi bakoitzaren puntuak (VC): 1. belaunaldia bazkide zuzena bera da.",
-    "empty": "Talderik ez. Bazkideak badituzu, gehitu adar bat bazkide zuzen bakoitzeko.",
-    "team": "{{number}}. adarra",
-    "generation": "{{number}}. belaunaldia",
-    "deepGenerations": "10. belaunaldia eta hurrengoak",
-    "deepGenerationsHelp": "VErako bakarrik zenbatzen dira: ez dute komisiorik sortzen.",
-    "teamVolume": "Adarraren VE: {{volume}} puntu",
-    "addTeam": "Gehitu adarra",
-    "removeTeam": "Kendu {{number}}. adarra",
-    "addGeneration": "Gehitu belaunaldia"
-  },
   "result": {
     "title": "Komisio estimatua",
     "noLevel": "Puntu hauekin ez zara 1. helburura iristen (110 VC puntu propio). Hilabete honetan ez legoke komisiorik.",
@@ -44,7 +31,7 @@
     "own": "Zure VC",
     "ownUsa": "Zure DT (CT + PT)",
     "generation": "{{number}}. belaunaldia",
-    "limit": "Adar indartsuenaren muga ({{team}}. adarra: VE {{volume}}, muga {{limit}})",
+    "limit": "Adar indartsuenaren muga ({{team}}. bazkide zuzena: VE {{volume}}, muga {{limit}})",
     "totalPoints": "Komisio-puntuak guztira",
     "factor": "Bihurketa-faktorea",
     "amount": "Komisio estimatua",
@@ -54,7 +41,36 @@
       "taxSettlement": "Merkatu honetan RINGANAk likidazio-dokumentu gehigarri bat bidaltzen du arrazoi fiskalengatik: azken zenbatekoa desberdina izan daiteke.",
       "provisionalLimit": "Adar indartsuenaren muga behin-behinean aplikatzen da, RINGANArekin nola kalkulatzen den baieztatu bitartean.",
       "exceptions": "Zure fair scorea % 100 baino txikiagoa bada edo «RINGANA only» araua aplikatzen bazaizu, zure benetako komisioa txikiagoa izango da.",
-      "bonuses": "Ez ditu hobariak barne hartzen (Fast Track, hazkunde-hobaria, Beyond Target 10)."
+      "bonuses": "Ez ditu hobariak barne hartzen (Fast Track, hazkunde-hobaria, Beyond Target 10).",
+      "breakdownMissing": "Adar indartsuenaren muga ez da oraindik aplikatu: bete adar horren banakapena emaitza zehatzagoa lortzeko."
     }
+  },
+  "generations": {
+    "legend": "Zure taldearen puntuak belaunaldika",
+    "help": "Kopiatu Office Onlinetik: Estatistikak → Taldearen egitura, «Puntuak» zutabea.",
+    "generation": "{{number}}. belaunaldia",
+    "deep": "10. belaunaldia eta hurrengoak",
+    "deepHelp": "VErako bakarrik zenbatzen dira: ez dute komisiorik sortzen.",
+    "add": "Gehitu belaunaldia",
+    "total": "Zure taldea guztira: {{volume}} puntu"
+  },
+  "partners": {
+    "legend": "Zure bazkide zuzenen VE",
+    "help": "Bazkide zuzen bakoitza adar bat da. Kopiatu Office Onlinetik: zure bazkide zuzenen zerrenda, «VE» zutabea. Zure VE-1, VE-2 eta VE-3 kalkulatzeko balio du, eta haiekin zure helburua.",
+    "empty": "Bazkide zuzenik ez.",
+    "partner": "{{number}}. bazkide zuzena (VE)",
+    "remove": "Kendu {{number}}. bazkide zuzena",
+    "add": "Gehitu bazkide zuzena"
+  },
+  "breakdown": {
+    "legend": "Adar indartsuenaren muga",
+    "help": "{{number}}. bazkide zuzenaren adarrak {{volume}} puntuko VE du eta {{level}}. helburuaren muga ({{limit}} puntu) gainditzen du. Muga aplikatzeko, adierazi adar horren puntuak belaunaldika: 1. belaunaldia bazkide zuzena bera da (bere VC).",
+    "total": "Adarra guztira: {{volume}} puntu"
+  },
+  "warnings": {
+    "teamVolumesMissing": "Zure bazkide zuzenen VE falta da: hori gabe ezin dira zure adar indartsuenak kendu eta helburua benetakoa baino altuagoa atera daiteke.",
+    "teamVolumesExceedDownline": "Zure bazkide zuzenen VEen batura belaunaldi guztien batura baino handiagoa da. Berrikusi datuak.",
+    "breakdownDoesNotMatchTeam": "Adar indartsuenaren banakapenak ez du bere VE ematen. Berrikusi datuak.",
+    "breakdownExceedsGeneration": "Banakapeneko belaunaldiren bat belaunaldi horren guztizkoa baino handiagoa da. Berrikusi datuak."
   }
 }

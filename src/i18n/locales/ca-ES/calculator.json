@@ -20,19 +20,6 @@
     "personalTurnover": "El teu PT (compres pròpies)",
     "personalTurnoverHelp": "Punts de les teves pròpies compres pagades aquest mes."
   },
-  "teams": {
-    "legend": "El teu equip",
-    "help": "Cada branca és una sòcia directa amb tot el seu equip. Introdueix els punts (VC) de cada generació d'aquesta branca: la generació 1 és la mateixa sòcia directa.",
-    "empty": "Sense equip. Si tens sòcies, afegeix una branca per cada sòcia directa.",
-    "team": "Branca {{number}}",
-    "generation": "Generació {{number}}",
-    "deepGenerations": "Generació 10 i següents",
-    "deepGenerationsHelp": "Només compten per al VE: no generen comissió.",
-    "teamVolume": "VE de la branca: {{volume}} punts",
-    "addTeam": "Afegeix una branca",
-    "removeTeam": "Treu la branca {{number}}",
-    "addGeneration": "Afegeix una generació"
-  },
   "result": {
     "title": "Comissió estimada",
     "noLevel": "Amb aquests punts no arribes a la meta 1 (110 punts de VC propis). Aquest mes no hi hauria comissió.",
@@ -44,7 +31,7 @@
     "own": "El teu VC",
     "ownUsa": "El teu DT (CT + PT)",
     "generation": "Generació {{number}}",
-    "limit": "Límit de la branca més forta (branca {{team}}: VE {{volume}}, límit {{limit}})",
+    "limit": "Límit de la branca més forta (sòcia directa {{team}}: VE {{volume}}, límit {{limit}})",
     "totalPoints": "Total de punts de comissió",
     "factor": "Factor de conversió",
     "amount": "Comissió estimada",
@@ -54,7 +41,36 @@
       "taxSettlement": "En aquest mercat RINGANA envia a més un document de liquidació per motius fiscals: l'import final pot ser diferent.",
       "provisionalLimit": "El límit de la branca més forta s'aplica de manera provisional mentre confirmem amb RINGANA com es calcula.",
       "exceptions": "Si el teu fair score és inferior al 100 % o t'aplica la regla «RINGANA only», la teva comissió real serà menor.",
-      "bonuses": "No inclou bonificacions (Fast Track, bonificació per creixement, Beyond Target 10)."
+      "bonuses": "No inclou bonificacions (Fast Track, bonificació per creixement, Beyond Target 10).",
+      "breakdownMissing": "El límit de la branca més forta encara no s'ha aplicat: completa el desglossament d'aquesta branca per obtenir un resultat més exacte."
     }
+  },
+  "generations": {
+    "legend": "Punts del teu equip per generació",
+    "help": "Copia'ls de l'Office Online: Estadístiques → Estructura d'equip, columna «Punts».",
+    "generation": "Generació {{number}}",
+    "deep": "Generació 10 i següents",
+    "deepHelp": "Només compten per al VE: no generen comissió.",
+    "add": "Afegeix una generació",
+    "total": "Total del teu equip: {{volume}} punts"
+  },
+  "partners": {
+    "legend": "VE de les teves sòcies directes",
+    "help": "Cada sòcia directa és una branca. Copia'l de l'Office Online: llista de les teves sòcies directes, columna «VE». Serveix per calcular el teu VE-1, VE-2 i VE-3 i, amb ells, la teva meta.",
+    "empty": "Sense sòcies directes.",
+    "partner": "Sòcia directa {{number}} (VE)",
+    "remove": "Treu la sòcia directa {{number}}",
+    "add": "Afegeix una sòcia directa"
+  },
+  "breakdown": {
+    "legend": "Límit de la branca més forta",
+    "help": "La branca de la sòcia directa {{number}} té un VE de {{volume}} punts i supera el límit de la meta {{level}} ({{limit}} punts). Per aplicar el límit, indica els punts d'aquesta branca per generació: la generació 1 és la mateixa sòcia directa (el seu VC).",
+    "total": "Total de la branca: {{volume}} punts"
+  },
+  "warnings": {
+    "teamVolumesMissing": "Falta el VE de les teves sòcies directes: sense ell no es poden descomptar les teves branques més fortes i la meta pot sortir més alta que la real.",
+    "teamVolumesExceedDownline": "La suma del VE de les teves sòcies directes és més gran que la suma de totes les generacions. Revisa les dades.",
+    "breakdownDoesNotMatchTeam": "El desglossament de la branca més forta no suma el seu VE. Revisa les dades.",
+    "breakdownExceedsGeneration": "Alguna generació del desglossament és més gran que el total d'aquesta generació. Revisa les dades."
   }
 }

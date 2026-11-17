@@ -20,19 +20,6 @@
     "personalTurnover": "Tu PT (compras propias)",
     "personalTurnoverHelp": "Puntos de tus propias compras pagadas este mes."
   },
-  "teams": {
-    "legend": "Tu equipo",
-    "help": "Cada pata es una socia directa con todo su equipo. Introduce los puntos (VC) de cada generación de esa pata: la generación 1 es la propia socia directa.",
-    "empty": "Sin equipo. Si tienes socias, añade una pata por cada socia directa.",
-    "team": "Pata {{number}}",
-    "generation": "Generación {{number}}",
-    "deepGenerations": "Generación 10 y siguientes",
-    "deepGenerationsHelp": "Solo cuentan para el VE: no generan comisión.",
-    "teamVolume": "VE de la pata: {{volume}} puntos",
-    "addTeam": "Añadir pata",
-    "removeTeam": "Quitar la pata {{number}}",
-    "addGeneration": "Añadir generación"
-  },
   "result": {
     "title": "Comisión estimada",
     "noLevel": "Con estos puntos no llegas a la meta 1 (110 puntos de VC propios). Este mes no habría comisión.",
@@ -44,7 +31,7 @@
     "own": "Tu VC",
     "ownUsa": "Tu DT (CT + PT)",
     "generation": "Generación {{number}}",
-    "limit": "Tope de la pata más fuerte (pata {{team}}: VE {{volume}}, límite {{limit}})",
+    "limit": "Tope de la pata más fuerte (socia directa {{team}}: VE {{volume}}, límite {{limit}})",
     "totalPoints": "Total de puntos de comisión",
     "factor": "Factor de conversión",
     "amount": "Comisión estimada",
@@ -54,7 +41,36 @@
       "taxSettlement": "En este mercado RINGANA envía además un documento de liquidación por motivos fiscales: el importe final puede ser distinto.",
       "provisionalLimit": "El tope de la pata más fuerte se aplica de forma provisional mientras confirmamos con RINGANA cómo se calcula.",
       "exceptions": "Si tu fair score es inferior al 100 % o te aplica la regla «RINGANA only», tu comisión real será menor.",
-      "bonuses": "No incluye bonificaciones (Fast Track, bonificación por crecimiento, Beyond Target 10)."
+      "bonuses": "No incluye bonificaciones (Fast Track, bonificación por crecimiento, Beyond Target 10).",
+      "breakdownMissing": "El tope de la pata más fuerte todavía no está aplicado: completa el desglose de esa pata para un resultado más exacto."
     }
+  },
+  "generations": {
+    "legend": "Puntos de tu equipo por generación",
+    "help": "Cópialos de la Office Online: Estadísticas → Estructura de equipo, columna «Puntos».",
+    "generation": "Generación {{number}}",
+    "deep": "Generación 10 y siguientes",
+    "deepHelp": "Solo cuentan para el VE: no generan comisión.",
+    "add": "Añadir generación",
+    "total": "Total de tu equipo: {{volume}} puntos"
+  },
+  "partners": {
+    "legend": "VE de tus socias directas",
+    "help": "Cada socia directa es una pata. Cópialo de la Office Online: lista de tus socias directas, columna «VE». Sirve para calcular tu VE-1, VE-2 y VE-3 y, con ellos, tu meta.",
+    "empty": "Sin socias directas.",
+    "partner": "Socia directa {{number}} (VE)",
+    "remove": "Quitar la socia directa {{number}}",
+    "add": "Añadir socia directa"
+  },
+  "breakdown": {
+    "legend": "Tope de la pata más fuerte",
+    "help": "La pata de la socia directa {{number}} tiene un VE de {{volume}} puntos y supera el tope de la meta {{level}} ({{limit}} puntos). Para aplicar el tope, indica los puntos de esa pata por generación: la generación 1 es la propia socia directa (su VC).",
+    "total": "Total de la pata: {{volume}} puntos"
+  },
+  "warnings": {
+    "teamVolumesMissing": "Falta el VE de tus socias directas: sin él no se pueden descontar tus patas más fuertes y la meta puede salir más alta de la real.",
+    "teamVolumesExceedDownline": "La suma del VE de tus socias directas es mayor que la suma de todas las generaciones. Revisa los datos.",
+    "breakdownDoesNotMatchTeam": "El desglose de la pata más fuerte no suma su VE. Revisa los datos.",
+    "breakdownExceedsGeneration": "Alguna generación del desglose es mayor que el total de esa generación. Revisa los datos."
   }
 }

@@ -1,6 +1,6 @@
-export { computeCommission, type CommissionOptions, type CommissionResult, type GenerationResult, type Payout, type StrongestTeamResult } from './commission'
+export { computeCommission, type CommissionOptions, type CommissionResult, type GenerationResult, type InputWarning, type Payout, type StrongestTeamResult } from './commission'
 export { attainedLevel, qualifiesFor } from './level'
 export { MARKETS, findMarket, type ContractType, type CurrencyCode, type Market } from './markets'
 export { PLANS, TARGET_LEVELS, levelDefinition, type Plan, type PlanId, type TargetLevel } from './plans'
 export { DEFAULT_STRONGEST_TEAM_LIMIT, STRONGEST_TEAM_LIMITS, type StrongestTeamLimitId } from './strongest-team-limit'
-export { computeVolumes, type CommissionInput, type TeamInput, type Volumes } from './volumes'
+export { computeVolumes, type CommissionInput, type Volumes } from './volumes'

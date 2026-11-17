@@ -189,5 +189,8 @@ Approved direction by the PO (D-002, D-013); exact behaviour still to be specifi
 - **PF-06 Prospect simulator** (D-017): build CT from fictitious orders using the points
   table of the selected market, optionally add a fictitious team, and show the resulting
   commission as a clearly labelled fictitious example (BR-21).
+- **PF-07 Input like the Online Office** (Q-12): points per generation and the VE of each
+  direct partner; the strongest team's breakdown only when it exceeds the limit. Warnings when
+  the direct partners' VE are missing (the level would be too high) or inconsistent.
 - **PF-05 Import** of current and previous-month points from RINGANA (depends on Q-03 and on
   a backend/authentication decision, D-010).

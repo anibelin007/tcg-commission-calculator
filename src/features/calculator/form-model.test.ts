@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { initialFormState, newTeam, parseForm, parsePoints } from './form-model'
+import { MAX_GENERATION_FIELDS, addGeneration, initialFormState, parseForm, parsePoints } from './form-model'
 
 describe('parsePoints', () => {
   it.each([
@@ -18,33 +18,50 @@ describe('parsePoints', () => {
 })
 
 describe('parseForm', () => {
-  it('converts teams and generations into engine input', () => {
+  it('converts the Online Office figures into engine input', () => {
     const state = {
       ...initialFormState('ES'),
       customerTurnover: '1000',
-      teams: [
-        { key: 1, generations: ['700', '1000', ''] },
-        { key: 2, generations: ['900', '900', ''] },
+      generations: ['1600', '1900', '', '', ''],
+      partners: [
+        { key: 1, volume: '1700' },
+        { key: 2, volume: '1800' },
       ],
+      breakdown: ['900', '900', '', '', ''],
     }
     expect(parseForm(state)).toEqual({
       input: {
         customerTurnover: 1000,
         personalTurnover: 0,
-        teams: [{ generations: [700, 1000, 0] }, { generations: [900, 900, 0] }],
+        generationVolumes: [1600, 1900, 0, 0, 0],
+        teamVolumes: [1700, 1800],
+        strongestTeamGenerations: [900, 900, 0, 0, 0],
       },
       invalid: [],
     })
   })
 
+  it('treats an untouched breakdown as not given', () => {
+    expect(parseForm(initialFormState('ES')).input.strongestTeamGenerations).toBeUndefined()
+  })
+
   it('reports invalid fields and counts them as 0', () => {
-    const state = { ...initialFormState('ES'), customerTurnover: '-5', teams: [{ key: 1, generations: ['x'] }] }
+    const state = {
+      ...initialFormState('ES'),
+      customerTurnover: '-5',
+      generations: ['x', '', '', '', ''],
+      partners: [{ key: 1, volume: '-1' }],
+    }
     const parsed = parseForm(state)
-    expect(parsed.invalid).toEqual(['customerTurnover', 'team-0-generation-0'])
+    expect(parsed.invalid).toEqual(['customerTurnover', 'generation-0', 'partner-0'])
     expect(parsed.input.customerTurnover).toBe(0)
   })
 
-  it('starts new teams with three empty generations', () => {
-    expect(newTeam(7)).toEqual({ key: 7, generations: ['', '', ''] })
+  it('starts with five generations, as the Online Office table, and grows to ten', () => {
+    let state = initialFormState('ES')
+    expect(state.generations).toHaveLength(5)
+    for (let i = 0; i < 10; i++) state = addGeneration(state)
+    expect(state.generations).toHaveLength(MAX_GENERATION_FIELDS)
+    expect(state.breakdown).toHaveLength(MAX_GENERATION_FIELDS)
   })
 })

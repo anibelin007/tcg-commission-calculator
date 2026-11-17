@@ -14,7 +14,11 @@ export function ResultPanel({ result, market }: ResultPanelProps) {
   const { t, i18n } = useTranslation('calculator')
   const locale = i18n.language
   const points = (value: number) => formatPoints(locale, value)
-  const limited = result.strongestTeam && result.strongestTeam.pointsAfter < result.strongestTeam.pointsBefore
+  const strongest = result.strongestTeam
+  const reduction =
+    strongest?.status === 'applied' && strongest.pointsAfter !== null && strongest.pointsBefore !== null
+      ? strongest.pointsAfter - strongest.pointsBefore
+      : 0
 
   return (
     <section aria-live="polite" className="flex flex-col gap-4 rounded border border-tcg-surface-strong bg-white p-4 sm:p-6">
@@ -50,16 +54,12 @@ export function ResultPanel({ result, market }: ResultPanelProps) {
                     <td className={cell}>{points(generation.points)}</td>
                   </tr>
                 ))}
-                {limited && result.strongestTeam && (
+                {strongest && reduction < 0 && (
                   <tr>
                     <td className="px-3 py-2" colSpan={3}>
-                      {t('result.limit', {
-                        team: result.strongestTeam.index + 1,
-                        volume: points(result.strongestTeam.volume),
-                        limit: points(result.strongestTeam.limit),
-                      })}
+                      {t('result.limit', { team: strongest.index + 1, volume: points(strongest.volume), limit: points(strongest.limit) })}
                     </td>
-                    <td className={cell}>{points(result.strongestTeam.pointsAfter - result.strongestTeam.pointsBefore)}</td>
+                    <td className={cell}>{points(reduction)}</td>
                   </tr>
                 )}
               </tbody>
@@ -102,7 +102,15 @@ export function ResultPanel({ result, market }: ResultPanelProps) {
             {t('result.notes.voucher', { threshold: formatAmount(locale, market.payoutThreshold, market.currency) })}
           </li>
         )}
-        {limited && <li>{t('result.notes.provisionalLimit')}</li>}
+        {result.warnings.map((warning) => (
+          <li key={warning} className="font-semibold text-red-700">
+            {t(`warnings.${warning}`)}
+          </li>
+        ))}
+        {strongest?.status === 'breakdownMissing' && result.level !== null && (
+          <li className="font-semibold text-tcg-heading">{t('result.notes.breakdownMissing')}</li>
+        )}
+        {reduction < 0 && <li>{t('result.notes.provisionalLimit')}</li>}
         {market.taxSpecificSettlement && <li>{t('result.notes.taxSettlement')}</li>}
         <li>{t('result.notes.exceptions')}</li>
         <li>{t('result.notes.bonuses')}</li>
