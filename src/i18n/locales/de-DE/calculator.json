@@ -73,5 +73,47 @@
     "teamVolumesExceedDownline": "Der TU deiner direkten Partnerinnen ist zusammen größer als alle Generationen zusammen. Bitte prüfe die Daten.",
     "breakdownDoesNotMatchTeam": "Die Aufschlüsselung des stärksten Teams ergibt nicht seinen TU. Bitte prüfe die Daten.",
     "breakdownExceedsGeneration": "Eine Generation der Aufschlüsselung ist größer als die Summe dieser Generation. Bitte prüfe die Daten."
+  },
+  "simulation": {
+    "title": "Simulationen",
+    "intro": "Berechnet mit deinem Team, wie es jetzt ist: Nur deine eigenen Punkte (KU) ändern sich.",
+    "measures": {
+      "ct": "KU",
+      "dt": "DT",
+      "tt": "TU",
+      "tt1": "TU-1",
+      "tt2": "TU-2",
+      "tt3": "TU-3"
+    },
+    "next": {
+      "title": "Nächste Zielstufe",
+      "top": "Du bist bereits auf Zielstufe 10, der höchsten.",
+      "for": "Um Zielstufe {{level}} zu erreichen:",
+      "option": "Option {{number}}",
+      "met": "{{measure}}: erfüllt",
+      "missing": "{{measure}}: Es fehlen {{missing}} Punkte (du brauchst {{min}})",
+      "ownOnly": "Nur mit deinen eigenen Verkäufen bräuchtest du {{extra}} KU-Punkte mehr (KU gesamt {{total}}).",
+      "amount": "Geschätzte Provision auf Zielstufe {{level}}: {{amount}} ({{delta}} mehr als jetzt).",
+      "newPartners": "Partnerinnen, die diesen Monat einsteigen, zählen erst ab nächstem Monat; dann zählen ihre Punkte aus beiden Monaten."
+    },
+    "target": {
+      "title": "Wie viele Punkte bräuchtest du für…?",
+      "label": "Gewünschte Provision ({{currency}})",
+      "reached": "Mit deinen aktuellen Punkten erreichst du sie bereits: {{amount}}.",
+      "needed": "Du bräuchtest {{extra}} KU-Punkte mehr (KU gesamt {{total}}): Zielstufe {{level}}, geschätzte Provision {{amount}}.",
+      "unreachable": "Nur mit deinen eigenen Punkten nicht erreichbar."
+    },
+    "chart": {
+      "title": "Deine geschätzte Provision nach KU",
+      "subtitle": "Mit deinem aktuellen Team. Die Sprünge sind Wechsel der Zielstufe.",
+      "xAxis": "Dein KU (Punkte)",
+      "current": "Jetzt",
+      "tooltip": "KU {{ct}} → {{amount}} ({{level}})",
+      "noLevel": "keine Zielstufe",
+      "tableSummary": "Stufensprünge als Tabelle anzeigen",
+      "level": "Zielstufe",
+      "from": "Ab KU",
+      "amountAt": "Geschätzte Provision beim Erreichen"
+    }
   }
 }
