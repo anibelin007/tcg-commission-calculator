@@ -31,6 +31,9 @@ Citations use the short IDs below, e.g. *EU-ES p. 13* = printed page 13 of S-01.
 | S-02 | RINGANA commission guidelines — EU (other languages) | RCG 2.5, 06/2026 | en, de, cs, sk, pl, hu, pt, nl, it | Available (PO upload). Same rules and figures as S-01 (cross-checked, see below). |
 | S-03 | RINGANA commission guidelines — Mexico | RCG 2.4, 06/2026 | es (MX) | Available (PO upload). Same target plan as EU; own points factor, currency and payout threshold. |
 | S-04 | RINGANA commission guidelines — USA | RCG 1.0, 10/2026 | en | Available (PO upload). **Different plan** (Direct Turnover; other qualification minima). |
+| S-15 | RINGANA commission guidelines — Peru | RCG 1.1, 06/2026 | es | Available (PO upload, 2026-11-17). Same target plan as EU/MX; factor 5.2 PEN; tax-specific settlement (SUNAT). Erratum on p. 14 (Q-21). |
+| S-16 | RINGANA commission guidelines — Colombia | RCG 2.4, 06/2026 | es | Available (PO upload, 2026-11-17). Same target plan; factor 6,240 COP; tax-specific settlement. |
+| S-17 | RINGANA commission guidelines — Argentina | RCG 1.0, 09/2026 | es | Available (PO upload, 2026-11-17). Same target plan; factor 2,210 ARS (valid from June 2026); payment depends on the AFIP tax category. |
 | S-05 | RINGANA GC Rules (Governance & Communication Rules) | V2.4, 06/2026 | es | Available (PO upload). Affects commission (fair score, «RINGANA only») and what the tool may say (earnings claims, brand). |
 | S-06 | RINGANA GC Rules — Turkey | V1.2, 06/2026 | tr, en | Available (PO upload). Not yet analysed; no Turkish commission guideline available (Q-09). |
 | S-07 | RINGANA points table (ES) | Undated (PO upload, 2026-11) | es | Available. Price and points per product; points have two decimals. Not needed in phase 1. |

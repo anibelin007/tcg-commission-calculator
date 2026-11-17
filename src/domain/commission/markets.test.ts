@@ -2,8 +2,8 @@ import { describe, expect, it } from 'vitest'
 import { MARKETS } from './markets'
 
 describe('markets (docs/sources/ringana-countries.md)', () => {
-  it('offers the 32 countries with a known plan and factor', () => {
-    expect(new Set(MARKETS.map((market) => market.country)).size).toBe(32)
+  it('offers the 35 countries with a known plan and factor', () => {
+    expect(new Set(MARKETS.map((market) => market.country)).size).toBe(35)
   })
 
   it('has unique IDs', () => {
@@ -13,7 +13,7 @@ describe('markets (docs/sources/ringana-countries.md)', () => {
 
   it('does not offer countries pending verification or closed to partners (Q-13, Q-14)', () => {
     const countries = MARKETS.map((market) => market.country)
-    for (const pending of ['AR', 'CO', 'PE', 'TR', 'LI', 'HK', 'MC']) expect(countries).not.toContain(pending)
+    for (const pending of ['TR', 'LI', 'HK', 'MC']) expect(countries).not.toContain(pending)
   })
 
   it('splits France and Italy by contract type', () => {

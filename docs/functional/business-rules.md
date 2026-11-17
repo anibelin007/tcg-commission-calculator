@@ -115,7 +115,8 @@ Domain IDs (language-independent, used in code): target levels `1`–`10`; plans
 - **BR-13 Base commission** = (CT commission + TT commission) in points × points factor of
   the market. — *Verified rule* (EU-ES p. 13).
 - **BR-14 Points factors** (valid from February 2026 until revoked). — *Verified rule*
-  (EU-ES p. 13; MX p. 13–14; USA p. 13–14).
+  (EU-ES p. 13; MX p. 13–14; PER, COL, ARG p. 13–14; USA p. 13–14). The Peru, Colombia
+  and Argentina guidelines have the same target plan as EU/MX (p. 5–6).
 
   | Plan | Market / contract | Factor | Currency |
   |---|---|---|---|
@@ -132,11 +133,14 @@ Domain IDs (language-independent, used in code): target levels `1`–`10`; plans
   | eu | Czech Republic — all | 32.5 | CZK |
   | eu | Hungary — all | 540 | HUF |
   | mx | Mexico | 26 | MXN |
+  | pe | Peru | 5.2 | PEN |
+  | co | Colombia | 6,240 | COP |
+  | ar | Argentina (valid from June 2026) | 2,210 | ARS |
   | usa | USA (valid from October 2026) | 1.6 | USD |
 
 - **BR-15 Tax-specific settlements.** Partners with a billing address in France, Italy,
-  Switzerland or Mexico receive an additional settlement document with the final amount for
-  tax/contract reasons. — *Verified rule* (EU-ES p. 13, p. 35). The calculator shows the
+  Switzerland, Mexico, Peru, Colombia or Argentina receive an additional settlement document with the final amount for
+  tax/contract reasons. — *Verified rule* (EU-ES p. 13, p. 35; PER, COL, ARG p. 35–36). The calculator shows the
   base commission and must say that the final amount may differ in those markets.
   — *Proposed improvement* (wording to be approved).
 - **BR-16 Payout threshold.** Commissions **above** the threshold are transferred; otherwise
@@ -148,6 +152,7 @@ Domain IDs (language-independent, used in code): target levels `1`–`10`; plans
   | mx | > 1,700 MXN | MX p. 33–34; EU-EN p. 34 («MXN 1,700 or € 89») |
   | usa | > 65 $ | USA p. 31–32 |
   | eu, non-EUR currencies | **Pending verification** (Q-04) | — |
+  | pe, co, ar | None documented: the guidelines describe no voucher threshold | PER, COL, ARG p. 33–34 |
 
   The tool shows a reminder when the estimate is not above the threshold (D-008).
 - **BR-17 Rounding.** The guideline examples show final amounts with two decimals
@@ -176,7 +181,8 @@ Not calculated; the result shows one informative note about them (D-012).
   at most as level 7 (she can reach level 8+, but is paid as level 7). Partners who do not build a team (TT − TT-1 < 7,000, «por lo general
   influencers») may promote other brands, and in that case their commission is limited to
   level 7. Classification follows the highest level of the last 12 months. — *Verified rule*
-  (GC p. 10–11).
+  (GC p. 10–11). The Peru, Colombia and Argentina guidelines label levels 1–7 «plan de
+  compensación ordinario» and levels 8–10 «beneficio RINGANA only» (p. 5–6, 33–34).
 - **BR-20 Fair score.** Sanctioned infringements lower the monthly fair score (1 unfair
   value = −1 %). Commission points are multiplied by fair score / 100. — *Verified rule*
   (GC p. 12–13). The calculator assumes 100 % (D-012).

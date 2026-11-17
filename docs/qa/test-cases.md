@@ -15,6 +15,7 @@ All amounts EU standard market (factor 1.32, EUR) unless stated. Rounding per BR
 |---|---|---|---|---|---|
 | TC-01 | CT 1,000; no team | 3 (CT ≥ 825) | 390 | **514.80 €** · MX: 10,140 MXN | EU-ES p. 14; MX p. 13–14 |
 | TC-02 | CT 1,000. Team 1: A (gen 1) 700 → C (gen 2) 1,000. Team 2: B (gen 1) 900 → D (gen 2) 600, E (gen 2) 300 | 3 (CT ≥ 330, TT-1 2,700 ≥ 1,600) | 689 | **909.48 €** · MX: 17,914 MXN · USA: $ 1,102.40 | EU-ES p. 9–10, 15; MX p. 15–16; USA p. 15–16 |
+| TC-04 | TC-01 and TC-02 in Peru, Colombia and Argentina | 3 | 390 / 689 | PE 2,028 / 3,582.8 PEN · CO 2,433,600 / 4,299,360 COP · AR 861,900 / 1,522,690 ARS | PER, COL, ARG p. 13–16 (PER p. 14 prints 2,208: erratum, Q-21) |
 | TC-03 | Same team as TC-02 | — | — | TT = 4,500; TT-1 = 2,700 | EU-ES p. 9–10 |
 
 **TC-02 and the strongest-team limit (Q-01).** Team 2 (TT 1,800) is above the level 3 limit

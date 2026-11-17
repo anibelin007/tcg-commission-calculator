@@ -3,7 +3,7 @@
  * docs/functional/business-rules.md). Each plan cites the guideline it comes from.
  */
 
-export type PlanId = 'eu' | 'mx' | 'usa'
+export type PlanId = 'eu' | 'mx' | 'pe' | 'co' | 'ar' | 'usa'
 
 export const TARGET_LEVELS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] as const
 export type TargetLevel = (typeof TARGET_LEVELS)[number]
@@ -114,6 +114,10 @@ function usaQualification(level: TargetLevel): readonly QualificationPath[] {
 export const PLANS: Readonly<Record<PlanId, Plan>> = {
   eu: { id: 'eu', source: 'RCG EU 3.4 (ES) / 2.5, 06/2026', ownMeasure: 'ct', levels: levels(euQualification) },
   mx: { id: 'mx', source: 'RCG MX 2.4, 06/2026', ownMeasure: 'ct', levels: levels(euQualification) },
+  // Peru, Colombia and Argentina: same target plan as EU/MX (S-15 to S-17, p. 5–6).
+  pe: { id: 'pe', source: 'RCG PER 1.1, 06/2026', ownMeasure: 'ct', levels: levels(euQualification) },
+  co: { id: 'co', source: 'RCG COL 2.4, 06/2026', ownMeasure: 'ct', levels: levels(euQualification) },
+  ar: { id: 'ar', source: 'RCG ARG 1.0, 09/2026', ownMeasure: 'ct', levels: levels(euQualification) },
   usa: { id: 'usa', source: 'RCG USA 1.0, 10/2026', ownMeasure: 'dt', levels: levels(usaQualification) },
 }
 
