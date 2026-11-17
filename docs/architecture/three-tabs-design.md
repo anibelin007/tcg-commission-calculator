@@ -122,7 +122,9 @@ and its own data:
 - TT-n is built by adding the legs that are not the strongest (BR-06), so it is never negative.
 - **Approximate commission of a plan:** legs only give team totals, so their points are spread
   over generations like the real generations of tab 1 (or all in generation 1 without data).
-- Tab 3 is independent and usable from empty; it is prefilled from the plan of tab 2.
+- Tab 3 is independent and usable from empty; it is prefilled from the plan of tab 2 (also when
+  the plan is only kept on the device, D-023). Buttons reload the plan's legs at any time: real
+  partners only, or all including fictitious ones (D-024).
 - Each tab keeps its form in `sessionStorage` (D-007). The plan of tab 2 can also be kept in
   `localStorage` with an opt-in checkbox until the goal is reached (D-023, Q-22 option B).
 - Tab 2 starts with the month planned (month and year, D-025); «made so far» and the pace only

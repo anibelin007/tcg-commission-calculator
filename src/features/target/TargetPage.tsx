@@ -1,23 +1,24 @@
 import { Button } from '@anibelin007/tcg-ui'
-import { useCallback, useMemo } from 'react'
+import { useCallback, useState, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { MoveButtons } from '../../components/MoveButtons'
 import { NumberField } from '../../components/NumberField'
 import { moveItem } from '../../shared/move-item'
 import { generationShares, planToInput } from '../../domain/planning'
 import { usePartnerData } from '../../state/partner-data-context'
-import { PLAN_STORAGE_KEY, isPlanData } from '../../state/plan-data'
+import { PLAN_STORAGE_KEY, fictitiousLegCount, isPlanData } from '../../state/plan-data'
 import {
   MAX_AVERAGE_LEGS,
   REVERSE_STORAGE_KEY,
   initialReverseData,
+  legsFromPlan,
   isEmptyReverseData,
   isReverseData,
   parseReverseData,
   type ReverseData,
   type TeamMode,
 } from '../../state/reverse-data'
-import { peekSessionState, useSessionState } from '../../state/use-session-state'
+import { peekRememberableState, useSessionState } from '../../state/use-session-state'
 import { ReverseEngineeringPanel } from './ReverseEngineeringPanel'
 
 const legendClass = 'mb-2 text-xl font-semibold text-tcg-heading'
@@ -29,7 +30,11 @@ const legendClass = 'mb-2 text-xl font-semibold text-tcg-heading'
 export function TargetPage() {
   const { t } = useTranslation('calculator')
   const { market, parsed: real, newLegId } = usePartnerData()
-  const initial = useCallback(() => initialReverseData(peekSessionState(PLAN_STORAGE_KEY, isPlanData)), [])
+  // The plan of tab 2 as it is when this tab opens (this tab's copy, or the one kept on the device).
+  const [plan] = useState(() => peekRememberableState(PLAN_STORAGE_KEY, isPlanData))
+  const initial = useCallback(() => initialReverseData(plan), [plan])
+  const planFictitious = plan ? fictitiousLegCount(plan) : 0
+  const planReal = plan ? plan.legs.length - planFictitious : 0
   const [data, setData, reset] = useSessionState<ReverseData>(REVERSE_STORAGE_KEY, initial, isReverseData, isEmptyReverseData)
   const update = (patch: Partial<ReverseData>) => setData((current) => ({ ...current, ...patch }))
   const shares = useMemo(() => generationShares(real.input.generationVolumes), [real.input.generationVolumes])
@@ -63,6 +68,23 @@ export function TargetPage() {
             </button>
           ))}
         </div>
+        {plan && plan.legs.length > 0 && (
+          <div className="flex flex-col gap-2 rounded border border-tcg-surface-strong bg-white p-4">
+            <p className="text-sm font-semibold text-tcg-heading">{t('reverse.loadFromPlan')}</p>
+            <div className="flex flex-wrap gap-2">
+              {planReal > 0 && (
+                <button type="button" onClick={() => update({ mode: 'legs', legs: legsFromPlan(plan, false) })} className="rounded border border-tcg-primary px-3 py-2 text-sm font-semibold text-tcg-primary">
+                  {t('reverse.loadReal', { count: planReal })}
+                </button>
+              )}
+              {planFictitious > 0 && (
+                <button type="button" onClick={() => update({ mode: 'legs', legs: legsFromPlan(plan, true) })} className="rounded border border-tcg-primary px-3 py-2 text-sm font-semibold text-tcg-primary">
+                  {t('reverse.loadAll', { count: plan.legs.length })}
+                </button>
+              )}
+            </div>
+          </div>
+        )}
         {data.mode === 'legs' ? (
           <>
             {data.legs.length === 0 && <p className="text-sm italic">{t('legs.empty')}</p>}

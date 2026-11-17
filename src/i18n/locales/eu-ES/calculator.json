@@ -161,7 +161,10 @@
     "partnersNoAverage": "Adierazi zure adarrek zenbat egingo dutela uste duzun, zenbat bazkide gehiago beharko zenituzkeen kalkulatzeko.",
     "partnersNote": "Bazkide berri bat sartu eta hurrengo hilabetetik aurrera zenbatzen da.",
     "reset": "Hasi berriro",
-    "partnersProspecting": "Estatistikaren arabera, {{cn}} negozio-elkarrizketa (CN) inguru haiek lortzeko, eta zure helburuaren aurreko hilabetean sartu behar dute."
+    "partnersProspecting": "Estatistikaren arabera, {{cn}} negozio-elkarrizketa (CN) inguru haiek lortzeko, eta zure helburuaren aurreko hilabetean sartu behar dute.",
+    "loadFromPlan": "Kargatu «Nire helburua planifikatu» ataleko hankak (hemengoak ordezkatzen ditu):",
+    "loadReal": "Benetako bazkideak bakarrik ({{count}})",
+    "loadAll": "Guztiak, fiktizioak barne ({{count}})"
   },
   "teamMinus": {
     "legend": "Zure VE-1, VE-2 eta VE-3",

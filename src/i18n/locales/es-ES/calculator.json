@@ -161,7 +161,10 @@
     "partnersNoAverage": "Indica cuánto crees que harán tus patas para calcular cuántas socias más necesitarías.",
     "partnersNote": "Una socia nueva cuenta a partir del mes siguiente a su entrada.",
     "reset": "Empezar de nuevo",
-    "partnersProspecting": "Por estadística, unas {{cn}} conversaciones de negocio (CN) para conseguirlas, y tienen que entrar el mes anterior al de tu meta."
+    "partnersProspecting": "Por estadística, unas {{cn}} conversaciones de negocio (CN) para conseguirlas, y tienen que entrar el mes anterior al de tu meta.",
+    "loadFromPlan": "Cargar las patas de «Planificar mi meta» (sustituye las de aquí):",
+    "loadReal": "Solo socias reales ({{count}})",
+    "loadAll": "Todas, también las ficticias ({{count}})"
   },
   "teamMinus": {
     "legend": "Tu VE-1, VE-2 y VE-3",

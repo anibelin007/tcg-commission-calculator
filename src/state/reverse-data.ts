@@ -22,12 +22,17 @@ export interface ReverseData {
   readonly average: string
 }
 
+/** Legs of the plan for tab 3; fictitious partners (D-024) only when asked. */
+export function legsFromPlan(plan: PlanData, includeFictitious: boolean): LegDraft[] {
+  return plan.legs.filter((leg) => includeFictitious || leg.fictitious !== true).map(({ id, alias, volume }) => ({ id, alias, volume }))
+}
+
 export function initialReverseData(plan?: PlanData | null): ReverseData {
   return {
     target: '',
     willingOwn: plan?.ownForecast ?? '',
     mode: 'legs',
-    legs: plan ? plan.legs.map(({ id, alias, volume }) => ({ id, alias, volume })) : [],
+    legs: plan ? legsFromPlan(plan, true) : [],
     legCount: '',
     average: '',
   }

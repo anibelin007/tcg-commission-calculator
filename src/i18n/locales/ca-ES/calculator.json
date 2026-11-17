@@ -161,7 +161,10 @@
     "partnersNoAverage": "Indica quant creus que faran les teves branques per calcular quantes sòcies més necessitaries.",
     "partnersNote": "Una sòcia nova compta a partir del mes següent a la seva entrada.",
     "reset": "Torna a començar",
-    "partnersProspecting": "Per estadística, unes {{cn}} converses de negoci (CN) per aconseguir-les, i han d'entrar el mes anterior al de la teva meta."
+    "partnersProspecting": "Per estadística, unes {{cn}} converses de negoci (CN) per aconseguir-les, i han d'entrar el mes anterior al de la teva meta.",
+    "loadFromPlan": "Carrega les potes de «Planificar la meva meta» (substitueix les d'aquí):",
+    "loadReal": "Només sòcies reals ({{count}})",
+    "loadAll": "Totes, també les fictícies ({{count}})"
   },
   "teamMinus": {
     "legend": "El teu VE-1, VE-2 i VE-3",

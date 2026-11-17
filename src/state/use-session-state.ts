@@ -46,6 +46,25 @@ export function peekSessionState<T>(key: string, isValid: (value: unknown) => va
 }
 
 /**
+ * Reads a value kept by `useRememberableState` without subscribing: the copy of this tab, else
+ * the one remembered on the device (only when the partner turned «remember» on).
+ */
+export function peekRememberableState<T>(
+  key: string,
+  isValid: (value: unknown) => value is T,
+  session: Storage | undefined = globalThis.sessionStorage,
+  device: Storage | undefined = globalThis.localStorage,
+): T | null {
+  const fromSession = read(session, key, isValid)
+  if (fromSession) return fromSession
+  try {
+    return device?.getItem(`${key}/remember`) === '1' ? read(device, key, isValid) : null
+  } catch {
+    return null
+  }
+}
+
+/**
  * Like `useSessionState`, plus an opt-in «remember on this device» (D-023): when on, the form is
  * also kept in `localStorage` of this browser (no server) until the partner turns it off or
  * clears the form. The choice itself is remembered on the device.

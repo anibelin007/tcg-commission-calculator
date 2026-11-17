@@ -161,7 +161,10 @@
     "partnersNoAverage": "Gib an, was deine Teams voraussichtlich machen, um zu berechnen, wie viele Partnerinnen du zusätzlich bräuchtest.",
     "partnersNote": "Eine neue Partnerin zählt ab dem Monat nach ihrem Einstieg.",
     "reset": "Neu beginnen",
-    "partnersProspecting": "Statistisch etwa {{cn}} Geschäftsgespräche (GG), um sie zu gewinnen, und sie müssen im Monat vor deinem Ziel einsteigen."
+    "partnersProspecting": "Statistisch etwa {{cn}} Geschäftsgespräche (GG), um sie zu gewinnen, und sie müssen im Monat vor deinem Ziel einsteigen.",
+    "loadFromPlan": "Beine aus «Meine Zielstufe planen» laden (ersetzt die hier):",
+    "loadReal": "Nur echte Partnerinnen ({{count}})",
+    "loadAll": "Alle, auch geplante ({{count}})"
   },
   "teamMinus": {
     "legend": "Dein TU-1, TU-2 und TU-3",

@@ -161,7 +161,10 @@
     "partnersNoAverage": "Enter what you think your teams will make to work out how many more partners you would need.",
     "partnersNote": "A new partner counts from the month after she joins.",
     "reset": "Start again",
-    "partnersProspecting": "Statistically, about {{cn}} business conversations (BC) to find them, and they have to join the month before your goal."
+    "partnersProspecting": "Statistically, about {{cn}} business conversations (BC) to find them, and they have to join the month before your goal.",
+    "loadFromPlan": "Load the legs from «Plan my Target Level» (replaces the ones here):",
+    "loadReal": "Real partners only ({{count}})",
+    "loadAll": "All, including planned ones ({{count}})"
   },
   "teamMinus": {
     "legend": "Your TT-1, TT-2 and TT-3",
