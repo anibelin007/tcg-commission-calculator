@@ -69,6 +69,7 @@ and `src/features/target/`.
 | P-02 | Target level 3 | missing VE-1 400 or CT 225; own CT needed 825; estimated 593.67 € (legs in generation 1) |
 | P-03 | Legs 2,000 / 2,000 / 1,000, target 5 | own CT needed 3,000 (VE-2 = own + 1,000) |
 | P-04 | Pace: forecast 1,000, made 400, 14 days left | 600 missing, 42.86 a day |
+| P-06 | Plan with 1 / 2 fictitious partners (D-024, team statistic of 10 CN each) | 10 / 20 CN; join the month before the goal month |
 | P-05 | Tab 3: willing 600, legs 1,000 / 600 (generations 900 / 700), target 600 € | not enough (361.68 €, 238.32 € short); +225 own CT; or +1,069.28 from the legs; partners at 800 on average: 2 more (656.04 €) |
 
 ## Cross-plan and cross-locale checks

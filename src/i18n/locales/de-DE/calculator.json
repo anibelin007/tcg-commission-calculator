@@ -160,7 +160,8 @@
     "partnersNone": "Mit diesem Durchschnitt würdest du es selbst mit {{max}} Teams mehr nicht schaffen.",
     "partnersNoAverage": "Gib an, was deine Teams voraussichtlich machen, um zu berechnen, wie viele Partnerinnen du zusätzlich bräuchtest.",
     "partnersNote": "Eine neue Partnerin zählt ab dem Monat nach ihrem Einstieg.",
-    "reset": "Neu beginnen"
+    "reset": "Neu beginnen",
+    "partnersProspecting": "Statistisch etwa {{cn}} Geschäftsgespräche (GG), um sie zu gewinnen, und sie müssen im Monat vor deinem Ziel einsteigen."
   },
   "teamMinus": {
     "legend": "Dein TU-1, TU-2 und TU-3",
@@ -207,6 +208,12 @@
       "level10": "⭐ OMG.. ZIELSTUFE 10 🤩"
     },
     "remember": "Meine Planung auf diesem Gerät speichern, bis ich mein Ziel erreiche",
-    "rememberHelp": "Wird nur in diesem Browser gespeichert, ohne Server, auch wenn du den Tab schließt. Entferne das Häkchen oder tippe auf «Planung löschen», um sie zu entfernen."
+    "rememberHelp": "Wird nur in diesem Browser gespeichert, ohne Server, auch wenn du den Tab schließt. Entferne das Häkchen oder tippe auf «Planung löschen», um sie zu entfernen.",
+    "fictitious": "Geplante Partnerin (noch nicht eingestiegen)",
+    "fictitiousHelp": "Setze das Häkchen, wenn du diese Partnerin noch gewinnen musst.",
+    "prospectingTitle": "Neue Partnerinnen, die du brauchst",
+    "prospecting_one": "Dein Plan rechnet mit {{count}} Partnerin, die noch nicht eingestiegen ist. Damit sie im Monat deines Ziels zählt, muss sie im Vormonat einsteigen: Fang jetzt mit Geschäftsgesprächen (GG) an. Statistisch etwa {{cn}} GG.",
+    "prospecting_other": "Dein Plan rechnet mit {{count}} Partnerinnen, die noch nicht eingestiegen sind. Damit sie im Monat deines Ziels zählen, müssen sie im Vormonat einsteigen: Fang jetzt mit Geschäftsgesprächen (GG) an. Statistisch etwa {{cn}} GG.",
+    "prospectingNote": "Teamstatistik: etwa 10 GG pro neuer Partnerin. Eine Partnerin, die in einem Monat einsteigt, zählt ab dem Folgemonat, mit ihren Punkten aus beiden Monaten."
   }
 }

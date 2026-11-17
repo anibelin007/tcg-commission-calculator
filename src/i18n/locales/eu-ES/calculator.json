@@ -160,7 +160,8 @@
     "partnersNone": "Batez besteko horrekin ez zinateke iritsiko {{max}} adar gehiagorekin ere.",
     "partnersNoAverage": "Adierazi zure adarrek zenbat egingo dutela uste duzun, zenbat bazkide gehiago beharko zenituzkeen kalkulatzeko.",
     "partnersNote": "Bazkide berri bat sartu eta hurrengo hilabetetik aurrera zenbatzen da.",
-    "reset": "Hasi berriro"
+    "reset": "Hasi berriro",
+    "partnersProspecting": "Estatistikaren arabera, {{cn}} negozio-elkarrizketa (CN) inguru haiek lortzeko, eta zure helburuaren aurreko hilabetean sartu behar dute."
   },
   "teamMinus": {
     "legend": "Zure VE-1, VE-2 eta VE-3",
@@ -207,6 +208,12 @@
       "level10": "⭐ OMG.. 10. HELBURUA 🤩"
     },
     "remember": "Gorde nire planifikazioa gailu honetan nire helburua lortu arte",
-    "rememberHelp": "Nabigatzaile honetan bakarrik gordetzen da, zerbitzaririk gabe, fitxa itxi arren. Desmarkatu edo sakatu «Ezabatu planifikazioa» kentzeko."
+    "rememberHelp": "Nabigatzaile honetan bakarrik gordetzen da, zerbitzaririk gabe, fitxa itxi arren. Desmarkatu edo sakatu «Ezabatu planifikazioa» kentzeko.",
+    "fictitious": "Bazkide fiktizioa (oraindik ez da sartu)",
+    "fictitiousHelp": "Markatu oraindik lortu behar duzun bazkidea bada.",
+    "prospectingTitle": "Behar dituzun bazkide berriak",
+    "prospecting_one": "Zure planak oraindik sartu ez den {{count}} bazkide dauka. Zure helburuaren hilabetean kontatzeko, aurreko hilabetean sartu behar du: hasi orain negozio-elkarrizketak (CN) egiten. Estatistikaren arabera, {{cn}} CN inguru.",
+    "prospecting_other": "Zure planak oraindik sartu ez diren {{count}} bazkide ditu. Zure helburuaren hilabetean kontatzeko, aurreko hilabetean sartu behar dute: hasi orain negozio-elkarrizketak (CN) egiten. Estatistikaren arabera, {{cn}} CN inguru.",
+    "prospectingNote": "Taldearen estatistika: 10 CN inguru bazkide berri bakoitzeko. Hilabete batean sartzen den bazkidea hurrengo hilabetetik aurrera kontatzen da, bi hilabeteetako puntuekin."
   }
 }

@@ -12,6 +12,13 @@ export const PLAN_STORAGE_KEY = 'tcg-commission-calculator/plan/v1'
 /** A leg in the plan: `volume` is her forecast VE, `done` what she has made so far. */
 export interface PlanLeg extends LegDraft {
   readonly done: string
+  /** A partner who has not joined yet (planned); missing in plans stored before D-024. */
+  readonly fictitious?: boolean
+}
+
+/** Number of planned partners who have not joined yet. */
+export function fictitiousLegCount(data: PlanData): number {
+  return data.legs.filter((leg) => leg.fictitious === true).length
 }
 
 export interface PlanData {
@@ -38,7 +45,11 @@ export function isPlanData(value: unknown): value is PlanData {
     typeof data.ownForecast === 'string' &&
     typeof data.ownDone === 'string' &&
     Array.isArray(data.legs) &&
-    data.legs.every((leg) => isLeg(leg) && typeof (leg as unknown as { done?: unknown }).done === 'string')
+    data.legs.every((leg) => {
+      if (!isLeg(leg)) return false
+      const extra = leg as unknown as { done?: unknown; fictitious?: unknown }
+      return typeof extra.done === 'string' && (extra.fictitious === undefined || typeof extra.fictitious === 'boolean')
+    })
   )
 }
 

@@ -160,7 +160,8 @@
     "partnersNone": "Con esa media no llegarías ni con {{max}} patas más.",
     "partnersNoAverage": "Indica cuánto crees que harán tus patas para calcular cuántas socias más necesitarías.",
     "partnersNote": "Una socia nueva cuenta a partir del mes siguiente a su entrada.",
-    "reset": "Empezar de nuevo"
+    "reset": "Empezar de nuevo",
+    "partnersProspecting": "Por estadística, unas {{cn}} conversaciones de negocio (CN) para conseguirlas, y tienen que entrar el mes anterior al de tu meta."
   },
   "teamMinus": {
     "legend": "Tu VE-1, VE-2 y VE-3",
@@ -207,6 +208,12 @@
       "level10": "⭐ OMG.. META 10 🤩"
     },
     "remember": "Guardar mi planificación en este dispositivo hasta conseguir mi objetivo",
-    "rememberHelp": "Se guarda solo en este navegador, sin servidor, aunque cierres la pestaña. Desmárcalo o pulsa «Borrar planificación» para quitarla."
+    "rememberHelp": "Se guarda solo en este navegador, sin servidor, aunque cierres la pestaña. Desmárcalo o pulsa «Borrar planificación» para quitarla.",
+    "fictitious": "Socia ficticia (aún no ha entrado)",
+    "fictitiousHelp": "Márcalo si es una socia que todavía tienes que conseguir.",
+    "prospectingTitle": "Nuevas socias que necesitas",
+    "prospecting_one": "Tu plan cuenta con {{count}} socia que aún no ha entrado. Para que cuente en el mes de tu meta tiene que entrar el mes anterior: ponte ya a hacer conversaciones de negocio (CN). Por estadística, unas {{cn}} CN.",
+    "prospecting_other": "Tu plan cuenta con {{count}} socias que aún no han entrado. Para que cuenten en el mes de tu meta tienen que entrar el mes anterior: ponte ya a hacer conversaciones de negocio (CN). Por estadística, unas {{cn}} CN.",
+    "prospectingNote": "Estadística del equipo: unas 10 CN por cada socia nueva. Una socia que entra un mes cuenta a partir del mes siguiente, con sus puntos de los dos meses."
   }
 }

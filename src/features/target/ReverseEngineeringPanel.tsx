@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { computeCommission, type CommissionInput, type Market } from '../../domain/commission'
-import { partnersNeeded, type PartnersNeeded } from '../../domain/planning'
+import { businessConversationsFor, partnersNeeded, type PartnersNeeded } from '../../domain/planning'
 import { reverseEngineer, scenarioForOwnExtra, type ReverseEngineering, type ScenarioOutcome } from '../../domain/scenarios'
 import { formatAmount, formatPoints } from '../../shared/format'
 import { ScenarioCard } from './ScenarioCard'
@@ -77,7 +77,8 @@ export function ReverseEngineeringPanel({ input, market, target, average, legNam
                   count: evaluation.partners.count,
                   level: evaluation.partners.result.level,
                   amount: money(evaluation.partners.result.amount),
-                })}
+                })}{' '}
+                {t('reverse.partnersProspecting', { cn: businessConversationsFor(evaluation.partners.count) })}
               </p>
             ) : (
               <p>{t('reverse.partnersNone', { max: MAX_NEW_PARTNERS })}</p>

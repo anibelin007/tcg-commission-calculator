@@ -160,7 +160,8 @@
     "partnersNone": "Amb aquesta mitjana no hi arribaries ni amb {{max}} branques més.",
     "partnersNoAverage": "Indica quant creus que faran les teves branques per calcular quantes sòcies més necessitaries.",
     "partnersNote": "Una sòcia nova compta a partir del mes següent a la seva entrada.",
-    "reset": "Torna a començar"
+    "reset": "Torna a començar",
+    "partnersProspecting": "Per estadística, unes {{cn}} converses de negoci (CN) per aconseguir-les, i han d'entrar el mes anterior al de la teva meta."
   },
   "teamMinus": {
     "legend": "El teu VE-1, VE-2 i VE-3",
@@ -207,6 +208,12 @@
       "level10": "⭐ OMG.. META 10 🤩"
     },
     "remember": "Desa la meva planificació en aquest dispositiu fins que aconsegueixi el meu objectiu",
-    "rememberHelp": "Es desa només en aquest navegador, sense servidor, encara que tanquis la pestanya. Desmarca-ho o prem «Esborra la planificació» per treure-la."
+    "rememberHelp": "Es desa només en aquest navegador, sense servidor, encara que tanquis la pestanya. Desmarca-ho o prem «Esborra la planificació» per treure-la.",
+    "fictitious": "Sòcia fictícia (encara no ha entrat)",
+    "fictitiousHelp": "Marca-ho si és una sòcia que encara has d'aconseguir.",
+    "prospectingTitle": "Noves sòcies que necessites",
+    "prospecting_one": "El teu pla compta amb {{count}} sòcia que encara no ha entrat. Perquè compti en el mes de la teva meta ha d'entrar el mes anterior: posa't ja a fer converses de negoci (CN). Per estadística, unes {{cn}} CN.",
+    "prospecting_other": "El teu pla compta amb {{count}} sòcies que encara no han entrat. Perquè comptin en el mes de la teva meta han d'entrar el mes anterior: posa't ja a fer converses de negoci (CN). Per estadística, unes {{cn}} CN.",
+    "prospectingNote": "Estadística de l'equip: unes 10 CN per cada sòcia nova. Una sòcia que entra un mes compta a partir del mes següent, amb els seus punts dels dos mesos."
   }
 }

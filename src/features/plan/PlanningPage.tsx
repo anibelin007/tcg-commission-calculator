@@ -2,10 +2,10 @@ import { Button } from '@anibelin007/tcg-ui'
 import { useCallback, useId, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { TARGET_LEVELS, levelDefinition, PLANS, type TargetLevel } from '../../domain/commission'
-import { checkTarget, daysLeftInMonth, generationShares, motivationKey, planToInput, surplusOverLevel } from '../../domain/planning'
+import { businessConversationsFor, checkTarget, daysLeftInMonth, generationShares, motivationKey, planToInput, surplusOverLevel } from '../../domain/planning'
 import { formatAmount, formatPoints } from '../../shared/format'
 import { usePartnerData } from '../../state/partner-data-context'
-import { PLAN_STORAGE_KEY, initialPlanData, isEmptyPlanData, isPlanData, parsePlanData, targetLevelOf, type PlanData } from '../../state/plan-data'
+import { PLAN_STORAGE_KEY, initialPlanData, isEmptyPlanData, isPlanData, parsePlanData, targetLevelOf, type PlanData, fictitiousLegCount } from '../../state/plan-data'
 import { useRememberableState } from '../../state/use-session-state'
 import { moveItem } from '../../shared/move-item'
 import { CommissionChart } from './CommissionChart'
@@ -34,6 +34,7 @@ export function PlanningPage() {
   const points = (value: number) => formatPoints(locale, value)
   const money = (value: number) => formatAmount(locale, value, market.currency)
   const measure = (key: string) => t(`simulation.measures.${key}`)
+  const newPartners = fictitiousLegCount(data)
   const legName = (index: number) => data.legs[index]?.alias.trim() || t('legs.defaultName', { number: index + 1 })
 
   return (
@@ -97,6 +98,7 @@ export function PlanningPage() {
               key={leg.id}
               title={legName(index)}
               alias={{ value: leg.alias, onChange: (alias) => setLeg({ alias }) }}
+              fictitious={{ checked: leg.fictitious === true, onChange: (fictitious) => setLeg({ fictitious }) }}
               onRemove={() => update({ legs: data.legs.filter((l) => l.id !== leg.id) })}
               onMoveUp={index > 0 ? () => update({ legs: moveItem(data.legs, index, -1) }) : undefined}
               onMoveDown={index < data.legs.length - 1 ? () => update({ legs: moveItem(data.legs, index, 1) }) : undefined}
@@ -115,6 +117,14 @@ export function PlanningPage() {
           {t('legs.add')}
         </Button>
       </fieldset>
+
+      {newPartners > 0 && (
+        <section aria-label={t('plan.prospectingTitle')} className="flex flex-col gap-2 rounded border-2 border-tcg-primary bg-white p-4 sm:p-6">
+          <h2 className="text-xl">{t('plan.prospectingTitle')}</h2>
+          <p className="font-semibold text-tcg-heading">{t('plan.prospecting', { count: newPartners, cn: businessConversationsFor(newPartners) })}</p>
+          <p className="text-sm">{t('plan.prospectingNote')}</p>
+        </section>
+      )}
 
       {check && result && target && (
         <section aria-label={t('plan.resultTitle')} className="flex flex-col gap-4 rounded border border-tcg-surface-strong bg-white p-4 sm:p-6">

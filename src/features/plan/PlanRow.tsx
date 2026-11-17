@@ -12,6 +12,8 @@ interface PlanRowProps {
   /** Optional name field (legs) and remove action. */
   alias?: { value: string; onChange: (value: string) => void }
   onRemove?: () => void
+  /** Legs only: «not joined yet» checkbox. */
+  fictitious?: { checked: boolean; onChange: (checked: boolean) => void }
   onMoveUp?: () => void
   onMoveDown?: () => void
   forecast: string
@@ -26,7 +28,7 @@ interface PlanRowProps {
 }
 
 /** One planning row: forecast for the month, optional points made so far and the daily pace. */
-export function PlanRow({ title, alias, onRemove, onMoveUp, onMoveDown, forecast, done, onForecast, onDone, forecastLabel, invalidForecast, invalidDone, daysLeft }: PlanRowProps) {
+export function PlanRow({ title, alias, fictitious, onRemove, onMoveUp, onMoveDown, forecast, done, onForecast, onDone, forecastLabel, invalidForecast, invalidDone, daysLeft }: PlanRowProps) {
   const { t, i18n } = useTranslation('calculator')
   const aliasId = useId()
   const points = (value: number) => formatPoints(i18n.language, value)
@@ -61,6 +63,15 @@ export function PlanRow({ title, alias, onRemove, onMoveUp, onMoveDown, forecast
             className="rounded border border-tcg-border bg-white px-4 py-3 text-tcg-input-text shadow-xs focus:border-tcg-primary focus:outline-2 focus:outline-tcg-primary/30"
           />
         </div>
+      )}
+      {fictitious && (
+        <label className="flex items-start gap-3">
+          <input type="checkbox" checked={fictitious.checked} onChange={(event) => fictitious.onChange(event.target.checked)} className="mt-1 size-5 accent-tcg-primary" />
+          <span className="flex flex-col">
+            <span className="text-sm font-semibold text-tcg-heading">{t('plan.fictitious')}</span>
+            <span className="text-sm">{t('plan.fictitiousHelp')}</span>
+          </span>
+        </label>
       )}
       <div className="grid gap-4 sm:grid-cols-2">
         <NumberField label={forecastLabel} value={forecast} onChange={onForecast} error={invalidForecast ? t('invalid') : undefined} />
