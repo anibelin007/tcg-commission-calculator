@@ -17,6 +17,17 @@ npm run dev     # local app
 npm run check   # typecheck + lint + tests + build
 ```
 
+### Preview on GitHub Pages
+
+Every push to `main` publishes a preview to `https://anibelin007.github.io/tcg-commission-calculator/`
+(`.github/workflows/deploy-pages.yml`, D-026). Temporary, for feedback only; it is not the final
+hosting. To check the Pages build locally:
+
+```bash
+PAGES_BASE_PATH=/tcg-commission-calculator/ npm run build
+PAGES_BASE_PATH=/tcg-commission-calculator/ npm run preview
+```
+
 UI languages: es-ES (reference), ca-ES, eu-ES, en-GB, en-US, de-DE, de-AT (D-015).
 Texts other than es-ES are drafts until a person reviews them.
 

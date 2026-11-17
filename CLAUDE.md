@@ -41,7 +41,8 @@ she needs for the next target level and how many points she would need for a tar
 
 - Stack (D-014, accepted): React, TypeScript (strict), Vite, Tailwind CSS v4, Vitest, oxlint,
   GitHub Actions — same as `tcg-skin-test`. Shared UI from `@anibelin007/tcg-ui`.
-- **Not decided — do not choose or configure:** backend, hosting.
+- **Not decided — do not choose or configure:** backend, final hosting. A temporary public
+  preview runs on GitHub Pages (D-026).
 - **Nothing leaves the browser** (D-007): the real form data and the RINGANA session token
   (D-018) live only in `sessionStorage` of the tab; scenarios are never stored. Only exception: the opt-in
   «keep my plan» checkbox of tab 2 also keeps the plan in `localStorage` (D-023). Never store or
