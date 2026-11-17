@@ -31,11 +31,12 @@ export interface StrongestTeamResult {
   readonly volume: number
   readonly limit: number
   /**
+   * `notApplied`: the team exceeds the limit, but the limit is not applied (default, D-005).
    * `applied`: the limit was applied with the team's breakdown by generation.
    * `breakdownMissing`: the team exceeds the limit but its breakdown was not given, so the
    * result does not include the limit yet.
    */
-  readonly status: 'applied' | 'breakdownMissing'
+  readonly status: 'notApplied' | 'applied' | 'breakdownMissing'
   /** Commission points from the team before and after the limit (null when the breakdown is missing). */
   readonly pointsBefore: number | null
   readonly pointsAfter: number | null
@@ -142,11 +143,14 @@ export function computeCommission(input: CommissionInput, market: Market, option
   let strongestTeam: StrongestTeamResult | null = null
   const limit = definition.strongestTeamLimit
   const strongestVolume = volumes.teamVolumes[strongest]
+  const strategyId = options.strongestTeamLimit ?? DEFAULT_STRONGEST_TEAM_LIMIT
   if (limit !== null && strongestVolume !== undefined && strongestVolume > limit) {
     const breakdown = input.strongestTeamGenerations
-    if (breakdown && breakdown.length > 0) {
+    if (strategyId === 'none') {
+      strongestTeam = { index: strongest, volume: strongestVolume, limit, status: 'notApplied', pointsBefore: null, pointsAfter: null }
+    } else if (breakdown && breakdown.length > 0) {
       const pointsBefore = pointsOf(breakdown)
-      const strategy = STRONGEST_TEAM_LIMITS[options.strongestTeamLimit ?? DEFAULT_STRONGEST_TEAM_LIMIT]
+      const strategy = STRONGEST_TEAM_LIMITS[strategyId]
       const pointsAfter = strategy({ teamPoints: pointsBefore, teamVolume: strongestVolume, limit })
       teamPoints += pointsAfter - pointsBefore
       strongestTeam = { index: strongest, volume: strongestVolume, limit, status: 'applied', pointsBefore: cleanPoints(pointsBefore), pointsAfter: cleanPoints(pointsAfter) }

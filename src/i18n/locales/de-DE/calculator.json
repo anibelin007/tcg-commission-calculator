@@ -42,7 +42,8 @@
       "provisionalLimit": "Die Begrenzung für das stärkste Team wird vorläufig angewendet, bis wir mit RINGANA geklärt haben, wie sie berechnet wird.",
       "exceptions": "Wenn dein Fair Score unter 100 % liegt oder die Regel «RINGANA only» für dich gilt, ist deine tatsächliche Provision niedriger.",
       "bonuses": "Boni sind nicht enthalten (Fast Track, Wachstumsbonus, Beyond Target 10).",
-      "breakdownMissing": "Die Begrenzung für das stärkste Team ist noch nicht angewendet: Ergänze die Aufschlüsselung dieses Teams für ein genaueres Ergebnis."
+      "breakdownMissing": "Die Begrenzung für das stärkste Team ist noch nicht angewendet: Ergänze die Aufschlüsselung dieses Teams für ein genaueres Ergebnis.",
+      "limitNotApplied": "Dein stärkstes Team (direkte Partnerin {{team}}, TU {{volume}}) überschreitet die Grenze der Zielstufe {{level}} ({{limit}}). Wir klären noch, wie RINGANA sie anwendet, daher wird vorerst nichts abgezogen: Deine tatsächliche Provision könnte niedriger sein."
     }
   },
   "generations": {

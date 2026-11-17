@@ -42,7 +42,8 @@
       "provisionalLimit": "El límit de la branca més forta s'aplica de manera provisional mentre confirmem amb RINGANA com es calcula.",
       "exceptions": "Si el teu fair score és inferior al 100 % o t'aplica la regla «RINGANA only», la teva comissió real serà menor.",
       "bonuses": "No inclou bonificacions (Fast Track, bonificació per creixement, Beyond Target 10).",
-      "breakdownMissing": "El límit de la branca més forta encara no s'ha aplicat: completa el desglossament d'aquesta branca per obtenir un resultat més exacte."
+      "breakdownMissing": "El límit de la branca més forta encara no s'ha aplicat: completa el desglossament d'aquesta branca per obtenir un resultat més exacte.",
+      "limitNotApplied": "La teva branca més forta (sòcia directa {{team}}, VE {{volume}}) supera el límit de la meta {{level}} ({{limit}}). Encara estem confirmant com l'aplica RINGANA, així que de moment no es descompta: la teva comissió real podria ser menor."
     }
   },
   "generations": {

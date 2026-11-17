@@ -43,8 +43,9 @@ Domain IDs (language-independent, used in code): target levels `1`–`10`; plans
   upline yet: the Online Office reports her with `isNewPartner: true` / `deducted: false`, she
   is not counted in generation 1 and adds nothing to the upline's TT. — *Observed behaviour*
   (S-14, 2026-11-17) and PO statement; consistent with EU-ES p. 31 (first commission with the
-  first full statement month). Whether her points of M then count for the upline's TT in M+1
-  is *Pending verification* (Q-20).
+  first full statement month). In M+1 her points of M **and** M+1 count for her upline's TT
+  and commission. The grace month lets new partners learn and treats a partner who joins on the
+  1st and one who joins on the 20th alike. — PO statement 2026-11-17 (Q-20).
 
 - **BR-04 CT** = sum of points of paid customer orders in the month, including the partner's
   own orders. — *Verified rule* (EU-ES p. 8: 900 customers + 100 own = CT 1,000)
@@ -100,13 +101,16 @@ Domain IDs (language-independent, used in code): target levels `1`–`10`; plans
   mayor volumen»): L1 500 · L2 1,000 · L3 1,500 · L4 2,000 · L5 3,000 · L6 4,500 · L7 7,000 ·
   L8–L10 none. — *Verified rule* (EU-ES p. 5–6, p. 11).
   **How it is applied is Pending verification** (Q-01). Phase 1 uses:
-  - **BR-12a** — *Provisional decision* (PO, 2026-11-15, D-005): the limit is compared with
-    the **TT of the strongest team** (all its generations). If the team's TT exceeds the
-    limit, the commission earned from that team is reduced.
-  - **BR-12b** — *Provisional decision* (D-005): the reduction is **proportional**:
+  - **BR-12 default** — *Provisional decision* (PO, 2026-11-17, D-005): the limit is **not
+    applied** until the rule is confirmed; the result only notes when the strongest team's TT
+    exceeds it.
+  - **BR-12a** — Alternative reading (PO, 2026-11-15, formerly the default): the limit is
+    compared with the **TT of the strongest team** (all its generations). If the team's TT
+    exceeds the limit, the commission earned from that team is reduced.
+  - **BR-12b** — For BR-12a, the reduction is **proportional**:
     `teamCommission × limit / teamTT`. Alternative still open: apply the limit from
     generation 1 downwards.
-  - ⚠️ BR-12a contradicts the worked example in EU-ES p. 15 (strongest team TT 1,800 > 1,500
+  - BR-12a contradicts the worked example in EU-ES p. 15 (strongest team TT 1,800 > 1,500
     at level 3, no reduction shown, total 909.48 €). See Q-01 and test case TC-02.
 - **BR-13 Base commission** = (CT commission + TT commission) in points × points factor of
   the market. — *Verified rule* (EU-ES p. 13).

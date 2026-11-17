@@ -25,8 +25,8 @@ she needs for the next target level and how many points she would need for a tar
   improvement.
 - Do not invent expected results. Test values come from the guidelines or are derived from
   verified rules (`docs/qa/test-cases.md`).
-- Provisional decisions (e.g. D-005, strongest-team limit) are implemented as replaceable
-  strategies and revisited when evidence arrives.
+- Provisional decisions (e.g. D-005: strongest-team limit not applied for now) are implemented
+  as replaceable strategies and revisited when evidence arrives.
 - RINGANA PDFs are not committed (D-011).
 - Plans are versioned data (`eu`, `mx`, `usa`); markets carry factor, currency and payout
   threshold. Market is independent from the UI language.

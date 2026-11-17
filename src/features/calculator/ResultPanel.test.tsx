@@ -1,7 +1,7 @@
 import { renderToStaticMarkup } from 'react-dom/server'
 import { I18nextProvider } from 'react-i18next'
 import { describe, expect, it } from 'vitest'
-import { computeCommission, findMarket, type CommissionInput } from '../../domain/commission'
+import { computeCommission, findMarket, type CommissionInput, type CommissionOptions } from '../../domain/commission'
 import { createAppI18n } from '../../i18n'
 import { ResultPanel } from './ResultPanel'
 
@@ -14,20 +14,28 @@ const GUIDE_TEAM: CommissionInput = {
 
 const solo = (ct: number): CommissionInput => ({ customerTurnover: ct, generationVolumes: [], teamVolumes: [] })
 
-async function render(input: CommissionInput, marketId = 'ES', locale: 'es-ES' | 'en-GB' = 'es-ES') {
+async function render(input: CommissionInput, marketId = 'ES', locale: 'es-ES' | 'en-GB' = 'es-ES', options: CommissionOptions = {}) {
   const market = findMarket(marketId)!
   const i18n = await createAppI18n(locale)
   const html = renderToStaticMarkup(
     <I18nextProvider i18n={i18n}>
-      <ResultPanel result={computeCommission(input, market)} market={market} />
+      <ResultPanel result={computeCommission(input, market, options)} market={market} />
     </I18nextProvider>,
   )
   return html.replace(/ | /g, ' ')
 }
 
 describe('ResultPanel', () => {
-  it('shows level, breakdown, provisional limit and amount (TC-02 under D-005)', async () => {
+  it('by default does not apply the limit (D-005): TC-02 gives the guideline amount, with a note', async () => {
     const html = await render(GUIDE_TEAM)
+    expect(html).toContain('Meta 3')
+    expect(html).toContain('909,48 €')
+    expect(html).toContain('Todavía estamos confirmando')
+    expect(html).not.toContain('Tope de la pata más fuerte (')
+  })
+
+  it('shows the limit row and the provisional note when a limit strategy is used', async () => {
+    const html = await render(GUIDE_TEAM, 'ES', 'es-ES', { strongestTeamLimit: 'teamVolumeProportional' })
     expect(html).toContain('Meta 3')
     expect(html).toContain('Generación 2')
     expect(html).toContain('Tope de la pata más fuerte (socia directa 2: VE 1800, límite 1500)')
@@ -53,7 +61,9 @@ describe('ResultPanel', () => {
   })
 
   it('asks to complete the strongest-team breakdown when it is missing', async () => {
-    const html = await render({ customerTurnover: 400, generationVolumes: [10000], teamVolumes: [10000] })
+    const html = await render({ customerTurnover: 400, generationVolumes: [10000], teamVolumes: [10000] }, 'ES', 'es-ES', {
+      strongestTeamLimit: 'teamVolumeProportional',
+    })
     expect(html).toContain('todavía no está aplicado')
     expect(html).not.toContain('de forma provisional')
   })

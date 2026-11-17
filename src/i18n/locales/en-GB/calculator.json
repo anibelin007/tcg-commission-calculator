@@ -42,7 +42,8 @@
       "provisionalLimit": "The limit for the strongest team is applied provisionally while we confirm with RINGANA how it is calculated.",
       "exceptions": "If your fair score is below 100 % or the «RINGANA only» rule applies to you, your actual commission will be lower.",
       "bonuses": "Bonuses are not included (Fast Track, Growth Bonus, Beyond Target 10).",
-      "breakdownMissing": "The limit for the strongest team is not applied yet: complete that team’s breakdown for a more accurate result."
+      "breakdownMissing": "The limit for the strongest team is not applied yet: complete that team’s breakdown for a more accurate result.",
+      "limitNotApplied": "Your strongest team (direct partner {{team}}, TT {{volume}}) exceeds the limit of Target Level {{level}} ({{limit}}). We are still confirming how RINGANA applies it, so it is not deducted for now: your actual commission could be lower."
     }
   },
   "generations": {

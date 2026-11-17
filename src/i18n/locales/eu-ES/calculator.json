@@ -42,7 +42,8 @@
       "provisionalLimit": "Adar indartsuenaren muga behin-behinean aplikatzen da, RINGANArekin nola kalkulatzen den baieztatu bitartean.",
       "exceptions": "Zure fair scorea % 100 baino txikiagoa bada edo «RINGANA only» araua aplikatzen bazaizu, zure benetako komisioa txikiagoa izango da.",
       "bonuses": "Ez ditu hobariak barne hartzen (Fast Track, hazkunde-hobaria, Beyond Target 10).",
-      "breakdownMissing": "Adar indartsuenaren muga ez da oraindik aplikatu: bete adar horren banakapena emaitza zehatzagoa lortzeko."
+      "breakdownMissing": "Adar indartsuenaren muga ez da oraindik aplikatu: bete adar horren banakapena emaitza zehatzagoa lortzeko.",
+      "limitNotApplied": "Zure adar indartsuenak ({{team}}. bazkide zuzena, VE {{volume}}) {{level}}. helburuaren muga ({{limit}}) gainditzen du. Oraindik baieztatzen ari gara RINGANAk nola aplikatzen duen; beraz, oraingoz ez da kentzen: zure benetako komisioa txikiagoa izan liteke."
     }
   },
   "generations": {

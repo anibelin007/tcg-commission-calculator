@@ -111,6 +111,11 @@ export function ResultPanel({ result, market }: ResultPanelProps) {
           <li className="font-semibold text-tcg-heading">{t('result.notes.breakdownMissing')}</li>
         )}
         {reduction < 0 && <li>{t('result.notes.provisionalLimit')}</li>}
+        {strongest?.status === 'notApplied' && result.level !== null && (
+          <li>
+            {t('result.notes.limitNotApplied', { team: strongest.index + 1, volume: points(strongest.volume), limit: points(strongest.limit), level: result.level })}
+          </li>
+        )}
         {market.taxSpecificSettlement && <li>{t('result.notes.taxSettlement')}</li>}
         <li>{t('result.notes.exceptions')}</li>
         <li>{t('result.notes.bonuses')}</li>

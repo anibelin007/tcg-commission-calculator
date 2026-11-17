@@ -42,7 +42,8 @@
       "provisionalLimit": "El tope de la pata más fuerte se aplica de forma provisional mientras confirmamos con RINGANA cómo se calcula.",
       "exceptions": "Si tu fair score es inferior al 100 % o te aplica la regla «RINGANA only», tu comisión real será menor.",
       "bonuses": "No incluye bonificaciones (Fast Track, bonificación por crecimiento, Beyond Target 10).",
-      "breakdownMissing": "El tope de la pata más fuerte todavía no está aplicado: completa el desglose de esa pata para un resultado más exacto."
+      "breakdownMissing": "El tope de la pata más fuerte todavía no está aplicado: completa el desglose de esa pata para un resultado más exacto.",
+      "limitNotApplied": "Tu pata más fuerte (socia directa {{team}}, VE {{volume}}) supera el tope de la meta {{level}} ({{limit}}). Todavía estamos confirmando cómo lo aplica RINGANA, así que por ahora no se descuenta: tu comisión real podría ser menor."
     }
   },
   "generations": {

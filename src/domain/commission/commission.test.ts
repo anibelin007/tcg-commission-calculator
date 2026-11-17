@@ -67,8 +67,14 @@ describe('guideline cases (docs/qa/test-cases.md)', () => {
       expect(computeCommission(GUIDE_TEAM, US, { strongestTeamLimit: 'commissionPoints' }).amount).toBe(1102.4)
     })
 
-    it('differs under the provisional limit D-005: 663.5 points, 875.82 € (documented conflict, Q-01)', () => {
+    it('by default (limit not applied, D-005) matches the guideline: 909.48 €, reporting the team above the limit', () => {
       const result = computeCommission(GUIDE_TEAM, ES)
+      expect(result.amount).toBe(909.48)
+      expect(result.strongestTeam).toEqual({ index: 1, volume: 1800, limit: 1500, status: 'notApplied', pointsBefore: null, pointsAfter: null })
+    })
+
+    it('differs under the former provisional reading (proportional on team volume): 663.5 points, 875.82 € (Q-01)', () => {
+      const result = computeCommission(GUIDE_TEAM, ES, { strongestTeamLimit: 'teamVolumeProportional' })
       expect(result.strongestTeam).toEqual({ index: 1, volume: 1800, limit: 1500, status: 'applied', pointsBefore: 153, pointsAfter: 127.5 })
       expect(result.totalPoints).toBe(663.5)
       expect(result.amount).toBe(875.82)
@@ -86,7 +92,7 @@ describe('derived boundary cases (docs/qa/test-cases.md)', () => {
     ['S-04', solo(824), 2, 238.96, 315.43],
     ['S-05', solo(825), 3, 321.75, 424.71],
     ['S-06', directOnly(220, [780]), 2, 126.2, 166.58],
-    ['S-07', { ...directOnly(400, [10000]), strongestTeamGenerations: [10000] }, 2, 196, 258.72],
+    ['S-07', { ...directOnly(400, [10000]), strongestTeamGenerations: [10000] }, 2, 916, 1209.12],
   ] as const)('%s', (_id, input, level, points, amount) => {
     const result = computeCommission(input, ES)
     expect(result.level).toBe(level)
@@ -98,8 +104,9 @@ describe('derived boundary cases (docs/qa/test-cases.md)', () => {
     expect(computeCommission(solo(109), ES).payout).toBe('none')
   })
 
-  it('S-07 under Q-01 option (c) would be 1,209.12 €', () => {
+  it('S-07 would be 258.72 € proportionally on team volume, and 1,209.12 € under Q-01 option (c)', () => {
     const input = { ...directOnly(400, [10000]), strongestTeamGenerations: [10000] }
+    expect(computeCommission(input, ES, { strongestTeamLimit: 'teamVolumeProportional' }).amount).toBe(258.72)
     expect(computeCommission(input, ES, { strongestTeamLimit: 'commissionPoints' }).amount).toBe(1209.12)
   })
 
@@ -109,8 +116,12 @@ describe('derived boundary cases (docs/qa/test-cases.md)', () => {
 })
 
 describe('strongest-team limit input (BR-12)', () => {
-  it('asks for the breakdown when the strongest team exceeds the limit, and does not apply it meanwhile', () => {
-    const result = computeCommission(directOnly(400, [10000]), ES)
+  it('by default only reports the team above the limit and asks for nothing (D-005)', () => {
+    expect(computeCommission(directOnly(400, [10000]), ES).strongestTeam?.status).toBe('notApplied')
+  })
+
+  it('with a limit strategy, asks for the breakdown and does not apply it meanwhile', () => {
+    const result = computeCommission(directOnly(400, [10000]), ES, { strongestTeamLimit: 'teamVolumeProportional' })
     expect(result.strongestTeam).toEqual({ index: 0, volume: 10000, limit: 1000, status: 'breakdownMissing', pointsBefore: null, pointsAfter: null })
     expect(result.totalPoints).toBe(916)
   })

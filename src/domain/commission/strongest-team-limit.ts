@@ -10,13 +10,15 @@ export interface StrongestTeamLimitInput {
   readonly limit: number
 }
 
-export type StrongestTeamLimitId = 'teamVolumeProportional' | 'commissionPoints'
+export type StrongestTeamLimitId = 'none' | 'teamVolumeProportional' | 'commissionPoints'
 
 export type StrongestTeamLimit = (input: StrongestTeamLimitInput) => number
 
 export const STRONGEST_TEAM_LIMITS: Readonly<Record<StrongestTeamLimitId, StrongestTeamLimit>> = {
+  /** PO decision 2026-11-17 (D-005): not applied until RINGANA's exact rule is confirmed. */
+  none: ({ teamPoints }) => teamPoints,
   /**
-   * Provisional decision D-005 (BR-12a/b): when the team volume exceeds the limit, the
+   * Former provisional reading (BR-12a/b): when the team volume exceeds the limit, the
    * commission from the team is reduced in proportion (limit / team volume).
    */
   teamVolumeProportional: ({ teamPoints, teamVolume, limit }) =>
@@ -28,5 +30,5 @@ export const STRONGEST_TEAM_LIMITS: Readonly<Record<StrongestTeamLimitId, Strong
   commissionPoints: ({ teamPoints, limit }) => Math.min(teamPoints, limit),
 }
 
-/** Strategy used by default until Q-01 is resolved. */
-export const DEFAULT_STRONGEST_TEAM_LIMIT: StrongestTeamLimitId = 'teamVolumeProportional'
+/** Strategy used by default until Q-01 is resolved (D-005). */
+export const DEFAULT_STRONGEST_TEAM_LIMIT: StrongestTeamLimitId = 'none'
